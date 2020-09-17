@@ -66,7 +66,7 @@ public class LoginView extends JFrame{
         labelError = new JLabel();
         
         buttonSubmit = new JButton("Iniciar sesion");
-        labelUser = new JLabel("Nombre de usuario");
+        labelUser = new JLabel("Numero de cedula");
         fieldUser = new JTextField(10);
   
         labelPass = new JLabel("Contraseña");
