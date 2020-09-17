@@ -17,44 +17,45 @@ import java.sql.Statement;
 public class LoginModel {
 
     private Connection conexion;
-    
-  
+
     public LoginModel() {
         conexion = new Conexion().getConexion();
     }
 
-    public boolean login(String user,String pass,String rol) {
+    public boolean login(String user, String pass, String rol) {
 
         String userL = "";
         String passL = "";
         String tabla = "";
         String prefijo = "";
-        if(rol.equals("Vendedor")){
+        if (rol.equals("Vendedor")) {
             tabla = "TblVendedor";
             prefijo = "Ven";
-            
-        }else if(rol.equals("Cliente")){
+
+        } else if (rol.equals("Cliente")) {
             tabla = "TblCliente";
             prefijo = "Cli";
-        }else if(rol.equals("Administrador")){
+        } else if (rol.equals("Administrador")) {
             tabla = "TblAdministrador";
             prefijo = "Adm";
         }
-                
+
         try {
-            String query = "select * from "+tabla+" where "+prefijo+"Identificacion = '" +user+"' and "+prefijo+"Contrasenia='"+pass+"' and TblEstado_EstId = 1";
+            String query = "select * from " + tabla + " where " + prefijo + "Identificacion = '" + user + "' and " + prefijo + "Contrasenia='" + pass + "' and TblEstado_EstId = 1";
             Statement comando = conexion.createStatement();
-            if(comando.executeQuery(query).next()){
+            ResultSet registro = comando.executeQuery(query);
+            if (registro.next()) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (SQLException e) {
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+
         return false;
-        
+
     }
 
 }
