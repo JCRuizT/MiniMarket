@@ -40,6 +40,8 @@ public class LoginController implements ActionListener{
     public static void main(String args[]){
         LoginController app = new LoginController();
         System.out.println("Julio");
+        
+         System.out.println("Julio amo y señor");
     }
 }
 
