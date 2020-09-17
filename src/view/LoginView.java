@@ -111,7 +111,7 @@ public class LoginView extends JFrame{
         return fieldRol;
     }
     
-      public JButton getButtonSubmit(){
+    public JButton getButtonSubmit(){
         return buttonSubmit;
     }
     
