@@ -23,7 +23,7 @@ public class ProductController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Julio Ruiz");
+        System.out.println("----");
     }
     
     

@@ -28,8 +28,8 @@ public class Conexion{
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "root"; // root-admin
-            String password = ""; //juliocruizt
+            String user = "admin"; // root-admin
+            String password = "juliocruizt"; //juliocruizt
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
@@ -44,66 +44,5 @@ public class Conexion{
         }
         return conexion;
     }
-    
-    public static void main(String[] args) {
-        Conexion app = new Conexion();
-    }
 
 }
-    /*
-    public void close() {
-        try {
-            conexion.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void query() {
-        try {
-            String query = "select * from " + tabla;
-            comando = conexion.createStatement();
-            registro = comando.executeQuery(query);
-
-            while (registro.next()) {
-
-                System.out.println("Nombre " + registro.getString("Nombre"));
-                System.out.println("Apellido " + registro.getString("Apellido"));
-                System.out.println("Cedula " + registro.getString("Cedula"));
-            }
-
-            comando.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public boolean create(String nombre, String apellido, int cedula) {
-
-        try {
-            comando = conexion.createStatement();
-            comando.execute("Insert into " + tabla + "(nombre,apellido,cedula) values('" + nombre + "','" + apellido + "','" + cedula + "')");
-            System.out.println("Registro creado");
-            comando.close();
-            return true;
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return false;
-    }
-
-    public void eliminarTodo() {
-        try {
-            comando = conexion.createStatement();
-            comando.execute("delete from " + tabla);
-            System.out.println("Registros eliminados");
-
-            comando.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    */

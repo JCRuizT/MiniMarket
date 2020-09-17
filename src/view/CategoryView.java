@@ -5,60 +5,85 @@
  */
 package view;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
  *
  * @author pc-standard
  */
-public class CategoryView extends JFrame{
-    
+public class CategoryView extends JFrame {
+
     private JTextField fieldName;
-    private JTextField  fieldIva;
+    private JTextField fieldIva;
     private JLabel labelName;
     private JLabel labelIva;
+    private JTable tableList;
     private Container content;
     private JPanel mainPanel;
     private JButton buttonCreateCategory;
-    public static void main(String[] args) {
-        CategoryView init = new CategoryView();
-    }
-    
-    public CategoryView(){
-        
-        
+    private JLabel labelError;
+
+    public CategoryView(ResultSet result) {
+
         content = getContentPane();
         mainPanel = new JPanel();
-        
+
         buttonCreateCategory = new JButton("Crear Categoria");
         labelName = new JLabel("Nombre de la categoria");
         labelIva = new JLabel("Iva");
         fieldName = new JTextField(10);
         fieldIva = new JTextField(10);
-        
+        labelError = new JLabel("");
+        labelError.setForeground(Color.red);
+
         mainPanel.add(labelName);
         mainPanel.add(fieldName);
-        mainPanel.add(labelIva); 
+        mainPanel.add(labelIva);
         mainPanel.add(fieldIva);
         mainPanel.add(buttonCreateCategory);
+        mainPanel.add(labelError);
         content.add(mainPanel);
+        
+        
+
+        try {
+            while (result.next()) {
+                System.out.println(result.getString("TipProNombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
         setLocationRelativeTo(null);
         setTitle("Mini Market - Categoria de Producto");
         setVisible(true);
-        setSize(400,400);
+        setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public JButton getButtonCreateCategory() {
         return buttonCreateCategory;
     }
-    
-    
+
+    public JTextField getFieldName() {
+        return fieldName;
+    }
+
+    public JTextField getFieldIva() {
+        return fieldIva;
+    }
+
+    public JLabel getLabelError() {
+        return labelError;
+    }
+
 }
-
-
