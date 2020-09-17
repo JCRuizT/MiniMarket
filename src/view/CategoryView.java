@@ -53,6 +53,11 @@ public class CategoryView extends JFrame{
         setSize(400,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    public JButton getButtonCreateCategory() {
+        return buttonCreateCategory;
+    }
+    
     
 }
 

@@ -35,6 +35,7 @@ public class ProductView extends JFrame{
     private Container content;
     private JPanel mainPanel;
     private JButton buttonCreateProduct;
+
     
     public ProductView(){
         
@@ -86,8 +87,9 @@ public class ProductView extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
-    public static void main(String[] args) {
-        ProductView app = new ProductView();
+    public JButton getButtonCreateProduct() {
+        return buttonCreateProduct;
     }
+    
     
 }
