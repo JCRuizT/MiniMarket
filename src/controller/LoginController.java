@@ -33,7 +33,7 @@ public class LoginController implements ActionListener{
                 vista.setLabelError("Todos los campos son obligatorios");
             }else{
                 vista.setLabelError("");
-                modelo.userExist(vista.getFieldUser().toString(),vista.getFieldPass().toString(),vista.getFieldRol().getSelectedItem().toString());
+                System.out.println(modelo.login(vista.getFieldUser().toString(),vista.getFieldPass().toString(),vista.getFieldRol().getSelectedItem().toString()));
             }
         }
     }

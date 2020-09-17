@@ -23,7 +23,7 @@ public class LoginModel {
         conexion = new Conexion().getConexion();
     }
 
-    public void userExist(String user,String pass,String rol) {
+    public boolean login(String user,String pass,String rol) {
 
         String userL = "";
         String passL = "";
@@ -40,27 +40,20 @@ public class LoginModel {
             tabla = "TblAdministrador";
             prefijo = "Adm";
         }
-        
-        System.out.println(tabla);
-        
-        try {
-            
-            
-            String query = "select * from "+tabla;
-            System.out.println(tabla);
-            Statement comando = conexion.createStatement();
-            ResultSet registro = comando.executeQuery(query);
-            
-              while (registro.next()) {
-
-                System.out.println("cedula " + registro.getString(prefijo+"Idenficacion"));
                 
+        try {
+            String query = "select * from "+tabla+" where "+prefijo+"Identificacion = '" +user+"' and "+prefijo+"Contrasenia='"+pass+"' and TblEstado_EstId = 1";
+            Statement comando = conexion.createStatement();
+            if(comando.executeQuery(query).next()){
+                return true;
+            }else{
+                return false;
             }
-            
-            
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        return false;
         
     }
 
