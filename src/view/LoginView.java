@@ -91,7 +91,7 @@ public class LoginView extends JFrame{
         setLocationRelativeTo(null);
         setTitle("Mini Market - Inicio de sesion");
         setVisible(true);
-        setSize(400,400);
+        setSize(400,450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

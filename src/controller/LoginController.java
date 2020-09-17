@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.LoginModel;
 import view.LoginView;
 
 /**
@@ -16,11 +17,10 @@ import view.LoginView;
 public class LoginController implements ActionListener{
     
     private LoginView vista;
-    private String user = "Julio Ruiz"; // Para Eliminar // Base de datos
-    private String password = "123456"; // Para Eliminar // Base de datos
-    
+    private LoginModel modelo;
     public LoginController(){
         vista = new LoginView();
+        modelo = new LoginModel();
         vista.getButtonSubmit().addActionListener(this);
     }
 
@@ -33,6 +33,7 @@ public class LoginController implements ActionListener{
                 vista.setLabelError("Todos los campos son obligatorios");
             }else{
                 vista.setLabelError("");
+                modelo.userExist(vista.getFieldRol().getSelectedItem().toString());
             }
         }
     }

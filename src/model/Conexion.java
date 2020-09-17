@@ -15,36 +15,34 @@ import javax.swing.JOptionPane;
  *
  * @author pc-standard
  */
-class Conexion{
+public class Conexion{
 
     private Connection conexion;
     private Statement comando;
     private ResultSet registro;
     String tabla;
 
-    public Conexion() {
-        getConexion();
-    }
 
-    public void getConexion() {
+    public Connection getConexion() {
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "root"; // root
-            String password = ""; //
+            String user = "admin"; // root
+            String password = "juliocruizt"; //
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
-                JOptionPane.showMessageDialog(null,"Conexión Exitosa");
+                System.out.println("Conexión Exitosa");
             }
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             System.out.println(e.getMessage());
             conexion = null;
-        } catch (ClassNotFoundException e) {
+        }catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
             conexion = null;
         }
+        return conexion;
     }
     
     public static void main(String[] args) {
