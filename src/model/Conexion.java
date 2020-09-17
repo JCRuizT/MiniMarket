@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,12 +31,12 @@ class Conexion{
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "admin"; // root
-            String password = "juliocruizt"; //
+            String user = "root"; // root
+            String password = ""; //
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
-                System.out.println("Conexion exitosa");
+                JOptionPane.showMessageDialog(null,"Conexión Exitosa");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
