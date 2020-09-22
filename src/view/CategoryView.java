@@ -27,7 +27,6 @@ public class CategoryView extends JFrame {
     private JComboBox fieldIva;
     private JLabel labelName;
     private JLabel labelIva;
-    private JTable tableList;
     private Container content;
     private JPanel mainPanel;
     private JButton buttonCreateCategory;
@@ -49,6 +48,7 @@ public class CategoryView extends JFrame {
         for(int i=0; i<=100; i++){
             fieldIva.addItem(i);
         }
+              
         labelError = new JLabel("");
         labelError.setForeground(Color.red);
 

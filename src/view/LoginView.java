@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package view;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
@@ -34,7 +36,7 @@ public class LoginView extends JFrame{
     private JTextField fieldUser;
     private JPasswordField fieldPass;
     private Container content;
-    private JPanel mainPanel;
+    private JPanel mainPanel,background;
     private JButton buttonSubmit;
     private JComboBox fieldRol;
     private JLabel labelError;
@@ -44,17 +46,23 @@ public class LoginView extends JFrame{
 
     public LoginView(){
         
+        content = getContentPane();
+        background = new JPanel();
+        mainPanel = new JPanel();
+        
         
         logoType = Resource.CreateImageLabel();
         title = new JLabel("Mini Market - Inicio de sesion");
         title.setForeground(Color.BLUE);
         title.setSize(30, 400);
-        content = getContentPane();
         
-        mainPanel = new JPanel();
+        
+        
+       
+        
         mainPanel.setBorder(new EmptyBorder(20,20,20,20));
         mainPanel.setBackground(Color.WHITE);
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+        mainPanel.setLayout(new BorderLayout ());
         
         labelRol = new JLabel("Rol");
         fieldRol = new JComboBox();
@@ -86,6 +94,7 @@ public class LoginView extends JFrame{
         mainPanel.add(labelError);
         labelError.setForeground(Color.red);
 
+        
         
         content.add(mainPanel);
         setLocationRelativeTo(null);
