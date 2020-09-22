@@ -38,7 +38,7 @@ public class Crud {
             return true;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "primero error insercion" + e.getMessage(), JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage()+ JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }

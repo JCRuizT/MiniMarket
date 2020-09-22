@@ -10,6 +10,7 @@ import java.awt.Container;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +24,7 @@ import javax.swing.JTextField;
 public class CategoryView extends JFrame {
 
     private JTextField fieldName;
-    private JTextField fieldIva;
+    private JComboBox fieldIva;
     private JLabel labelName;
     private JLabel labelIva;
     private JTable tableList;
@@ -41,7 +42,13 @@ public class CategoryView extends JFrame {
         labelName = new JLabel("Nombre de la categoria");
         labelIva = new JLabel("Iva");
         fieldName = new JTextField(10);
-        fieldIva = new JTextField(10);
+        
+        fieldIva = new JComboBox();
+	fieldIva.addItem("Seleccionar iva");
+        
+        for(int i=0; i<=100; i++){
+            fieldIva.addItem(i);
+        }
         labelError = new JLabel("");
         labelError.setForeground(Color.red);
 
@@ -78,7 +85,7 @@ public class CategoryView extends JFrame {
         return fieldName;
     }
 
-    public JTextField getFieldIva() {
+    public JComboBox getFieldIva() {
         return fieldIva;
     }
 
