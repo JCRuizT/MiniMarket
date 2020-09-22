@@ -30,6 +30,8 @@ public class LoginView extends JFrame implements MouseListener{
     JLabel labelUser = new JLabel("Numero de cedula");
     JLabel labelPass = new JLabel("Contraseña");
     JLabel labelError = new JLabel();
+    JLabel minimize = new JLabel();
+    JLabel close = new JLabel();
     //JLabel buttonSubmit = new JLabel();
     //CAJA DE TEXTO
 
@@ -147,9 +149,33 @@ public class LoginView extends JFrame implements MouseListener{
         labelError.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
         labelError.setForeground(Color.red);
         
+        
+        
+        close.setSize(20, 20);
+        close.setLocation(1230, 20);
+        ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
+        Icon iconclose = new ImageIcon(imageclose.getImage().getScaledInstance(close.getWidth(), close.getHeight(), Image.SCALE_DEFAULT));
+        close.setIcon(iconclose);
+        close.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        close.addMouseListener(this);
+        
+        
+        
+        minimize.setSize(20, 20);
+        minimize.setLocation(1200, 20);
+        ImageIcon imageminimize = new ImageIcon(getClass().getResource("/imagenes/minimizar.png"));
+        Icon iconminimize = new ImageIcon(imageminimize.getImage().getScaledInstance(minimize.getWidth(), minimize.getHeight(), Image.SCALE_DEFAULT));
+        minimize.setIcon(iconminimize);
+        minimize.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        minimize.addMouseListener(this);
+        
+        
+        
 
         //Agregar
         
+        background.add(minimize);
+        background.add(close);
         mainPanel.add(labelError);
         mainPanelLogo.add(logo);
         mainPanel.add(fieldRol);
@@ -171,7 +197,11 @@ public class LoginView extends JFrame implements MouseListener{
     
        @Override
     public void mouseClicked(MouseEvent me) {
-        if (buttonSubmit == buttonSubmit) {
+        if (me.getSource() == minimize) {
+            setState(LoginView.ICONIFIED);
+        }
+        if (me.getSource()==close){
+            System.exit(0);
         }
     }
 
