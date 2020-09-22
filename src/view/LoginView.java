@@ -4,104 +4,205 @@
  * and open the template in the editor.
  */
 package view;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 /**
  *
  * @author pc-standard
  */
-public class LoginView extends JFrame{
+public class LoginView extends JFrame implements MouseListener{
     
-    private String password;
-    private String username;
-    private JLabel labelUser;
-    private JLabel labelPass;
-    private JLabel labelRol;
-    private JTextField fieldUser;
-    private JPasswordField fieldPass;
-    private Container content;
-    private JPanel mainPanel,background;
-    private JButton buttonSubmit;
-    private JComboBox fieldRol;
-    private JLabel labelError;
-    private JLabel logoType;
-    private JLabel title;
     
+    Container contenedor = getContentPane();
 
-    public LoginView(){
-        
-        content = getContentPane();
-        background = new JPanel();
-        mainPanel = new JPanel();
-        
-        
-        logoType = Resource.CreateImageLabel();
-        title = new JLabel("Mini Market - Inicio de sesion");
-        title.setForeground(Color.BLUE);
-        title.setSize(30, 400);
-        
-        
-        
-       
-        
-        mainPanel.setBorder(new EmptyBorder(20,20,20,20));
+    //PANELES 
+    JPanel background = new JPanel();
+    JPanel mainPanelLogo = new JPanel();
+    JPanel mainPanel = new JPanel();
+
+    //ETIQUETAS 
+    JLabel fondobackground = new JLabel();
+    JLabel logo = new JLabel();
+    JLabel title = new JLabel("Mini Market - Inicio de sesion");
+    JLabel labelUser = new JLabel("Numero de cedula");
+    JLabel labelPass = new JLabel("Contraseña");
+    JLabel labelError = new JLabel();
+    //JLabel buttonSubmit = new JLabel();
+    //CAJA DE TEXTO
+
+    JTextField fieldUser = new JTextField(10);
+    JPasswordField fieldPass = new JPasswordField(10);
+
+    //BOTONES
+    JButton buttonSubmit = new JButton();
+
+    //ComboBox
+    JComboBox fieldRol = new JComboBox();
+
+    //VARIAVLES
+    private final int x = 1280;
+    private final int y = 800;
+
+    public LoginView() {
+
+        setSize(x, y);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setUndecorated(true);
+
+        //Diseño
+        background.setSize(x, y);
+        background.setLocation(0, 0);
+        background.setLayout(null);
+
+        fondobackground.setSize(x, y);
+        fondobackground.setLocation(0, 0);
+        ImageIcon imagefondobackground = new ImageIcon(getClass().getResource("/imagenes/fondoverduras.jpg"));
+        Icon iconfondobackground = new ImageIcon(imagefondobackground.getImage().getScaledInstance(fondobackground.getWidth(), fondobackground.getHeight(), Image.SCALE_DEFAULT));
+        fondobackground.setIcon(iconfondobackground);
+
+        logo.setSize(300, 400);
+        logo.setLocation(100, 60);
+        ImageIcon imagelogo = new ImageIcon(getClass().getResource("/imagenes/logo.png"));
+        Icon iconlogo = new ImageIcon(imagelogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
+        logo.setIcon(iconlogo);
+
+        mainPanel.setSize(400, 500);
+        mainPanel.setLayout(null);
+        mainPanel.setLocation(250, 145);
         mainPanel.setBackground(Color.WHITE);
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-        
-        labelRol = new JLabel("Rol");
-        fieldRol = new JComboBox();
-	fieldRol.addItem("Seleccionar rol");
-	fieldRol.addItem("Administrador");
-	fieldRol.addItem("Vendedor");
+
+        mainPanelLogo.setSize(400, 500);
+        mainPanelLogo.setLayout(null);
+        mainPanelLogo.setLocation(650, 145);
+        mainPanelLogo.setBackground(Color.orange);
+
+        //Titulotext
+        title.setForeground(Color.BLUE);
+        title.setSize(300, 30);
+        title.setLocation(65, 80);
+        title.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+
+        //CedulaText
+        labelUser.setForeground(Color.BLACK);
+        labelUser.setSize(300, 30);
+        labelUser.setLocation(140, 140);
+        labelUser.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
+
+        //ContraseñaText       
+        labelPass.setForeground(Color.BLACK);
+        labelPass.setSize(300, 30);
+        labelPass.setLocation(165, 220);
+        labelPass.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
+
+        //Caja texto Cedula
+        fieldUser.setSize(140, 30);
+        fieldUser.setLocation(140, 180);
+        fieldUser.setBorder(null);
+        fieldUser.setBackground(new Color(239, 239, 239));
+        fieldUser.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //Caja texto Password
+        fieldPass.setSize(140, 30);
+        fieldPass.setLocation(140, 250);
+        fieldPass.setBorder(null);
+        fieldPass.setBackground(new Color(239, 239, 239));
+        fieldPass.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //Etiq Boton enviar
+        buttonSubmit.setSize(100, 40);
+        buttonSubmit.setLocation(155, 400);
+        buttonSubmit.setText("Iniciar sesion");
+        buttonSubmit.setBackground(new Color(239, 239, 239));
+        buttonSubmit.setOpaque(true);
+        buttonSubmit.setBackground(new Color(197, 197, 197));
+        buttonSubmit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        buttonSubmit.setHorizontalAlignment(SwingConstants.CENTER);
+        buttonSubmit.setForeground(Color.WHITE);
+        buttonSubmit.addMouseListener(this);
+        buttonSubmit.setFocusPainted(false);
+        buttonSubmit.setBorder(null);
+
+        //ComboBox
+        fieldRol.setSize(140, 30);
+        fieldRol.setLocation(140, 310);
+        fieldRol.addItem("Seleccionar rol");
+        fieldRol.addItem("Administrador");
+        fieldRol.addItem("Vendedor");
         fieldRol.addItem("Cliente");
-        
-        labelError = new JLabel();
-        
-        buttonSubmit = new JButton("Iniciar sesion");
-        labelUser = new JLabel("Numero de cedula");
-        fieldUser = new JTextField(10);
-  
-        labelPass = new JLabel("Contraseña");
-        fieldPass= new JPasswordField(10);
 
-        mainPanel.add(logoType);
-        mainPanel.add(title);
-        mainPanel.add(labelUser);
-        mainPanel.add(fieldUser);
-
-        mainPanel.add(labelPass);
-        mainPanel.add(fieldPass);
+        //logo
+        logo.setLocation(50, 60);
+        logo.setSize(300, 400);
         
-        mainPanel.add(labelRol);
+        //textError
+        
+        labelError.setSize(250, 30);
+        labelError.setLocation(90, 350);
+        labelError.setHorizontalAlignment(SwingConstants.CENTER);
+        labelError.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
+        labelError.setForeground(Color.red);
+        
+
+        //Agregar
+        
+        mainPanel.add(labelError);
+        mainPanelLogo.add(logo);
         mainPanel.add(fieldRol);
         mainPanel.add(buttonSubmit);
-        mainPanel.add(labelError);
-        labelError.setForeground(Color.red);
+        mainPanel.add(fieldPass);
+        mainPanel.add(fieldUser);
+        mainPanel.add(labelPass);
+        mainPanel.add(labelUser);
+        mainPanel.add(title);
+        background.add(mainPanelLogo);
+        background.add(mainPanel);
+        background.add(fondobackground);
+        contenedor.add(background);
 
-        
-        
-        content.add(mainPanel);
-        setLocationRelativeTo(null);
-        setTitle("Mini Market - Inicio de sesion");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        setSize(400,450);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+    
+       @Override
+    public void mouseClicked(MouseEvent me) {
+        if (buttonSubmit == buttonSubmit) {
+        }
     }
 
+    @Override
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource() == buttonSubmit) {
+            buttonSubmit.setBackground(new Color(202, 202, 202));
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        if (me.getSource() == buttonSubmit) {
+            buttonSubmit.setBackground(new Color(214, 214, 214));
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        if (me.getSource() == buttonSubmit) {
+            buttonSubmit.setBackground(new Color(214, 214, 214));
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        if (me.getSource() == buttonSubmit) {
+            buttonSubmit.setBackground(new Color(197, 197, 197));
+        }
+    }
+      
     public void setLabelError(String labelError) {
         this.labelError.setText(labelError);
     }
@@ -121,8 +222,8 @@ public class LoginView extends JFrame{
     public JButton getButtonSubmit(){
         return buttonSubmit;
     }
-    
-    
 }
+    
+
 
 
