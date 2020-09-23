@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,15 +53,23 @@ public class CategoryView extends JFrame {
         labelError = new JLabel("");
         labelError.setForeground(Color.red);
 
-        mainPanel.add(labelName);
+        Object column[] = {"Nombre","Apellido","Cedula"};
+        Object a[][] = {{"sss","sss","ssss"}};
+        
+        DefaultTableModel dtm= new DefaultTableModel(a, column); 
+        JTable tabla = new JTable(dtm);
+        /*mainPanel.add(labelName);
         mainPanel.add(fieldName);
         mainPanel.add(labelIva);
         mainPanel.add(fieldIva);
         mainPanel.add(buttonCreateCategory);
-        mainPanel.add(labelError);
+        mainPanel.add(labelError);*/
+        mainPanel.add(tabla);
         content.add(mainPanel);
         
         
+
+
 
         try {
             while (result.next()) {

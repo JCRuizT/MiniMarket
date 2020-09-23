@@ -21,7 +21,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class ProductView extends JFrame{
     
-    private JTextField fieldStock;
+    private JComboBox fieldStock;
     private JTextField fieldPrecio;
     private JTextField fieldName;
     private JTextField fieldFechaVencimiento;
@@ -51,7 +51,12 @@ public class ProductView extends JFrame{
         labelPrecio = new JLabel("Precio");
         fieldPrecio = new JTextField(10);
         labelStock = new JLabel("Stock");
-        fieldStock= new JTextField(10);
+        fieldStock= new JComboBox();
+        fieldStock.addItem("Seleccionar Stock");
+        
+        for(int i = 0; i<=50;i++){
+            fieldStock.addItem(i);
+        }
         
         
         labelFechaVencimiento = new JLabel("Fecha de Vencimiento");
