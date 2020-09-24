@@ -48,7 +48,7 @@ public class CategoryController implements ActionListener {
                     vista.getTableList().getModel().addRow(x);
                     vista.getLabelError().setText("");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la insercion");
+                    JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
                 }
             }
         }else if(e.getSource().equals(vista.getButtonDeleteCategory())){
