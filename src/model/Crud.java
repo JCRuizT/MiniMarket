@@ -55,5 +55,19 @@ public class Crud {
         }
         return registro;
     }
+    
+    public static boolean eliminar(String tabla,String field,String value,Connection conexion){
+                
+        String sql = "update "+tabla+" set TblEstado_EstId = 2 where "+field+" = '"+value+"'";
+        try {
+            Statement comando = conexion.createStatement();
+            comando.execute(sql);
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage()+ JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
 
 }

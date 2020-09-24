@@ -14,9 +14,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -32,13 +31,18 @@ public class CategoryView extends JFrame {
     private JPanel mainPanel;
     private JButton buttonCreateCategory;
     private JLabel labelError;
-
+    private JTableComponent tableList; 
+    private JButton buttonDeleteCategory;
+    private JButton buttonUpdateCategory;
     public CategoryView(ResultSet result) {
 
         content = getContentPane();
         mainPanel = new JPanel();
 
         buttonCreateCategory = new JButton("Crear Categoria");
+        buttonDeleteCategory = new JButton("Eliminar Categoria");
+        buttonUpdateCategory = new JButton("Actualizar Categoria");
+
         labelName = new JLabel("Nombre de la categoria");
         labelIva = new JLabel("Iva");
         fieldName = new JTextField(10);
@@ -53,37 +57,45 @@ public class CategoryView extends JFrame {
         labelError = new JLabel("");
         labelError.setForeground(Color.red);
 
-        Object column[] = {"Nombre","Apellido","Cedula"};
-        Object a[][] = {{"sss","sss","ssss"}};
+        String columns[] = {"Nombre","Iva"};
+        tableList = new JTableComponent(columns);
         
-        DefaultTableModel dtm= new DefaultTableModel(a, column); 
-        JTable tabla = new JTable(dtm);
-        /*mainPanel.add(labelName);
-        mainPanel.add(fieldName);
-        mainPanel.add(labelIva);
-        mainPanel.add(fieldIva);
-        mainPanel.add(buttonCreateCategory);
-        mainPanel.add(labelError);*/
-        mainPanel.add(tabla);
-        content.add(mainPanel);
-        
-        
-
-
-
         try {
             while (result.next()) {
-                System.out.println(result.getString("TipProNombre"));
+                Object rs[] = {result.getString("TipProNombre"),result.getString("TipProIva")}; 
+                tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
+        mainPanel.add(labelName);
+        mainPanel.add(fieldName);
+        mainPanel.add(labelIva);
+        mainPanel.add(fieldIva);
+        mainPanel.add(buttonCreateCategory);
+        mainPanel.add(labelError);
+        mainPanel.add(tableList.getScrollTable());
+        mainPanel.add(buttonDeleteCategory);
+        mainPanel.add(buttonUpdateCategory);
+        content.add(mainPanel);
         setLocationRelativeTo(null);
         setTitle("Mini Market - Categoria de Producto");
         setVisible(true);
-        setSize(400, 400);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public JTableComponent getTableList() {
+        return tableList;
+    }
+    
+    public JButton getButtonDeleteCategory() {
+        return buttonDeleteCategory;
+    }
+
+    public JButton getButtonUpdateCategory() {
+        return buttonUpdateCategory;
     }
 
     public JButton getButtonCreateCategory() {
