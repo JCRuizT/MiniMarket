@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 package view;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -160,6 +173,10 @@ public class LoginView extends JFrame implements MouseListener{
         close.addMouseListener(this);
         
         
+        mainPanel.setBorder(new EmptyBorder(20,20,20,20));
+        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setLayout(new BorderLayout ());
+
         
         minimize.setSize(20, 20);
         minimize.setLocation(1200, 20);

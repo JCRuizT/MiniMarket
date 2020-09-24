@@ -9,6 +9,9 @@ import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,4 +25,5 @@ public class Resource {
          label.setIcon(image);
          return label;
     }
+
 }

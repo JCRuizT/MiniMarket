@@ -7,32 +7,32 @@ package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+
 /**
  *
- * @author quihu
- *
+ * @author pc-standard
  */
-public class CategoryModel {
+public class ProductModel {
+    
 
     private Connection conexion;
     private String table;
 
-    public CategoryModel() {
-        table = "TblTipoProducto";
+    public ProductModel() {
+        
+        table = "TblProducto";
         conexion = new Conexion().getConexion();
     }
-   
-    public boolean createCategory(String field[]){
+    
+    
+    public boolean createProduct(String field[]){
+        
         field[0] = null;
         return Crud.insertar(table,field, conexion);
         
     }
     
-    public boolean deleteCategory(String id){
-        return Crud.eliminar(table, "TipProNombre",id, conexion);
-    }
-    
-    public ResultSet listCategory(){
+    public ResultSet listProduct(){
         
         return Crud.listar(table, conexion);
     }
