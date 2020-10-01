@@ -15,11 +15,12 @@ import view.LoginView;
  *
  * @author pc-standard
  */
-public class LoginController implements ActionListener{
-    
+public class LoginController implements ActionListener {
+
     private LoginView vista;
     private LoginModel modelo;
-    public LoginController(){
+
+    public LoginController() {
         vista = new LoginView();
         modelo = new LoginModel();
         vista.getButtonSubmit().addActionListener(this);
@@ -27,27 +28,25 @@ public class LoginController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(vista.getButtonSubmit())){
-            
-            if(vista.getFieldRol().getSelectedItem().equals("Seleccionar rol") 
-                || vista.getFieldUser().equals("") || vista.getFieldPass().getPassword().equals("")){
+        if (e.getSource().equals(vista.getButtonSubmit())) {
+            if (vista.getFieldRol().getSelectedItem().equals("Seleccionar rol")
+                    || vista.getFieldUser().equals("") || vista.getFieldPass().getPassword().equals("")) {
                 vista.setLabelError("Todos los campos son obligatorios");
-            }else{
+            } else {
                 vista.setLabelError("");
-                boolean login = modelo.login(vista.getFieldUser().getText(),vista.getFieldPass().getText(),vista.getFieldRol().getSelectedItem().toString());
-                if(login){
+                boolean login = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText(), vista.getFieldRol().getSelectedItem().toString());
+                if (login) {
                     vista.dispose();
                     new DashboardView(); // llama al perfil o zona de gestion
-                    
-                }else{
+
+                } else {
                     vista.setLabelError("El usuario ingresado no existe");
                 }
             }
         }
     }
-    
-    public static void main(String args[]){
+
+    public static void main(String args[]) {
         LoginController app = new LoginController();
     }
 }
-
