@@ -40,9 +40,10 @@ public class ProductView extends JFrame {
     private Container content;
     private JPanel mainPanel;
     private JButton buttonCreateProduct;
+    private JTableComponent tableList; 
     JLabel labelError;
 
-    public ProductView() {
+    public ProductView(ResultSet result) {
 
         content = getContentPane();
         mainPanel = new JPanel();
@@ -81,6 +82,22 @@ public class ProductView extends JFrame {
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        
+        
+        String columns[] = {"Nombre","Stock","Precio","Categoria","Fecha de Vencimiento"};
+        tableList = new JTableComponent(columns);
+        
+        try {
+            while (result.next()) {
+                Object rs[] = {result.getString("ProNombre"),result.getString("ProStock"),
+                    result.getString("ProPrecio"),
+                    result.getString("TipProNombre"),
+                    result.getString("ProFechaVencimiento")}; 
+                tableList.getModel().addRow(rs);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         fieldCategoria.addItem("Categoria-1");
         fieldCategoria.addItem("Categoria-1");
         fieldCategoria.addItem("Categoria-3");
@@ -101,6 +118,7 @@ public class ProductView extends JFrame {
 
         mainPanel.add(labelError);
         mainPanel.add(buttonCreateProduct);
+        mainPanel.add(tableList.getScrollTable());
         content.add(mainPanel);
         setLocationRelativeTo(null);
         setTitle("Mini Market - Categoria de Producto");

@@ -42,7 +42,7 @@ public class Crud {
         }
         return false;
     }
-
+    
     public static ResultSet listar(String tabla, Connection conexion) {
         ResultSet registro = null;
         try {
@@ -69,5 +69,20 @@ public class Crud {
         }
         return false;
     }
+    
+    public static ResultSet listarJoin(String field,String tabla1,String tabla2,String condition,Connection conexion) {
+        ResultSet registro = null;
+        try {
+
+            String sql = "select "+field+" from " + tabla1 + ","+tabla2+" where "+condition;
+            System.out.println(sql);
+            Statement comando = conexion.createStatement();
+            registro = comando.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return registro;
+    }
+     
 
 }

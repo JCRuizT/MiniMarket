@@ -20,7 +20,10 @@ public class ProductController implements ActionListener{
     private ProductModel model;
   
     public ProductController(){
-        vista = new ProductView();
+        
+        
+        model = new ProductModel();
+        vista = new ProductView(model.listProduct());
         vista.getButtonCreateProduct().addActionListener(this);
     }
     

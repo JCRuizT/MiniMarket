@@ -5,6 +5,7 @@
  */
 package view;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -55,11 +56,12 @@ public class DashboardView extends JFrame implements MouseListener{
     
     public DashboardView(){
         
+        setTitle("Soy Franklin el del money money");
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        setResizable(false);
-        setUndecorated(true);
+        //setResizable(false);
+        //setUndecorated(true);
          
         //Diseño
         
@@ -141,7 +143,7 @@ public class DashboardView extends JFrame implements MouseListener{
         
         picCrearUsu.setSize(30, 30);
         picCrearUsu.setLocation(40, 100);
-        ImageIcon imageCrearUsu = new ImageIcon(getClass().getResource("/imagenes/crearUsuario.png"));
+        ImageIcon imageCrearUsu = new ImageIcon(getClass().getResource("/imagenes/CrearUsuario.png"));
         Icon iconCrearUsu = new ImageIcon(imageCrearUsu.getImage().getScaledInstance(picCrearUsu.getWidth(), picCrearUsu.getHeight(), Image.SCALE_DEFAULT));
         picCrearUsu.setIcon(iconCrearUsu);
         picCrearUsu.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -155,9 +157,6 @@ public class DashboardView extends JFrame implements MouseListener{
         picCrearProduc.setCursor(new Cursor(Cursor.HAND_CURSOR));
         picCrearProduc.addMouseListener(this);
         
-        picCrearUsu.setSize(30, 30);
-        picCrearUsu.setLocation(40, 100);
-       
         picCrearCateg.setSize(30, 30);
         picCrearCateg.setLocation(40, 187);
         ImageIcon imageCrearCateg = new ImageIcon(getClass().getResource("/imagenes/categoria.png"));

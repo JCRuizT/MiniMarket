@@ -33,8 +33,7 @@ public class ProductModel {
     }
     
     public ResultSet listProduct(){
-        
-        return Crud.listar(table, conexion);
+        return Crud.listarJoin("TblProducto.ProNombre as ProNombre,TblProducto.ProFechaVencimiento as ProFechaVencimiento,TblProducto.ProStock,TblProducto.ProRef as ProRef,TblProducto.ProPrecio as ProPrecio,TblTipoProducto.TipProNombre","TblProducto", "TblTipoProducto", "TblTipoProducto_TipId = TipProId and TblProducto.TblEstado_EstId = 1", conexion);
     }
-
+    
 }
