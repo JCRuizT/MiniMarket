@@ -29,6 +29,12 @@ public class CategoryController implements ActionListener {
 
     }
 
+    public CategoryView getVista() {
+        return vista;
+    }
+
+  
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
@@ -75,8 +81,5 @@ public class CategoryController implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        CategoryController app = new CategoryController();
-    }
 
 }

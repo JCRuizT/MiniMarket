@@ -38,7 +38,7 @@ public class DashboardView extends JFrame implements MouseListener{
           JLabel picCrearProduc = new JLabel();
           JLabel picCrearCateg = new JLabel();
           JLabel picHacerPedido = new JLabel();
-          
+        
           
         //CAJA DE TEXTO
          JTextField xs = new JTextField();
@@ -253,6 +253,52 @@ public class DashboardView extends JFrame implements MouseListener{
     
     public static void main(String[] args) {
         DashboardView app = new DashboardView();
+    }
+    
+    //Metodos Getters 
+    
+    public JPanel getPagPrincipal() {
+        return pagPrincipal;
+    }
+
+    public JLabel getLabelNameUser() {
+        return labelNameUser;
+    }
+
+    public JLabel getLabelCrearProd() {
+        return labelCrearProd;
+    }
+
+    public JLabel getLabelCrearUsu() {
+        return labelCrearUsu;
+    }
+
+    public JLabel getLabelCrearCateg() {
+        return labelCrearCateg;
+    }
+
+    public JLabel getLabelHacerPedido() {
+        return labelHacerPedido;
+    }
+
+    public JLabel getPicAdmin() {
+        return picAdmin;
+    }
+
+    public JLabel getPicCrearUsu() {
+        return picCrearUsu;
+    }
+
+    public JLabel getPicCrearProduc() {
+        return picCrearProduc;
+    }
+
+    public JLabel getPicCrearCateg() {
+        return picCrearCateg;
+    }
+
+    public JLabel getPicHacerPedido() {
+        return picHacerPedido;
     }
     
 }

@@ -28,6 +28,7 @@ public class LoginModel {
         String passL = "";
         String tabla = "";
         String prefijo = "";
+        
         if (rol.equals("Vendedor")) {
             tabla = "TblVendedor";
             prefijo = "Ven";

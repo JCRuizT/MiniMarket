@@ -52,10 +52,10 @@ public class ProductController implements ActionListener{
             }
         }
     }
-    
-    
-    public static void main(String[] args) {
-        ProductController app = new ProductController();
+
+    public ProductView getVista() {
+        return vista;
     }
+    
     
 }

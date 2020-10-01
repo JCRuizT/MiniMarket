@@ -23,7 +23,7 @@ import model.CategoryModel;
  *
  * @author pc-standard
  */
-public class ProductView extends JFrame {
+public class ProductView extends JPanel {
 
     private JComboBox fieldStock;
     private JTextField fieldPrecio;
@@ -37,17 +37,15 @@ public class ProductView extends JFrame {
    private JLabel labelCategoria;
     private JLabel labelFechaVencimiento;
 
-    private Container content;
-    private JPanel mainPanel;
     private JButton buttonCreateProduct;
     private JTableComponent tableList; 
     JLabel labelError;
 
     public ProductView(ResultSet result) {
 
-        content = getContentPane();
-        mainPanel = new JPanel();
-        mainPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
+        
+      
+        setBorder(new EmptyBorder(15, 15, 15, 15));
 
         buttonCreateProduct = new JButton("Crear Producto");
         labelName = new JLabel("Nombre del Producto");
@@ -102,29 +100,27 @@ public class ProductView extends JFrame {
         fieldCategoria.addItem("Categoria-1");
         fieldCategoria.addItem("Categoria-3");
 
-        mainPanel.add(labelName);
-        mainPanel.add(fieldName);
+        add(labelName);
+        add(fieldName);
         
-        mainPanel.add(labelCategoria);
-        mainPanel.add(fieldCategoria);
-        mainPanel.add(labelPrecio);
-        mainPanel.add(fieldPrecio);
+        add(labelCategoria);
+        add(fieldCategoria);
+        add(labelPrecio);
+        add(fieldPrecio);
 
-        mainPanel.add(labelStock);
-        mainPanel.add(fieldStock);
+        add(labelStock);
+        add(fieldStock);
 
-        mainPanel.add(labelFechaVencimiento);
-        mainPanel.add(fieldFechaVencimiento);
+        add(labelFechaVencimiento);
+        add(fieldFechaVencimiento);
 
-        mainPanel.add(labelError);
-        mainPanel.add(buttonCreateProduct);
-        mainPanel.add(tableList.getScrollTable());
-        content.add(mainPanel);
-        setLocationRelativeTo(null);
-        setTitle("Mini Market - Categoria de Producto");
+        add(labelError);
+        add(buttonCreateProduct);
+        add(tableList.getScrollTable());
+       
+       
         setVisible(true);
-        setSize(400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 800);
     }
 
     public void setLabelError(String text) {
