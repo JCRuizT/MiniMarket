@@ -25,14 +25,19 @@ public class DashboardView extends JFrame implements MouseListener{
           JLabel labelNameUser = new JLabel();
           JLabel labelCrearProd = new JLabel();
           JLabel labelCrearUsu = new JLabel();
+          JLabel labelCrearCateg = new JLabel();
+          JLabel labelHacerPedido = new JLabel();
           JLabel labelMenu = new JLabel();
           JLabel labelBienvenida = new JLabel();
           JLabel labelRol = new JLabel();
           JLabel picAdmin = new JLabel();
           JLabel close = new JLabel();
           JLabel minimize = new JLabel();
-          JLabel picCrearProduc = new JLabel();
           JLabel picCrearUsu = new JLabel();
+          JLabel picCrearProduc = new JLabel();
+          JLabel picCrearCateg = new JLabel();
+          JLabel picHacerPedido = new JLabel();
+          
           
         //CAJA DE TEXTO
          JTextField xs = new JTextField();
@@ -90,6 +95,22 @@ public class DashboardView extends JFrame implements MouseListener{
         labelCrearProd.setCursor(new Cursor(Cursor.HAND_CURSOR));
         labelCrearProd.addMouseListener(this);
         
+        labelCrearCateg.setForeground(Color.WHITE);
+        labelCrearCateg.setSize(300, 40);
+        labelCrearCateg.setLocation(80, 180);
+        labelCrearCateg.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        labelCrearCateg.setText("Crear Categoria");
+        labelCrearCateg.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        labelCrearCateg.addMouseListener(this);
+        
+        labelHacerPedido.setForeground(Color.WHITE);
+        labelHacerPedido.setSize(300, 40);
+        labelHacerPedido.setLocation(80, 220);
+        labelHacerPedido.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        labelHacerPedido.setText("Hacer Pedido");
+        labelHacerPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        labelHacerPedido.addMouseListener(this);
+        
         labelBienvenida.setForeground(Color.BLACK);
         labelBienvenida.setSize(300, 40);
         labelBienvenida.setLocation(350, 20);
@@ -118,6 +139,14 @@ public class DashboardView extends JFrame implements MouseListener{
         picAdmin.setCursor(new Cursor(Cursor.HAND_CURSOR));
         picAdmin.addMouseListener(this);
         
+        picCrearUsu.setSize(30, 30);
+        picCrearUsu.setLocation(40, 100);
+        ImageIcon imageCrearUsu = new ImageIcon(getClass().getResource("/imagenes/crearUsuario.png"));
+        Icon iconCrearUsu = new ImageIcon(imageCrearUsu.getImage().getScaledInstance(picCrearUsu.getWidth(), picCrearUsu.getHeight(), Image.SCALE_DEFAULT));
+        picCrearUsu.setIcon(iconCrearUsu);
+        picCrearUsu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        picCrearUsu.addMouseListener(this);
+        
         picCrearProduc.setSize(30, 30);
         picCrearProduc.setLocation(40, 145);
         ImageIcon imageCrearProduc = new ImageIcon(getClass().getResource("/imagenes/CrearProducto.png"));
@@ -128,11 +157,22 @@ public class DashboardView extends JFrame implements MouseListener{
         
         picCrearUsu.setSize(30, 30);
         picCrearUsu.setLocation(40, 100);
-        ImageIcon imageCrearUsu = new ImageIcon(getClass().getResource("/imagenes/CrearUsuario.png"));
-        Icon iconCrearUsu = new ImageIcon(imageCrearUsu.getImage().getScaledInstance(picCrearUsu.getWidth(), picCrearUsu.getHeight(), Image.SCALE_DEFAULT));
-        picCrearUsu.setIcon(iconCrearUsu);
-        picCrearUsu.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        picCrearUsu.addMouseListener(this);
+       
+        picCrearCateg.setSize(30, 30);
+        picCrearCateg.setLocation(40, 187);
+        ImageIcon imageCrearCateg = new ImageIcon(getClass().getResource("/imagenes/categoria.png"));
+        Icon iconCrearCateg = new ImageIcon(imageCrearCateg.getImage().getScaledInstance(picCrearCateg.getWidth(), picCrearCateg.getHeight(), Image.SCALE_DEFAULT));
+        picCrearCateg.setIcon(iconCrearCateg);
+        picCrearCateg.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        picCrearCateg.addMouseListener(this);
+        
+        picHacerPedido.setSize(30, 30);
+        picHacerPedido.setLocation(39, 225);
+        ImageIcon imageHacerPedido = new ImageIcon(getClass().getResource("/imagenes/pedido.png"));
+        Icon iconHacerPedido = new ImageIcon(imageHacerPedido.getImage().getScaledInstance(picHacerPedido.getWidth(), picHacerPedido.getHeight(), Image.SCALE_DEFAULT));
+        picHacerPedido.setIcon(iconHacerPedido);
+        picHacerPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        picHacerPedido.addMouseListener(this);
         
         close.setSize(20, 20);
         close.setLocation(1390, 20);
@@ -150,6 +190,10 @@ public class DashboardView extends JFrame implements MouseListener{
         minimize.setCursor(new Cursor(Cursor.HAND_CURSOR));
         minimize.addMouseListener(this);
         
+        menu.add(picHacerPedido);
+        menu.add(labelHacerPedido);
+        menu.add(picCrearCateg);
+        menu.add(labelCrearCateg);
         menu.add(picCrearUsu);
         menu.add(picCrearProduc);
         menu.add(labelCrearUsu);

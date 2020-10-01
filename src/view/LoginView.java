@@ -39,7 +39,7 @@ public class LoginView extends JFrame implements MouseListener{
     //ETIQUETAS 
     JLabel fondobackground = new JLabel();
     JLabel logo = new JLabel();
-    JLabel title = new JLabel("Mini Market - Inicio de sesion");
+    JLabel title = new JLabel();
     JLabel labelUser = new JLabel("Numero de cedula");
     JLabel labelPass = new JLabel("Contraseña");
     JLabel labelError = new JLabel();
@@ -95,12 +95,13 @@ public class LoginView extends JFrame implements MouseListener{
         mainPanelLogo.setLayout(null);
         mainPanelLogo.setLocation(650, 145);
         mainPanelLogo.setBackground(Color.orange);
-
+        
         //Titulotext
         title.setForeground(Color.BLUE);
         title.setSize(300, 30);
-        title.setLocation(65, 80);
-        title.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        title.setLocation(75,60);
+        title.setFont(new Font("Segoe UI Light",Font.BOLD,20));
+        title.setText("Mini Market - Inicio de sesion");
 
         //CedulaText
         labelUser.setForeground(Color.BLACK);
@@ -163,7 +164,6 @@ public class LoginView extends JFrame implements MouseListener{
         labelError.setForeground(Color.red);
         
         
-        
         close.setSize(20, 20);
         close.setLocation(1230, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
@@ -171,12 +171,6 @@ public class LoginView extends JFrame implements MouseListener{
         close.setIcon(iconclose);
         close.setCursor(new Cursor(Cursor.HAND_CURSOR));
         close.addMouseListener(this);
-        
-        
-        mainPanel.setBorder(new EmptyBorder(20,20,20,20));
-        mainPanel.setBackground(Color.WHITE);
-        mainPanel.setLayout(new BorderLayout ());
-
         
         minimize.setSize(20, 20);
         minimize.setLocation(1200, 20);
