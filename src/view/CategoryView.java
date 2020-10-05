@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
@@ -13,6 +14,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 
 
 /**
@@ -20,40 +23,86 @@ import javax.swing.JTextField;
  * @author pc-standard
  */
 public class CategoryView extends JPanel {
-
-    private JTextField fieldName;
-    private JComboBox fieldIva;
-    private JLabel labelName;
-    private JLabel labelIva;
-    private JButton buttonCreateCategory;
-    private JLabel labelError;
-    private JTableComponent tableList; 
-    private JButton buttonDeleteCategory;
-    private JButton buttonUpdateCategory;
-    public CategoryView(ResultSet result) {
-
     
-        buttonCreateCategory = new JButton("Crear Categoria");
-        buttonDeleteCategory = new JButton("Eliminar Categoria");
-        buttonUpdateCategory = new JButton("Actualizar Categoria");
-
-        labelName = new JLabel("Nombre de la categoria");
-        labelIva = new JLabel("Iva");
-        fieldName = new JTextField(10);
+    JTextField fieldName = new JTextField();
+    JComboBox fieldIva = new JComboBox();
+    private JTableComponent tableList; 
+    
+    JButton buttonCreateCategory = new JButton();
+    JButton buttonDeleteCategory = new JButton();
+    JButton buttonUpdateCategory = new JButton();
+    
+    JLabel labelName = new JLabel();
+    JLabel title = new JLabel();
+    
+    private final int x = 1500 ;
+    private final int y = 1500;
+    
+    public CategoryView(ResultSet result) {
+        
+        setSize(x, y);
+        setLayout(null);
+        
+        title.setText("                  Gestionar Categorias");
+        title.setLocation(0, 0);
+        title.setSize(850,40);
+        title.setForeground(Color.orange);
+        title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+       
+        labelName.setText("Nombre de la categoria");
+        labelName.setLocation(0, 150);
+        labelName.setSize(250,30);
+        labelName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldName.setLocation(0, 200);
+        fieldName.setSize(230,30);
+        fieldName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
         fieldIva = new JComboBox();
-	fieldIva.addItem("Seleccionar iva");
+        fieldIva.setLocation(0, 250);
+        fieldIva.setSize(230,30);
+        fieldIva.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+	fieldIva.addItem("     Seleccionar IVA");
+        
+        buttonCreateCategory = new JButton("Crear Categoria");
+        buttonCreateCategory.setLocation(0, 300);
+        buttonCreateCategory.setSize(230,30);
+        buttonCreateCategory.setBackground(Color.orange);
+        buttonCreateCategory.setForeground(Color.white);
+        buttonCreateCategory.setFocusable(false);
+        buttonCreateCategory.setBorder(null);
+        buttonCreateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonDeleteCategory.setText("Eliminar Categoria");
+        buttonDeleteCategory.setLocation(0, 450);
+        buttonDeleteCategory.setSize(230,30);
+        buttonDeleteCategory.setBackground(Color.orange);
+        buttonDeleteCategory.setForeground(Color.white);
+        buttonDeleteCategory.setFocusable(false);
+        buttonDeleteCategory.setBorder(null);
+        buttonDeleteCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonUpdateCategory.setText("Actualizar Categoria");
+        buttonUpdateCategory.setLocation(0, 500);
+        buttonUpdateCategory.setSize(230,30);
+        buttonUpdateCategory.setBackground(Color.orange);
+        buttonUpdateCategory.setForeground(Color.white);
+        buttonUpdateCategory.setFocusable(false);
+        buttonUpdateCategory.setBorder(null);
+        buttonUpdateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+       
         
         for(int i=0; i<=100; i++){
             fieldIva.addItem(i);
         }
               
-        labelError = new JLabel("");
-        labelError.setForeground(Color.red);
+        
 
             
         String columns[] = {"Nombre","Iva"};
         tableList = new JTableComponent(columns);
+       
         
         try {
             while (result.next()) {
@@ -64,15 +113,15 @@ public class CategoryView extends JPanel {
             System.out.println(e.getMessage());
         }
         
-        setSize(400, 500);
-        setVisible(true);
-       
+        tableList.getScrollTable().setLocation(300, 100);
+        tableList.getScrollTable().setSize(500, 500);
+        
+        
+        add(title);
         add(labelName);
         add(fieldName);
-        add(labelIva);
         add(fieldIva);
         add(buttonCreateCategory);
-        add(labelError);
         add(tableList.getScrollTable());
         add(buttonDeleteCategory);
         add(buttonUpdateCategory);
@@ -81,40 +130,6 @@ public class CategoryView extends JPanel {
     }
 
     public CategoryView() {
-        
-        buttonCreateCategory = new JButton("Crear Categoria");
-        buttonDeleteCategory = new JButton("Eliminar Categoria");
-        buttonUpdateCategory = new JButton("Actualizar Categoria");
-
-        labelName = new JLabel("Nombre de la categoria");
-        labelIva = new JLabel("Iva");
-        fieldName = new JTextField(10);
-        
-        fieldIva = new JComboBox();
-	fieldIva.addItem("Seleccionar iva");
-        
-        for(int i=0; i<=100; i++){
-            fieldIva.addItem(i);
-        }
-              
-        labelError = new JLabel("");
-        labelError.setForeground(Color.red);
-
-           
-        
-        
-        setVisible(true);
-       
-        add(labelName);
-        add(fieldName);
-        add(labelIva);
-        add(fieldIva);
-        add(buttonCreateCategory);
-        add(labelError);
-        add(buttonDeleteCategory);
-        add(buttonUpdateCategory);
-        
-
        
     }
     
@@ -142,8 +157,5 @@ public class CategoryView extends JPanel {
         return fieldIva;
     }
 
-    public JLabel getLabelError() {
-        return labelError;
-    }
 
 }

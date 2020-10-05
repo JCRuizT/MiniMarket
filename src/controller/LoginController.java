@@ -37,7 +37,7 @@ public class LoginController implements ActionListener {
                 boolean login = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText(), vista.getFieldRol().getSelectedItem().toString());
                 if (login) {
                     vista.dispose();
-                    new DashboardView(); // llama al perfil o zona de gestion
+                    new DashboardController(); // llama al perfil o zona de gestion
 
                 } else {
                     vista.setLabelError("El usuario ingresado no existe");

@@ -39,7 +39,7 @@ public class CategoryController implements ActionListener {
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
             if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("Seleccionar iva")) {
-                vista.getLabelError().setText("Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 String field[] = new String[4];
                 field[1] = vista.getFieldName().getText();
@@ -52,7 +52,6 @@ public class CategoryController implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Se ha creado la categoria de manera correcta");
                     Object x[] = {field[1],field[2]};
                     vista.getTableList().getModel().addRow(x);
-                    vista.getLabelError().setText("");
                 } else {
                     JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
                 }

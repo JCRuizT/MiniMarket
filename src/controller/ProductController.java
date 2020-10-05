@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.ProductModel;
 import view.ProductView;
 
@@ -33,9 +34,8 @@ public class ProductController implements ActionListener{
             if(vista.getFieldName().getText().equals("") || vista.getFieldPrecio().getText().equals("") 
                     || vista.getFieldStock().getSelectedItem().equals("Seleccionar Stock") || 
                     vista.getFieldCategoria().getSelectedItem().equals("Seleccionar Categoria")){
-                vista.setLabelError("Todos los campos son obligatorios");
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
-                vista.setLabelError("");
                 String field[] = new String[7];
                 field[1] = vista.getFieldName().getText();
                 field[2] = vista.getFieldPrecio().getText();

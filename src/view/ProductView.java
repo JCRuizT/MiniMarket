@@ -5,19 +5,18 @@
  */
 package view;
 
-import java.awt.Container;
-import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import model.CategoryModel;
-
 
 /**
  *
@@ -25,52 +24,90 @@ import model.CategoryModel;
  */
 public class ProductView extends JPanel {
 
-    private JComboBox fieldStock;
-    private JTextField fieldPrecio;
-    private JTextField fieldName;
-    private JTextField fieldFechaVencimiento;
-    private JComboBox fieldCategoria;
+    
+    JTextField fieldPrecio = new JTextField();
+    JTextField fieldName = new JTextField();
+    JTextField fieldFechaVencimiento = new JTextField();
+  
+    JComboBox fieldStock = new JComboBox();
+    JComboBox fieldCategoria = new JComboBox();
 
-    private JLabel labelName;
-    private JLabel labelStock;
-    private JLabel labelPrecio;
-   private JLabel labelCategoria;
-    private JLabel labelFechaVencimiento;
+    JLabel labelName = new JLabel();
+    JLabel title = new JLabel();
+    JLabel labelPrecio = new JLabel();
+    JLabel labelFechaVencimiento = new JLabel();
 
-    private JButton buttonCreateProduct;
-    private JTableComponent tableList; 
-    JLabel labelError;
+    JButton buttonCreateProduct = new JButton();
+    JButton buttonDeleteProduct = new JButton();
+    JButton buttonUpdateProduct = new JButton();
+    JTableComponent tableList; 
+   
+    private final int x = 1500 ;
+    private final int y = 1500;
+    
 
     public ProductView(ResultSet result) {
-
         
-      
-        setBorder(new EmptyBorder(15, 15, 15, 15));
+        setSize(x, y);
+        setLayout(null);
+        
+        title.setText("                 Gestionar producto");
+        title.setLocation(0, 0);
+        title.setSize(850,40);
+        title.setForeground(Color.orange);
+        title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
 
-        buttonCreateProduct = new JButton("Crear Producto");
-        labelName = new JLabel("Nombre del Producto");
-        fieldName = new JTextField(10);
-        labelCategoria = new JLabel("Categoria");
-
-        labelPrecio = new JLabel("Precio");
-        fieldPrecio = new JTextField(10);
-        labelStock = new JLabel("Stock");
-        fieldStock = new JComboBox();
+        labelName.setText("  Nombre del Producto");
+        labelName.setLocation(0, 100);
+        labelName.setSize(250,30);
+        labelName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldName.setLocation(0, 150);
+        fieldName.setSize(230,30);
+        fieldName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        labelPrecio.setText("    Precio del producto");
+        labelPrecio.setLocation(0, 200);
+        labelPrecio.setSize(250,30);
+        labelPrecio.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldPrecio.setLocation(0, 250);
+        fieldPrecio.setSize(230,30);
+        fieldPrecio.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        labelFechaVencimiento.setText("  Fecha de Vencimiento");
+        labelFechaVencimiento.setLocation(0, 300);
+        labelFechaVencimiento.setSize(250,30);
+        labelFechaVencimiento.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldFechaVencimiento.setLocation(0, 350);
+        fieldFechaVencimiento.setSize(230,30);
+        fieldFechaVencimiento.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
+        
+        fieldCategoria.setLocation(0, 400);
+        fieldCategoria.setSize(230,30);
+        fieldCategoria.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
+	fieldCategoria.addItem("Seleccionar Categoria");
+        ResultSet categoria = new CategoryModel().listCategory();
+        
+        fieldStock.setLocation(0, 450);
+        fieldStock.setSize(230,30);
+        fieldStock.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
         fieldStock.addItem("Seleccionar Stock");
 
         for (int i = 0; i <= 50; i++) {
             fieldStock.addItem(i);
         }
-
-        labelError = new JLabel();
-
-        labelFechaVencimiento = new JLabel("Fecha de Vencimiento");
-        fieldFechaVencimiento = new JTextField(10);
         
-
-        fieldCategoria = new JComboBox();
-        ResultSet categoria = new CategoryModel().listCategory();
-        fieldCategoria.addItem("Seleccionar Categoria");
+        buttonCreateProduct = new JButton("Crear Producto");
+        buttonCreateProduct.setLocation(0, 550);
+        buttonCreateProduct.setSize(230,30);
+        buttonCreateProduct.setBackground(Color.orange);
+        buttonCreateProduct.setForeground(Color.white);
+        buttonCreateProduct.setFocusable(false);
+        buttonCreateProduct.setBorder(null);
+        buttonCreateProduct.setFont(new Font("Arial", Font.BOLD, 15));
 
         try {
             while (categoria.next()) {
@@ -99,33 +136,55 @@ public class ProductView extends JPanel {
         fieldCategoria.addItem("Categoria-1");
         fieldCategoria.addItem("Categoria-1");
         fieldCategoria.addItem("Categoria-3");
-
+        
+        tableList.getScrollTable().setLocation(300, 100);
+        tableList.getScrollTable().setSize(500, 500);
+        
+        
+                
+        buttonDeleteProduct = new JButton("Eliminar Producto");
+        buttonDeleteProduct.setLocation(310, 650);
+        buttonDeleteProduct.setSize(230,30);
+        buttonDeleteProduct.setBackground(Color.orange);
+        buttonDeleteProduct.setForeground(Color.white);
+        buttonDeleteProduct.setFocusable(false);
+        buttonDeleteProduct.setBorder(null);
+        buttonDeleteProduct.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonUpdateProduct = new JButton("Actualizar Producto");
+        buttonUpdateProduct.setLocation(560, 650);
+        buttonUpdateProduct.setSize(230,30);
+        buttonUpdateProduct.setBackground(Color.orange);
+        buttonUpdateProduct.setForeground(Color.white);
+        buttonUpdateProduct.setFocusable(false);
+        buttonUpdateProduct.setBorder(null);
+        buttonUpdateProduct.setFont(new Font("Arial", Font.BOLD, 15));
+       
+        add(title);
+        
+        add(buttonDeleteProduct);
+        add(buttonUpdateProduct);
+        
         add(labelName);
         add(fieldName);
         
-        add(labelCategoria);
         add(fieldCategoria);
         add(labelPrecio);
         add(fieldPrecio);
-
-        add(labelStock);
+        
         add(fieldStock);
 
         add(labelFechaVencimiento);
         add(fieldFechaVencimiento);
 
-        add(labelError);
         add(buttonCreateProduct);
         add(tableList.getScrollTable());
        
        
         setVisible(true);
-        setSize(800, 800);
+      
     }
 
-    public void setLabelError(String text) {
-        this.labelError.setText(text);
-    }
 
     public JComboBox getFieldStock() {
         return fieldStock;

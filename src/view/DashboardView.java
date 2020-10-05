@@ -56,12 +56,12 @@ public class DashboardView extends JFrame implements MouseListener{
     
     public DashboardView(){
         
-        setTitle("Soy Franklin el del money money");
+        //setTitle("MiniMarket");
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        //setResizable(false);
-        //setUndecorated(true);
+        setResizable(false);
+        setUndecorated(true);
          
         //Diseño
         
@@ -78,37 +78,37 @@ public class DashboardView extends JFrame implements MouseListener{
         labelMenu.setSize(300, 40);
         labelMenu.setLocation(0, 20);
         labelMenu.setHorizontalAlignment(SwingConstants.CENTER);
-        labelMenu.setFont(new Font("Segoe UI Light", Font.BOLD, 30));
+        labelMenu.setFont(new Font("Arial Black", Font.BOLD, 30));
         labelMenu.setText("Menú");
         
         labelCrearUsu.setForeground(Color.WHITE);
         labelCrearUsu.setSize(300, 40);
         labelCrearUsu.setLocation(80, 100);
-        labelCrearUsu.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
-        labelCrearUsu.setText("Crear Usuario");
+        labelCrearUsu.setFont(new Font("Arial", Font.BOLD, 20));
+        labelCrearUsu.setText("Gestionar Usuario");
         labelCrearUsu.setCursor(new Cursor(Cursor.HAND_CURSOR));
         labelCrearUsu.addMouseListener(this);
         
         labelCrearProd.setForeground(Color.WHITE);
         labelCrearProd.setSize(300, 40);
         labelCrearProd.setLocation(80, 140);
-        labelCrearProd.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
-        labelCrearProd.setText("Crear Producto");
+        labelCrearProd.setFont(new Font("Arial", Font.BOLD, 20));
+        labelCrearProd.setText("Gestionar Producto");
         labelCrearProd.setCursor(new Cursor(Cursor.HAND_CURSOR));
         labelCrearProd.addMouseListener(this);
         
         labelCrearCateg.setForeground(Color.WHITE);
         labelCrearCateg.setSize(300, 40);
         labelCrearCateg.setLocation(80, 180);
-        labelCrearCateg.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
-        labelCrearCateg.setText("Crear Categoria");
+        labelCrearCateg.setFont(new Font("Arial", Font.BOLD, 20));
+        labelCrearCateg.setText("Gestionar Categoria");
         labelCrearCateg.setCursor(new Cursor(Cursor.HAND_CURSOR));
         labelCrearCateg.addMouseListener(this);
         
         labelHacerPedido.setForeground(Color.WHITE);
         labelHacerPedido.setSize(300, 40);
         labelHacerPedido.setLocation(80, 220);
-        labelHacerPedido.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        labelHacerPedido.setFont(new Font("Arial", Font.BOLD, 20));
         labelHacerPedido.setText("Hacer Pedido");
         labelHacerPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
         labelHacerPedido.addMouseListener(this);
