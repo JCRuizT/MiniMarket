@@ -119,26 +119,30 @@ public class ProductView extends JPanel {
         }
         
         
-        String columns[] = {"Nombre","Stock","Precio","Categoria","Fecha de Vencimiento"};
+        String columns[] = {"id","Nombre","Stock","Precio","Fecha de Vencimiento","Categoria"};
         tableList = new JTableComponent(columns);
         
         try {
             while (result.next()) {
-                Object rs[] = {result.getString("ProNombre"),result.getString("ProStock"),
+                Object rs[] = {result.getString("ProRef"),result.getString("ProNombre"),result.getString("ProStock"),
                     result.getString("ProPrecio"),
-                    result.getString("TipProNombre"),
-                    result.getString("ProFechaVencimiento")}; 
+                    transformFecha(result.getString("ProFechaVencimiento")),
+                    result.getString("TipProNombre")}; 
                 tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        fieldCategoria.addItem("Categoria-1");
-        fieldCategoria.addItem("Categoria-1");
-        fieldCategoria.addItem("Categoria-3");
         
         tableList.getScrollTable().setLocation(300, 100);
         tableList.getScrollTable().setSize(500, 500);
+        
+          
+        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableList.getTable().getTableHeader().setResizingAllowed(false);
+        
         
         
                 
@@ -184,6 +188,19 @@ public class ProductView extends JPanel {
         setVisible(true);
       
     }
+    
+     public String transformFecha(String fecha){
+        
+        String mes[] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre"
+                ,"Diciembre"};
+        String arr[] = fecha.split("-");
+        int mesSelected = Integer.parseInt(arr[1])-1;
+        String response  = arr[2]+" de "+mes[mesSelected]+" del "+arr[0];
+        return response;
+        
+        
+    }
+    
 
 
     public JComboBox getFieldStock() {

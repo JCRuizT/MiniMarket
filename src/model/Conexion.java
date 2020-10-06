@@ -27,8 +27,8 @@ public class Conexion{
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "root"; // root-admin
-            String password = ""; //juliocruizt
+            String user = "admin"; // root-admin
+            String password = "juliocruizt"; //juliocruizt
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {

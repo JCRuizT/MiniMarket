@@ -31,6 +31,7 @@ public class CategoryView extends JPanel {
     JButton buttonCreateCategory = new JButton();
     JButton buttonDeleteCategory = new JButton();
     JButton buttonUpdateCategory = new JButton();
+    JButton buttonCancelCategory = new JButton();
     
     JLabel labelName = new JLabel();
     JLabel title = new JLabel();
@@ -91,6 +92,19 @@ public class CategoryView extends JPanel {
         buttonUpdateCategory.setFocusable(false);
         buttonUpdateCategory.setBorder(null);
         buttonUpdateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonCancelCategory.setText("Cancelar");
+        buttonCancelCategory.setLocation(0, 550);
+        buttonCancelCategory.setSize(230,30);
+        buttonCancelCategory.setBackground(Color.orange);
+        buttonCancelCategory.setForeground(Color.white);
+        buttonCancelCategory.setFocusable(false);
+        buttonCancelCategory.setBorder(null);
+        buttonCancelCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCancelCategory.setEnabled(false);
+        buttonCancelCategory.setVisible(false);
+        
+       
        
         
         for(int i=0; i<=100; i++){
@@ -100,21 +114,28 @@ public class CategoryView extends JPanel {
         
 
             
-        String columns[] = {"Nombre","Iva"};
+        String columns[] = {"id","Nombre","Iva"};
         tableList = new JTableComponent(columns);
        
         
         try {
             while (result.next()) {
-                Object rs[] = {result.getString("TipProNombre"),result.getString("TipProIva")}; 
+                Object rs[] = {result.getString("TipProId"),result.getString("TipProNombre"),result.getString("TipProIva")}; 
                 tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
+        
         tableList.getScrollTable().setLocation(300, 100);
         tableList.getScrollTable().setSize(500, 500);
+       
+        
+        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableList.getTable().getTableHeader().setResizingAllowed(false);
         
         
         add(title);
@@ -125,6 +146,7 @@ public class CategoryView extends JPanel {
         add(tableList.getScrollTable());
         add(buttonDeleteCategory);
         add(buttonUpdateCategory);
+        add(buttonCancelCategory);
         
 
     }
@@ -148,6 +170,11 @@ public class CategoryView extends JPanel {
     public JButton getButtonCreateCategory() {
         return buttonCreateCategory;
     }
+
+    public JButton getButtonCancelCategory() {
+        return buttonCancelCategory;
+    }
+    
 
     public JTextField getFieldName() {
         return fieldName;
