@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package fieldnumber;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -20,21 +20,22 @@ public class JNumberField extends JTextField implements KeyListener {
         super.addKeyListener(this);
 
     }
-    
-    public void validateNumber(KeyEvent e){
+
+    public void validateNumber(KeyEvent e) {
         String txt = String.valueOf(e.getKeyChar());
         if (!(txt.equals("0") || txt.equals("1") || txt.equals("2") || txt.equals("3")
                 || txt.equals("4") || txt.equals("5") || txt.equals("6") || txt.equals("7")
-                || txt.equals("8") || txt.equals("9"))) {
+                || txt.equals("8") || txt.equals("9") || e.getKeyCode() == 8)) {
 
             e.consume();
 
         }
+
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
-       validateNumber(e);
+        validateNumber(e);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class JNumberField extends JTextField implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-       validateNumber(e);
+        validateNumber(e);
     }
 
 }
