@@ -31,6 +31,7 @@ public class CategoryView extends JPanel {
     JButton buttonCreateCategory = new JButton();
     JButton buttonDeleteCategory = new JButton();
     JButton buttonUpdateCategory = new JButton();
+    JButton buttonCancelCategory = new JButton();
     
     JLabel labelName = new JLabel();
     JLabel title = new JLabel();
@@ -91,6 +92,19 @@ public class CategoryView extends JPanel {
         buttonUpdateCategory.setFocusable(false);
         buttonUpdateCategory.setBorder(null);
         buttonUpdateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonCancelCategory.setText("Cancelar");
+        buttonCancelCategory.setLocation(0, 550);
+        buttonCancelCategory.setSize(230,30);
+        buttonCancelCategory.setBackground(Color.orange);
+        buttonCancelCategory.setForeground(Color.white);
+        buttonCancelCategory.setFocusable(false);
+        buttonCancelCategory.setBorder(null);
+        buttonCancelCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCancelCategory.setEnabled(false);
+        buttonCancelCategory.setVisible(false);
+        
+       
        
         
         for(int i=0; i<=100; i++){
@@ -132,6 +146,7 @@ public class CategoryView extends JPanel {
         add(tableList.getScrollTable());
         add(buttonDeleteCategory);
         add(buttonUpdateCategory);
+        add(buttonCancelCategory);
         
 
     }
@@ -155,6 +170,11 @@ public class CategoryView extends JPanel {
     public JButton getButtonCreateCategory() {
         return buttonCreateCategory;
     }
+
+    public JButton getButtonCancelCategory() {
+        return buttonCancelCategory;
+    }
+    
 
     public JTextField getFieldName() {
         return fieldName;

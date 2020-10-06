@@ -19,6 +19,7 @@ public class CategoryController implements ActionListener {
 
     private CategoryView vista;
     private CategoryModel model;
+    private boolean stateButtonUpdate;
 
     public CategoryController() {
 
@@ -26,6 +27,9 @@ public class CategoryController implements ActionListener {
         vista = new CategoryView(model.listCategory());
         vista.getButtonCreateCategory().addActionListener(this);
         vista.getButtonDeleteCategory().addActionListener(this);
+        vista.getButtonUpdateCategory().addActionListener(this);
+        vista.getButtonCancelCategory().addActionListener(this);
+        stateButtonUpdate = false;
 
     }
 
@@ -64,10 +68,11 @@ public class CategoryController implements ActionListener {
                 int confim = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar este registro?", "Eliminar", JOptionPane.YES_NO_OPTION);
                 if(confim == JOptionPane.YES_OPTION){
                     String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
-                    System.out.println(id);
                     if(model.deleteCategory(id)){
                         vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());
                     }
+                }else{
+                    vista.getTableList().getTable().clearSelection();
                 }
             }
         }else if(e.getSource().equals(vista.getButtonUpdateCategory())){
@@ -75,8 +80,36 @@ public class CategoryController implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }else{
                 
+                if(stateButtonUpdate == false){
+                    vista.getButtonCreateCategory().setEnabled(false);
+                    vista.getButtonDeleteCategory().setEnabled(false);
+                    vista.getButtonCancelCategory().setVisible(true);
+                    vista.getButtonCancelCategory().setEnabled(true);
+                    vista.getTableList().getTable().setEnabled(false);
+                    stateButtonUpdate = true;
+                    
+                    String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
+                    String name = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 1);
+                    String iva = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 2);
+                    vista.getFieldName().setText(name);
+                    
+                    System.out.println(iva);
+                    vista.getFieldIva().setSelectedItem(iva);
+                    
+                }else{
+                    System.out.println("lkdldkldkldkldklddkldkl");
+                }
+
             }
 
+        }else if(e.getSource().equals(vista.getButtonCancelCategory())){
+            vista.getButtonCancelCategory().setVisible(false);
+            vista.getButtonCancelCategory().setEnabled(false);
+            vista.getButtonCreateCategory().setEnabled(true);
+            vista.getButtonDeleteCategory().setEnabled(true);
+            vista.getTableList().getTable().setEnabled(true);
+            vista.getTableList().getTable().clearSelection();
+            stateButtonUpdate = false;
         }
     }
 
