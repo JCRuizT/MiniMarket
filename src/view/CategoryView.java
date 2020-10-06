@@ -100,21 +100,28 @@ public class CategoryView extends JPanel {
         
 
             
-        String columns[] = {"Nombre","Iva"};
+        String columns[] = {"id","Nombre","Iva"};
         tableList = new JTableComponent(columns);
        
         
         try {
             while (result.next()) {
-                Object rs[] = {result.getString("TipProNombre"),result.getString("TipProIva")}; 
+                Object rs[] = {result.getString("TipProId"),result.getString("TipProNombre"),result.getString("TipProIva")}; 
                 tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
+        
         tableList.getScrollTable().setLocation(300, 100);
         tableList.getScrollTable().setSize(500, 500);
+       
+        
+        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
+        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableList.getTable().getTableHeader().setResizingAllowed(false);
         
         
         add(title);
