@@ -32,17 +32,24 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
     JLabel labelEmail = new JLabel();
     JLabel labelPass = new JLabel();
     JLabel labelConfirmPass = new JLabel();
+    JLabel campOblig = new JLabel();
+    JLabel campOblig2 = new JLabel();
+    JLabel campOblig3 = new JLabel();
+    JLabel campOblig4 = new JLabel();
+    JLabel campOblig5 = new JLabel();
+    JLabel campOblig6 = new JLabel();
+    JLabel campOblig7 = new JLabel();
 
     JLabel minimize = new JLabel();
     JLabel close = new JLabel();
     JLabel logoRegisto = new JLabel();
 
-    JTextField fieldnumIdentificacion = new JTextField();
+    JNumberField fieldnumIdentificacion = new JNumberField();
     JTextField fieldName = new JTextField();
     JTextField fieldSecondName = new JTextField();
     JTextField fieldLastName = new JTextField();
     JTextField fieldSecondLastName = new JTextField();
-    JTextField fieldCel = new JTextField();
+    JNumberField fieldCel = new JNumberField();
     JTextField fieldEmail = new JTextField();
     JPasswordField fieldPass = new JPasswordField();
     JPasswordField fieldConfirmPass = new JPasswordField();
@@ -53,9 +60,11 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
     JRadioButton cc=new JRadioButton("C.C",true);
     JRadioButton ct=new JRadioButton("C.T",false);
     JRadioButton ti=new JRadioButton("T.I",false);
+    
+    JButton crear = new JButton();
 
     private final int x = 1000;
-    private final int y = 900;
+    private final int y = 730;
 
     public CrearUsuarioView() {
 
@@ -91,6 +100,12 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         labelName.setSize(250,30);
         labelName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
+        campOblig.setText("*");
+        campOblig.setLocation(180, 150);
+        campOblig.setSize(250,30);
+        campOblig.setForeground(Color.red);
+        campOblig.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
         fieldName.setLocation(30,190);
         fieldName.setSize(200,30);
         fieldName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
@@ -118,6 +133,12 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         labelSecondLastName.setSize(250,30);
         labelSecondLastName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
+        campOblig2.setText("*");
+        campOblig2.setLocation(180, 230);
+        campOblig2.setSize(250,30);
+        campOblig2.setForeground(Color.red);
+        campOblig2.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
         fieldSecondLastName.setLocation(260,270);
         fieldSecondLastName.setSize(200,30);
         fieldSecondLastName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
@@ -127,6 +148,12 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         labelnumIdentificacion.setSize(250,30);
         labelnumIdentificacion.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
+        campOblig3.setText("*");
+        campOblig3.setLocation(192, 315);
+        campOblig3.setSize(250,30);
+        campOblig3.setForeground(Color.red);
+        campOblig3.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
         fieldnumIdentificacion.setLocation(30,355);
         fieldnumIdentificacion.setSize(200,30);
         fieldnumIdentificacion.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
@@ -134,9 +161,13 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         labelTipoIdentificacion.setText("Tipo Identificacion");
         labelTipoIdentificacion.setLocation(260, 315);
         labelTipoIdentificacion.setSize(250,30);
-        labelTipoIdentificacion.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        labelTipoIdentificacion.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20)); 
         
-        
+        campOblig4.setText("*");
+        campOblig4.setLocation(439, 315);
+        campOblig4.setSize(250,30);
+        campOblig4.setForeground(Color.red);
+        campOblig4.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
         cc.setLocation(260,355);
         cc.setSize(60,30);
@@ -154,6 +185,81 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         TipIdentificacion.add(ct);
         TipIdentificacion.add(ti);
         
+        tipoRol.setLocation(30, 420);
+        tipoRol.setSize(320,30);
+        tipoRol.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+	tipoRol.addItem("Seleccione el Tipo de usuario");
+        tipoRol.addItem("Administrador");
+        tipoRol.addItem("Vendedor");
+        tipoRol.addItem("Cliente");
+        
+        campOblig5.setText("*");
+        campOblig5.setLocation(360, 410);
+        campOblig5.setSize(250,30);
+        campOblig5.setForeground(Color.red);
+        campOblig5.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        labelEmail.setText("Correo");
+        labelEmail.setLocation(30, 470);
+        labelEmail.setSize(250,30);
+        labelEmail.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldEmail.setLocation(30,510);
+        fieldEmail.setSize(200,30);
+        fieldEmail.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        labelCel.setText("Numero Celular");
+        labelCel.setLocation(260, 470);
+        labelCel.setSize(250,30);
+        labelCel.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20)); 
+        
+        fieldCel.setLocation(260,510);
+        fieldCel.setSize(200,30);
+        fieldCel.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        labelPass.setText("Contraseña");
+        labelPass.setLocation(30, 550);
+        labelPass.setSize(250,30);
+        labelPass.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        campOblig6.setText("*");
+        campOblig6.setLocation(140, 550);
+        campOblig6.setSize(250,30);
+        campOblig6.setForeground(Color.red);
+        campOblig6.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldPass.setLocation(30,590);
+        fieldPass.setSize(200,30);
+        fieldPass.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        labelConfirmPass.setText("Confirmar Contraseña");
+        labelConfirmPass.setLocation(260, 550);
+        labelConfirmPass.setSize(250,30);
+        labelConfirmPass.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20)); 
+        
+        campOblig7.setText("*");
+        campOblig7.setLocation(470, 550);
+        campOblig7.setSize(250,30);
+        campOblig7.setForeground(Color.red);
+        campOblig7.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        
+        fieldConfirmPass.setLocation(260,590);
+        fieldConfirmPass.setSize(200,30);
+        fieldConfirmPass.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        
+        crear.setText("Crear Usuario");
+        crear.setLocation(30, 650);
+        crear.setSize(430,30);
+        crear.setBackground(Color.orange);
+        crear.setForeground(Color.white);
+        crear.setFocusable(false);
+        crear.setBorder(null);
+        crear.setFont(new Font("Arial", Font.BOLD, 20));
+        crear.setHorizontalAlignment(SwingConstants.CENTER);
+      
+       
+        
+        
         close.setSize(20, 20);
         close.setLocation(960, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
@@ -163,7 +269,7 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         close.addMouseListener(this);
         
         logoRegisto.setSize(400, 400);
-        logoRegisto.setLocation(550, 130);
+        logoRegisto.setLocation(550, 200);
         ImageIcon imagelogoRegisto = new ImageIcon(getClass().getResource("/imagenes/Registro.png"));
         Icon iconlogoRegisto = new ImageIcon(imagelogoRegisto.getImage().getScaledInstance(logoRegisto.getWidth(), logoRegisto.getHeight(), Image.SCALE_DEFAULT));
         logoRegisto.setIcon(iconlogoRegisto);
@@ -176,8 +282,24 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(Cursor.HAND_CURSOR));
         minimize.addMouseListener(this);
-       
         
+        mainPanel.add(campOblig7);
+        mainPanel.add(campOblig6);
+        mainPanel.add(campOblig5);
+        mainPanel.add(campOblig4);
+        mainPanel.add(campOblig3);
+        mainPanel.add(campOblig2);
+        mainPanel.add(campOblig);
+        mainPanel.add(crear);
+        mainPanel.add(fieldConfirmPass);
+        mainPanel.add(labelConfirmPass);
+        mainPanel.add(fieldPass);
+        mainPanel.add(labelPass);
+        mainPanel.add(fieldCel);
+        mainPanel.add(labelCel);
+        mainPanel.add(fieldEmail);
+        mainPanel.add(labelEmail);
+        mainPanel.add(tipoRol);
         mainPanel.add(ti);
         mainPanel.add(ct);
         mainPanel.add(cc);

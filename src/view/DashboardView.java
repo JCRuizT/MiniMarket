@@ -56,12 +56,12 @@ public class DashboardView extends JFrame implements MouseListener{
     
     public DashboardView(){
         
-        setTitle("MiniMarket");
+        //setTitle("MiniMarket");
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        //setResizable(false);
-        //setUndecorated(true);
+        setResizable(false);
+        setUndecorated(true);
          
         //Diseño
         
