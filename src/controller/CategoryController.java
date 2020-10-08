@@ -76,27 +76,27 @@ public class CategoryController implements ActionListener {
                 }
             }
         }else if(e.getSource().equals(vista.getButtonUpdateCategory())){
-            if(vista.getTableList().getTable().getSelectedRow() == -1){
+            if (vista.getTableList().getTable().getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
-            }else{
-                
-                if(stateButtonUpdate == false){
+            } else {
+
+                if (stateButtonUpdate == false) {
                     vista.getButtonCreateCategory().setEnabled(false);
                     vista.getButtonDeleteCategory().setEnabled(false);
                     vista.getButtonCancelCategory().setVisible(true);
                     vista.getButtonCancelCategory().setEnabled(true);
                     vista.getTableList().getTable().setEnabled(false);
                     stateButtonUpdate = true;
-                    
+
                     String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
                     String name = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 1);
                     String iva = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 2);
                     vista.getFieldName().setText(name);
-                    
+
                     System.out.println(iva);
-                    vista.getFieldIva().setSelectedItem(iva);
-                    
-                }else{
+                    vista.setSelectedCombobox(vista.getFieldIva(), iva);
+
+                } else {
                     System.out.println("lkdldkldkldkldklddkldkl");
                 }
 
@@ -110,6 +110,8 @@ public class CategoryController implements ActionListener {
             vista.getTableList().getTable().setEnabled(true);
             vista.getTableList().getTable().clearSelection();
             stateButtonUpdate = false;
+            vista.setSelectedCombobox(vista.getFieldIva(), "     Seleccionar IVA");
+            vista.getFieldName().setText("");
         }
     }
 
