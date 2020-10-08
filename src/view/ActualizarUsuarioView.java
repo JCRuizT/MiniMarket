@@ -12,8 +12,8 @@ import javax.swing.*;
  *
  * @author quihu
  */
-public class CrearUsuarioView extends JFrame {
-
+public class ActualizarUsuarioView extends JFrame {
+    
     Container contenedor = getContentPane();
 
     JPanel mainPanel = new JPanel();
@@ -37,8 +37,7 @@ public class CrearUsuarioView extends JFrame {
     JLabel campOblig4 = new JLabel();
     JLabel campOblig5 = new JLabel();
     JLabel campOblig6 = new JLabel();
-    JLabel campOblig7 = new JLabel();
-
+  
     JLabel minimize = new JLabel();
     JLabel close = new JLabel();
     JLabel logoRegisto = new JLabel();
@@ -60,14 +59,15 @@ public class CrearUsuarioView extends JFrame {
     JRadioButton ct=new JRadioButton("C.T",false);
     JRadioButton ti=new JRadioButton("T.I",false);
     
-    JButton crear = new JButton();
+    JButton guardar = new JButton();
     JButton cancelar = new JButton();
 
     private final int x = 1000;
     private final int y = 740;
-
-    public CrearUsuarioView() {
-
+    
+    
+    public ActualizarUsuarioView(){
+        
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -83,7 +83,7 @@ public class CrearUsuarioView extends JFrame {
         PanelLogo.setLayout(null);
         PanelLogo.setBackground(Color.orange);
         
-        labelTitulo.setText("Registro de Usuario");
+        labelTitulo.setText("Actualizar Usuario");
         labelTitulo.setLocation(30, 25);
         labelTitulo.setSize(850,55);
         labelTitulo.setForeground(Color.white);
@@ -157,6 +157,7 @@ public class CrearUsuarioView extends JFrame {
         fieldnumIdentificacion.setLocation(30,355);
         fieldnumIdentificacion.setSize(200,30);
         fieldnumIdentificacion.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        fieldnumIdentificacion.setEditable(false);
         
         labelTipoIdentificacion.setText("Tipo Identificacion");
         labelTipoIdentificacion.setLocation(260, 315);
@@ -217,13 +218,13 @@ public class CrearUsuarioView extends JFrame {
         fieldCel.setSize(200,30);
         fieldCel.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
-        labelPass.setText("Contraseña");
+        labelPass.setText("Antigua Contraseña");
         labelPass.setLocation(30, 550);
         labelPass.setSize(250,30);
         labelPass.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
         campOblig6.setText("*");
-        campOblig6.setLocation(140, 550);
+        campOblig6.setLocation(220, 550);
         campOblig6.setSize(250,30);
         campOblig6.setForeground(Color.red);
         campOblig6.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
@@ -232,30 +233,24 @@ public class CrearUsuarioView extends JFrame {
         fieldPass.setSize(200,30);
         fieldPass.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
-        labelConfirmPass.setText("Confirmar Contraseña");
+        labelConfirmPass.setText("Nueva Contraseña");
         labelConfirmPass.setLocation(260, 550);
         labelConfirmPass.setSize(250,30);
         labelConfirmPass.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20)); 
-        
-        campOblig7.setText("*");
-        campOblig7.setLocation(470, 550);
-        campOblig7.setSize(250,30);
-        campOblig7.setForeground(Color.red);
-        campOblig7.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
         fieldConfirmPass.setLocation(260,590);
         fieldConfirmPass.setSize(200,30);
         fieldConfirmPass.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
-        crear.setText("Crear Usuario");
-        crear.setLocation(30, 650);
-        crear.setSize(430,30);
-        crear.setBackground(Color.orange);
-        crear.setForeground(Color.white);
-        crear.setFocusable(false);
-        crear.setBorder(null);
-        crear.setFont(new Font("Arial", Font.BOLD, 20));
-        crear.setHorizontalAlignment(SwingConstants.CENTER);
+        guardar.setText("Guardar Cambios");
+        guardar.setLocation(30, 650);
+        guardar.setSize(430,30);
+        guardar.setBackground(Color.orange);
+        guardar.setForeground(Color.white);
+        guardar.setFocusable(false);
+        guardar.setBorder(null);
+        guardar.setFont(new Font("Arial", Font.BOLD, 20));
+        guardar.setHorizontalAlignment(SwingConstants.CENTER);
         
         cancelar.setText("Cancelar");
         cancelar.setLocation(30, 690);
@@ -275,9 +270,9 @@ public class CrearUsuarioView extends JFrame {
         close.setIcon(iconclose);
         close.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        logoRegisto.setSize(400, 400);
-        logoRegisto.setLocation(550, 200);
-        ImageIcon imagelogoRegisto = new ImageIcon(getClass().getResource("/imagenes/Registro.png"));
+        logoRegisto.setSize(500, 500);
+        logoRegisto.setLocation(480, 150);
+        ImageIcon imagelogoRegisto = new ImageIcon(getClass().getResource("/imagenes/update.png"));
         Icon iconlogoRegisto = new ImageIcon(imagelogoRegisto.getImage().getScaledInstance(logoRegisto.getWidth(), logoRegisto.getHeight(), Image.SCALE_DEFAULT));
         logoRegisto.setIcon(iconlogoRegisto);
 
@@ -289,8 +284,7 @@ public class CrearUsuarioView extends JFrame {
         minimize.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         mainPanel.add(cancelar);
-        mainPanel.add(crear);
-        mainPanel.add(campOblig7);
+        mainPanel.add(guardar);
         mainPanel.add(campOblig6);
         mainPanel.add(campOblig5);
         mainPanel.add(campOblig4);
@@ -329,10 +323,11 @@ public class CrearUsuarioView extends JFrame {
         contenedor.add(mainPanel);
 
         setVisible(true);
-    } 
+        
+    }
 
-    public JButton getCancelar() {
-        return cancelar;
+    public JButton getGuardar() {
+        return guardar;
     }
 
     public JLabel getMinimize() {
@@ -342,4 +337,16 @@ public class CrearUsuarioView extends JFrame {
     public JLabel getClose() {
         return close;
     }
+
+    public JButton getCancelar() {
+        return cancelar;
+    }
+    
+    
+    
+     public static void main(String[] args) {
+
+        ActualizarUsuarioView view = new ActualizarUsuarioView();
+    }
+    
 }

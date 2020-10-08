@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import model.CategoryModel;
 
 /**
@@ -40,6 +39,7 @@ public class ProductView extends JPanel {
     JButton buttonCreateProduct = new JButton();
     JButton buttonDeleteProduct = new JButton();
     JButton buttonUpdateProduct = new JButton();
+    JButton buttonCancelProduct = new JButton();
     JTableComponent tableList; 
    
     private final int x = 1500 ;
@@ -108,6 +108,15 @@ public class ProductView extends JPanel {
         buttonCreateProduct.setFocusable(false);
         buttonCreateProduct.setBorder(null);
         buttonCreateProduct.setFont(new Font("Arial", Font.BOLD, 15));
+        
+        buttonCancelProduct = new JButton("Cancelar");
+        buttonCancelProduct.setLocation(0, 600);
+        buttonCancelProduct.setSize(230,30);
+        buttonCancelProduct.setBackground(Color.orange);
+        buttonCancelProduct.setForeground(Color.white);
+        buttonCancelProduct.setFocusable(false);
+        buttonCancelProduct.setBorder(null);
+        buttonCancelProduct.setFont(new Font("Arial", Font.BOLD, 15));
 
         try {
             while (categoria.next()) {
@@ -166,6 +175,7 @@ public class ProductView extends JPanel {
        
         add(title);
         
+        add(buttonCancelProduct);
         add(buttonDeleteProduct);
         add(buttonUpdateProduct);
         
@@ -200,8 +210,6 @@ public class ProductView extends JPanel {
         
         
     }
-    
-
 
     public JComboBox getFieldStock() {
         return fieldStock;
@@ -226,5 +234,18 @@ public class ProductView extends JPanel {
     public JButton getButtonCreateProduct() {
         return buttonCreateProduct;
     }
+    
+     public JButton getButtonDeleteProduct() {
+        return buttonDeleteProduct;
+    }
+
+    public JButton getButtonUpdateProduct() {
+        return buttonUpdateProduct;
+    }
+
+    public JButton getButtonCancelProduct() {
+        return buttonCancelProduct;
+    }
+    
 
 }

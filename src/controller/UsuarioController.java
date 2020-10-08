@@ -27,6 +27,7 @@ public class UsuarioController implements ActionListener {
         this.vistaD=vistaD;
       
         vista.getButtonCreateUsuario().addActionListener(this);
+        vista.getButtonUpdateUsuario().addActionListener(this);
 
     }
 
@@ -40,7 +41,22 @@ public class UsuarioController implements ActionListener {
             
             vistaD.setVisible(false);
             
-            CrearUsuarioView register = new CrearUsuarioView();
+            CrearUsuarioController register = new CrearUsuarioController(vistaD);
+        }
+        
+        
+         if (e.getSource() == vista.getButtonCancelUsuario()) {
+            
+            vistaD.setVisible(false);
+            
+            CrearUsuarioController register = new CrearUsuarioController(vistaD);
+        }
+         
+        if (e.getSource() == vista.getButtonUpdateUsuario()) {
+            
+            vistaD.setVisible(false);
+            
+            ActualizarUsuarioController register = new ActualizarUsuarioController(vistaD);
         }
 
     }

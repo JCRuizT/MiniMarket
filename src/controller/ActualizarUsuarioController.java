@@ -7,7 +7,7 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import view.CrearUsuarioView;
+import view.ActualizarUsuarioView;
 import view.DashboardView;
 import view.LoginView;
 
@@ -15,17 +15,17 @@ import view.LoginView;
  *
  * @author quihu
  */
-public class CrearUsuarioController implements MouseListener{
+public class ActualizarUsuarioController implements MouseListener{
     
-    private CrearUsuarioView vista;
+    private ActualizarUsuarioView vista;
     private DashboardView vistaD;
     
-    public CrearUsuarioController(DashboardView vistaD){
+    public ActualizarUsuarioController(DashboardView vistaD){
         
-      vista = new CrearUsuarioView();
+      vista = new ActualizarUsuarioView();
       
       this.vistaD = vistaD;
-      
+        
       vista.getClose().addMouseListener(this);
       vista.getMinimize().addMouseListener(this);
       vista.getCancelar().addMouseListener(this);

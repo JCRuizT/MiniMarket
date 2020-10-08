@@ -122,6 +122,20 @@ public class UsuarioView extends JPanel {
     public JButton getButtonCreateUsuario() {
         return buttonCreateUsuario;
     }
+
+    public JButton getButtonDeleteUsuario() {
+        return buttonDeleteUsuario;
+    }
+
+    public JButton getButtonUpdateUsuario() {
+        return buttonUpdateUsuario;
+    }
+
+    public JButton getButtonCancelUsuario() {
+        return buttonCancelUsuario;
+    }
+    
+    
     
     
 }
