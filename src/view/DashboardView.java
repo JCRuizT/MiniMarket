@@ -52,6 +52,7 @@ public class DashboardView extends JFrame implements MouseListener{
         //VARIAVLES
         private final int x = 1430;
         private final int y = 900;
+        
    
     
     public DashboardView(){

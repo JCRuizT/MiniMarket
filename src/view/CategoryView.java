@@ -35,6 +35,7 @@ public class CategoryView extends JPanel {
     
     JLabel labelName = new JLabel();
     JLabel title = new JLabel();
+    private JTableSearch fieldSearch;
     
     private final int x = 1500 ;
     private final int y = 1500;
@@ -126,6 +127,10 @@ public class CategoryView extends JPanel {
             System.out.println(e.getMessage());
         }
         
+        fieldSearch = new JTableSearch(tableList.getTable());
+        fieldSearch.setLocation(0, 600);
+        fieldSearch.setSize(230,30);
+        fieldSearch.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
         tableList.getScrollTable().setLocation(300, 100);
         tableList.getScrollTable().setSize(500, 500);
@@ -142,6 +147,7 @@ public class CategoryView extends JPanel {
         add(fieldName);
         add(fieldIva);
         add(buttonCreateCategory);
+        add(fieldSearch);
         add(tableList.getScrollTable());
         add(buttonDeleteCategory);
         add(buttonUpdateCategory);
