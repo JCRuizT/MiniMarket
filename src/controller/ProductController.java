@@ -22,10 +22,10 @@ public class ProductController implements ActionListener{
   
     public ProductController(){
         
-        
         model = new ProductModel();
         vista = new ProductView(model.listProduct());
         vista.getButtonCreateProduct().addActionListener(this);
+        
     }
     
     @Override

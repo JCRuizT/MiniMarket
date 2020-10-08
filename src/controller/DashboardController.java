@@ -18,16 +18,21 @@ public class DashboardController implements MouseListener {
     private DashboardView vista;
     private CategoryController controllerCreateCategory;
     private ProductController ControllerProduc;
+    private UsuarioController usuarioController;
 
     public DashboardController() {
 
         vista = new DashboardView();
         controllerCreateCategory = new CategoryController();
         ControllerProduc = new ProductController();
+        usuarioController = new UsuarioController();
+        
         vista.getPicCrearCateg().addMouseListener(this);
         vista.getLabelCrearCateg().addMouseListener(this);
         vista.getPicCrearProduc().addMouseListener(this);
         vista.getLabelCrearProd().addMouseListener(this);
+        vista.getPicCrearUsu().addMouseListener(this);
+        vista.getLabelCrearUsu().addMouseListener(this);
 
     }
 
@@ -35,6 +40,7 @@ public class DashboardController implements MouseListener {
     public void mouseClicked(MouseEvent me) {
         if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
 
+            vista.getPagPrincipal().remove(usuarioController.getVista());
             vista.getPagPrincipal().remove(ControllerProduc.getVista());
 
             vista.getPagPrincipal().add(controllerCreateCategory.getVista());
@@ -47,7 +53,8 @@ public class DashboardController implements MouseListener {
         }
 
         if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
-
+             
+            vista.getPagPrincipal().remove(usuarioController.getVista());
             vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
 
             vista.getPagPrincipal().add(ControllerProduc.getVista());
@@ -58,6 +65,21 @@ public class DashboardController implements MouseListener {
 
             ControllerProduc.getVista().setLocation(500, 150);
         }
+        
+        if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {
+            
+            vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+            vista.getPagPrincipal().remove(ControllerProduc.getVista());
+            
+            vista.getPagPrincipal().add(usuarioController.getVista());
+            
+            vista.invalidate();
+            vista.validate();
+            vista.repaint();
+
+            
+        }
+        
     }
 
     @Override
