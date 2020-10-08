@@ -115,13 +115,13 @@ public class DashboardView extends JFrame implements MouseListener{
         
         labelBienvenida.setForeground(Color.BLACK);
         labelBienvenida.setSize(300, 40);
-        labelBienvenida.setLocation(350, 20);
+        labelBienvenida.setLocation(350, 35);
         labelBienvenida.setFont(new Font("Segoe UI Light", Font.BOLD, 30));
         labelBienvenida.setText("Bienvenido");
         
         labelRol.setForeground(Color.BLACK);
         labelRol.setSize(300, 40);
-        labelRol.setLocation(350, 60);
+        labelRol.setLocation(520, 35);
         labelRol.setFont(new Font("Segoe UI Light", Font.BOLD, 30));
         labelRol.setText("Administrador");
         

@@ -258,8 +258,6 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
         crear.setHorizontalAlignment(SwingConstants.CENTER);
       
        
-        
-        
         close.setSize(20, 20);
         close.setLocation(960, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
@@ -331,7 +329,8 @@ public class CrearUsuarioView extends JFrame implements MouseListener {
             setState(LoginView.ICONIFIED);
         }
         if (me.getSource() == close) {
-            System.exit(0);
+            dispose();
+            
         }
     }
 

@@ -6,9 +6,8 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -22,8 +21,10 @@ import javax.swing.SwingConstants;
 public class UsuarioView extends JPanel {
 
     private JTableComponent tableList;
-
-    JComboBox tipoRol = new JComboBox();
+    
+    JComboBox FiltroRol = new JComboBox();
+    
+    JLabel LabelFiltro = new JLabel();
 
     JButton buttonCreateUsuario = new JButton();
     JButton buttonDeleteUsuario = new JButton();
@@ -41,7 +42,7 @@ public class UsuarioView extends JPanel {
         setLayout(null);
 
         title.setText("Gestionar Usuarios");
-        title.setLocation(150, 150);
+        title.setLocation(150, 120);
         title.setSize(850, 40);
         title.setForeground(Color.orange);
         title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
@@ -94,7 +95,22 @@ public class UsuarioView extends JPanel {
         buttonCancelUsuario.setFont(new Font("Arial", Font.BOLD, 15));
         //buttonCancelCategory.setEnabled(false);
         //buttonCancelCategory.setVisible(false);
+        
+        FiltroRol.setLocation(1030, 200);
+        FiltroRol.setSize(320,30);
+        FiltroRol.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+	FiltroRol.addItem("Tipo de usuario");
+        FiltroRol.addItem("Administrador");
+        FiltroRol.addItem("Vendedor");
+        FiltroRol.addItem("Cliente");
+          
+        LabelFiltro.setLocation(950, 195);
+        LabelFiltro.setSize(300, 40);
+        LabelFiltro.setFont(new Font("Arial", Font.BOLD, 20));
+        LabelFiltro.setText("Filtro :");
 
+        add(LabelFiltro);
+        add(FiltroRol);
         add(buttonUpdateUsuario);
         add(buttonDeleteUsuario);
         add(buttonCreateUsuario);
@@ -102,4 +118,10 @@ public class UsuarioView extends JPanel {
         add(tableList.getScrollTable());
         add(title);
     }
+
+    public JButton getButtonCreateUsuario() {
+        return buttonCreateUsuario;
+    }
+    
+    
 }

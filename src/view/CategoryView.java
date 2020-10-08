@@ -112,7 +112,6 @@ public class CategoryView extends JPanel {
         }
               
         
-
             
         String columns[] = {"id","Nombre","Iva"};
         tableList = new JTableComponent(columns);
