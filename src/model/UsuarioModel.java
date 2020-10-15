@@ -5,10 +5,28 @@
  */
 package model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+
 /**
  *
  * @author quihu
  */
 public class UsuarioModel {
+    
+    private Connection conexion;
+    private String table;
+    
+    public UsuarioModel(){
+        table = "TblUsuario";
+        conexion = new Conexion().getConexion();
+    }
+    
+    public ResultSet listUsers(){
+ 
+                   
+        return Crud.select("select RolNombre as UsuRol,TipNombre as UsuTip,UsuIdentificacion, UsumNombre1,UsuAdmNombre2,UsuAdmApellido1,UsuAdmApellido2,UsuAdmCelular,UsuAdmCorreo"
+                + " from TblUsuario,TblRol,TblTipoIdentificacion where TblRol_RolId = RolId and TblTipoIdentificacion_TipId = TipId and TblEstado_EstId = 1", conexion);
+    }
     
 }

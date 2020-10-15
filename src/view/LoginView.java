@@ -35,14 +35,13 @@ public class LoginView extends JFrame implements MouseListener{
     //JLabel buttonSubmit = new JLabel();
     //CAJA DE TEXTO
 
-    JTextField fieldUser = new JTextField(10);
+    JNumberField fieldUser = new JNumberField();
     JPasswordField fieldPass = new JPasswordField(10);
 
     //BOTONES
     JButton buttonSubmit = new JButton();
 
-    //ComboBox
-    JComboBox fieldRol = new JComboBox();
+
 
     //VARIAVLES
     private final int x = 1280;
@@ -130,14 +129,7 @@ public class LoginView extends JFrame implements MouseListener{
         buttonSubmit.setFocusPainted(false);
         buttonSubmit.setBorder(null);
 
-        //ComboBox
-        fieldRol.setSize(140, 30);
-        fieldRol.setLocation(140, 310);
-        fieldRol.addItem("Seleccionar rol");
-        fieldRol.addItem("Administrador");
-        fieldRol.addItem("Vendedor");
-        fieldRol.addItem("Cliente");
-
+ 
         //logo
         logo.setLocation(50, 60);
         logo.setSize(300, 400);
@@ -176,7 +168,6 @@ public class LoginView extends JFrame implements MouseListener{
         background.add(close);
         mainPanel.add(labelError);
         mainPanelLogo.add(logo);
-        mainPanel.add(fieldRol);
         mainPanel.add(buttonSubmit);
         mainPanel.add(fieldPass);
         mainPanel.add(fieldUser);
@@ -243,9 +234,6 @@ public class LoginView extends JFrame implements MouseListener{
         return fieldPass;
     }
 
-    public JComboBox getFieldRol() {
-        return fieldRol;
-    }
     
     public JButton getButtonSubmit(){
         return buttonSubmit;

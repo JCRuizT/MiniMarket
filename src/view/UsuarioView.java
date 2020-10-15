@@ -8,6 +8,8 @@ package view;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -21,9 +23,9 @@ import javax.swing.SwingConstants;
 public class UsuarioView extends JPanel {
 
     private JTableComponent tableList;
-    
+
     JComboBox FiltroRol = new JComboBox();
-    
+
     JLabel LabelFiltro = new JLabel();
 
     JButton buttonCreateUsuario = new JButton();
@@ -36,7 +38,7 @@ public class UsuarioView extends JPanel {
     private final int x = 1500;
     private final int y = 1500;
 
-    public UsuarioView() {
+    public UsuarioView(ResultSet result) {
 
         setSize(x, y);
         setLayout(null);
@@ -48,7 +50,7 @@ public class UsuarioView extends JPanel {
         title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
         title.setHorizontalAlignment(SwingConstants.CENTER);
 
-        String columns[] = {"id", "Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol"};
+        String columns[] = {"id", "TipoIdentificacion","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol"};
         tableList = new JTableComponent(columns);
 
         tableList.getScrollTable().setLocation(360, 250);
@@ -57,6 +59,27 @@ public class UsuarioView extends JPanel {
         tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
         tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
         tableList.getTable().getTableHeader().setResizingAllowed(false);
+
+        System.out.println(result);
+        try {
+            while (result.next()) {
+                Object rs[] = {"",
+                    result.getString("UsuTip"),
+                    result.getString("UsuIdentificacion"),
+                    result.getString("UsumNombre1"),
+                    result.getString("UsuAdmNombre2"),
+                    result.getString("UsuAdmApellido1"),
+                    result.getString("UsuAdmApellido2"),
+                    result.getString("UsuAdmCelular"),
+                    result.getString("UsuAdmCorreo"),
+                    result.getString("UsuRol")
+
+                };
+                tableList.getModel().addRow(rs);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
         buttonCreateUsuario = new JButton("Crear Usuario");
         buttonCreateUsuario.setLocation(360, 800);
@@ -95,15 +118,15 @@ public class UsuarioView extends JPanel {
         buttonCancelUsuario.setFont(new Font("Arial", Font.BOLD, 15));
         //buttonCancelCategory.setEnabled(false);
         //buttonCancelCategory.setVisible(false);
-        
+
         FiltroRol.setLocation(1030, 200);
-        FiltroRol.setSize(320,30);
+        FiltroRol.setSize(320, 30);
         FiltroRol.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
-	FiltroRol.addItem("Tipo de usuario");
+        FiltroRol.addItem("Tipo de usuario");
         FiltroRol.addItem("Administrador");
         FiltroRol.addItem("Vendedor");
         FiltroRol.addItem("Cliente");
-          
+
         LabelFiltro.setLocation(950, 195);
         LabelFiltro.setSize(300, 40);
         LabelFiltro.setFont(new Font("Arial", Font.BOLD, 20));
@@ -134,8 +157,5 @@ public class UsuarioView extends JPanel {
     public JButton getButtonCancelUsuario() {
         return buttonCancelUsuario;
     }
-    
-    
-    
-    
+
 }
