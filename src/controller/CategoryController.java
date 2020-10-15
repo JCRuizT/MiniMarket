@@ -64,10 +64,10 @@ public class CategoryController implements ActionListener {
             if(vista.getTableList().getTable().getSelectedRow() == -1){
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }else{
-                
                 int confim = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar este registro?", "Eliminar", JOptionPane.YES_NO_OPTION);
                 if(confim == JOptionPane.YES_OPTION){
                     String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
+                    System.out.println(id);
                     if(model.deleteCategory(id)){
                         vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());
                     }

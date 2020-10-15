@@ -36,14 +36,22 @@ public class Conexion{
                 System.out.println("Conexión Exitosa");
             }
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
+           // System.out.println(e.getMessage());
             conexion = null;
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
 
+            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+
         }catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
             conexion = null;
+
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+
         }
         return conexion;
     }

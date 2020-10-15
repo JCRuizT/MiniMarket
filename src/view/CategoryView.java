@@ -128,7 +128,7 @@ public class CategoryView extends JPanel {
         }
         
         fieldSearch = new JTableSearch(tableList.getTable());
-        fieldSearch.setLocation(0, 600);
+        fieldSearch.setLocation(580, 55);
         fieldSearch.setSize(230,30);
         fieldSearch.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
@@ -136,10 +136,6 @@ public class CategoryView extends JPanel {
         tableList.getScrollTable().setSize(500, 500);
        
         
-        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
-        tableList.getTable().getTableHeader().setResizingAllowed(false);
         
         
         add(title);
