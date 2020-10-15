@@ -40,7 +40,7 @@ public class LoginController implements ActionListener {
                     new DashboardController(); // llama al perfil o zona de gestion
 
                 } else {
-                    vista.setLabelError("El usuario ingresado no existe");
+                    vista.setLabelError("Usuario y/o contraseña incorrectos");
                 }
             }
         }

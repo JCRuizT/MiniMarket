@@ -144,8 +144,8 @@ public class LoginView extends JFrame implements MouseListener{
         
         //textError
         
-        labelError.setSize(250, 30);
-        labelError.setLocation(90, 350);
+        labelError.setSize(280, 30);
+        labelError.setLocation(65, 350);
         labelError.setHorizontalAlignment(SwingConstants.CENTER);
         labelError.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
         labelError.setForeground(Color.red);
