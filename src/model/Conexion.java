@@ -28,22 +28,23 @@ public class Conexion{
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "root"; // root-admin
-            String password = ""; //juliocruizt
+            String user = "admin"; // root-admin
+            String password = "juliocruizt"; //juliocruizt
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
                 System.out.println("Conexión Exitosa");
             }
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
+           // System.out.println(e.getMessage());
             conexion = null;
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
-
+            System.exit(0);
         }catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
             conexion = null;
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
         return conexion;
     }

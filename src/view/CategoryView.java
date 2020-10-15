@@ -136,10 +136,6 @@ public class CategoryView extends JPanel {
         tableList.getScrollTable().setSize(500, 500);
        
         
-        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
-        tableList.getTable().getTableHeader().setResizingAllowed(false);
         
         
         add(title);

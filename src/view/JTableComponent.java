@@ -32,6 +32,10 @@ public class JTableComponent {
         table = new JTable(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setFillsViewportHeight(true); ;
+        //table.getColumnModel().getColumn(0).setMaxWidth(0);
+        //table.getColumnModel().getColumn(0).setMinWidth(0);
+        //table.getColumnModel().getColumn(0).setPreferredWidth(0);
+        table.getTableHeader().setResizingAllowed(false);
         scrollTable = new JScrollPane(table);
     }
    
