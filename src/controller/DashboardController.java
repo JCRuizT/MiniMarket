@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,7 +27,7 @@ public class DashboardController implements MouseListener {
         controllerCreateCategory = new CategoryController();
         ControllerProduc = new ProductController();
         usuarioController = new UsuarioController(vista);
-
+        
         vista.getPicCrearCateg().addMouseListener(this);
         vista.getLabelCrearCateg().addMouseListener(this);
         vista.getPicCrearProduc().addMouseListener(this);
@@ -50,7 +51,7 @@ public class DashboardController implements MouseListener {
             vista.validate();
             vista.repaint();
 
-            controllerCreateCategory.getVista().setLocation(500, 150);
+            controllerCreateCategory.getVista().setLocation(370, 120);
         }
 
         if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
@@ -64,7 +65,7 @@ public class DashboardController implements MouseListener {
             vista.validate();
             vista.repaint();
 
-            ControllerProduc.getVista().setLocation(500, 150);
+            ControllerProduc.getVista().setLocation(370, 120);
         }
 
         if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {

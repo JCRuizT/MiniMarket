@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.UsuarioModel;
 import view.CrearUsuarioView;
 import view.DashboardView;
 import view.UsuarioView;
@@ -20,10 +21,12 @@ public class UsuarioController implements ActionListener {
     private UsuarioView vista;
     private DashboardController vistaController;
     private DashboardView vistaD;
-
+    private UsuarioModel model;
+    
     public UsuarioController(DashboardView vistaD) {
-
-        vista = new UsuarioView();
+        
+        model = new UsuarioModel();
+        vista = new UsuarioView(model.listUsers());
         this.vistaD=vistaD;
       
         vista.getButtonCreateUsuario().addActionListener(this);

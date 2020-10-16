@@ -14,7 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import model.CategoryModel;
 
 /**
@@ -41,6 +40,9 @@ public class ProductView extends JPanel {
     JButton buttonUpdateProduct = new JButton();
     JButton buttonCancelProduct = new JButton();
     JTableComponent tableList; 
+    
+    JLabel shearch = new JLabel();
+    private JTableSearch fieldSearch;
    
     private final int x = 1500 ;
     private final int y = 1500;
@@ -51,47 +53,46 @@ public class ProductView extends JPanel {
         setSize(x, y);
         setLayout(null);
         
-        title.setText("                 Gestionar producto");
+        title.setText("Gestionar producto");
         title.setLocation(0, 0);
         title.setSize(850,40);
         title.setForeground(Color.orange);
         title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
 
         labelName.setText("  Nombre del Producto");
-        labelName.setLocation(0, 100);
+        labelName.setLocation(90, 140);
         labelName.setSize(250,30);
         labelName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
-        fieldName.setLocation(0, 150);
+        fieldName.setLocation(90, 190);
         fieldName.setSize(230,30);
         fieldName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
         labelPrecio.setText("    Precio del producto");
-        labelPrecio.setLocation(0, 200);
+        labelPrecio.setLocation(90, 240);
         labelPrecio.setSize(250,30);
         labelPrecio.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
-        fieldPrecio.setLocation(0, 250);
+        fieldPrecio.setLocation(90, 290);
         fieldPrecio.setSize(230,30);
         fieldPrecio.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
         labelFechaVencimiento.setText("  Fecha de Vencimiento");
-        labelFechaVencimiento.setLocation(0, 300);
+        labelFechaVencimiento.setLocation(90, 340);
         labelFechaVencimiento.setSize(250,30);
         labelFechaVencimiento.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
-        fieldFechaVencimiento.setLocation(0, 350);
+        fieldFechaVencimiento.setLocation(90, 390);
         fieldFechaVencimiento.setSize(230,30);
         fieldFechaVencimiento.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
         
-        fieldCategoria.setLocation(0, 400);
+        fieldCategoria.setLocation(90, 440);
         fieldCategoria.setSize(230,30);
         fieldCategoria.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
 	fieldCategoria.addItem("Seleccionar Categoria");
         ResultSet categoria = new CategoryModel().listCategory();
         
-        fieldStock.setLocation(0, 450);
+        fieldStock.setLocation(90, 490);
         fieldStock.setSize(230,30);
         fieldStock.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 18));
         fieldStock.addItem("Seleccionar Stock");
@@ -101,7 +102,7 @@ public class ProductView extends JPanel {
         }
         
         buttonCreateProduct = new JButton("Crear Producto");
-        buttonCreateProduct.setLocation(0, 550);
+        buttonCreateProduct.setLocation(90, 550);
         buttonCreateProduct.setSize(230,30);
         buttonCreateProduct.setBackground(Color.orange);
         buttonCreateProduct.setForeground(Color.white);
@@ -110,7 +111,7 @@ public class ProductView extends JPanel {
         buttonCreateProduct.setFont(new Font("Arial", Font.BOLD, 15));
         
         buttonCancelProduct = new JButton("Cancelar");
-        buttonCancelProduct.setLocation(0, 600);
+        buttonCancelProduct.setLocation(90, 600);
         buttonCancelProduct.setSize(230,30);
         buttonCancelProduct.setBackground(Color.orange);
         buttonCancelProduct.setForeground(Color.white);
@@ -143,20 +144,21 @@ public class ProductView extends JPanel {
             System.out.println(e.getMessage());
         }
         
-        tableList.getScrollTable().setLocation(300, 100);
+        tableList.getScrollTable().setLocation(450, 150);
         tableList.getScrollTable().setSize(500, 500);
         
-          
-        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
-        tableList.getTable().getTableHeader().setResizingAllowed(false);
+        fieldSearch = new JTableSearch(tableList.getTable());
+        fieldSearch.setLocation(750, 110);
+        fieldSearch.setSize(200,30);
+        fieldSearch.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
+        shearch.setText("Buscar : ");
+        shearch.setLocation(670, 100);
+        shearch.setSize(100,40);
+        shearch.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
         
-        
-                
         buttonDeleteProduct = new JButton("Eliminar Producto");
-        buttonDeleteProduct.setLocation(310, 650);
+        buttonDeleteProduct.setLocation(450, 670);
         buttonDeleteProduct.setSize(230,30);
         buttonDeleteProduct.setBackground(Color.orange);
         buttonDeleteProduct.setForeground(Color.white);
@@ -165,7 +167,7 @@ public class ProductView extends JPanel {
         buttonDeleteProduct.setFont(new Font("Arial", Font.BOLD, 15));
         
         buttonUpdateProduct = new JButton("Actualizar Producto");
-        buttonUpdateProduct.setLocation(560, 650);
+        buttonUpdateProduct.setLocation(720, 670);
         buttonUpdateProduct.setSize(230,30);
         buttonUpdateProduct.setBackground(Color.orange);
         buttonUpdateProduct.setForeground(Color.white);
@@ -174,6 +176,9 @@ public class ProductView extends JPanel {
         buttonUpdateProduct.setFont(new Font("Arial", Font.BOLD, 15));
        
         add(title);
+        
+        add(shearch);
+        add(fieldSearch);
         
         add(buttonCancelProduct);
         add(buttonDeleteProduct);

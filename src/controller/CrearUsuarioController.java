@@ -5,8 +5,11 @@
  */
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import model.UsuarioModel;
 import view.CrearUsuarioView;
 import view.DashboardView;
 import view.LoginView;
@@ -15,7 +18,7 @@ import view.LoginView;
  *
  * @author quihu
  */
-public class CrearUsuarioController implements MouseListener{
+public class CrearUsuarioController implements MouseListener,ActionListener{
     
     private CrearUsuarioView vista;
     private DashboardView vistaD;
@@ -25,6 +28,7 @@ public class CrearUsuarioController implements MouseListener{
       vista = new CrearUsuarioView();
       
       this.vistaD = vistaD;
+      
       
       vista.getClose().addMouseListener(this);
       vista.getMinimize().addMouseListener(this);
@@ -65,5 +69,10 @@ public class CrearUsuarioController implements MouseListener{
     @Override
     public void mouseExited(MouseEvent me) {
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
     }
 }

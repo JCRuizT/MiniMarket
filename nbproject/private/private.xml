@@ -5,11 +5,15 @@
         <group>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/UsuarioView.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/CrearUsuarioController.java</file>
-            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/DashboardController.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/ActualizarUsuarioController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/DashboardController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/LoginController.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/ActualizarUsuarioView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/CategoryView.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/UsuarioController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/model/Conexion.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/CrearUsuarioView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/model/Crud.java</file>
         </group>
     </open-files>
 </project-private>

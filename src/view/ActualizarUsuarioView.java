@@ -53,6 +53,7 @@ public class ActualizarUsuarioView extends JFrame {
     JPasswordField fieldConfirmPass = new JPasswordField();
 
     JComboBox tipoRol = new JComboBox();
+    JComboBox estado = new JComboBox();
     
     ButtonGroup TipIdentificacion = new ButtonGroup();
     JRadioButton cc=new JRadioButton("C.C",true);
@@ -187,15 +188,22 @@ public class ActualizarUsuarioView extends JFrame {
         TipIdentificacion.add(ti);
         
         tipoRol.setLocation(30, 420);
-        tipoRol.setSize(320,30);
+        tipoRol.setSize(200,30);
         tipoRol.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
-	tipoRol.addItem("Seleccione el Tipo de usuario");
+	tipoRol.addItem("Tipo de Usuario");
         tipoRol.addItem("Administrador");
         tipoRol.addItem("Vendedor");
         tipoRol.addItem("Cliente");
         
+        estado.setLocation(260, 420);
+        estado.setSize(200,30);
+        estado.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+	estado.addItem("Estado de Usuario");
+        estado.addItem("Activo");
+        estado.addItem("Inativo");
+        
         campOblig5.setText("*");
-        campOblig5.setLocation(360, 410);
+        campOblig5.setLocation(235, 410);
         campOblig5.setSize(250,30);
         campOblig5.setForeground(Color.red);
         campOblig5.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
@@ -282,7 +290,8 @@ public class ActualizarUsuarioView extends JFrame {
         Icon iconminimize = new ImageIcon(imageminimize.getImage().getScaledInstance(minimize.getWidth(), minimize.getHeight(), Image.SCALE_DEFAULT));
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
+       
+        mainPanel.add(estado);
         mainPanel.add(cancelar);
         mainPanel.add(guardar);
         mainPanel.add(campOblig6);
@@ -326,7 +335,134 @@ public class ActualizarUsuarioView extends JFrame {
         
     }
 
-    public JButton getGuardar() {
+    public JPasswordField getFieldConfirmPass() {
+        return fieldConfirmPass;
+    }
+
+    public JNumberField getFieldnumIdentificacion() {
+        return fieldnumIdentificacion;
+    }
+
+    public JTextField getFieldName() {
+        return fieldName;
+    }
+
+    public JTextField getFieldSecondName() {
+        return fieldSecondName;
+    }
+
+    public JTextField getFieldLastName() {
+        return fieldLastName;
+    }
+
+    public JTextField getFieldSecondLastName() {
+        return fieldSecondLastName;
+    }
+
+    public JNumberField getFieldCel() {
+        return fieldCel;
+    }
+
+    public JTextField getFieldEmail() {
+        return fieldEmail;
+    }
+
+    public JPasswordField getFieldPass() {
+        return fieldPass;
+    }
+
+    public JComboBox getTipoRol() {
+        return tipoRol;
+    }
+
+    public JComboBox getEstado() {
+        return estado;
+    }
+
+    public ButtonGroup getTipIdentificacion() {
+        return TipIdentificacion;
+    }
+
+    public JRadioButton getCc() {
+        return cc;
+    }
+
+    public JRadioButton getCt() {
+        return ct;
+    }
+
+    public JRadioButton getTi() {
+        return ti;
+    }
+
+    
+    //set
+
+    public void setFieldnumIdentificacion(JNumberField fieldnumIdentificacion) {
+        this.fieldnumIdentificacion = fieldnumIdentificacion;
+    }
+
+    public void setFieldName(JTextField fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public void setFieldSecondName(JTextField fieldSecondName) {
+        this.fieldSecondName = fieldSecondName;
+    }
+
+    public void setFieldLastName(JTextField fieldLastName) {
+        this.fieldLastName = fieldLastName;
+    }
+
+    public void setFieldSecondLastName(JTextField fieldSecondLastName) {
+        this.fieldSecondLastName = fieldSecondLastName;
+    }
+
+    public void setFieldCel(JNumberField fieldCel) {
+        this.fieldCel = fieldCel;
+    }
+
+    public void setFieldEmail(JTextField fieldEmail) {
+        this.fieldEmail = fieldEmail;
+    }
+
+    public void setFieldPass(JPasswordField fieldPass) {
+        this.fieldPass = fieldPass;
+    }
+
+    public void setFieldConfirmPass(JPasswordField fieldConfirmPass) {
+        this.fieldConfirmPass = fieldConfirmPass;
+    }
+
+    public void setTipoRol(JComboBox tipoRol) {
+        this.tipoRol = tipoRol;
+    }
+
+    public void setEstado(JComboBox estado) {
+        this.estado = estado;
+    }
+
+    public void setTipIdentificacion(ButtonGroup TipIdentificacion) {
+        this.TipIdentificacion = TipIdentificacion;
+    }
+
+    public void setCc(JRadioButton cc) {
+        this.cc = cc;
+    }
+
+    public void setCt(JRadioButton ct) {
+        this.ct = ct;
+    }
+
+    public void setTi(JRadioButton ti) {
+        this.ti = ti;
+    }
+
+    public void setGuardar(JButton guardar) {
+        this.guardar = guardar;
+    }
+    
+     public JButton getGuardar() {
         return guardar;
     }
 
@@ -341,6 +477,8 @@ public class ActualizarUsuarioView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
+    
+    
     
     
     

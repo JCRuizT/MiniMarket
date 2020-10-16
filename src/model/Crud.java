@@ -38,43 +38,16 @@ public class Crud {
             return true;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage()+ JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage() + JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
-    
+
     public static ResultSet listar(String tabla, Connection conexion) {
         ResultSet registro = null;
         try {
 
             String sql = "select * from " + tabla + " where TblEstado_EstId = 1";
-            Statement comando = conexion.createStatement();
-            registro = comando.executeQuery(sql);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return registro;
-    }
-    
-    public static boolean eliminar(String tabla,String field,String value,Connection conexion){
-                
-        String sql = "update "+tabla+" set TblEstado_EstId = 2 where "+field+" = '"+value+"'";
-        try {
-            Statement comando = conexion.createStatement();
-            comando.execute(sql);
-            return true;
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage()+ JOptionPane.ERROR_MESSAGE);
-        }
-        return false;
-    }
-    
-    public static ResultSet listarJoin(String field,String tabla1,String tabla2,String condition,Connection conexion) {
-        ResultSet registro = null;
-        try {
-
-            String sql = "select "+field+" from " + tabla1 + ","+tabla2+" where "+condition;
             System.out.println(sql);
             Statement comando = conexion.createStatement();
             registro = comando.executeQuery(sql);
@@ -83,6 +56,44 @@ public class Crud {
         }
         return registro;
     }
-     
+
+    public static boolean eliminar(String tabla, String field, String value, Connection conexion) {
+
+        String sql = "update " + tabla + " set TblEstado_EstId = 2 where " + field + " = '" + value + "'";
+        try {
+            Statement comando = conexion.createStatement();
+            comando.execute(sql);
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    public static ResultSet select(String sql, Connection conexion) {
+        ResultSet registro = null;
+        try {
+
+            Statement comando = conexion.createStatement();
+            registro = comando.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return registro;
+    }
+
+    public static ResultSet listarJoin(String field, String tabla1, String tabla2, String condition, Connection conexion) {
+        ResultSet registro = null;
+        try {
+
+            String sql = "select " + field + " from " + tabla1 + "," + tabla2 + " where " + condition;
+            Statement comando = conexion.createStatement();
+            registro = comando.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return registro;
+    }
 
 }

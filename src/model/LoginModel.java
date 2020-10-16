@@ -17,32 +17,20 @@ import java.sql.Statement;
 public class LoginModel {
 
     private Connection conexion;
+    private String tabla;
 
     public LoginModel() {
+
+        tabla = "TblUsuario";
         conexion = new Conexion().getConexion();
+
     }
 
-    public boolean login(String user, String pass, String rol) {
-
-        String userL = "";
-        String passL = "";
-        String tabla = "";
-        String prefijo = "";
-        
-        if (rol.equals("Vendedor")) {
-            tabla = "TblVendedor";
-            prefijo = "Ven";
-
-        } else if (rol.equals("Cliente")) {
-            tabla = "TblCliente";
-            prefijo = "Cli";
-        } else if (rol.equals("Administrador")) {
-            tabla = "TblAdministrador";
-            prefijo = "Adm";
-        }
+    public boolean login(String user, String pass) {
 
         try {
-            String query = "select * from " + tabla + " where " + prefijo + "Identificacion = '" + user + "' and " + prefijo + "Contrasenia='" + pass + "' and TblEstado_EstId = 1";
+            String query = "select UsuIdentificacion,UsuContrasenia from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
+            System.out.println(query);
             Statement comando = conexion.createStatement();
             ResultSet registro = comando.executeQuery(query);
             if (registro.next()) {
