@@ -24,11 +24,7 @@ public class UsuarioModel {
     
     public ResultSet listUsers(){
  
-<<<<<<< HEAD
-      
-=======
-                   
->>>>>>> fb390d93b9c8516dbd2233de0b2d620687614c0a
+
         return Crud.select("select EstEstado as UsuEstado,RolNombre as UsuRol,TipNombre as UsuTip,UsuIdentificacion, UsuNombre1,UsuNombre2,UsuApellido1,UsuApellido2,UsuCelular,UsuCorreo"
                 + " from TblUsuario,TblEstado,TblRol,TblTipoIdentificacion where TblRol_RolId = RolId and TblTipoIdentificacion_TipId = TipId and EstId = TblEstado_EstId", conexion);
     }
