@@ -62,12 +62,12 @@ public class UsuarioView extends JPanel {
                     result.getString("UsuIdentificacion"),
                     result.getString("UsuTip"),
                     result.getString("UsuIdentificacion"),
-                    result.getString("UsumNombre1"),
-                    result.getString("UsuAdmNombre2"),
-                    result.getString("UsuAdmApellido1"),
-                    result.getString("UsuAdmApellido2"),
-                    result.getString("UsuAdmCelular"),
-                    result.getString("UsuAdmCorreo"),
+                    result.getString("UsuNombre1"),
+                    result.getString("UsuNombre2"),
+                    result.getString("UsuApellido1"),
+                    result.getString("UsuApellido2"),
+                    result.getString("UsuCelular"),
+                    result.getString("UsuCorreo"),
                     result.getString("UsuRol"),
                     result.getString("UsuEstado")     
 
