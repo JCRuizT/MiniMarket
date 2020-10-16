@@ -8,6 +8,7 @@ package view;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,11 +31,11 @@ public class JTableComponent {
         };
         
         table = new JTable(model);
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setSelectionMode(SINGLE_SELECTION);
         table.setFillsViewportHeight(true); ;
-        //table.getColumnModel().getColumn(0).setMaxWidth(0);
-        //table.getColumnModel().getColumn(0).setMinWidth(0);
-        //table.getColumnModel().getColumn(0).setPreferredWidth(0);
+        table.getColumnModel().getColumn(0).setMaxWidth(0);
+        table.getColumnModel().getColumn(0).setMinWidth(0);
+        table.getColumnModel().getColumn(0).setPreferredWidth(0);
         table.getTableHeader().setResizingAllowed(false);
         scrollTable = new JScrollPane(table);
     }

@@ -6,7 +6,12 @@
 package view;
 
 import java.awt.Color;
+import static java.awt.Color.orange;
+import static java.awt.Color.white;
 import java.awt.Font;
+import static java.awt.Font.BOLD;
+import static java.awt.Font.CENTER_BASELINE;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
@@ -14,7 +19,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 
 
@@ -35,6 +39,7 @@ public class CategoryView extends JPanel {
     
     JLabel labelName = new JLabel();
     JLabel title = new JLabel();
+    JLabel shearch = new JLabel();
     private JTableSearch fieldSearch;
     
     private final int x = 1500 ;
@@ -45,63 +50,62 @@ public class CategoryView extends JPanel {
         setSize(x, y);
         setLayout(null);
         
-        title.setText("                  Gestionar Categorias");
+        title.setText("Gestionar Categorias");
         title.setLocation(0, 0);
-        title.setSize(850,40);
-        title.setForeground(Color.orange);
-        title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setSize(850,45);
+        title.setForeground(orange);
+        title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
        
         labelName.setText("Nombre de la categoria");
-        labelName.setLocation(0, 150);
+        labelName.setLocation(90, 190);
         labelName.setSize(250,30);
-        labelName.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        labelName.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
         
-        fieldName.setLocation(0, 200);
+        fieldName.setLocation(90, 240);
         fieldName.setSize(230,30);
-        fieldName.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        fieldName.setFont(new Font("Segoe UI Light", BOLD, 20));
         
         fieldIva = new JComboBox();
-        fieldIva.setLocation(0, 250);
+        fieldIva.setLocation(90, 290);
         fieldIva.setSize(230,30);
-        fieldIva.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        fieldIva.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 	fieldIva.addItem("     Seleccionar IVA");
         
         buttonCreateCategory = new JButton("Crear Categoria");
-        buttonCreateCategory.setLocation(0, 300);
+        buttonCreateCategory.setLocation(90, 340);
         buttonCreateCategory.setSize(230,30);
-        buttonCreateCategory.setBackground(Color.orange);
-        buttonCreateCategory.setForeground(Color.white);
+        buttonCreateCategory.setBackground(orange);
+        buttonCreateCategory.setForeground(white);
         buttonCreateCategory.setFocusable(false);
         buttonCreateCategory.setBorder(null);
-        buttonCreateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCreateCategory.setFont(new Font("Arial", BOLD, 15));
         
         buttonDeleteCategory.setText("Eliminar Categoria");
-        buttonDeleteCategory.setLocation(0, 450);
+        buttonDeleteCategory.setLocation(90, 490);
         buttonDeleteCategory.setSize(230,30);
-        buttonDeleteCategory.setBackground(Color.orange);
-        buttonDeleteCategory.setForeground(Color.white);
+        buttonDeleteCategory.setBackground(orange);
+        buttonDeleteCategory.setForeground(white);
         buttonDeleteCategory.setFocusable(false);
         buttonDeleteCategory.setBorder(null);
-        buttonDeleteCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonDeleteCategory.setFont(new Font("Arial", BOLD, 15));
         
         buttonUpdateCategory.setText("Actualizar Categoria");
-        buttonUpdateCategory.setLocation(0, 500);
+        buttonUpdateCategory.setLocation(90, 540);
         buttonUpdateCategory.setSize(230,30);
-        buttonUpdateCategory.setBackground(Color.orange);
-        buttonUpdateCategory.setForeground(Color.white);
+        buttonUpdateCategory.setBackground(orange);
+        buttonUpdateCategory.setForeground(white);
         buttonUpdateCategory.setFocusable(false);
         buttonUpdateCategory.setBorder(null);
-        buttonUpdateCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonUpdateCategory.setFont(new Font("Arial", BOLD, 15));
         
         buttonCancelCategory.setText("Cancelar");
-        buttonCancelCategory.setLocation(0, 550);
+        buttonCancelCategory.setLocation(90, 590);
         buttonCancelCategory.setSize(230,30);
-        buttonCancelCategory.setBackground(Color.orange);
-        buttonCancelCategory.setForeground(Color.white);
+        buttonCancelCategory.setBackground(orange);
+        buttonCancelCategory.setForeground(white);
         buttonCancelCategory.setFocusable(false);
         buttonCancelCategory.setBorder(null);
-        buttonCancelCategory.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCancelCategory.setFont(new Font("Arial", BOLD, 15));
         buttonCancelCategory.setEnabled(false);
         buttonCancelCategory.setVisible(false);
         
@@ -124,20 +128,25 @@ public class CategoryView extends JPanel {
                 tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            out.println(e.getMessage());
         }
         
         fieldSearch = new JTableSearch(tableList.getTable());
-        fieldSearch.setLocation(580, 55);
-        fieldSearch.setSize(230,30);
-        fieldSearch.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+        fieldSearch.setLocation(750, 110);
+        fieldSearch.setSize(200,30);
+        fieldSearch.setFont(new Font("Segoe UI Light", BOLD, 20));
         
-        tableList.getScrollTable().setLocation(300, 100);
+        shearch.setText("Buscar : ");
+        shearch.setLocation(650, 100);
+        shearch.setSize(100,40);
+        shearch.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+        
+        tableList.getScrollTable().setLocation(450, 150);
         tableList.getScrollTable().setSize(500, 500);
        
         
         
-        
+        add(shearch);
         add(title);
         add(labelName);
         add(fieldName);

@@ -6,8 +6,12 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Cursor;
+import static java.awt.Color.orange;
+import static java.awt.Color.white;
 import java.awt.Font;
+import static java.awt.Font.BOLD;
+import static java.awt.Font.CENTER_BASELINE;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
@@ -15,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import static javax.swing.SwingConstants.CENTER;
 
 /**
  *
@@ -46,82 +51,79 @@ public class UsuarioView extends JPanel {
         title.setText("Gestionar Usuarios");
         title.setLocation(150, 120);
         title.setSize(850, 40);
-        title.setForeground(Color.orange);
-        title.setFont(new Font("Arial Black", Font.CENTER_BASELINE, 35));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setForeground(orange);
+        title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
+        title.setHorizontalAlignment(CENTER);
 
-        String columns[] = {"id", "TipoIdentificacion","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol"};
+        String columns[] = {"id", "TipoIdentificacion","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol","Estado"};
         tableList = new JTableComponent(columns);
 
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
-        tableList.getTable().getColumnModel().getColumn(0).setMaxWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setMinWidth(0);
-        tableList.getTable().getColumnModel().getColumn(0).setPreferredWidth(0);
-        tableList.getTable().getTableHeader().setResizingAllowed(false);
 
-        System.out.println(result);
         try {
             while (result.next()) {
-                Object rs[] = {"",
+                Object rs[] = {
+                    result.getString("UsuIdentificacion"),
                     result.getString("UsuTip"),
                     result.getString("UsuIdentificacion"),
-                    result.getString("UsumNombre1"),
+                    result.getString("UsuNombre1"),
                     result.getString("UsuNombre2"),
                     result.getString("UsuApellido1"),
                     result.getString("UsuApellido2"),
                     result.getString("UsuCelular"),
                     result.getString("UsuCorreo"),
-                    result.getString("UsuRol")
+                    result.getString("UsuRol"),
+                    result.getString("UsuEstado")     
 
                 };
                 tableList.getModel().addRow(rs);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            out.println(e.getMessage());
         }
 
         buttonCreateUsuario = new JButton("Crear Usuario");
         buttonCreateUsuario.setLocation(360, 800);
         buttonCreateUsuario.setSize(230, 30);
-        buttonCreateUsuario.setBackground(Color.orange);
-        buttonCreateUsuario.setForeground(Color.white);
+        buttonCreateUsuario.setBackground(orange);
+        buttonCreateUsuario.setForeground(white);
         buttonCreateUsuario.setFocusable(false);
         buttonCreateUsuario.setBorder(null);
-        buttonCreateUsuario.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCreateUsuario.setFont(new Font("Arial", BOLD, 15));
 
         buttonUpdateUsuario.setText("Actualizar Categoria");
         buttonUpdateUsuario.setLocation(600, 800);
         buttonUpdateUsuario.setSize(230, 30);
-        buttonUpdateUsuario.setBackground(Color.orange);
-        buttonUpdateUsuario.setForeground(Color.white);
+        buttonUpdateUsuario.setBackground(orange);
+        buttonUpdateUsuario.setForeground(white);
         buttonUpdateUsuario.setFocusable(false);
         buttonUpdateUsuario.setBorder(null);
-        buttonUpdateUsuario.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
 
         buttonDeleteUsuario.setText("Eliminar Categoria");
         buttonDeleteUsuario.setLocation(890, 800);
         buttonDeleteUsuario.setSize(230, 30);
-        buttonDeleteUsuario.setBackground(Color.orange);
-        buttonDeleteUsuario.setForeground(Color.white);
+        buttonDeleteUsuario.setBackground(orange);
+        buttonDeleteUsuario.setForeground(white);
         buttonDeleteUsuario.setFocusable(false);
         buttonDeleteUsuario.setBorder(null);
-        buttonDeleteUsuario.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonDeleteUsuario.setFont(new Font("Arial", BOLD, 15));
 
         buttonCancelUsuario.setText("Cancelar");
         buttonCancelUsuario.setLocation(1130, 800);
         buttonCancelUsuario.setSize(230, 30);
-        buttonCancelUsuario.setBackground(Color.orange);
-        buttonCancelUsuario.setForeground(Color.white);
+        buttonCancelUsuario.setBackground(orange);
+        buttonCancelUsuario.setForeground(white);
         buttonCancelUsuario.setFocusable(false);
         buttonCancelUsuario.setBorder(null);
-        buttonCancelUsuario.setFont(new Font("Arial", Font.BOLD, 15));
+        buttonCancelUsuario.setFont(new Font("Arial", BOLD, 15));
         //buttonCancelCategory.setEnabled(false);
         //buttonCancelCategory.setVisible(false);
 
         FiltroRol.setLocation(1030, 200);
         FiltroRol.setSize(320, 30);
-        FiltroRol.setFont(new Font("Segoe UI Light", Font.CENTER_BASELINE, 20));
+        FiltroRol.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
         FiltroRol.addItem("Tipo de usuario");
         FiltroRol.addItem("Administrador");
         FiltroRol.addItem("Vendedor");
@@ -129,7 +131,7 @@ public class UsuarioView extends JPanel {
 
         LabelFiltro.setLocation(950, 195);
         LabelFiltro.setSize(300, 40);
-        LabelFiltro.setFont(new Font("Arial", Font.BOLD, 20));
+        LabelFiltro.setFont(new Font("Arial", BOLD, 20));
         LabelFiltro.setText("Filtro :");
 
         add(LabelFiltro);
