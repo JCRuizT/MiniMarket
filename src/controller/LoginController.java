@@ -7,8 +7,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import model.LoginModel;
-import view.DashboardView;
 import view.LoginView;
 
 /**
@@ -33,13 +33,13 @@ public class LoginController implements ActionListener {
                 vista.setLabelError("Todos los campos son obligatorios");
             } else {
                 vista.setLabelError("");
-                boolean login = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
-                if (login) {
+                ResultSet dataUser = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
+                if (dataUser != null) {
                     vista.dispose();
-                    new DashboardController(); // llama al perfil o zona de gestion
+                    new DashboardController(dataUser); // llama al perfil o zona de gestion
 
                 } else {
-                    vista.setLabelError("El usuario ingresado no existe");
+                    vista.setLabelError("Usuario y/o contraseña incorrectos");
                 }
             }
         }

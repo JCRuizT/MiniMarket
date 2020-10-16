@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,24 +28,20 @@ public class LoginModel {
 
     }
 
-    public boolean login(String user, String pass) {
+    public ResultSet login(String user, String pass) {
 
+        String query = "select UsuIdentificacion, UsuContrasenia, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
+
+        ResultSet app = Crud.select(query, conexion);
         try {
-            String query = "select UsuIdentificacion,UsuContrasenia from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
-            System.out.println(query);
-            Statement comando = conexion.createStatement();
-            ResultSet registro = comando.executeQuery(query);
-            if (registro.next()) {
-                return true;
-            } else {
-                return false;
+            while (app.next()) {
+                System.out.println(app.getString("UsuIdentificacion")+app.getString("UsuNombre1"));
             }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return false;
+        
+        return null;
 
     }
 

@@ -128,7 +128,7 @@ public class CategoryView extends JPanel {
         }
         
         fieldSearch = new JTableSearch(tableList.getTable());
-        fieldSearch.setLocation(0, 600);
+        fieldSearch.setLocation(580, 55);
         fieldSearch.setSize(230,30);
         fieldSearch.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
         
