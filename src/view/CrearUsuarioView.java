@@ -339,6 +339,67 @@ public class CrearUsuarioView extends JFrame {
         setVisible(true);
     } 
 
+    public JNumberField getFieldnumIdentificacion() {
+        return fieldnumIdentificacion;
+    }
+
+    public JTextField getFieldName() {
+        return fieldName;
+    }
+
+    public JTextField getFieldSecondName() {
+        return fieldSecondName;
+    }
+
+    public JTextField getFieldLastName() {
+        return fieldLastName;
+    }
+
+    public JTextField getFieldSecondLastName() {
+        return fieldSecondLastName;
+    }
+
+    public JNumberField getFieldCel() {
+        return fieldCel;
+    }
+
+    public JTextField getFieldEmail() {
+        return fieldEmail;
+    }
+
+    public JPasswordField getFieldPass() {
+        return fieldPass;
+    }
+
+    public JPasswordField getFieldConfirmPass() {
+        return fieldConfirmPass;
+    }
+
+    public JComboBox getTipoRol() {
+        return tipoRol;
+    }
+
+    public ButtonGroup getTipIdentificacion() {
+        return TipIdentificacion;
+    }
+
+    public JRadioButton getCc() {
+        return cc;
+    }
+
+    public JRadioButton getCt() {
+        return ct;
+    }
+
+    public JRadioButton getTi() {
+        return ti;
+    }
+
+    public JButton getCrear() {
+        return crear;
+    }
+    
+
     public JButton getCancelar() {
         return cancelar;
     }
