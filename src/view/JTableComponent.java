@@ -39,6 +39,7 @@ public class JTableComponent {
         table.getTableHeader().setResizingAllowed(false);
         scrollTable = new JScrollPane(table);
     }
+    
    
     public JTable getTable() {
         return table;

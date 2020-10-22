@@ -9,6 +9,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import view.DashboardView;
 
 /**
@@ -22,7 +23,7 @@ public class DashboardController implements MouseListener {
     private ProductController ControllerProduc;
     private UsuarioController usuarioController;
 
-    public DashboardController(ResultSet user) {
+    public DashboardController(ArrayList<String> user) {
         vista = new DashboardView();
         controllerCreateCategory = new CategoryController();
         ControllerProduc = new ProductController();
@@ -40,7 +41,7 @@ public class DashboardController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
 
-        if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
+         if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
 
             vista.getPagPrincipal().remove(usuarioController.getVista());
             vista.getPagPrincipal().remove(ControllerProduc.getVista());

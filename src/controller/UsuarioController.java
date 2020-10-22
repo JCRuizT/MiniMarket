@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.UsuarioModel;
 import view.CrearUsuarioView;
 import view.DashboardView;
@@ -26,7 +27,7 @@ public class UsuarioController implements ActionListener {
     public UsuarioController(DashboardView vistaD) {
         
         model = new UsuarioModel();
-        vista = new UsuarioView(model.listUsers());
+        vista = new UsuarioView(model.getAll());
         this.vistaD=vistaD;
       
         vista.getButtonCreateUsuario().addActionListener(this);
@@ -57,10 +58,15 @@ public class UsuarioController implements ActionListener {
          
         if (e.getSource() == vista.getButtonUpdateUsuario()) {
             
-            vistaD.setVisible(false);
-            
-            ActualizarUsuarioController register = new ActualizarUsuarioController(vistaD);
+            System.out.println(vista.getTableList().getTable().getSelectedRow());
+            if (vista.getTableList().getTable().getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
+            }else{
+                vistaD.setVisible(false);
+                ActualizarUsuarioController register = new ActualizarUsuarioController(vistaD,vista.getTableList());
+            }
         }
 
     }
+
 }

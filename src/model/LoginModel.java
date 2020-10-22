@@ -6,9 +6,11 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,29 +20,41 @@ import java.util.logging.Logger;
  */
 public class LoginModel {
 
-    private Connection conexion;
+    private Conexion conexion;
     private String tabla;
 
     public LoginModel() {
 
         tabla = "TblUsuario";
-        conexion = new Conexion().getConexion();
+        conexion = new Conexion();
 
     }
 
-    public ResultSet login(String user, String pass) {
+    public ArrayList<String> login(String user, String pass) {
 
-        String query = "select UsuIdentificacion, UsuContrasenia, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
-
-        ResultSet app = Crud.select(query, conexion);
+        ResultSet registro = null;
         try {
-            while (app.next()) {
-                System.out.println(app.getString("UsuIdentificacion")+app.getString("UsuNombre1"));
+            //String query = "select UsuIdentificacion, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
+            PreparedStatement sentence = conexion.sentence("select UsuIdentificacion, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = ? and UsuContrasenia = ? and TblEstado_EstId = 1");
+            sentence.setString(1, user);
+            sentence.setString(2, pass);
+            registro = sentence.executeQuery();
+            ArrayList<String> response = new ArrayList<String>();
+            while (registro.next()) {
+                response.add(registro.getString("UsuIdentificacion"));
+                response.add(registro.getString("UsuNombre1"));
+                response.add(registro.getString("UsuApellido1"));
+                response.add(registro.getString("UsuApellido2"));
+                response.add(registro.getString("UsuCorreo"));
+
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
+
+            return response;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        
+
         return null;
 
     }

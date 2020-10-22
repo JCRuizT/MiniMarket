@@ -14,12 +14,14 @@ import static java.awt.Font.CENTER_BASELINE;
 import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import static javax.swing.SwingConstants.CENTER;
+import model.Table.Usuario;
 
 /**
  *
@@ -43,7 +45,7 @@ public class UsuarioView extends JPanel {
     private final int x = 1500;
     private final int y = 1500;
 
-    public UsuarioView(ResultSet result) {
+    public UsuarioView(ArrayList<Usuario> result) {
 
         setSize(x, y);
         setLayout(null);
@@ -60,27 +62,24 @@ public class UsuarioView extends JPanel {
 
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
-
-        try {
-            while (result.next()) {
-                Object rs[] = {
-                    result.getString("UsuIdentificacion"),
-                    result.getString("UsuTip"),
-                    result.getString("UsuIdentificacion"),
-                    result.getString("UsuNombre1"),
-                    result.getString("UsuNombre2"),
-                    result.getString("UsuApellido1"),
-                    result.getString("UsuApellido2"),
-                    result.getString("UsuCelular"),
-                    result.getString("UsuCorreo"),
-                    result.getString("UsuRol"),
-                    result.getString("UsuEstado")     
-
-                };
-                tableList.getModel().addRow(rs);
-            }
-        } catch (SQLException e) {
-            out.println(e.getMessage());
+        
+        for(int i=0; i<result.size();i++){
+            String rs[] = {
+                result.get(i).getUsuIdentificacion(),
+                result.get(i).getTipNombre(),
+                result.get(i).getUsuIdentificacion(),
+                result.get(i).getUsuNombre1(),
+                result.get(i).getUsuNombre2(),
+                result.get(i).getUsuApellido1(),
+                result.get(i).getUsuApellido2(),
+                result.get(i).getUsuCelular(),
+                result.get(i).getUsuCorreo(),
+                result.get(i).getRolNombre(),
+                result.get(i).getEstEstado()
+                
+                
+            };
+            tableList.getModel().addRow(rs);
         }
 
         buttonCreateUsuario = new JButton("Crear Usuario");
@@ -159,5 +158,10 @@ public class UsuarioView extends JPanel {
     public JButton getButtonCancelUsuario() {
         return buttonCancelUsuario;
     }
+
+    public JTableComponent getTableList() {
+        return tableList;
+    }
+    
 
 }

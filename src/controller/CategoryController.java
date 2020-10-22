@@ -7,9 +7,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.CategoryModel;
-import view.CategoryView;
+import model.Table.TipoProducto;
+import model.TipoProductoModel;
 
 /**
  *
@@ -17,14 +18,16 @@ import view.CategoryView;
  */
 public class CategoryController implements ActionListener {
 
-    private CategoryView vista;
-    private CategoryModel model;
+    private view.CategoryView vista;
+    private TipoProductoModel model;
     private boolean stateButtonUpdate;
+    private ArrayList<TipoProducto> categ;
 
     public CategoryController() {
 
-        model = new CategoryModel();
-        vista = new CategoryView(model.listCategory());
+        model = new TipoProductoModel();
+        categ = model.getAll();
+        vista = new view.CategoryView(categ);
         vista.getButtonCreateCategory().addActionListener(this);
         vista.getButtonDeleteCategory().addActionListener(this);
         vista.getButtonUpdateCategory().addActionListener(this);
@@ -33,7 +36,7 @@ public class CategoryController implements ActionListener {
 
     }
 
-    public CategoryView getVista() {
+    public view.CategoryView getVista() {
         return vista;
     }
 
@@ -45,34 +48,22 @@ public class CategoryController implements ActionListener {
             if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("     Seleccionar IVA")) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String field[] = new String[4];
-                field[1] = vista.getFieldName().getText();
-                field[2] = vista.getFieldIva().getSelectedItem().toString();
-                field[3] = "1";
-                boolean val = model.createCategory(field);
-                if (val) {
+                
+                TipoProducto p = new TipoProducto();
+                
+                p.setTipProIva(vista.getFieldIva().getSelectedItem().toString());
+                p.setTipProNombre(vista.getFieldName().getText());
+                
+                p = model.create(p);
+                if (p != null) {
                     vista.getFieldName().setText("");
                     vista.getFieldIva().setSelectedIndex(0);
+                    categ.add(p);
+                    vista.getTableList().getModel().fireTableDataChanged();
+                    System.out.println(p.getTipProId());
                     JOptionPane.showMessageDialog(null, "Se ha creado la categoria de manera correcta");
-                    Object x[] = {field[0],field[1],field[2]};
-                    vista.getTableList().getModel().addRow(x);
                 } else {
                     JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
-                }
-            }
-        }else if(e.getSource().equals(vista.getButtonDeleteCategory())){
-            if(vista.getTableList().getTable().getSelectedRow() == -1){
-                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
-            }else{
-                int confim = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar este registro?", "Eliminar", JOptionPane.YES_NO_OPTION);
-                if(confim == JOptionPane.YES_OPTION){
-                    String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
-                    System.out.println(id);
-                    if(model.deleteCategory(id)){
-                        vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());
-                    }
-                }else{
-                    vista.getTableList().getTable().clearSelection();
                 }
             }
         }else if(e.getSource().equals(vista.getButtonUpdateCategory())){
@@ -93,7 +84,6 @@ public class CategoryController implements ActionListener {
                     String iva = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 2);
                     vista.getFieldName().setText(name);
 
-                    System.out.println(iva);
                     vista.setSelectedCombobox(vista.getFieldIva(), iva);
 
                 } else {

@@ -5,8 +5,11 @@
  */
 package model;
 
-import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.Table.Usuario;
 
 /**
  *
@@ -14,19 +17,43 @@ import java.sql.ResultSet;
  */
 public class UsuarioModel {
     
-    private Connection conexion;
+    private Conexion conexion;
     private String table;
     
     public UsuarioModel(){
         table = "TblUsuario";
-        conexion = new Conexion().getConexion();
+        this.conexion = new Conexion();
     }
     
-    public ResultSet listUsers(){
- 
+      public ArrayList<Usuario> getAll() {
+        ArrayList<Usuario> data = new ArrayList<>();
+        try {
+            PreparedStatement sentence = conexion.sentence("select * from " + table + " as u, TblEstado as e,TblTipoIdentificacion as ti,TblRol as r where e.EstId = u.TblEstado_EstId and u.TblTipoIdentificacion_TipId = ti.TipId and r.RolId = u.TblRol_RolId");
+            ResultSet result = sentence.executeQuery();
+            while (result.next()) {
+                Usuario u = new Usuario();
+                u.setUsuIdentificacion(result.getString("UsuIdentificacion"));               
+                u.setUsuNombre1(result.getString("UsuNombre1"));
+                u.setUsuNombre2(result.getString("UsuNombre2"));
+                u.setUsuApellido1(result.getString("UsuApellido1"));
+                u.setUsuApellido2(result.getString("UsuApellido2"));
+                u.setUsuCelular(result.getString("UsuCelular"));
+                u.setUsuCorreo(result.getString("UsuCorreo"));               
+                u.setTblTipoIdentificacion_TipId(result.getString("TblTipoIdentificacion_TipId"));
+                u.setTblEstado_EstId(result.getString("TblEstado_EstId"));
+                u.setTblRol_RolId("TblRol_RolId");
+                u.setTipNombre(result.getString("TipNombre"));
+                u.setRolNombre(result.getString("RolNombre"));
+                u.setEstEstado(result.getString("EstEstado"));              
+               
+                data.add(u);
+            }
 
-        return Crud.select("select EstEstado as UsuEstado,RolNombre as UsuRol,TipNombre as UsuTip,UsuIdentificacion, UsuNombre1,UsuNombre2,UsuApellido1,UsuApellido2,UsuCelular,UsuCorreo"
-                + " from TblUsuario,TblEstado,TblRol,TblTipoIdentificacion where TblRol_RolId = RolId and TblTipoIdentificacion_TipId = TipId and EstId = TblEstado_EstId", conexion);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return data;
+
     }
     
 }

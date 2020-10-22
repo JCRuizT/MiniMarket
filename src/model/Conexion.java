@@ -2,6 +2,7 @@ package model;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -18,18 +19,19 @@ import javax.swing.JOptionPane;
 public class Conexion{
 
     private Connection conexion;
-    private Statement comando;
+    private PreparedStatement comando;
     private ResultSet registro;
-    String tabla;
+    private PreparedStatement sentence;
 
 
-    public Connection getConexion() {
+    public Conexion() {
+        
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "root"; // root-admin
-            String password = ""; //juliocruizt
+            String user = "admin"; // root-admin
+            String password = "juliocruizt"; //juliocruizt
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
@@ -53,7 +55,17 @@ public class Conexion{
             System.exit(0);
 
         }
-        return conexion;
     }
+    
+    public PreparedStatement sentence(String sql) throws SQLException{
+        sentence = conexion.prepareStatement(sql);
+        return sentence;
+    }
+
+    
+
+    
+    
+    
 
 }

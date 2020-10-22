@@ -8,6 +8,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import model.LoginModel;
 import view.LoginView;
 
@@ -33,8 +34,8 @@ public class LoginController implements ActionListener {
                 vista.setLabelError("Todos los campos son obligatorios");
             } else {
                 vista.setLabelError("");
-                ResultSet dataUser = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
-                if (dataUser != null) {
+                ArrayList<String> dataUser = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
+                if (!dataUser.isEmpty()) {
                     vista.dispose();
                     new DashboardController(dataUser); // llama al perfil o zona de gestion
 

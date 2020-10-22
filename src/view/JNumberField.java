@@ -16,20 +16,39 @@ import javax.swing.JTextField;
  */
 public class JNumberField extends JTextField implements KeyListener {
 
+    boolean decimal = false;
+
     public JNumberField() {
         super();
         super.addKeyListener(this);
 
     }
 
+    public JNumberField(boolean decimal) {
+        super();
+        super.addKeyListener(this);
+        this.decimal = decimal;
+    }
+
     public void validateNumber(KeyEvent e) {
+
         String txt = valueOf(e.getKeyChar());
-        if (!(txt.equals("0") || txt.equals("1") || txt.equals("2") || txt.equals("3")
-                || txt.equals("4") || txt.equals("5") || txt.equals("6") || txt.equals("7")
-                || txt.equals("8") || txt.equals("9") || e.getKeyCode() == 8)) {
 
-            e.consume();
+        if (!decimal) {
+            if (!(txt.equals("0") || txt.equals("1") || txt.equals("2") || txt.equals("3")
+                    || txt.equals("4") || txt.equals("5") || txt.equals("6") || txt.equals("7")
+                    || txt.equals("8") || txt.equals("9") || e.getKeyCode() == 8)) {
 
+                e.consume();
+
+            }
+        } else {
+            if (!(txt.equals("0") || txt.equals("1") || txt.equals("2") || txt.equals("3")
+                    || txt.equals("4") || txt.equals("5") || txt.equals("6") || txt.equals("7")
+                    || txt.equals("8") || txt.equals("9") || e.getKeyCode() == 8 || (txt.equals(".") && !this.getText().contains(".")))) {
+                e.consume();
+
+            }
         }
 
     }

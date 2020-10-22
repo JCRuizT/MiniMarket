@@ -406,32 +406,32 @@ public class ActualizarUsuarioView extends JFrame {
     
     //set
 
-    public void setFieldnumIdentificacion(JNumberField fieldnumIdentificacion) {
-        this.fieldnumIdentificacion = fieldnumIdentificacion;
+    public void setFieldnumIdentificacion(String fieldnumIdentificacion) {
+        this.fieldnumIdentificacion.setText(fieldnumIdentificacion);
     }
 
-    public void setFieldName(JTextField fieldName) {
-        this.fieldName = fieldName;
+    public void setFieldName(String fieldName) {
+        this.fieldName.setText(fieldName);
     }
 
-    public void setFieldSecondName(JTextField fieldSecondName) {
-        this.fieldSecondName = fieldSecondName;
+    public void setFieldSecondName(String fieldSecondName) {
+        this.fieldSecondName.setText(fieldSecondName);
     }
 
-    public void setFieldLastName(JTextField fieldLastName) {
-        this.fieldLastName = fieldLastName;
+    public void setFieldLastName(String fieldLastName) {
+        this.fieldLastName.setText(fieldLastName);
     }
 
-    public void setFieldSecondLastName(JTextField fieldSecondLastName) {
-        this.fieldSecondLastName = fieldSecondLastName;
+    public void setFieldSecondLastName(String fieldSecondLastName) {
+        this.fieldSecondLastName.setText(fieldSecondLastName);
     }
 
-    public void setFieldCel(JNumberField fieldCel) {
-        this.fieldCel = fieldCel;
+    public void setFieldCel(String fieldCel) {
+        this.fieldCel.setText(fieldCel);
     }
 
-    public void setFieldEmail(JTextField fieldEmail) {
-        this.fieldEmail = fieldEmail;
+    public void setFieldEmail(String fieldEmail) {
+        this.fieldEmail.setText(fieldEmail);
     }
 
     public void setFieldPass(JPasswordField fieldPass) {
@@ -443,7 +443,7 @@ public class ActualizarUsuarioView extends JFrame {
     }
 
     public void setTipoRol(JComboBox tipoRol) {
-        this.tipoRol = tipoRol;
+        this.tipoRol.setSelectedItem(tipoRol);
     }
 
     public void setEstado(JComboBox estado) {
@@ -485,14 +485,6 @@ public class ActualizarUsuarioView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
-    
-    
-    
-    
-    
-     public static void main(String[] args) {
-
-        ActualizarUsuarioView view = new ActualizarUsuarioView();
-    }
+   
     
 }

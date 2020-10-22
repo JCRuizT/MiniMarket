@@ -5,20 +5,18 @@
  */
 package view;
 
-import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
-import static java.lang.System.out;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.Table.TipoProducto;
 
 
 
@@ -45,7 +43,7 @@ public class CategoryView extends JPanel {
     private final int x = 1500 ;
     private final int y = 1500;
     
-    public CategoryView(ResultSet result) {
+    public CategoryView(ArrayList<TipoProducto> result) {
         
         setSize(x, y);
         setLayout(null);
@@ -120,16 +118,15 @@ public class CategoryView extends JPanel {
             
         String columns[] = {"id","Nombre","Iva"};
         tableList = new JTableComponent(columns);
-       
         
-        try {
-            while (result.next()) {
-                Object rs[] = {result.getString("TipProId"),result.getString("TipProNombre"),result.getString("TipProIva")}; 
-                tableList.getModel().addRow(rs);
-            }
-        } catch (SQLException e) {
-            out.println(e.getMessage());
+        
+        for(int i=0; i<result.size();i++){
+            String rs[] = {result.get(i).getTipProId(),result.get(i).getTipProNombre(),result.get(i).getTipProIva()}; 
+            tableList.getModel().addRow(rs);
         }
+       
+
+
         
         fieldSearch = new JTableSearch(tableList.getTable());
         fieldSearch.setLocation(750, 110);

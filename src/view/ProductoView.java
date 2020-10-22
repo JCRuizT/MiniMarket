@@ -5,31 +5,30 @@
  */
 package view;
 
-import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
 import static java.lang.Integer.parseInt;
-import static java.lang.System.out;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.CategoryModel;
+import model.Table.Producto;
+import model.Table.TipoProducto;
+import model.TipoProductoModel;
 
 /**
  *
  * @author pc-standard
  */
-public class ProductView extends JPanel {
+public class ProductoView extends JPanel {
 
     
-    JTextField fieldPrecio = new JTextField();
+    JNumberField fieldPrecio = new JNumberField(true);
     JTextField fieldName = new JTextField();
     JTextField fieldFechaVencimiento = new JTextField();
   
@@ -54,7 +53,7 @@ public class ProductView extends JPanel {
     private final int y = 1500;
     
 
-    public ProductView(ResultSet result) {
+    public ProductoView(ArrayList<Producto> result) {
         
         setSize(x, y);
         setLayout(null);
@@ -96,7 +95,7 @@ public class ProductView extends JPanel {
         fieldCategoria.setSize(230,30);
         fieldCategoria.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 18));
 	fieldCategoria.addItem("Seleccionar Categoria");
-        ResultSet categoria = new CategoryModel().listCategory();
+        ArrayList<TipoProducto> categoria = new TipoProductoModel().getAll();
         
         fieldStock.setLocation(90, 490);
         fieldStock.setSize(230,30);
@@ -124,31 +123,22 @@ public class ProductView extends JPanel {
         buttonCancelProduct.setFocusable(false);
         buttonCancelProduct.setBorder(null);
         buttonCancelProduct.setFont(new Font("Arial", BOLD, 15));
-
-        try {
-            while (categoria.next()) {
-                fieldCategoria.addItem(categoria.getString("TipProNombre"));   
-            }
-
-        }catch(SQLException e){
-            out.println(e.getMessage());
+        
+        for(int i=0; i<categoria.size();i++){
+            fieldCategoria.addItem(categoria.get(i).getTipProNombre());
         }
         
         
         String columns[] = {"id","Nombre","Stock","Precio","Fecha de Vencimiento","Categoria"};
         tableList = new JTableComponent(columns);
         
-        try {
-            while (result.next()) {
-                Object rs[] = {result.getString("ProRef"),result.getString("ProNombre"),result.getString("ProStock"),
-                    result.getString("ProPrecio"),
-                    transformFecha(result.getString("ProFechaVencimiento")),
-                    result.getString("TipProNombre")}; 
-                tableList.getModel().addRow(rs);
-            }
-        } catch (SQLException e) {
-            out.println(e.getMessage());
+        System.out.println(result.size());
+        for(int i=0; i<result.size();i++){
+            String rs[] = {result.get(i).getProRef(),result.get(i).getProNombre(),result.get(i).getProStock(),
+                           result.get(i).getProPrecio(),transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
+            tableList.getModel().addRow(rs);
         }
+       
         
         tableList.getScrollTable().setLocation(450, 150);
         tableList.getScrollTable().setSize(500, 500);
