@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UsuarioModel;
-import view.CrearUsuarioView;
 import view.DashboardView;
 import view.UsuarioView;
 
@@ -17,6 +16,7 @@ import view.UsuarioView;
  *
  * @author quihu
  */
+
 public class UsuarioController implements ActionListener {
 
     private UsuarioView vista;

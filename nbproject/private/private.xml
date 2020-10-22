@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/controller/DashboardController.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>97</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/CategoryView.java</file>
             <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/controller/CategoryController.java</file>
@@ -10,5 +20,8 @@
             <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/JTableComponent.java</file>
             <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/ProductoView.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 8652fe6220363ff92794ec83af05efbef22a1fcd
     </open-files>
 </project-private>

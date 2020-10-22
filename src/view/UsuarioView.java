@@ -52,8 +52,12 @@ public class UsuarioView extends JPanel {
         title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
         title.setHorizontalAlignment(CENTER);
 
-        String columns[] = {"id", "TipoIdentificacion","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol","Estado"};
+        String columns[] = {"id", "T.I","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol","Estado"};
         tableList = new JTableComponent(columns);
+        tableList.getTable().getColumnModel().getColumn(1).setMaxWidth(40);
+        tableList.getTable().getColumnModel().getColumn(8).setMinWidth(150);
+        tableList.getTable().getColumnModel().getColumn(9).setMinWidth(50);
+        tableList.getTable().getColumnModel().getColumn(10).setMaxWidth(50);
 
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
