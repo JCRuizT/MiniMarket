@@ -28,7 +28,7 @@ public class TipoProductoModel {
     public ArrayList<TipoProducto> getAll(){
         ArrayList<TipoProducto>data = new ArrayList<>();
         try {
-            PreparedStatement sentence = conexion.sentence("select * from "+table);
+            PreparedStatement sentence = conexion.sentence("select * from "+table+" where TblEstado_EstId = 1");
             ResultSet result =  sentence.executeQuery();
             while(result.next()){
                 TipoProducto tp = new TipoProducto();
@@ -80,7 +80,9 @@ public class TipoProductoModel {
             sentence.setString(2, tp.getTipProIva());
             sentence.setString(3, tp.getTblEstado_EstId());
             sentence.setString(4, tp.getTipProId());
-            return sentence.execute();
+            sentence.execute();
+            
+            return true;
             
         } catch (SQLException e) {
             e.printStackTrace();

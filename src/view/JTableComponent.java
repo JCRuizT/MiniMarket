@@ -40,6 +40,11 @@ public class JTableComponent {
         scrollTable = new JScrollPane(table);
     }
     
+    public Object getObject(){
+        Object object = getModel().getValueAt(getTable().getSelectedRow(), 0);
+        return object;
+    }
+    
    
     public JTable getTable() {
         return table;

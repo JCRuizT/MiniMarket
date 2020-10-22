@@ -5,21 +5,16 @@
  */
 package view;
 
-import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
-import static java.lang.System.out;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import static javax.swing.SwingConstants.CENTER;
 import model.Table.Usuario;
 
@@ -64,8 +59,8 @@ public class UsuarioView extends JPanel {
         tableList.getScrollTable().setSize(1000, 500);
         
         for(int i=0; i<result.size();i++){
-            String rs[] = {
-                result.get(i).getUsuIdentificacion(),
+            Object rs[] = {
+                result.get(i),
                 result.get(i).getTipNombre(),
                 result.get(i).getUsuIdentificacion(),
                 result.get(i).getUsuNombre1(),

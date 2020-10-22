@@ -121,7 +121,7 @@ public class CategoryView extends JPanel {
         
         
         for(int i=0; i<result.size();i++){
-            String rs[] = {result.get(i).getTipProId(),result.get(i).getTipProNombre(),result.get(i).getTipProIva()}; 
+            Object rs[] = {result.get(i),result.get(i).getTipProNombre(),result.get(i).getTipProIva()}; 
             tableList.getModel().addRow(rs);
         }
        
@@ -201,6 +201,8 @@ public class CategoryView extends JPanel {
     public JComboBox getFieldIva() {
         return fieldIva;
     }
+    
+    
 
 
 }

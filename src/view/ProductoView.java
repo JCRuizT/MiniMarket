@@ -123,7 +123,7 @@ public class ProductoView extends JPanel {
         buttonCancelProduct.setFocusable(false);
         buttonCancelProduct.setBorder(null);
         buttonCancelProduct.setFont(new Font("Arial", BOLD, 15));
-        
+        buttonCancelProduct.setVisible(false);
         for(int i=0; i<categoria.size();i++){
             fieldCategoria.addItem(categoria.get(i).getTipProNombre());
         }
@@ -134,7 +134,7 @@ public class ProductoView extends JPanel {
         
         System.out.println(result.size());
         for(int i=0; i<result.size();i++){
-            String rs[] = {result.get(i).getProRef(),result.get(i).getProNombre(),result.get(i).getProStock(),
+            Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),
                            result.get(i).getProPrecio(),transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
             tableList.getModel().addRow(rs);
         }
@@ -247,6 +247,13 @@ public class ProductoView extends JPanel {
     public JButton getButtonCancelProduct() {
         return buttonCancelProduct;
     }
+
+    public JTableComponent getTableList() {
+        return tableList;
+    }
+    
+    
+    
     
 
 }

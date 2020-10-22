@@ -8,7 +8,6 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import view.DashboardView;
 

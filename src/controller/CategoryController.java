@@ -40,59 +40,100 @@ public class CategoryController implements ActionListener {
         return vista;
     }
 
-  
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
             if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("     Seleccionar IVA")) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                
+
                 TipoProducto p = new TipoProducto();
-                
+
                 p.setTipProIva(vista.getFieldIva().getSelectedItem().toString());
                 p.setTipProNombre(vista.getFieldName().getText());
-                
+
                 p = model.create(p);
                 if (p != null) {
+                    Object rs[] = {p, p.getTipProNombre(), p.getTipProIva()};
+                    vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
                     vista.getFieldIva().setSelectedIndex(0);
                     categ.add(p);
-                    vista.getTableList().getModel().fireTableDataChanged();
-                    System.out.println(p.getTipProId());
+
                     JOptionPane.showMessageDialog(null, "Se ha creado la categoria de manera correcta");
                 } else {
                     JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
                 }
             }
-        }else if(e.getSource().equals(vista.getButtonUpdateCategory())){
+        } else if (e.getSource().equals(vista.getButtonUpdateCategory())) {
+
             if (vista.getTableList().getTable().getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             } else {
 
+                TipoProducto tp = (TipoProducto) vista.getTableList().getObject();
                 if (stateButtonUpdate == false) {
                     vista.getButtonCreateCategory().setEnabled(false);
                     vista.getButtonDeleteCategory().setEnabled(false);
-                    vista.getButtonCancelCategory().setVisible(true);
                     vista.getButtonCancelCategory().setEnabled(true);
+                    vista.getButtonCancelCategory().setVisible(true);
                     vista.getTableList().getTable().setEnabled(false);
+
                     stateButtonUpdate = true;
 
-                    String id = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 0);
-                    String name = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 1);
-                    String iva = (String) vista.getTableList().getModel().getValueAt(vista.getTableList().getTable().getSelectedRow(), 2);
-                    vista.getFieldName().setText(name);
-
-                    vista.setSelectedCombobox(vista.getFieldIva(), iva);
+                    vista.getFieldName().setText(tp.getTipProNombre());
+                    vista.setSelectedCombobox(vista.getFieldIva(), tp.getTipProIva());
 
                 } else {
-                    System.out.println("lkdldkldkldkldklddkldkl");
+
+                    if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("     Seleccionar IVA")) {
+                        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        tp.setTipProNombre(vista.getFieldName().getText());
+                        tp.setTipProIva(vista.getFieldIva().getSelectedItem().toString());
+                        if (model.update(tp)) {
+                            vista.getButtonCreateCategory().setEnabled(true);
+                            vista.getButtonDeleteCategory().setEnabled(true);
+                            vista.getButtonCancelCategory().setEnabled(false);
+                            vista.getButtonCancelCategory().setVisible(false);
+                            vista.getTableList().getTable().setEnabled(true);
+                            vista.setSelectedCombobox(vista.getFieldIva(), "     Seleccionar IVA");
+                            vista.getFieldName().setText("");
+                            stateButtonUpdate = false;
+
+                            vista.getTableList().getModel().setValueAt(tp.getTipProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
+                            vista.getTableList().getModel().setValueAt(tp.getTipProIva(), vista.getTableList().getTable().getSelectedRow(), 2);
+
+                            JOptionPane.showMessageDialog(null, "Se ha actualizado el tipo de producto correctamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la actualizacion", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
                 }
 
             }
 
-        }else if(e.getSource().equals(vista.getButtonCancelCategory())){
+        } else if (e.getSource().equals(vista.getButtonDeleteCategory())) {
+
+            if (vista.getTableList().getTable().getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
+            } else {
+                TipoProducto tp = (TipoProducto) vista.getTableList().getObject();
+                tp.setTblEstado_EstId("2");
+                int valDelete = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este registro?","Confirmacion", JOptionPane.YES_NO_OPTION);
+                if (valDelete ==  JOptionPane.YES_NO_OPTION) {
+                    if (model.update(tp)) {
+
+                        vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());
+                        JOptionPane.showMessageDialog(null, "Se ha Eliminado el tipo de producto correctamente");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la Eliminacion", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+            }
+        } else if (e.getSource().equals(vista.getButtonCancelCategory())) {
             vista.getButtonCancelCategory().setVisible(false);
             vista.getButtonCancelCategory().setEnabled(false);
             vista.getButtonCreateCategory().setEnabled(true);
@@ -104,6 +145,5 @@ public class CategoryController implements ActionListener {
             vista.getFieldName().setText("");
         }
     }
-
 
 }
