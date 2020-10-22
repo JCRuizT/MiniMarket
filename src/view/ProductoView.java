@@ -129,8 +129,11 @@ public class ProductoView extends JPanel {
         }
         
         
-        String columns[] = {"id","Nombre","Stock","Precio","Fecha de Vencimiento","Categoria"};
+        String columns[] = {"id","Nombre","Stock","Precio","Fecha Vencimiento","Categoria"};
         tableList = new JTableComponent(columns);
+        tableList.getTable().getColumnModel().getColumn(1).setMinWidth(100);
+        tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(50);
+        tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(60);
         
         System.out.println(result.size());
         for(int i=0; i<result.size();i++){
@@ -202,8 +205,8 @@ public class ProductoView extends JPanel {
     
      public String transformFecha(String fecha){
         
-        String mes[] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre"
-                ,"Diciembre"};
+        String mes[] = {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov"
+                ,"Dic"};
         String arr[] = fecha.split("-");
         int mesSelected = parseInt(arr[1])-1;
         String response  = arr[2]+" de "+mes[mesSelected]+" del "+arr[0];
