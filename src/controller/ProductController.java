@@ -45,16 +45,16 @@ public class ProductController implements ActionListener{
 
                 p.setProNombre(vista.getFieldName().getText());
                 p.setProPrecio(vista.getFieldPrecio().getText());
-                p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getText());
+                p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getDate());
                 p.setTblTipoProducto_TipId(vista.getFieldCategoria().getSelectedItem().toString());
                 p.setProStock(vista.getFieldStock().getSelectedItem().toString());
 
                 p = model.create(p);
                 if (p != null) {
-                    Object rs[] = {p, p.getTipProNombre(), p.getProStock(),p.getProPrecio(),p.getProFechaVencimiento(),p.getTipProNombre()};
+                    Object rs[] = {p, p.getProNombre(), p.getProStock(),p.getProPrecio(),p.getProFechaVencimiento(),p.getTipProNombre()};
                     vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
-                    vista.getFieldFechaVencimiento().setText("");
+                    vista.getFieldFechaVencimiento().setDefaultText();
                     vista.getFieldCategoria().setSelectedIndex(0);
                     vista.getFieldStock().setSelectedIndex(0);
                     pro.add(p);

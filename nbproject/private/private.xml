@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>src/controller/DashboardController.java</url>
@@ -26,5 +27,10 @@
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/ProductController.java</file>
             <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/TipoPagoView.java</file>
         </group>
+=======
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
+>>>>>>> d7a951316e5bbfc23b354dd4e40da5d3632cabb1
     </open-files>
 </project-private>
