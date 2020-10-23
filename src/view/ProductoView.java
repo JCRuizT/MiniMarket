@@ -30,7 +30,7 @@ public class ProductoView extends JPanel {
     
     JNumberField fieldPrecio = new JNumberField(true);
     JTextField fieldName = new JTextField();
-    JTextField fieldFechaVencimiento = new JTextField();
+    JDatePicker fieldFechaVencimiento = new JDatePicker();
   
     JComboBox fieldStock = new JComboBox();
     JComboBox fieldCategoria = new JComboBox();
@@ -125,7 +125,7 @@ public class ProductoView extends JPanel {
         buttonCancelProduct.setFont(new Font("Arial", BOLD, 15));
         buttonCancelProduct.setVisible(false);
         for(int i=0; i<categoria.size();i++){
-            fieldCategoria.addItem(categoria.get(i).getTipProNombre());
+            fieldCategoria.addItem(categoria.get(i).getTipProId());
         }
         
         
@@ -135,7 +135,6 @@ public class ProductoView extends JPanel {
         tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(50);
         tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(60);
         
-        System.out.println(result.size());
         for(int i=0; i<result.size();i++){
             Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),
                            result.get(i).getProPrecio(),transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
@@ -227,7 +226,7 @@ public class ProductoView extends JPanel {
         return fieldName;
     }
 
-    public JTextField getFieldFechaVencimiento() {
+    public JDatePicker getFieldFechaVencimiento() {
         return fieldFechaVencimiento;
     }
 

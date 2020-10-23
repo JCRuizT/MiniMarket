@@ -64,6 +64,7 @@ public class ProductoModel {
             sentence.setString(6, p.getTblTipoProducto_TipId());
             sentence.setString(7, "1");
             
+            System.out.println(sentence.toString());
             sentence.execute();
             PreparedStatement s = conexion.sentence("select * from "+table+" order by ProRef desc limit 1");
             ResultSet r =  s.executeQuery();

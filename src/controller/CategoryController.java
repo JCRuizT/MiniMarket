@@ -48,7 +48,7 @@ public class CategoryController implements ActionListener {
             } else {
 
                 TipoProducto p = new TipoProducto();
-
+                System.out.println(vista.getFieldIva().getSelectedItem());
                 p.setTipProIva(vista.getFieldIva().getSelectedItem().toString());
                 p.setTipProNombre(vista.getFieldName().getText());
 
