@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.LoginModel;
 import view.LoginView;
@@ -30,7 +29,7 @@ public class LoginController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getButtonSubmit())) {
-            if (vista.getFieldUser().equals("") || vista.getFieldPass().getPassword().equals("")) {
+            if (vista.getFieldUser().getText().equals("") || vista.getFieldPass().getText().equals("")) {
                 vista.setLabelError("Todos los campos son obligatorios");
             } else {
                 vista.setLabelError("");

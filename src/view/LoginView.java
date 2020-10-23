@@ -63,13 +63,13 @@ public class LoginView extends JFrame implements MouseListener{
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        //setUndecorated(true);
+        setUndecorated(true);
 
         //Diseño
         background.setSize(x, y);
         background.setLocation(0, 0);
         background.setLayout(null);
-
+       
         fondobackground.setSize(x, y);
         fondobackground.setLocation(0, 0);
         ImageIcon imagefondobackground = new ImageIcon(getClass().getResource("/imagenes/fondoverduras.jpg"));

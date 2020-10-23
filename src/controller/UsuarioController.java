@@ -54,6 +54,7 @@ public class UsuarioController implements ActionListener {
             vistaD.setVisible(false);
             
             CrearUsuarioController register = new CrearUsuarioController(vistaD);
+            
         }
          
         if (e.getSource() == vista.getButtonUpdateUsuario()) {

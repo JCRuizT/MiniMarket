@@ -5,23 +5,26 @@
             <url>src/controller/DashboardController.java</url>
             <bookmark id="1">
                 <name/>
-                <line>97</line>
+                <line>101</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/CategoryView.java</file>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/controller/CategoryController.java</file>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/controller/DashboardController.java</file>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/controller/ProductController.java</file>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/JTableComponent.java</file>
-            <file>file:/home/pc-standard/NetBeansProjects/MiniMarket/src/view/ProductoView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/model/HacerPedidoModel.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/DashboardController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/DashboardView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/ActualizarUsuarioView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/ProductoView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/model/Conexion.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/UsuarioController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/LoginView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/HacerPedidoController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/LoginController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/HacerPedidoView.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/controller/ProductController.java</file>
+            <file>file:/D:/Frank´s%20User%20Data/OneDrive/Escritorio/PROYECTO%20JAVA/MiniMarket/src/view/TipoPagoView.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 8652fe6220363ff92794ec83af05efbef22a1fcd
     </open-files>
 </project-private>

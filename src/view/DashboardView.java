@@ -5,7 +5,6 @@
  */
 package view;
 
-
 import java.awt.*;
 import static java.awt.Color.BLACK;
 import static java.awt.Color.WHITE;
@@ -21,74 +20,70 @@ import static javax.swing.SwingConstants.CENTER;
  *
  * @author pc-standard
  */
-public class DashboardView extends JFrame implements MouseListener{
-    
-     Container contenedor = getContentPane();
-     
-        //PANELES 
-          JPanel pagPrincipal = new JPanel();
-          JPanel menu = new JPanel();
-           
-        //ETIQUETAS
-          JLabel labelNameUser = new JLabel();
-          JLabel labelCrearProd = new JLabel();
-          JLabel labelCrearUsu = new JLabel();
-          JLabel labelCrearCateg = new JLabel();
-          JLabel labelHacerPedido = new JLabel();
-          JLabel labelMenu = new JLabel();
-          JLabel labelBienvenida = new JLabel();
-          JLabel labelRol = new JLabel();
-          JLabel picAdmin = new JLabel();
-          JLabel close = new JLabel();
-          JLabel minimize = new JLabel();
-          JLabel picCrearUsu = new JLabel();
-          JLabel picCrearProduc = new JLabel();
-          JLabel picCrearCateg = new JLabel();
-          JLabel picHacerPedido = new JLabel();
-        
-          
-        //CAJA DE TEXTO
-         JTextField xs = new JTextField();
+public class DashboardView extends JFrame implements MouseListener {
 
-        //BOTONES
-         JButton buttonSubmit = new JButton();
+    Container contenedor = getContentPane();
 
-        //ComboBox
-         JComboBox fieldRol = new JComboBox();
+    //PANELES 
+    JPanel pagPrincipal = new JPanel();
+    JPanel menu = new JPanel();
 
-        //VARIAVLES
-        private final int x = 1430;
-        private final int y = 900;
-        
-   
-    
-    public DashboardView(){
-        
+    //ETIQUETAS
+    JLabel labelNameUser = new JLabel();
+    JLabel labelCrearProd = new JLabel();
+    JLabel labelCrearUsu = new JLabel();
+    JLabel labelCrearCateg = new JLabel();
+    JLabel labelHacerPedido = new JLabel();
+    JLabel labelMenu = new JLabel();
+    JLabel labelBienvenida = new JLabel();
+    JLabel labelRol = new JLabel();
+    JLabel picAdmin = new JLabel();
+    JLabel close = new JLabel();
+    JLabel minimize = new JLabel();
+    JLabel picCrearUsu = new JLabel();
+    JLabel picCrearProduc = new JLabel();
+    JLabel picCrearCateg = new JLabel();
+    JLabel picHacerPedido = new JLabel();
+
+    //CAJA DE TEXTO
+    JTextField xs = new JTextField();
+
+    //BOTONES
+    JButton buttonSubmit = new JButton();
+
+    //ComboBox
+    JComboBox fieldRol = new JComboBox();
+
+    //VARIAVLES
+    private final int x = 1430;
+    private final int y = 900;
+
+    public DashboardView() {
+
         //setTitle("MiniMarket");
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        //setResizable(false);
-        //setUndecorated(true);
-         
+        setResizable(false);
+        setUndecorated(true);
+
         //Diseño
-        
         pagPrincipal.setSize(x, y);
         pagPrincipal.setLocation(0, 0);
         pagPrincipal.setLayout(null);
-        
+
         menu.setSize(300, 1430);
         menu.setLayout(null);
         menu.setLocation(0, 0);
         menu.setBackground(orange);
-        
+
         labelMenu.setForeground(WHITE);
         labelMenu.setSize(300, 40);
         labelMenu.setLocation(0, 20);
         labelMenu.setHorizontalAlignment(CENTER);
         labelMenu.setFont(new Font("Arial Black", BOLD, 30));
         labelMenu.setText("Menú");
-        
+
         labelCrearUsu.setForeground(WHITE);
         labelCrearUsu.setSize(300, 40);
         labelCrearUsu.setLocation(80, 100);
@@ -96,7 +91,7 @@ public class DashboardView extends JFrame implements MouseListener{
         labelCrearUsu.setText("Gestionar Usuario");
         labelCrearUsu.setCursor(new Cursor(HAND_CURSOR));
         labelCrearUsu.addMouseListener(this);
-        
+
         labelCrearProd.setForeground(WHITE);
         labelCrearProd.setSize(300, 40);
         labelCrearProd.setLocation(80, 140);
@@ -104,7 +99,7 @@ public class DashboardView extends JFrame implements MouseListener{
         labelCrearProd.setText("Gestionar Producto");
         labelCrearProd.setCursor(new Cursor(HAND_CURSOR));
         labelCrearProd.addMouseListener(this);
-        
+
         labelCrearCateg.setForeground(WHITE);
         labelCrearCateg.setSize(300, 40);
         labelCrearCateg.setLocation(80, 180);
@@ -112,7 +107,7 @@ public class DashboardView extends JFrame implements MouseListener{
         labelCrearCateg.setText("Gestionar Categoria");
         labelCrearCateg.setCursor(new Cursor(HAND_CURSOR));
         labelCrearCateg.addMouseListener(this);
-        
+
         labelHacerPedido.setForeground(WHITE);
         labelHacerPedido.setSize(300, 40);
         labelHacerPedido.setLocation(80, 220);
@@ -120,19 +115,19 @@ public class DashboardView extends JFrame implements MouseListener{
         labelHacerPedido.setText("Hacer Pedido");
         labelHacerPedido.setCursor(new Cursor(HAND_CURSOR));
         labelHacerPedido.addMouseListener(this);
-        
+
         labelBienvenida.setForeground(BLACK);
         labelBienvenida.setSize(300, 40);
         labelBienvenida.setLocation(350, 35);
         labelBienvenida.setFont(new Font("Segoe UI Light", BOLD, 30));
         labelBienvenida.setText("Bienvenido");
-        
+
         labelRol.setForeground(BLACK);
         labelRol.setSize(300, 40);
         labelRol.setLocation(520, 35);
         labelRol.setFont(new Font("Segoe UI Light", BOLD, 30));
         labelRol.setText("Administrador");
-        
+
         labelNameUser.setForeground(BLACK);
         labelNameUser.setSize(200, 40);
         labelNameUser.setLocation(1050, 35);
@@ -140,7 +135,7 @@ public class DashboardView extends JFrame implements MouseListener{
         labelNameUser.setText("Carlos Yepez");
         labelNameUser.setCursor(new Cursor(HAND_CURSOR));
         labelNameUser.addMouseListener(this);
-        
+
         picAdmin.setSize(70, 70);
         picAdmin.setLocation(1260, 20);
         ImageIcon imageAdmin = new ImageIcon(getClass().getResource("/imagenes/admin.png"));
@@ -148,7 +143,7 @@ public class DashboardView extends JFrame implements MouseListener{
         picAdmin.setIcon(iconAdmin);
         picAdmin.setCursor(new Cursor(HAND_CURSOR));
         picAdmin.addMouseListener(this);
-        
+
         picCrearUsu.setSize(30, 30);
         picCrearUsu.setLocation(40, 100);
         ImageIcon imageCrearUsu = new ImageIcon(getClass().getResource("/imagenes/CrearUsuario.png"));
@@ -156,7 +151,7 @@ public class DashboardView extends JFrame implements MouseListener{
         picCrearUsu.setIcon(iconCrearUsu);
         picCrearUsu.setCursor(new Cursor(HAND_CURSOR));
         picCrearUsu.addMouseListener(this);
-        
+
         picCrearProduc.setSize(30, 30);
         picCrearProduc.setLocation(40, 145);
         ImageIcon imageCrearProduc = new ImageIcon(getClass().getResource("/imagenes/CrearProducto.png"));
@@ -164,7 +159,7 @@ public class DashboardView extends JFrame implements MouseListener{
         picCrearProduc.setIcon(iconCrearProduc);
         picCrearProduc.setCursor(new Cursor(HAND_CURSOR));
         picCrearProduc.addMouseListener(this);
-        
+
         picCrearCateg.setSize(30, 30);
         picCrearCateg.setLocation(40, 187);
         ImageIcon imageCrearCateg = new ImageIcon(getClass().getResource("/imagenes/categoria.png"));
@@ -172,7 +167,7 @@ public class DashboardView extends JFrame implements MouseListener{
         picCrearCateg.setIcon(iconCrearCateg);
         picCrearCateg.setCursor(new Cursor(HAND_CURSOR));
         picCrearCateg.addMouseListener(this);
-        
+
         picHacerPedido.setSize(30, 30);
         picHacerPedido.setLocation(39, 225);
         ImageIcon imageHacerPedido = new ImageIcon(getClass().getResource("/imagenes/pedido.png"));
@@ -180,7 +175,7 @@ public class DashboardView extends JFrame implements MouseListener{
         picHacerPedido.setIcon(iconHacerPedido);
         picHacerPedido.setCursor(new Cursor(HAND_CURSOR));
         picHacerPedido.addMouseListener(this);
-        
+
         close.setSize(20, 20);
         close.setLocation(1390, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/CerrarN.png"));
@@ -188,7 +183,7 @@ public class DashboardView extends JFrame implements MouseListener{
         close.setIcon(iconclose);
         close.setCursor(new Cursor(HAND_CURSOR));
         close.addMouseListener(this);
-        
+
         minimize.setSize(20, 20);
         minimize.setLocation(1360, 20);
         ImageIcon imageminimize = new ImageIcon(getClass().getResource("/imagenes/minimizarN.png"));
@@ -196,7 +191,7 @@ public class DashboardView extends JFrame implements MouseListener{
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(HAND_CURSOR));
         minimize.addMouseListener(this);
-        
+
         menu.add(picHacerPedido);
         menu.add(labelHacerPedido);
         menu.add(picCrearCateg);
@@ -208,24 +203,23 @@ public class DashboardView extends JFrame implements MouseListener{
         pagPrincipal.add(labelRol);
         pagPrincipal.add(labelBienvenida);
         menu.add(labelMenu);
+        pagPrincipal.add(picAdmin);
         pagPrincipal.add(labelNameUser);
         pagPrincipal.add(close);
         pagPrincipal.add(minimize);
-        pagPrincipal.add(picAdmin);
         pagPrincipal.add(menu);
         contenedor.add(pagPrincipal);
-        
-       
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-    
+
     @Override
-      public void mouseClicked(MouseEvent me) {
+    public void mouseClicked(MouseEvent me) {
         if (me.getSource() == minimize) {
             setState(ICONIFIED);
         }
-        if (me.getSource()==close){
+        if (me.getSource() == close) {
             exit(0);
         }
     }
@@ -258,10 +252,7 @@ public class DashboardView extends JFrame implements MouseListener{
         }
     }
 
- 
-    
     //Metodos Getters 
-    
     public JPanel getPagPrincipal() {
         return pagPrincipal;
     }
@@ -305,5 +296,5 @@ public class DashboardView extends JFrame implements MouseListener{
     public JLabel getPicHacerPedido() {
         return picHacerPedido;
     }
-    
+
 }
