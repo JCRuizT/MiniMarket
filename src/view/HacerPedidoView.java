@@ -7,11 +7,9 @@ package view;
 
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
-import java.awt.Cursor;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
-import static java.awt.Frame.HAND_CURSOR;
 import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

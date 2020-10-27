@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import model.HacerPedidoModel;
 import view.DashboardView;
 import view.HacerPedidoView;
@@ -18,39 +17,37 @@ import view.TipoPagoView;
  * @author quihu
  */
 public class HacerPedidoController implements ActionListener {
-    
-    
+
     private HacerPedidoView vistaH;
     private TipoPagoView pagoVista;
     private HacerPedidoModel modelo;
     private DashboardView vistaD;
-    
-    
-    public HacerPedidoController(DashboardView vistaD){
-        
+
+    public HacerPedidoController(DashboardView vistaD) {
+
         vistaH = new HacerPedidoView();
         modelo = new HacerPedidoModel();
-        this.vistaD=vistaD;
-        
-        
+        this.vistaD = vistaD;
+
         vistaH.getButtonBuy().addActionListener(this);
-        
+
     }
-    
-    public HacerPedidoView getVista(){
+
+    public HacerPedidoView getVista() {
         return vistaH;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-       if(e.getSource() == vistaH.getButtonBuy()){
-           
-           
-            TipoPagoView vista = new TipoPagoView();
-           
-       }
+
+        if (e.getSource() == vistaH.getButtonBuy()) {
             
+            vistaD.setVisible(false);
+
+            TipoPagoController vista = new TipoPagoController(vistaD);
+
+        }
+
     }
-    
+
 }

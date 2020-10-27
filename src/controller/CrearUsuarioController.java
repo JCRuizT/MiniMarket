@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import model.UsuarioModel;
 import view.CrearUsuarioView;
 import view.DashboardView;
 import view.LoginView;
@@ -18,39 +17,38 @@ import view.LoginView;
  *
  * @author quihu
  */
-public class CrearUsuarioController implements MouseListener,ActionListener{
-    
+public class CrearUsuarioController implements MouseListener, ActionListener {
+
     private CrearUsuarioView vista;
     private DashboardView vistaD;
-    
-    public CrearUsuarioController(DashboardView vistaD){
-        
-      vista = new CrearUsuarioView();
-      
-      this.vistaD = vistaD;
-      
-      
-      vista.getClose().addMouseListener(this);
-      vista.getMinimize().addMouseListener(this);
-      vista.getCancelar().addMouseListener(this);
-      
+
+    public CrearUsuarioController(DashboardView vistaD) {
+
+        vista = new CrearUsuarioView();
+
+        this.vistaD = vistaD;
+
+        vista.getClose().addMouseListener(this);
+        vista.getMinimize().addMouseListener(this);
+        vista.getCancelar().addMouseListener(this);
+
     }
-    
-     @Override
+
+    @Override
     public void mouseClicked(MouseEvent me) {
         if (me.getSource() == vista.getMinimize()) {
             vista.setState(LoginView.ICONIFIED);
         }
         if (me.getSource() == vista.getClose()) {
             vista.dispose();
-             vistaD.setVisible(true);
+            vistaD.setVisible(true);
         }
         if (me.getSource() == vista.getCancelar()) {
             vista.dispose();
-             vistaD.setVisible(true);
+            vistaD.setVisible(true);
         }
     }
-    
+
     @Override
     public void mousePressed(MouseEvent me) {
 
@@ -73,6 +71,6 @@ public class CrearUsuarioController implements MouseListener,ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
     }
 }

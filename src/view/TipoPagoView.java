@@ -183,11 +183,4 @@ public class TipoPagoView extends JFrame {
     public JLabel getTextCancelar() {
         return TextCancelar;
     }
-
-    public static void main(String[] args) {
-
-        TipoPagoView gui = new TipoPagoView();
-
-    }
-
 }

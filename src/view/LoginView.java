@@ -11,7 +11,6 @@ import static java.awt.Color.BLUE;
 import static java.awt.Color.WHITE;
 import static java.awt.Color.orange;
 import static java.awt.Color.red;
-import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Font.BOLD;
 import static java.awt.Image.SCALE_DEFAULT;
 import java.awt.event.*;
