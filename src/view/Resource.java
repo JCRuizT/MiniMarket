@@ -5,13 +5,7 @@
  */
 package view;
 
-import java.awt.Dimension;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import static java.lang.Integer.parseInt;
 
 /**
  *
@@ -19,11 +13,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Resource {
     
-    public static JLabel CreateImageLabel(){
-         Icon image = new ImageIcon("/home/pc-standard/Descargas/logo-tienda.png");
-         JLabel label = new JLabel();
-         label.setIcon(image);
-         return label;
+    public static String transformFecha(String fecha){
+        
+        String mes[] = {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov"
+                ,"Dic"};
+        String arr[] = fecha.split("-");
+        int mesSelected = parseInt(arr[1])-1;
+        String response  = arr[2]+" de "+mes[mesSelected]+" del "+arr[0];
+        return response;
+        
     }
 
 }

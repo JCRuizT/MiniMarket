@@ -19,6 +19,7 @@ public class Producto {
     private String ProFechaVencimiento;
     private String TblTipoProducto_TipId;
     private String TipProNombre;
+    
 
     public String getProRef() {
         return ProRef;

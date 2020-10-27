@@ -137,7 +137,7 @@ public class ProductoView extends JPanel {
         
         for(int i=0; i<result.size();i++){
             Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),
-                           result.get(i).getProPrecio(),transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
+                           result.get(i).getProPrecio(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
             tableList.getModel().addRow(rs);
         }
        
@@ -202,17 +202,7 @@ public class ProductoView extends JPanel {
       
     }
     
-     public String transformFecha(String fecha){
-        
-        String mes[] = {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov"
-                ,"Dic"};
-        String arr[] = fecha.split("-");
-        int mesSelected = parseInt(arr[1])-1;
-        String response  = arr[2]+" de "+mes[mesSelected]+" del "+arr[0];
-        return response;
-        
-        
-    }
+    
 
     public JComboBox getFieldStock() {
         return fieldStock;
