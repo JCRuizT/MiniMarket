@@ -9,7 +9,6 @@ import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
-import static java.lang.Integer.parseInt;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -79,17 +78,6 @@ public final class JDatePicker extends JDatePickerImpl implements ChangeListener
 
     }
     
-    private String transformFecha(String fecha){
-        
-        String mes[] = {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov"
-                ,"Dic"};
-        String arr[] = fecha.split("-");
-        int mesSelected = parseInt(arr[1])-1;
-        String response  = arr[2]+" de "+mes[mesSelected]+" del "+arr[0];
-        return response;
-        
-    }
-
     
     
 }

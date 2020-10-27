@@ -65,7 +65,7 @@ public class DashboardView extends JFrame implements MouseListener {
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        setUndecorated(true);
+        //setUndecorated(true);
 
         //Diseño
         pagPrincipal.setSize(x, y);

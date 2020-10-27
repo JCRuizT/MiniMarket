@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import model.ProductoModel;
 import model.Table.Producto;
 import view.ProductoView;
+import view.Resource;
 
 /**
  *
@@ -40,7 +41,6 @@ public class ProductController implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 
-                
                 Producto p = new Producto();
 
                 p.setProNombre(vista.getFieldName().getText());
@@ -51,15 +51,16 @@ public class ProductController implements ActionListener{
 
                 p = model.create(p);
                 if (p != null) {
-                    Object rs[] = {p, p.getProNombre(), p.getProStock(),p.getProPrecio(),p.getProFechaVencimiento(),p.getTipProNombre()};
+                    Object rs[] = {p, p.getProNombre(), p.getProStock(),p.getProPrecio(),Resource.transformFecha(p.getProFechaVencimiento()),p.getTipProNombre()};
                     vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
+                    vista.getFieldPrecio().setText("");
                     vista.getFieldFechaVencimiento().setDefaultText();
                     vista.getFieldCategoria().setSelectedIndex(0);
                     vista.getFieldStock().setSelectedIndex(0);
                     pro.add(p);
 
-                    JOptionPane.showMessageDialog(null, "Se ha creado la categoria de manera correcta");
+                    JOptionPane.showMessageDialog(null, "Se ha creado el producto de manera correcta");
                 } else {
                     JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
                 }

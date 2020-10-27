@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.Producto;
+import view.Resource;
 
 /**
  *
@@ -66,17 +67,19 @@ public class ProductoModel {
             
             System.out.println(sentence.toString());
             sentence.execute();
-            PreparedStatement s = conexion.sentence("select * from "+table+" order by ProRef desc limit 1");
+            PreparedStatement s = conexion.sentence("select * from "+table+",TblTipoProducto where TblTipoProducto_TipId = TipProId  order by ProRef desc limit 1");
+            System.out.println(s);
             ResultSet r =  s.executeQuery();
             if(r.next()){
                 n = new Producto();
                 n.setProRef(r.getString("ProRef"));
                 n.setProNombre(r.getString("ProNombre"));
-                n.setProPrecio("ProPrecio");
-                n.setProStock("ProStock");
-                n.setTblEstado_EstId("TblEstado_EstId");
-                n.setTblTipoProducto_TipId("TblTipoProducto_TipId");
-                n.setProFechaVencimiento("ProFechaVencimiento");
+                n.setProPrecio(r.getString("ProPrecio"));
+                n.setProStock(r.getString("ProStock"));
+                n.setTblEstado_EstId(r.getString("TblEstado_EstId"));
+                n.setTblTipoProducto_TipId(r.getString("TblTipoProducto_TipId"));
+                n.setTipProNombre(r.getString("TipProNombre"));
+                n.setProFechaVencimiento(r.getString("ProFechaVencimiento"));
             }
 
 
