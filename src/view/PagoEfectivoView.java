@@ -6,7 +6,6 @@
 package view;
 
 import java.awt.Color;
-import static java.awt.Color.WHITE;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Container;
@@ -21,18 +20,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import static javax.swing.SwingConstants.CENTER;
 
 /**
  *
  * @author quihu
  */
-public class PagoTarjetaView extends JFrame {
+public class PagoEfectivoView extends JFrame{
 
-    Container contenedor = getContentPane();
+   Container contenedor = getContentPane();
     JPanel main = new JPanel();
     JPanel img = new JPanel();
 
@@ -51,7 +50,6 @@ public class PagoTarjetaView extends JFrame {
     JLabel ciudad = new JLabel();
     JLabel direccion = new JLabel();
     JLabel codigoPostal = new JLabel();
-    JLabel pagoseguro = new JLabel();
 
     JComboBox mes = new JComboBox();
     JComboBox año = new JComboBox();
@@ -70,7 +68,7 @@ public class PagoTarjetaView extends JFrame {
     private final int x = 1135;
     private final int y = 800;
 
-    public PagoTarjetaView() {
+    public PagoEfectivoView() {
 
         setSize(x, y);
         setLayout(null);
@@ -209,12 +207,6 @@ public class PagoTarjetaView extends JFrame {
         FieldcodigoPostal.setLocation(800, 660);
         FieldcodigoPostal.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 23));
         
-        pagoseguro.setSize(200, 80);
-        pagoseguro.setLocation(0, 719);
-        ImageIcon imageCrearCateg = new ImageIcon(getClass().getResource("/imagenes/pagoseguro.png"));
-        Icon iconCrearCateg = new ImageIcon(imageCrearCateg.getImage().getScaledInstance(pagoseguro.getWidth(), pagoseguro.getHeight(), SCALE_DEFAULT));
-        pagoseguro.setIcon(iconCrearCateg);
-        
         visa.setSize(60, 60);
         visa.setLocation(520, 180);
         ImageIcon imageCrearProduc = new ImageIcon(getClass().getResource("/imagenes/visa.png"));
@@ -238,7 +230,7 @@ public class PagoTarjetaView extends JFrame {
 
         mujerpago.setSize(500, 800);
         mujerpago.setLocation(0,0);
-        ImageIcon imageminimize = new ImageIcon(getClass().getResource("/imagenes/mujerpago.png"));
+        ImageIcon imageminimize = new ImageIcon(getClass().getResource("/imagenes/mujerEfectivo.png"));
         Icon iconminimize = new ImageIcon(imageminimize.getImage().getScaledInstance(mujerpago.getWidth(), mujerpago.getHeight(), SCALE_DEFAULT));
         mujerpago.setIcon(iconminimize);
        
@@ -267,7 +259,6 @@ public class PagoTarjetaView extends JFrame {
         main.add(aceptantarjetas);
         main.add(Labeltitulo2);
         main.add(Labeltitulo);
-        img.add(pagoseguro);
         img.add(mujerpago);
         main.add(img);
         contenedor.add(main);
@@ -276,13 +267,8 @@ public class PagoTarjetaView extends JFrame {
         setVisible(true);
 
     }
-
-    public JButton getPagar() {
-        return pagar;
-    }
-
-    public JButton getCancelar() {
-        return cancelar;
+    public static void main(String[] args) {
+        PagoEfectivoView payMoney = new PagoEfectivoView();
     }
     
 }

@@ -61,12 +61,13 @@ public class TipoPagoController implements MouseListener {
            if (me.getSource() == vista.getPicTarjeta()) {
             
                vista.setVisible(false);
-               PagoTarjetaController payTarjet = new PagoTarjetaController();
+               PagoTarjetaController payTarjet = new PagoTarjetaController(vistaD);
             
         }
             if (me.getSource() == vista.getTextTarjeta()) {
                 vista.setVisible(false);
-                PagoTarjetaController payTarjet = new PagoTarjetaController();
+                PagoTarjetaController payTarjet = new PagoTarjetaController(vistaD);
+               
             
         }
     }

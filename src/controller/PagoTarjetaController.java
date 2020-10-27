@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.DashboardView;
 import view.PagoTarjetaView;
 
 /**
@@ -16,11 +17,14 @@ import view.PagoTarjetaView;
 public class PagoTarjetaController implements ActionListener{
     
     private PagoTarjetaView vista;
-   
+    private TipoPagoController vistaT;
+    private DashboardView vistaD;
     
-    public PagoTarjetaController(){
+    public PagoTarjetaController(DashboardView vistaD){
         
         vista = new PagoTarjetaView();
+        
+        this.vistaD=vistaD;
         
         vista.getCancelar().addActionListener(this);
         vista.getPagar().addActionListener(this);
@@ -35,6 +39,10 @@ public class PagoTarjetaController implements ActionListener{
     public void actionPerformed(ActionEvent me) {
        if (me.getSource() == vista.getCancelar()){
            vista.setVisible(false);
+           vistaT = new TipoPagoController(vistaD);
+           vistaT.getVista();
+           
+           
           
        }
     }
