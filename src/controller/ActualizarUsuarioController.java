@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JComboBox;
 import view.ActualizarUsuarioView;
 import view.DashboardView;
 import view.JTableComponent;
