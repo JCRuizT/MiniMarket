@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
@@ -39,6 +40,8 @@ public class HacerPedidoView extends JPanel {
     JLabel shearch = new JLabel();
     JLabel flecha = new JLabel();
     JLabel PicPedido = new JLabel();
+    JLabel totalAPagar = new JLabel();
+    
 
     private JTableSearch fieldSearch;
 
@@ -65,9 +68,9 @@ public class HacerPedidoView extends JPanel {
         buttonAddProduc.setBorder(null);
         buttonAddProduc.setFont(new Font("Arial", BOLD, 15));
 
-        buttonDeleteProduc.setText("Remover Producto");
-        buttonDeleteProduc.setLocation(480, 620);
-        buttonDeleteProduc.setSize(200, 30);
+        buttonDeleteProduc.setText("Remover Pedido");
+        buttonDeleteProduc.setLocation(0, 620);
+        buttonDeleteProduc.setSize(180, 30);
         buttonDeleteProduc.setBackground(orange);
         buttonDeleteProduc.setForeground(white);
         buttonDeleteProduc.setFocusable(false);
@@ -75,13 +78,21 @@ public class HacerPedidoView extends JPanel {
         buttonDeleteProduc.setFont(new Font("Arial", BOLD, 15));
 
         buttonBuy = new JButton("Hacer Pedido");
-        buttonBuy.setLocation(750, 620);
-        buttonBuy.setSize(230, 30);
+        buttonBuy.setLocation(750, 670);
+        buttonBuy.setSize(230, 40);
         buttonBuy.setBackground(orange);
         buttonBuy.setForeground(white);
         buttonBuy.setFocusable(false);
         buttonBuy.setBorder(null);
-        buttonBuy.setFont(new Font("Arial", BOLD, 15));
+        buttonBuy.setFont(new Font("Arial", BOLD, 20));
+        
+        
+        int numT = 665024;
+        totalAPagar.setText("Total a pagar : $ "+numT);
+        totalAPagar.setLocation(750, 610);
+        totalAPagar.setSize(300, 40);
+        totalAPagar.setForeground(Color.RED);
+        totalAPagar.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
         flecha.setSize(50, 50);
         flecha.setLocation(415, 350);
@@ -133,6 +144,7 @@ public class HacerPedidoView extends JPanel {
         tableList.getScrollTable().setLocation(0, 150);
         tableList.getScrollTable().setSize(400, 450);
 
+        add(totalAPagar);
         add(shearch);
         add(title);
         add(labelName);

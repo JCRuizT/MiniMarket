@@ -10,24 +10,23 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 import view.DashboardView;
-import view.PagoTarjetaView;
+import view.PagoEfectivoView;
 import view.ProcesandoView;
 
 /**
  *
  * @author quihu
  */
-public class PagoTarjetaController extends TimerTask implements ActionListener {
+public class PagoEfectivoController extends TimerTask implements ActionListener {
 
-    private PagoTarjetaView vista;
+    private PagoEfectivoView vista;
     private TipoPagoController vistaT;
     private DashboardView vistaD;
     private ProcesandoView carga;
-    private PagoExitosoController PagoExitoso;
 
-    public PagoTarjetaController(DashboardView vistaD) {
+    public PagoEfectivoController(DashboardView vistaD) {
 
-        vista = new PagoTarjetaView();
+        vista = new PagoEfectivoView();
 
         this.vistaD = vistaD;
 
@@ -38,11 +37,11 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent me) {
-
         if (me.getSource() == vista.getCancelar()) {
             vista.setVisible(false);
             vistaT = new TipoPagoController(vistaD);
             vistaT.getVista();
+
         }
 
         if (me.getSource() == vista.getPagar()) {
