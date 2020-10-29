@@ -25,7 +25,6 @@ public class DashboardController implements MouseListener {
 
     public DashboardController(ArrayList<String> user) {
         
-        System.out.println("kevin es Gay");
         
         vista = new DashboardView();
         controllerCreateCategory = new CategoryController();

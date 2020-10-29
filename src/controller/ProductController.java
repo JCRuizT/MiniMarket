@@ -23,6 +23,7 @@ public class ProductController implements ActionListener {
     private ProductoView vista;
     private ProductoModel model;
     private ArrayList<Producto> pro;
+    private boolean stateButtonUpdate;
 
     public ProductController() {
 
@@ -31,6 +32,7 @@ public class ProductController implements ActionListener {
         vista = new ProductoView(pro);
         vista.getButtonCreateProduct().addActionListener(this);
         vista.getButtonDeleteProduct().addActionListener(this);
+        vista.getButtonCancelProduct().addActionListener(this);
         vista.getButtonUpdateProduct().addActionListener(this);
 
     }
@@ -88,12 +90,80 @@ public class ProductController implements ActionListener {
                 }
 
             }
-        }else if(e.getSource().equals(vista.getButtonUpdateProduct())){
-             if (vista.getTableList().getTable().getSelectedRow() == -1) {
+        } else if (e.getSource().equals(vista.getButtonUpdateProduct())) {
+            if (vista.getTableList().getTable().getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             } else {
-                 
-             }
+                Producto p = (Producto) vista.getTableList().getObject();
+                if (stateButtonUpdate == false) {
+                    vista.getButtonCreateProduct().setEnabled(false);
+                    vista.getButtonDeleteProduct().setEnabled(false);
+                    vista.getButtonCancelProduct().setEnabled(true);
+                    vista.getButtonCancelProduct().setVisible(true);
+                    vista.getTableList().getTable().setEnabled(false);
+                    stateButtonUpdate = true;
+                    vista.getFieldName().setText(p.getProNombre());
+                    vista.getFieldPrecio().setText(p.getProPrecio());
+                    vista.getFieldFechaVencimiento().setDate(p.getProFechaVencimiento());
+                    Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
+                    Resource.setSelectedCombobox(vista.getFieldStock(),p.getProStock());
+
+                } else {
+                    if (vista.getFieldName().getText().equals("") || vista.getFieldCategoria().getSelectedIndex() == 0
+                            || vista.getFieldStock().getSelectedIndex() == 0 || vista.getFieldPrecio().getText().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+
+                        p.setProNombre(vista.getFieldName().getText());
+                        p.setProPrecio(vista.getFieldPrecio().getText());
+                        p.setProStock(vista.getFieldStock().getSelectedItem().toString());
+                        p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getDate());
+                        p.setTblTipoProducto_TipId(String.valueOf(vista.getFieldCategoria().getSelectedItem().hashCode()));
+
+                        if (model.update(p)) {
+                            vista.getButtonCreateProduct().setEnabled(true);
+                            vista.getButtonDeleteProduct().setEnabled(true);
+                            vista.getButtonCancelProduct().setEnabled(false);
+                            vista.getButtonCancelProduct().setVisible(false);
+                            vista.getTableList().getTable().setEnabled(true);
+                            vista.getFieldCategoria().setSelectedIndex(0);
+                            vista.getFieldStock().setSelectedIndex(0);
+                            vista.getFieldName().setText("");
+                            vista.getFieldPrecio().setText("");
+                            vista.getFieldFechaVencimiento().setDefaultText();
+                            vista.getFieldCategoria().setSelectedIndex(0);
+                            vista.getFieldStock().setSelectedIndex(0);
+                            stateButtonUpdate = false;
+
+                            vista.getTableList().getModel().setValueAt(p.getProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
+                            vista.getTableList().getModel().setValueAt(p.getProStock(), vista.getTableList().getTable().getSelectedRow(), 2);
+                            vista.getTableList().getModel().setValueAt(p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
+                            vista.getTableList().getModel().setValueAt(Resource.transformFecha(p.getProFechaVencimiento()), vista.getTableList().getTable().getSelectedRow(), 4);
+                            vista.getTableList().getModel().setValueAt(p.getTipProNombre(), vista.getTableList().getTable().getSelectedRow(), 5);
+
+                            JOptionPane.showMessageDialog(null, "Se ha actualizado el tipo de producto correctamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la actualizacion", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }
+                }
+            }
+
+        } else if (e.getSource().equals(vista.getButtonCancelProduct())) {
+            vista.getButtonCancelProduct().setVisible(false);
+            vista.getButtonCancelProduct().setEnabled(false);
+            vista.getButtonCreateProduct().setEnabled(true);
+            vista.getButtonDeleteProduct().setEnabled(true);
+            vista.getTableList().getTable().setEnabled(true);
+            vista.getTableList().getTable().clearSelection();
+            stateButtonUpdate = false;
+            vista.getFieldCategoria().setSelectedIndex(0);
+            vista.getFieldStock().setSelectedIndex(0);
+
+            vista.getFieldName().setText("");
+            vista.getFieldPrecio().setText("");
+            vista.getFieldFechaVencimiento().setDefaultText();
 
         }
     }

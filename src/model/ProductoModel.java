@@ -40,7 +40,8 @@ public class ProductoModel {
                 p.setProFechaVencimiento(result.getString("ProFechaVencimiento"));
                 p.setTblTipoProducto_TipId(result.getString("TblTipoProducto_TipId"));
                 p.setTipProNombre(result.getString("TipProNombre"));
-                p.setTblEstado_EstId(result.getString("EstEstado"));
+                p.setTblEstado_EstId(result.getString("EstId"));
+                p.setTblEstado_EstEstado(result.getString("EstEstado"));
                 data.add(p);
             }
 
@@ -100,8 +101,11 @@ public class ProductoModel {
             sentence.setString(5, p.getTblTipoProducto_TipId());
             sentence.setString(6, p.getTblEstado_EstId());
             sentence.setString(7, p.getProRef());
+            
+            sentence.execute();
+            
 
-            return sentence.execute();
+            return true;
             
         } catch (SQLException e) {
             e.printStackTrace();

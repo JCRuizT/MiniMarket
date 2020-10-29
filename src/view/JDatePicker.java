@@ -47,9 +47,8 @@ public final class JDatePicker extends JDatePickerImpl implements ChangeListener
     public void setDate(String date){
         
         String arr[] = date.split("-");
-        super.getModel().setYear(Integer.parseInt(arr[0]));
-        super.getModel().setMonth(Integer.parseInt(arr[1]));
-        super.getModel().setDay(Integer.parseInt(arr[0]));        
+        super.getModel().setDate(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
+        super.getJFormattedTextField().setText( super.getModel().getYear()+"-"+(super.getModel().getMonth()+1)+"-"+super.getModel().getDay()); 
         this.date = date;
     }
     

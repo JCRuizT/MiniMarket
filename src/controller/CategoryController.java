@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Table.TipoProducto;
 import model.TipoProductoModel;
+import view.Resource;
 
 /**
  *
@@ -43,7 +44,7 @@ public class CategoryController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
-            if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("     Seleccionar IVA")) {
+            if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedIndex() == 0) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
 
@@ -82,11 +83,11 @@ public class CategoryController implements ActionListener {
                     stateButtonUpdate = true;
 
                     vista.getFieldName().setText(tp.getTipProNombre());
-                    vista.setSelectedCombobox(vista.getFieldIva(), tp.getTipProIva());
+                    Resource.setSelectedCombobox(vista.getFieldIva(), tp.getTipProIva());
 
                 } else {
 
-                    if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedItem().equals("     Seleccionar IVA")) {
+                    if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedIndex() == 0) {
                         JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         tp.setTipProNombre(vista.getFieldName().getText());
@@ -97,7 +98,7 @@ public class CategoryController implements ActionListener {
                             vista.getButtonCancelCategory().setEnabled(false);
                             vista.getButtonCancelCategory().setVisible(false);
                             vista.getTableList().getTable().setEnabled(true);
-                            vista.setSelectedCombobox(vista.getFieldIva(), "     Seleccionar IVA");
+                            vista.getFieldIva().setSelectedIndex(0);
                             vista.getFieldName().setText("");
                             stateButtonUpdate = false;
 
@@ -141,7 +142,7 @@ public class CategoryController implements ActionListener {
             vista.getTableList().getTable().setEnabled(true);
             vista.getTableList().getTable().clearSelection();
             stateButtonUpdate = false;
-            vista.setSelectedCombobox(vista.getFieldIva(), "     Seleccionar IVA");
+            vista.getFieldIva().setSelectedIndex(0);
             vista.getFieldName().setText("");
         }
     }
