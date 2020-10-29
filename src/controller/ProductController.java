@@ -18,40 +18,43 @@ import view.Resource;
  *
  * @author pc-standard
  */
-public class ProductController implements ActionListener{
-    
+public class ProductController implements ActionListener {
+
     private ProductoView vista;
     private ProductoModel model;
     private ArrayList<Producto> pro;
-    public ProductController(){
-        
+
+    public ProductController() {
+
         model = new ProductoModel();
         pro = model.getAll();
         vista = new ProductoView(pro);
         vista.getButtonCreateProduct().addActionListener(this);
-        
+        vista.getButtonDeleteProduct().addActionListener(this);
+        vista.getButtonUpdateProduct().addActionListener(this);
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(vista.getButtonCreateProduct())){
-            if(vista.getFieldName().getText().equals("") || vista.getFieldPrecio().getText().equals("") 
-                    || vista.getFieldStock().getSelectedItem().equals("Seleccionar Stock") || 
-                    vista.getFieldCategoria().getSelectedItem().equals("Seleccionar Categoria")){
+        if (e.getSource().equals(vista.getButtonCreateProduct())) {
+            if (vista.getFieldName().getText().equals("") || vista.getFieldPrecio().getText().equals("")
+                    || vista.getFieldStock().getSelectedItem().equals("Seleccionar Stock")
+                    || vista.getFieldCategoria().getSelectedItem().equals("Seleccionar Categoria")) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                
+            } else {
+
                 Producto p = new Producto();
 
                 p.setProNombre(vista.getFieldName().getText());
                 p.setProPrecio(vista.getFieldPrecio().getText());
                 p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getDate());
-                p.setTblTipoProducto_TipId(vista.getFieldCategoria().getSelectedItem().toString());
+                p.setTblTipoProducto_TipId(String.valueOf(vista.getFieldCategoria().getSelectedItem().hashCode()));
                 p.setProStock(vista.getFieldStock().getSelectedItem().toString());
 
                 p = model.create(p);
                 if (p != null) {
-                    Object rs[] = {p, p.getProNombre(), p.getProStock(),p.getProPrecio(),Resource.transformFecha(p.getProFechaVencimiento()),p.getTipProNombre()};
+                    Object rs[] = {p, p.getProNombre(), p.getProStock(), p.getProPrecio(), Resource.transformFecha(p.getProFechaVencimiento()), p.getTipProNombre()};
                     vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
                     vista.getFieldPrecio().setText("");
@@ -64,27 +67,39 @@ public class ProductController implements ActionListener{
                 } else {
                     JOptionPane.showMessageDialog(null, " Ha ocurrido un error en la insercion");
                 }
-                /*
-                String field[] = new String[7];
-                field[1] = vista.getFieldName().getText();
-                field[2] = vista.getFieldPrecio().getText();
-                field[3] = vista.getFieldStock().getSelectedItem().toString();
-                field[4] = vista.getFieldFechaVencimiento().getText();
-                field[5] = vista.getFieldCategoria().getSelectedItem().toString();
-                field[6] = "1";
-                boolean val = model.createProduct(field);
-                if (val) {
-                    System.out.println("Se ha creado correctamente");
-                }else{
-                    System.out.println("pailas");
-                }*/
             }
+        } else if (e.getSource().equals(vista.getButtonDeleteProduct())) {
+            if (vista.getTableList().getTable().getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
+            } else {
+                Producto p = (Producto) vista.getTableList().getObject();
+
+                p.setTblEstado_EstId("2");
+                int valDelete = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este registro?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+                if (valDelete == JOptionPane.YES_NO_OPTION) {
+                    if (model.update(p)) {
+
+                        vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());
+                        JOptionPane.showMessageDialog(null, "Se ha Eliminado el producto correctamente");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la Eliminacion", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+            }
+        }else if(e.getSource().equals(vista.getButtonUpdateProduct())){
+             if (vista.getTableList().getTable().getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
+            } else {
+                 
+             }
+
         }
     }
 
     public ProductoView getVista() {
         return vista;
     }
-    
-    
+
 }

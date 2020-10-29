@@ -10,7 +10,6 @@ import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
-import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -125,7 +124,7 @@ public class ProductoView extends JPanel {
         buttonCancelProduct.setFont(new Font("Arial", BOLD, 15));
         buttonCancelProduct.setVisible(false);
         for(int i=0; i<categoria.size();i++){
-            fieldCategoria.addItem(categoria.get(i).getTipProId());
+            fieldCategoria.addItem(new JComboItem(categoria.get(i).getTipProId(),categoria.get(i).getTipProNombre()));
         }
         
         
