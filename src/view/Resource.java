@@ -6,6 +6,7 @@
 package view;
 
 import static java.lang.Integer.parseInt;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -23,5 +24,18 @@ public class Resource {
         return response;
         
     }
+    
+      public static void setSelectedCombobox(JComboBox select, String txt) {
+
+        for (int i = 0; i < select.getModel().getSize(); i++) {
+            if (select.getItemAt(i).toString().equals(txt)) {
+                select.setSelectedIndex(i);
+                break;
+            }
+        }
+
+    }
+    
+
 
 }

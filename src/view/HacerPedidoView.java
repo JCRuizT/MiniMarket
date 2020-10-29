@@ -12,6 +12,7 @@ import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
 import static java.awt.Image.SCALE_DEFAULT;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.Table.Producto;
 
 /**
  *
@@ -48,7 +50,7 @@ public class HacerPedidoView extends JPanel {
     private final int x = 1500;
     private final int y = 1500;
 
-    public HacerPedidoView(/*ArrayList<TipoProducto> result*/) {
+    public HacerPedidoView(ArrayList<Producto> result) {
 
         setSize(x, y);
         setLayout(null);
@@ -123,6 +125,11 @@ public class HacerPedidoView extends JPanel {
 
         String columns[] = {"id", "Nombre del Producto", "Fecha vcto", "Precio"};
         tableList = new JTableComponent(columns);
+        
+          for(int i=0; i<result.size();i++){
+            Object rs[] = {result.get(i),result.get(i).getProNombre(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),"$ "+result.get(i).getProPrecio()};
+            tableList.getModel().addRow(rs);
+        }
 
         fieldSearch = new JTableSearch(tableList.getTable());
         fieldSearch.setLocation(200, 110);
@@ -135,12 +142,7 @@ public class HacerPedidoView extends JPanel {
         shearch.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
         tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(90);
-
-        /*  
-         for(int i=0; i<result.size();i++){
-            String rs[] = {result.get(i).getTipProId(),result.get(i).getTipProNombre(),result.get(i).getTipProIva()}; 
-            tableList.getModel().addRow(rs);
-        }*/
+         
         tableList.getScrollTable().setLocation(0, 150);
         tableList.getScrollTable().setSize(400, 450);
 

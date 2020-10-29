@@ -285,4 +285,42 @@ public class PagoTarjetaView extends JFrame {
         return cancelar;
     }
 
+    public JComboBox getMes() {
+        return mes;
+    }
+
+    public JComboBox getAño() {
+        return año;
+    }
+
+    public JTextField getFieldnombre() {
+        return Fieldnombre;
+    }
+
+    public JTextField getFieldpais() {
+        return Fieldpais;
+    }
+
+    public JTextField getFieldciudad() {
+        return Fieldciudad;
+    }
+
+    public JTextField getFielddireccion() {
+        return Fielddireccion;
+    }
+
+    public JNumberField getFieldcodigoPostal() {
+        return FieldcodigoPostal;
+    }
+
+    public JNumberField getFieldNumber() {
+        return FieldNumber;
+    }
+
+    public JNumberField getFieldCVV() {
+        return FieldCVV;
+    }
+    
+    
+
 }

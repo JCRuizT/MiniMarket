@@ -19,7 +19,15 @@ public class Producto {
     private String ProFechaVencimiento;
     private String TblTipoProducto_TipId;
     private String TipProNombre;
-    
+    private String TblEstado_EstEstado;
+
+    public String getTblEstado_EstEstado() {
+        return TblEstado_EstEstado;
+    }
+
+    public void setTblEstado_EstEstado(String TblEstado_EstEstado) {
+        this.TblEstado_EstEstado = TblEstado_EstEstado;
+    }
 
     public String getProRef() {
         return ProRef;

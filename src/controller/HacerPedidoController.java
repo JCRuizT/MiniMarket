@@ -8,6 +8,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.HacerPedidoModel;
+import model.ProductoModel;
 import view.DashboardView;
 import view.HacerPedidoView;
 import view.TipoPagoView;
@@ -20,13 +21,15 @@ public class HacerPedidoController implements ActionListener {
 
     private HacerPedidoView vistaH;
     private TipoPagoView pagoVista;
-    private HacerPedidoModel modelo;
+    private HacerPedidoModel model;
+    private ProductoModel modelProduct;
     private DashboardView vistaD;
 
     public HacerPedidoController(DashboardView vistaD) {
 
-        vistaH = new HacerPedidoView();
-        modelo = new HacerPedidoModel();
+        modelProduct = new ProductoModel();
+        vistaH = new HacerPedidoView(modelProduct.getAll());
+        model = new HacerPedidoModel();
         this.vistaD = vistaD;
 
         vistaH.getButtonBuy().addActionListener(this);
