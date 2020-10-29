@@ -5,10 +5,12 @@
  */
 package view;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,17 +34,31 @@ public class JTableComponent {
         
         table = new JTable(model);
         table.setSelectionMode(SINGLE_SELECTION);
-        table.setFillsViewportHeight(true); ;
+        table.setFillsViewportHeight(true); 
         table.getColumnModel().getColumn(0).setMaxWidth(0);
         table.getColumnModel().getColumn(0).setMinWidth(0);
         table.getColumnModel().getColumn(0).setPreferredWidth(0);
         table.getTableHeader().setResizingAllowed(false);
+        
         scrollTable = new JScrollPane(table);
     }
     
     public Object getObject(){
         Object object = getModel().getValueAt(getTable().getSelectedRow(), 0);
         return object;
+    }
+    
+    public void centerData(){
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        table.setDefaultRenderer(Object.class, centerRenderer);
+
+    }
+    
+    public void centerData(int index){
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        table.getColumnModel().getColumn(index).setCellRenderer( centerRenderer );
     }
     
    

@@ -29,7 +29,7 @@ public class ProductoModel {
     public ArrayList<Producto> getAll() {
         ArrayList<Producto> data = new ArrayList<>();
         try {
-            PreparedStatement sentence = conexion.sentence("select * from " + table + " as p, TblEstado as e,TblTipoProducto as tp where e.EstId = p.TblEstado_EstId and tp.TipProId = p.TblTipoProducto_TipId");
+            PreparedStatement sentence = conexion.sentence("select * from " + table + " as p, TblEstado as e,TblTipoProducto as tp where e.EstId = p.TblEstado_EstId and tp.TipProId = p.TblTipoProducto_TipId and p.TblEstado_EstId = 1");
             ResultSet result = sentence.executeQuery();
             while (result.next()) {
                 Producto p = new Producto();
