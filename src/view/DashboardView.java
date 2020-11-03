@@ -64,7 +64,7 @@ public class DashboardView extends JFrame implements MouseListener {
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        setResizable(false);
+        //setResizable(false);
         //setUndecorated(true);
 
         //Diseño
@@ -129,7 +129,7 @@ public class DashboardView extends JFrame implements MouseListener {
         labelRol.setText("Administrador");
 
         labelNameUser.setForeground(BLACK);
-        labelNameUser.setSize(200, 40);
+        labelNameUser.setSize(400, 40);
         labelNameUser.setLocation(1050, 35);
         labelNameUser.setFont(new Font("Segoe UI Light", BOLD, 30));
         labelNameUser.setText("Carlos Yepez");
@@ -296,5 +296,15 @@ public class DashboardView extends JFrame implements MouseListener {
     public JLabel getPicHacerPedido() {
         return picHacerPedido;
     }
+
+    public void setLabelNameUser(String labelNameUser) {
+        this.labelNameUser.setText(labelNameUser);
+    }
+
+    public void setLabelRol(String labelRol) {
+        this.labelRol.setText(labelRol);
+    }
+    
+    
 
 }

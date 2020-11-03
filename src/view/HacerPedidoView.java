@@ -34,6 +34,7 @@ public class HacerPedidoView extends JPanel {
     private JTableComponent tableList2;
 
     JButton buttonAddProduc = new JButton();
+    JButton buttonAddCant = new JButton();
     JButton buttonDeleteProduc = new JButton();
     JButton buttonBuy = new JButton();
 
@@ -43,6 +44,7 @@ public class HacerPedidoView extends JPanel {
     JLabel flecha = new JLabel();
     JLabel PicPedido = new JLabel();
     JLabel totalAPagar = new JLabel();
+    JLabel totalNum = new JLabel();
     
 
     private JTableSearch fieldSearch;
@@ -70,7 +72,7 @@ public class HacerPedidoView extends JPanel {
         buttonAddProduc.setBorder(null);
         buttonAddProduc.setFont(new Font("Arial", BOLD, 15));
 
-        buttonDeleteProduc.setText("Remover Pedido");
+        buttonDeleteProduc.setText("Remover unidad");
         buttonDeleteProduc.setLocation(0, 620);
         buttonDeleteProduc.setSize(180, 30);
         buttonDeleteProduc.setBackground(orange);
@@ -89,12 +91,19 @@ public class HacerPedidoView extends JPanel {
         buttonBuy.setFont(new Font("Arial", BOLD, 20));
         
         
-        int numT = 665024;
-        totalAPagar.setText("Total a pagar : $ "+numT);
+        totalAPagar.setText("Total a pagar : $ ");
         totalAPagar.setLocation(750, 610);
         totalAPagar.setSize(300, 40);
-        totalAPagar.setForeground(Color.RED);
+        totalAPagar.setForeground(Color.BLACK);
         totalAPagar.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+        
+        
+                
+        totalNum.setText("0");
+        totalNum.setLocation(940, 610);
+        totalNum.setSize(300, 40);
+        totalNum.setForeground(Color.GREEN);
+        totalNum.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
         flecha.setSize(50, 50);
         flecha.setLocation(415, 350);
@@ -122,14 +131,19 @@ public class HacerPedidoView extends JPanel {
         tableList2.getTable().getColumnModel().getColumn(1).setMaxWidth(60);
         tableList2.getTable().getColumnModel().getColumn(3).setMaxWidth(90);
         tableList2.getTable().getColumnModel().getColumn(4).setMaxWidth(90);
+        
 
-        String columns[] = {"id", "Nombre del Producto", "Fecha vcto", "Precio"};
+        String columns[] = {"id", "Nombre del Producto","C.Disp","Fecha vcto", "Precio"};
         tableList = new JTableComponent(columns);
         
           for(int i=0; i<result.size();i++){
-            Object rs[] = {result.get(i),result.get(i).getProNombre(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),"$ "+result.get(i).getProPrecio()};
+            Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),"$ "+result.get(i).getProPrecio()};
             tableList.getModel().addRow(rs);
         }
+          
+        tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(60);
+        
+          
 
         fieldSearch = new JTableSearch(tableList.getTable());
         fieldSearch.setLocation(200, 110);
@@ -148,6 +162,7 @@ public class HacerPedidoView extends JPanel {
         tableList.getScrollTable().setSize(400, 450);
 
         add(totalAPagar);
+        add(totalNum);
         add(shearch);
         add(title);
         add(labelName);
@@ -192,5 +207,15 @@ public class HacerPedidoView extends JPanel {
     public JButton getButtonBuy() {
         return buttonBuy;
     }
+
+    public String getTotalNum() {
+        return totalNum.getText();
+    }
+
+    public void setTotalNum(String totalNum) {
+        this.totalNum.setText(totalNum);
+    }
+    
+    
 
 }

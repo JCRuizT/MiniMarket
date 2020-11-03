@@ -51,6 +51,7 @@ public class TipoProductoModel {
         try {
             
             PreparedStatement sentence = conexion.sentence("insert into "+table+" values(?,?,?,?)");
+            System.out.println(sentence.toString());
             sentence.setString(1, null);
             sentence.setString(2, tp.getTipProNombre());
             sentence.setString(3, tp.getTipProIva());

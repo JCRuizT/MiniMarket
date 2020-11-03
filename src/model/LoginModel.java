@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Table.Usuario;
 
 /**
  *
@@ -22,6 +23,7 @@ public class LoginModel {
 
     private Conexion conexion;
     private String tabla;
+    private Usuario userInfo;
 
     public LoginModel() {
 
@@ -30,33 +32,48 @@ public class LoginModel {
 
     }
 
-    public ArrayList<String> login(String user, String pass) {
+    public boolean login(String user, String pass) {
 
         ResultSet registro = null;
         try {
             //String query = "select UsuIdentificacion, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
-            PreparedStatement sentence = conexion.sentence("select UsuIdentificacion, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = ? and UsuContrasenia = ? and TblEstado_EstId = 1");
+            PreparedStatement sentence = conexion.sentence("select * from " + tabla + ",TblRol,TblTipoIdentificacion where TblRol_RolId = RolId and TblTipoIdentificacion_TipId = TipId and UsuIdentificacion = ? and UsuContrasenia = md5(?) and TblEstado_EstId = 1");
             sentence.setString(1, user);
             sentence.setString(2, pass);
             registro = sentence.executeQuery();
-            ArrayList<String> response = new ArrayList<String>();
-            while (registro.next()) {
-                response.add(registro.getString("UsuIdentificacion"));
-                response.add(registro.getString("UsuNombre1"));
-                response.add(registro.getString("UsuApellido1"));
-                response.add(registro.getString("UsuApellido2"));
-                response.add(registro.getString("UsuCorreo"));
+            if (registro.next()) {
+                
+                userInfo = new Usuario();
+                userInfo.setUsuNombre1(registro.getString("UsuNombre1"));
+                userInfo.setUsuNombre2(registro.getString("UsuNombre2"));
+                userInfo.setUsuApellido1(registro.getString("UsuApellido1")); 
+                userInfo.setUsuApellido2(registro.getString("UsuApellido1"));  
+                userInfo.setUsuIdentificacion(registro.getString("UsuIdentificacion"));
+                userInfo.setUsuCelular(registro.getString("UsuCelular"));
+                userInfo.setUsuCorreo(registro.getString("UsuCorreo"));
+                userInfo.setTblTipoIdentificacion_TipId(registro.getString("TblTipoIdentificacion_TipId"));
+                userInfo.setTblEstado_EstId(registro.getString("TblEstado_EstId"));
+                userInfo.setTblRol_RolId(registro.getString("TblRol_RolId"));
+                userInfo.setTipNombre(registro.getString("TipNombre"));
+                userInfo.setRolNombre(registro.getString("RolNombre"));
+                
+                
+                return true;
 
             }
-
-            return response;
-
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        return false;
 
-        return null;
 
     }
+
+    public Usuario getInfo() {
+        return userInfo;
+    }
+
 
 }

@@ -46,9 +46,9 @@ public class PedidoModel {
 
     }
     
-    public Pedido create(Pedido p) {
+    public void create(Pedido p) {
         
-        Pedido n = null;
+        //Pedido n = null;
         try {
          
              
@@ -59,7 +59,9 @@ public class PedidoModel {
             sentence.setString(4, p.getTblMetodoPago_MetId());
             
             sentence.execute();
-            PreparedStatement s = conexion.sentence("select * from "+table+" order by ProPedId desc limit 1");
+            
+            /*
+            PreparedStatement s = conexion.sentence("select * from "+table+" order by PedId desc limit 1");
             ResultSet r =  s.executeQuery();
             if(r.next()){
                 n = new Pedido();
@@ -67,13 +69,14 @@ public class PedidoModel {
                 n.setPedFecha(r.getString("PedFecha"));
                 n.setTblUsuario_UsuIdentificacion("TblUsuario_UsuIdentificacion");
                 n.setTblMetodoPago_MetId("TblMetodoPago_MetId");
-            }
+            }*/
 
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return n;
+        
+        //return n;
     }
     
 }

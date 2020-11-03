@@ -39,6 +39,7 @@ public class PagoTarjetaView extends JFrame {
     JLabel aceptantarjetas = new JLabel();
     JLabel LabelPropietario = new JLabel();
     JLabel LabelNumTarjeta = new JLabel();
+    JLabel LabelTipoTarjeta = new JLabel();
     JLabel visa = new JLabel();
     JLabel mastercard = new JLabel();
     JLabel americanExpress = new JLabel();
@@ -53,6 +54,7 @@ public class PagoTarjetaView extends JFrame {
 
     JComboBox mes = new JComboBox();
     JComboBox año = new JComboBox();
+    JComboBox tipoTarjeta = new JComboBox();
 
     JButton pagar = new JButton();
     JButton cancelar = new JButton();
@@ -142,12 +144,27 @@ public class PagoTarjetaView extends JFrame {
         }
 
         LabelCVV.setSize(80, 50);
-        LabelCVV.setLocation(750, 430);
+        LabelCVV.setLocation(710, 430);
         LabelCVV.setFont(new Font("Arial", BOLD, 23));
         LabelCVV.setText("CVV");
+        
+        LabelTipoTarjeta.setSize(150, 50);
+        LabelTipoTarjeta.setLocation(830, 430);
+        LabelTipoTarjeta.setFont(new Font("Arial", BOLD, 23));
+        LabelTipoTarjeta.setText("T. Tarjeta");
+        
+        
+        tipoTarjeta.setSize(180, 30);
+        tipoTarjeta.setLocation(830, 480);
+        tipoTarjeta.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+        tipoTarjeta.addItem("Seleccionar");
+        
+        tipoTarjeta.addItem(new JComboItem("2","Debito"));
+        tipoTarjeta.addItem(new JComboItem("3","Credito"));
+
 
         FieldCVV.setSize(80, 30);
-        FieldCVV.setLocation(750, 480);
+        FieldCVV.setLocation(710, 480);
         FieldCVV.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 23));
 
         pagar.setLocation(825, 740);
@@ -237,6 +254,8 @@ public class PagoTarjetaView extends JFrame {
         Icon iconminimize = new ImageIcon(imageminimize.getImage().getScaledInstance(mujerpago.getWidth(), mujerpago.getHeight(), SCALE_DEFAULT));
         mujerpago.setIcon(iconminimize);
 
+        main.add(tipoTarjeta);
+        main.add(LabelTipoTarjeta);
         main.add(FieldcodigoPostal);
         main.add(Fielddireccion);
         main.add(Fieldciudad);
@@ -320,6 +339,11 @@ public class PagoTarjetaView extends JFrame {
     public JNumberField getFieldCVV() {
         return FieldCVV;
     }
+
+    public JComboBox getTipoTarjeta() {
+        return tipoTarjeta;
+    }
+    
     
     
 

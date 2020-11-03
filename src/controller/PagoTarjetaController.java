@@ -49,7 +49,7 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
         if (me.getSource() == vista.getPagar()) {
 
             if (vista.getFieldnombre().getText().isEmpty() || vista.getFieldNumber().getText().isEmpty() || vista.getFieldCVV().getText().isEmpty() || vista.getFieldciudad().getText().isEmpty()
-                    || vista.getFielddireccion().getText().isEmpty() || vista.getFieldpais().getText().isEmpty() || vista.getFieldcodigoPostal().getText().isEmpty() || vista.getAño().getSelectedIndex() == 0 || vista.getMes().getSelectedIndex() == 0) {
+                    || vista.getFielddireccion().getText().isEmpty() || vista.getFieldpais().getText().isEmpty() || vista.getFieldcodigoPostal().getText().isEmpty() || vista.getAño().getSelectedIndex() == 0 || vista.getMes().getSelectedIndex() == 0 || vista.getTipoTarjeta().getSelectedIndex() == 0) {
 
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Verifique los Datos", JOptionPane.WARNING_MESSAGE);
 
@@ -81,11 +81,13 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Codigo postal incorrecto", "Error de Codigo Postal", JOptionPane.ERROR_MESSAGE);
 
-            } else {
+            }else {
 
                 carga = new ProcesandoView();
                 Timer contadorCarga = new Timer();
                 contadorCarga.schedule(this, 5000);
+                HacerPedidoController.createPedido(String.valueOf(vista.getTipoTarjeta().getSelectedItem().hashCode()));
+               
 
             }
 

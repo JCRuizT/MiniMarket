@@ -18,11 +18,11 @@ import view.LoginView;
 public class LoginController implements ActionListener {
 
     private LoginView vista;
-    private LoginModel modelo;
+    private LoginModel model;
 
     public LoginController() {
         vista = new LoginView();
-        modelo = new LoginModel();
+        model = new LoginModel();
         vista.getButtonSubmit().addActionListener(this);
     }
 
@@ -33,10 +33,10 @@ public class LoginController implements ActionListener {
                 vista.setLabelError("Todos los campos son obligatorios");
             } else {
                 vista.setLabelError("");
-                ArrayList<String> dataUser = modelo.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
-                if (!dataUser.isEmpty()) {
+                boolean logged = model.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
+                if (logged) {
                     vista.dispose();
-                    new DashboardController(dataUser); // llama al perfil o zona de gestion
+                    DashboardController app = new DashboardController(model.getInfo()); // llama al perfil o zona de gestion
 
                 } else {
                     vista.setLabelError("Usuario y/o contraseña incorrectos");

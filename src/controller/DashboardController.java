@@ -9,6 +9,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import model.Table.Usuario;
 import view.DashboardView;
 
 /**
@@ -22,9 +23,35 @@ public class DashboardController implements MouseListener {
     private ProductController ControllerProduc;
     private UsuarioController usuarioController;
     private HacerPedidoController vistaPedido;
+    private Usuario logged;
+    private static Usuario userInfo;
 
-    public DashboardController(ArrayList<String> user) {
+    public DashboardController(Usuario logged) {
 
+        this.logged = logged;
+        userInfo = logged;
+
+        vista = new DashboardView();
+        vista.setLabelRol(this.logged.getRolNombre());
+        vista.setLabelNameUser(this.logged.getUsuNombre1() + " " + this.logged.getUsuNombre2());
+        controllerCreateCategory = new CategoryController();
+        ControllerProduc = new ProductController();
+        usuarioController = new UsuarioController(vista);
+        vistaPedido = new HacerPedidoController(vista);
+
+        vista.getPicCrearCateg().addMouseListener(this);
+        vista.getLabelCrearCateg().addMouseListener(this);
+        vista.getPicCrearProduc().addMouseListener(this);
+        vista.getLabelCrearProd().addMouseListener(this);
+        vista.getPicCrearUsu().addMouseListener(this);
+        vista.getLabelCrearUsu().addMouseListener(this);
+        vista.getLabelHacerPedido().addMouseListener(this);
+        vista.getPicHacerPedido().addMouseListener(this);
+
+    }
+    
+    /* solo para desarrollo eliminar en version final */
+    public DashboardController() {
         vista = new DashboardView();
         controllerCreateCategory = new CategoryController();
         ControllerProduc = new ProductController();
@@ -41,6 +68,8 @@ public class DashboardController implements MouseListener {
         vista.getPicHacerPedido().addMouseListener(this);
 
     }
+    
+    /*-----------------------------------------------*/
 
     @Override
     public void mouseClicked(MouseEvent me) {
@@ -108,6 +137,12 @@ public class DashboardController implements MouseListener {
 
     }
 
+    public static Usuario getUserInfo() {
+        return userInfo;
+    }
+    
+    
+
     @Override
     public void mousePressed(MouseEvent me) {
 
@@ -127,9 +162,9 @@ public class DashboardController implements MouseListener {
     public void mouseExited(MouseEvent me) {
 
     }
-
+    
     public static void main(String[] args) {
-        DashboardController app = new DashboardController(null);
+        DashboardController app = new DashboardController();
     }
 
 }

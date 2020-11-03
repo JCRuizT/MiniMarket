@@ -20,6 +20,7 @@ public class Producto {
     private String TblTipoProducto_TipId;
     private String TipProNombre;
     private String TblEstado_EstEstado;
+    private String cantidad;
 
     public String getTblEstado_EstEstado() {
         return TblEstado_EstEstado;
@@ -92,6 +93,15 @@ public class Producto {
     public void setTipProNombre(String TipProNombre) {
         this.TipProNombre = TipProNombre;
     }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
+    
     
     
 

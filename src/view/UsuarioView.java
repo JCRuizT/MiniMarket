@@ -95,7 +95,7 @@ public class UsuarioView extends JPanel {
         buttonCreateUsuario.setBorder(null);
         buttonCreateUsuario.setFont(new Font("Arial", BOLD, 15));
 
-        buttonUpdateUsuario.setText("Actualizar Categoria");
+        buttonUpdateUsuario.setText("Actualizar Usuario");
         buttonUpdateUsuario.setLocation(600, 800);
         buttonUpdateUsuario.setSize(230, 30);
         buttonUpdateUsuario.setBackground(orange);
@@ -104,7 +104,7 @@ public class UsuarioView extends JPanel {
         buttonUpdateUsuario.setBorder(null);
         buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
 
-        buttonDeleteUsuario.setText("Eliminar Categoria");
+        buttonDeleteUsuario.setText("Eliminar Usuario");
         buttonDeleteUsuario.setLocation(890, 800);
         buttonDeleteUsuario.setSize(230, 30);
         buttonDeleteUsuario.setBackground(orange);
