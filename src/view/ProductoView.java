@@ -135,7 +135,7 @@ public class ProductoView extends JPanel {
         tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(60);
         
         for(int i=0; i<result.size();i++){
-            Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),
+            Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),"$ "+
                            result.get(i).getProPrecio(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
             tableList.getModel().addRow(rs);
         }

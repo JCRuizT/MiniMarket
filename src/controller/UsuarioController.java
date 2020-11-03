@@ -45,7 +45,7 @@ public class UsuarioController implements ActionListener {
             
             vistaD.setVisible(false);
             
-            CrearUsuarioController register = new CrearUsuarioController(vistaD);
+            CrearUsuarioController register = new CrearUsuarioController(vistaD,vista);
         }
         
         
@@ -53,7 +53,7 @@ public class UsuarioController implements ActionListener {
             
             vistaD.setVisible(false);
             
-            CrearUsuarioController register = new CrearUsuarioController(vistaD);
+            CrearUsuarioController register = new CrearUsuarioController(vistaD,vista);
             
         }
          

@@ -38,16 +38,16 @@ public class PagoEfectivoView extends JFrame {
 
     JLabel Labeltitulo2 = new JLabel();
     JLabel LabelPropietario = new JLabel();
-    JLabel LabelNumTarjeta = new JLabel();
-    JLabel LabelCVV = new JLabel();
+    JLabel LabelRecibido = new JLabel();
+    JLabel LabelCambio = new JLabel();
     JLabel mujerpago = new JLabel();
 
     JButton pagar = new JButton();
     JButton cancelar = new JButton();
 
     JTextField FieldTotal = new JTextField();
-    JTextField FieldRecibido = new JTextField();
-    JTextField FieldCambio = new JTextField();
+    JNumberField FieldRecibido = new JNumberField();
+    JNumberField FieldCambio = new JNumberField();
 
     private final int x = 1135;
     private final int y = 800;
@@ -83,30 +83,30 @@ public class PagoEfectivoView extends JFrame {
         FieldTotal.setLocation(670, 280);
         FieldTotal.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 23));
         FieldTotal.setEditable(false);
-        FieldTotal.setText("$ 235.000");
-        FieldTotal.setForeground(Color.red);
+        FieldTotal.setText("0");
+        FieldTotal.setForeground(Color.GREEN);
         FieldTotal.setHorizontalAlignment(JTextField.CENTER);
         
 
-        LabelNumTarjeta.setSize(700, 50);
-        LabelNumTarjeta.setLocation(765, 350);
-        LabelNumTarjeta.setFont(new Font("Arial", BOLD, 23));
-        LabelNumTarjeta.setText("Recibido");
+        LabelRecibido.setSize(700, 50);
+        LabelRecibido.setLocation(765, 350);
+        LabelRecibido.setFont(new Font("Arial", BOLD, 23));
+        LabelRecibido.setText("Recibido");
 
         FieldRecibido.setSize(300, 40);
         FieldRecibido.setLocation(670, 410);
         FieldRecibido.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 23));
         FieldRecibido.setHorizontalAlignment(JTextField.CENTER);
 
-        LabelCVV.setSize(200, 50);
-        LabelCVV.setLocation(770, 480);
-        LabelCVV.setFont(new Font("Arial", BOLD, 23));
-        LabelCVV.setText("Cambio");
+        LabelCambio.setSize(200, 50);
+        LabelCambio.setLocation(770, 480);
+        LabelCambio.setFont(new Font("Arial", BOLD, 23));
+        LabelCambio.setText("Cambio");
 
         FieldCambio.setSize(300, 40);
         FieldCambio.setLocation(670, 540);
         FieldCambio.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 23));
-        FieldCambio.setText("$ 10.000");
+        FieldCambio.setText("10000");
         FieldCambio.setEditable(false);
         FieldCambio.setHorizontalAlignment(JTextField.CENTER);
 
@@ -137,9 +137,9 @@ public class PagoEfectivoView extends JFrame {
         main.add(pagar);
         main.add(cancelar);
         main.add(FieldCambio);
-        main.add(LabelCVV);
+        main.add(LabelCambio);
         main.add(FieldRecibido);
-        main.add(LabelNumTarjeta);
+        main.add(LabelRecibido);
         main.add(FieldTotal);
         main.add(LabelPropietario);
         main.add(Labeltitulo2);
@@ -159,11 +159,35 @@ public class PagoEfectivoView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
-    
-    
 
-    public static void main(String[] args) {
-        PagoEfectivoView payMoney = new PagoEfectivoView();
+    public JTextField getFieldTotal() {
+        return FieldTotal;
     }
+
+    public void setFieldTotal(String FieldTotal) {
+        this.FieldTotal.setText(FieldTotal);
+    }
+
+    public JNumberField getFieldRecibido() {
+        return FieldRecibido;
+    }
+
+    public JLabel getLabelCambio() {
+        return LabelCambio;
+    }
+
+    public void setLabelCambio(String LabelCambio) {
+        this.LabelCambio.setText(LabelCambio);
+    }
+
+    public JTextField getFieldCambio() {
+        return FieldCambio;
+    }
+
+    public void setFieldCambio(String FieldCambio) {
+        this.FieldCambio.setText(FieldCambio);
+    }
+    
+  
 
 }

@@ -64,12 +64,15 @@ public class CrearUsuarioView extends JFrame {
     JComboBox tipoRol = new JComboBox();
     
     ButtonGroup TipIdentificacion = new ButtonGroup();
+    
     JRadioButton cc=new JRadioButton("C.C",true);
     JRadioButton ct=new JRadioButton("C.T",false);
     JRadioButton ti=new JRadioButton("T.I",false);
     
-    JButton crear = new JButton();
-    JButton cancelar = new JButton();
+    
+    
+    JButton buttonCreateUser = new JButton();
+    JButton buttonCancelUser = new JButton();
 
     private final int x = 1000;
     private final int y = 740;
@@ -192,14 +195,14 @@ public class CrearUsuarioView extends JFrame {
         TipIdentificacion.add(cc);
         TipIdentificacion.add(ct);
         TipIdentificacion.add(ti);
-        
+                
         tipoRol.setLocation(30, 420);
         tipoRol.setSize(320,30);
         tipoRol.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 	tipoRol.addItem("Seleccione el Tipo de usuario");
-        tipoRol.addItem("Administrador");
-        tipoRol.addItem("Vendedor");
-        tipoRol.addItem("Cliente");
+        tipoRol.addItem(new JComboItem("1","Administrador"));
+        tipoRol.addItem(new JComboItem("2","Vendedor"));
+        tipoRol.addItem(new JComboItem("3","Cliente"));
         
         campOblig5.setText("*");
         campOblig5.setLocation(360, 410);
@@ -255,25 +258,25 @@ public class CrearUsuarioView extends JFrame {
         fieldConfirmPass.setSize(200,30);
         fieldConfirmPass.setFont(new Font("Segoe UI Light", BOLD, 20));
         
-        crear.setText("Crear Usuario");
-        crear.setLocation(30, 650);
-        crear.setSize(430,30);
-        crear.setBackground(orange);
-        crear.setForeground(white);
-        crear.setFocusable(false);
-        crear.setBorder(null);
-        crear.setFont(new Font("Arial", BOLD, 20));
-        crear.setHorizontalAlignment(CENTER);
+        buttonCreateUser.setText("Crear Usuario");
+        buttonCreateUser.setLocation(30, 650);
+        buttonCreateUser.setSize(430,30);
+        buttonCreateUser.setBackground(orange);
+        buttonCreateUser.setForeground(white);
+        buttonCreateUser.setFocusable(false);
+        buttonCreateUser.setBorder(null);
+        buttonCreateUser.setFont(new Font("Arial", BOLD, 20));
+        buttonCreateUser.setHorizontalAlignment(CENTER);
         
-        cancelar.setText("Cancelar");
-        cancelar.setLocation(30, 690);
-        cancelar.setSize(430,30);
-        cancelar.setBackground(orange);
-        cancelar.setForeground(white);
-        cancelar.setFocusable(false);
-        cancelar.setBorder(null);
-        cancelar.setFont(new Font("Arial", BOLD, 20));
-        cancelar.setHorizontalAlignment(CENTER);
+        buttonCancelUser.setText("Cancelar");
+        buttonCancelUser.setLocation(30, 690);
+        buttonCancelUser.setSize(430,30);
+        buttonCancelUser.setBackground(orange);
+        buttonCancelUser.setForeground(white);
+        buttonCancelUser.setFocusable(false);
+        buttonCancelUser.setBorder(null);
+        buttonCancelUser.setFont(new Font("Arial", BOLD, 20));
+        buttonCancelUser.setHorizontalAlignment(CENTER);
       
        
         close.setSize(20, 20);
@@ -296,8 +299,8 @@ public class CrearUsuarioView extends JFrame {
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(HAND_CURSOR));
         
-        mainPanel.add(cancelar);
-        mainPanel.add(crear);
+        mainPanel.add(buttonCancelUser);
+        mainPanel.add(buttonCreateUser);
         mainPanel.add(campOblig7);
         mainPanel.add(campOblig6);
         mainPanel.add(campOblig5);
@@ -383,6 +386,10 @@ public class CrearUsuarioView extends JFrame {
         return TipIdentificacion;
     }
 
+    public JButton getButtonCreateUser() {
+        return buttonCreateUser;
+    }
+
     public JRadioButton getCc() {
         return cc;
     }
@@ -394,14 +401,12 @@ public class CrearUsuarioView extends JFrame {
     public JRadioButton getTi() {
         return ti;
     }
-
-    public JButton getCrear() {
-        return crear;
-    }
+    
+    
     
 
-    public JButton getCancelar() {
-        return cancelar;
+    public JButton getButtonCancelUser() {
+        return buttonCancelUser;
     }
 
     public JLabel getMinimize() {
@@ -411,4 +416,6 @@ public class CrearUsuarioView extends JFrame {
     public JLabel getClose() {
         return close;
     }
+    
+    
 }

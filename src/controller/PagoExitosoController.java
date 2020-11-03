@@ -36,7 +36,7 @@ public class PagoExitosoController implements ActionListener {
          if (ae.getSource() == vista.getOk()) {
              
              vista.dispose();
-             DashboardController gui = new DashboardController(null);
+             DashboardController gui = new DashboardController(DashboardController.getUserInfo());
              
         }
         

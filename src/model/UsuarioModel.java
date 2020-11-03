@@ -55,5 +55,57 @@ public class UsuarioModel {
         return data;
 
     }
+      
+      public Usuario create(Usuario u){
+        Usuario n = null;
+        try {
+            
+            PreparedStatement sentence = conexion.sentence("insert into "+table+" values(?,md5(?),?,?,?,?,?,?,?,?,?,?)");
+            sentence.setString(1, u.getUsuIdentificacion());
+            sentence.setString(2, u.getUsuContrasenia());
+            sentence.setString(3, u.getUsuNombre1());
+            sentence.setString(4, u.getUsuNombre2());
+            sentence.setString(5, u.getUsuApellido1());
+            sentence.setString(6, u.getUsuApellido2());
+            sentence.setString(7, u.getUsuCelular());
+            sentence.setString(8, u.getUsuCorreo());
+            sentence.setString(9, u.getTblTipoIdentificacion_TipId());
+            sentence.setString(10,u.getTblEstado_EstId());
+            sentence.setString(11,u.getTblRol_RolId() );
+            sentence.setString(12,null);
+
+            sentence.execute();
+            PreparedStatement s = conexion.sentence("select * from "+table+" as u,TblTipoIdentificacion as ti,"
+                    + "TblEstado as e,TblRol as r where u.TblTipoIdentificacion_TipId = ti.TipId and "
+                    + "u.TblEstado_EstId = e.EstId and u.TblRol_RolId = r.RolId  order by create_at desc limit 1");
+            
+            System.out.println(s);
+            ResultSet r =  s.executeQuery();
+            if(r.next()){
+                n = new Usuario();
+                n.setUsuNombre1(r.getString("UsuNombre1"));
+                n.setUsuNombre2(r.getString("UsuNombre2"));
+                n.setUsuApellido1(r.getString("UsuApellido1")); 
+                n.setUsuApellido2(r.getString("UsuApellido1"));  
+                n.setUsuIdentificacion(r.getString("UsuIdentificacion"));
+                n.setUsuCelular(r.getString("UsuCelular"));
+                n.setUsuCorreo(r.getString("UsuCorreo"));
+                n.setTblTipoIdentificacion_TipId(r.getString("TblTipoIdentificacion_TipId"));
+                n.setTblEstado_EstId(r.getString("TblEstado_EstId"));
+                n.setTblRol_RolId(r.getString("TblRol_RolId"));
+                n.setTipNombre(r.getString("TipNombre"));
+                n.setEstEstado(r.getString("EstEstado"));
+                n.setRolNombre(r.getString("RolNombre"));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return n;
+    }
+      
+    public static void main(String[] args) {
+     
+    }
     
 }

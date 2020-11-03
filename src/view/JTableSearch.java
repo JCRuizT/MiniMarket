@@ -48,11 +48,18 @@ public class JTableSearch extends JTextField implements DocumentListener {
     }
 
     public void search(String str) {
+        
         if (str.length() == 0) {
             sorter.setRowFilter(null);
         } else {
-            sorter.setRowFilter(regexFilter("(?i)"+str));
+            
+     
+           sorter.setRowFilter(regexFilter("(?i)"+str));
+           //sorter.setRowFilter(regexFilter(str));
         }
+        
+        tableList.repaint();
+        
     }
 
 }

@@ -56,7 +56,7 @@ public class ProductController implements ActionListener {
 
                 p = model.create(p);
                 if (p != null) {
-                    Object rs[] = {p, p.getProNombre(), p.getProStock(), p.getProPrecio(), Resource.transformFecha(p.getProFechaVencimiento()), p.getTipProNombre()};
+                    Object rs[] = {p, p.getProNombre(), p.getProStock(),"$ "+ p.getProPrecio(), Resource.transformFecha(p.getProFechaVencimiento()), p.getTipProNombre()};
                     vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
                     vista.getFieldPrecio().setText("");
@@ -137,7 +137,7 @@ public class ProductController implements ActionListener {
 
                             vista.getTableList().getModel().setValueAt(p.getProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
                             vista.getTableList().getModel().setValueAt(p.getProStock(), vista.getTableList().getTable().getSelectedRow(), 2);
-                            vista.getTableList().getModel().setValueAt(p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
+                            vista.getTableList().getModel().setValueAt("$ "+p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
                             vista.getTableList().getModel().setValueAt(Resource.transformFecha(p.getProFechaVencimiento()), vista.getTableList().getTable().getSelectedRow(), 4);
                             vista.getTableList().getModel().setValueAt(vista.getFieldCategoria().getSelectedItem(), vista.getTableList().getTable().getSelectedRow(), 5);
 

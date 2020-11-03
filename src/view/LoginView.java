@@ -62,7 +62,7 @@ public class LoginView extends JFrame implements MouseListener{
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        setUndecorated(true);
+        //setUndecorated(true);
 
         //Diseño
         background.setSize(x, y);
