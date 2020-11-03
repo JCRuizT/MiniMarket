@@ -57,11 +57,11 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Nombre no valido", "Error Nombre", JOptionPane.ERROR_MESSAGE);
 
-            } else if (vista.getFieldNumber().getText().length() > 19 || vista.getFieldNumber().getText().length() < 19) {
+            } else if (vista.getFieldNumber().isValido()) {
 
                 JOptionPane.showMessageDialog(null, "Numero de tarjeta no valida", "Error de Tarjeta", JOptionPane.ERROR_MESSAGE);
 
-            } else if (vista.getFieldCVV().getText().length() < 3) {
+            } else if (vista.getFieldCVV().getText().length() < 3 || vista.getFieldCVV().getText().length() > 3) {
 
                 JOptionPane.showMessageDialog(null, "CVV Incorrecto", "Error de Tarjeta", JOptionPane.ERROR_MESSAGE);
 

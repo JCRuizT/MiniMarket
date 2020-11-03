@@ -124,6 +124,8 @@ public class CategoryView extends JPanel {
             Object rs[] = {result.get(i),result.get(i).getTipProNombre(),result.get(i).getTipProIva()}; 
             tableList.getModel().addRow(rs);
         }
+        
+         tableList.centerData(2);
        
 
 

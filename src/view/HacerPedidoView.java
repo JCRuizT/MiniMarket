@@ -142,6 +142,7 @@ public class HacerPedidoView extends JPanel {
         shearch.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
         tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(90);
+        tableList.centerData(2); tableList.centerData(3);
          
         tableList.getScrollTable().setLocation(0, 150);
         tableList.getScrollTable().setSize(400, 450);

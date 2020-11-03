@@ -131,16 +131,17 @@ public class ProductController implements ActionListener {
                             vista.getFieldName().setText("");
                             vista.getFieldPrecio().setText("");
                             vista.getFieldFechaVencimiento().setDefaultText();
-                            vista.getFieldCategoria().setSelectedIndex(0);
                             vista.getFieldStock().setSelectedIndex(0);
+                            vista.getFieldCategoria().setSelectedIndex(0);
                             stateButtonUpdate = false;
 
                             vista.getTableList().getModel().setValueAt(p.getProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
                             vista.getTableList().getModel().setValueAt(p.getProStock(), vista.getTableList().getTable().getSelectedRow(), 2);
                             vista.getTableList().getModel().setValueAt("$ "+p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
                             vista.getTableList().getModel().setValueAt(Resource.transformFecha(p.getProFechaVencimiento()), vista.getTableList().getTable().getSelectedRow(), 4);
-                            vista.getTableList().getModel().setValueAt(p.getTipProNombre(), vista.getTableList().getTable().getSelectedRow(), 5);
+                            vista.getTableList().getModel().setValueAt(vista.getFieldCategoria().getSelectedItem(), vista.getTableList().getTable().getSelectedRow(), 5);
 
+                            
                             JOptionPane.showMessageDialog(null, "Se ha actualizado el tipo de producto correctamente");
                         } else {
                             JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la actualizacion", "Error", JOptionPane.ERROR_MESSAGE);

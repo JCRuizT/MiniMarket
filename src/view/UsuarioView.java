@@ -80,6 +80,11 @@ public class UsuarioView extends JPanel {
             };
             tableList.getModel().addRow(rs);
         }
+        
+         tableList.centerData(1);
+         tableList.centerData(9);
+         tableList.centerData(7);
+         tableList.centerData(10);
 
         buttonCreateUsuario = new JButton("Crear Usuario");
         buttonCreateUsuario.setLocation(360, 800);

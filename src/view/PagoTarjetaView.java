@@ -62,7 +62,7 @@ public class PagoTarjetaView extends JFrame {
     JTextField Fieldciudad = new JTextField();
     JTextField Fielddireccion = new JTextField();
     JNumberField FieldcodigoPostal = new JNumberField();
-    JNumberField FieldNumber = new JNumberField();
+    JCardField FieldNumber = new JCardField();
     JNumberField FieldCVV = new JNumberField();
 
     private final int x = 1135;
@@ -313,7 +313,7 @@ public class PagoTarjetaView extends JFrame {
         return FieldcodigoPostal;
     }
 
-    public JNumberField getFieldNumber() {
+    public JCardField getFieldNumber() {
         return FieldNumber;
     }
 

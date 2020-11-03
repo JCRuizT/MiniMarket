@@ -139,8 +139,12 @@ public class ProductoView extends JPanel {
                            result.get(i).getProPrecio(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),result.get(i).getTipProNombre()};
             tableList.getModel().addRow(rs);
         }
-       
         
+        tableList.centerData(2);
+        tableList.centerData(3);
+        tableList.centerData(4);
+        tableList.centerData(5);
+       
         tableList.getScrollTable().setLocation(450, 150);
         tableList.getScrollTable().setSize(500, 500);
         
