@@ -105,8 +105,8 @@ public class CrearUsuarioController implements MouseListener, ActionListener {
                     u.setUsuIdentificacion(vista.getFieldnumIdentificacion().getText());
                     u.setUsuContrasenia(vista.getFieldPass().getText());
                     u.setUsuNombre1(vista.getFieldName().getText());
-                    u.setUsuNombre2(vista.getFieldLastName().getText());
-                    u.setUsuApellido1(vista.getFieldSecondName().getText());
+                    u.setUsuNombre2(vista.getFieldSecondName().getText());
+                    u.setUsuApellido1(vista.getFieldLastName().getText());
                     u.setUsuApellido2(vista.getFieldSecondLastName().getText());
                     u.setUsuCelular(vista.getFieldCel().getText());
                     u.setUsuCorreo(vista.getFieldEmail().getText());
