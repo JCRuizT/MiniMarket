@@ -46,6 +46,7 @@ public class JTableComponent extends DefaultTableCellRenderer {
         table.getTableHeader().setEnabled(false);
         // Cambiar fondo a las filas
         scrollTable = new JScrollPane(table);
+       
     }
     
     public void setBackgroundColorRow(){

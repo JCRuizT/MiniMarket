@@ -291,11 +291,6 @@ public class PagoTarjetaView extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        PagoTarjetaView d = new PagoTarjetaView();
-    }
-
-
     public JButton getPagar() {
         return pagar;
     }
@@ -343,8 +338,5 @@ public class PagoTarjetaView extends JFrame {
     public JComboBox getTipoTarjeta() {
         return tipoTarjeta;
     }
-    
-    
-    
 
 }

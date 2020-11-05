@@ -49,7 +49,7 @@ public class DashboardController implements MouseListener {
         vista.getPicHacerPedido().addMouseListener(this);
 
     }
-    
+
     /* solo para desarrollo eliminar en version final */
     public DashboardController() {
         vista = new DashboardView();
@@ -68,9 +68,8 @@ public class DashboardController implements MouseListener {
         vista.getPicHacerPedido().addMouseListener(this);
 
     }
-    
-    /*-----------------------------------------------*/
 
+    /*-----------------------------------------------*/
     @Override
     public void mouseClicked(MouseEvent me) {
 
@@ -140,8 +139,6 @@ public class DashboardController implements MouseListener {
     public static Usuario getUserInfo() {
         return userInfo;
     }
-    
-    
 
     @Override
     public void mousePressed(MouseEvent me) {
@@ -162,7 +159,7 @@ public class DashboardController implements MouseListener {
     public void mouseExited(MouseEvent me) {
 
     }
-    
+
     public static void main(String[] args) {
         DashboardController app = new DashboardController();
     }
