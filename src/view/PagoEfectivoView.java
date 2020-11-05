@@ -86,7 +86,6 @@ public class PagoEfectivoView extends JFrame {
         FieldTotal.setText("0");
         FieldTotal.setForeground(Color.GREEN);
         FieldTotal.setHorizontalAlignment(JTextField.CENTER);
-        
 
         LabelRecibido.setSize(700, 50);
         LabelRecibido.setLocation(765, 350);
@@ -187,7 +186,5 @@ public class PagoEfectivoView extends JFrame {
     public void setFieldCambio(String FieldCambio) {
         this.FieldCambio.setText(FieldCambio);
     }
-    
-  
 
 }

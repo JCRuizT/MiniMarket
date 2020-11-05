@@ -52,7 +52,7 @@ public class UsuarioView extends JPanel {
         title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
         title.setHorizontalAlignment(CENTER);
 
-        String columns[] = {"id", "T.I","Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol","Estado"};
+        String columns[] = {"id", "T.I", "Identificación", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Celular", "Correo", "Rol", "Estado"};
         tableList = new JTableComponent(columns);
         tableList.getTable().getColumnModel().getColumn(1).setMaxWidth(40);
         tableList.getTable().getColumnModel().getColumn(8).setMinWidth(150);
@@ -61,8 +61,8 @@ public class UsuarioView extends JPanel {
 
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
-        
-        for(int i=0; i<result.size();i++){
+
+        for (int i = 0; i < result.size(); i++) {
             Object rs[] = {
                 result.get(i),
                 result.get(i).getTipNombre(),
@@ -75,16 +75,15 @@ public class UsuarioView extends JPanel {
                 result.get(i).getUsuCorreo(),
                 result.get(i).getRolNombre(),
                 result.get(i).getEstEstado()
-                
-                
+
             };
             tableList.getModel().addRow(rs);
         }
-        
-         tableList.centerData(1);
-         tableList.centerData(9);
-         tableList.centerData(7);
-         tableList.centerData(10);
+
+        tableList.centerData(1);
+        tableList.centerData(9);
+        tableList.centerData(7);
+        tableList.centerData(10);
 
         buttonCreateUsuario = new JButton("Crear Usuario");
         buttonCreateUsuario.setLocation(360, 800);
@@ -121,8 +120,6 @@ public class UsuarioView extends JPanel {
         buttonCancelUsuario.setFocusable(false);
         buttonCancelUsuario.setBorder(null);
         buttonCancelUsuario.setFont(new Font("Arial", BOLD, 15));
-        //buttonCancelCategory.setEnabled(false);
-        //buttonCancelCategory.setVisible(false);
 
         FiltroRol.setLocation(1030, 200);
         FiltroRol.setSize(320, 30);
@@ -166,6 +163,5 @@ public class UsuarioView extends JPanel {
     public JTableComponent getTableList() {
         return tableList;
     }
-    
 
 }

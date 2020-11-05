@@ -27,6 +27,7 @@ public class DashboardView extends JFrame implements MouseListener {
     //PANELES 
     JPanel pagPrincipal = new JPanel();
     JPanel menu = new JPanel();
+    JPanel cerrar = new JPanel();
 
     //ETIQUETAS
     JLabel labelNameUser = new JLabel();
@@ -71,6 +72,10 @@ public class DashboardView extends JFrame implements MouseListener {
         pagPrincipal.setSize(x, y);
         pagPrincipal.setLocation(0, 0);
         pagPrincipal.setLayout(null);
+        
+        cerrar.setSize(120, 40);
+        cerrar.setLocation(1220, 100);
+        cerrar.setLayout(null);
 
         menu.setSize(300, 1430);
         menu.setLayout(null);
@@ -203,6 +208,7 @@ public class DashboardView extends JFrame implements MouseListener {
         pagPrincipal.add(labelRol);
         pagPrincipal.add(labelBienvenida);
         menu.add(labelMenu);
+        pagPrincipal.add(cerrar);
         pagPrincipal.add(picAdmin);
         pagPrincipal.add(labelNameUser);
         pagPrincipal.add(close);
@@ -253,6 +259,15 @@ public class DashboardView extends JFrame implements MouseListener {
     }
 
     //Metodos Getters 
+
+    public JPanel getCerrar() {
+        return cerrar;
+    }
+
+    public JPanel getMenu() {
+        return menu;
+    }
+   
     public JPanel getPagPrincipal() {
         return pagPrincipal;
     }
@@ -304,7 +319,5 @@ public class DashboardView extends JFrame implements MouseListener {
     public void setLabelRol(String labelRol) {
         this.labelRol.setText(labelRol);
     }
-    
-    
 
 }

@@ -8,8 +8,8 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import model.Table.Usuario;
+import view.CerrarSesionView;
 import view.DashboardView;
 
 /**
@@ -18,12 +18,15 @@ import view.DashboardView;
  */
 public class DashboardController implements MouseListener {
 
+    private int NumClick = 0;
+
     private DashboardView vista;
     private CategoryController controllerCreateCategory;
     private ProductController ControllerProduc;
     private UsuarioController usuarioController;
     private HacerPedidoController vistaPedido;
     private Usuario logged;
+    private CerrarSesionView vistaCerrar;
     private static Usuario userInfo;
 
     public DashboardController(Usuario logged) {
@@ -38,6 +41,7 @@ public class DashboardController implements MouseListener {
         ControllerProduc = new ProductController();
         usuarioController = new UsuarioController(vista);
         vistaPedido = new HacerPedidoController(vista);
+        vistaCerrar = new CerrarSesionView();
 
         vista.getPicCrearCateg().addMouseListener(this);
         vista.getLabelCrearCateg().addMouseListener(this);
@@ -47,6 +51,7 @@ public class DashboardController implements MouseListener {
         vista.getLabelCrearUsu().addMouseListener(this);
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
+        vista.getPicAdmin().addMouseListener(this);
 
     }
 
@@ -57,6 +62,7 @@ public class DashboardController implements MouseListener {
         ControllerProduc = new ProductController();
         usuarioController = new UsuarioController(vista);
         vistaPedido = new HacerPedidoController(vista);
+        vistaCerrar = new CerrarSesionView();
 
         vista.getPicCrearCateg().addMouseListener(this);
         vista.getLabelCrearCateg().addMouseListener(this);
@@ -66,12 +72,39 @@ public class DashboardController implements MouseListener {
         vista.getLabelCrearUsu().addMouseListener(this);
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
+        vista.getPicAdmin().addMouseListener(this);
 
     }
 
     /*-----------------------------------------------*/
     @Override
     public void mouseClicked(MouseEvent me) {
+
+        if (me.getSource() == vista.getPicAdmin()) {
+
+            if (NumClick == 0) {
+
+                vista.getCerrar().add(vistaCerrar);
+
+                vistaCerrar.repaint();
+                vistaCerrar.validate();
+                vistaCerrar.invalidate();
+                
+                NumClick = 1;
+
+            }else if(NumClick == 1){
+                
+                vista.getCerrar().remove(vistaCerrar);
+                
+                vista.repaint();
+                vista.validate();
+                vista.invalidate();
+                
+                 NumClick = 0;
+                
+            }
+
+        }
 
         if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
 
