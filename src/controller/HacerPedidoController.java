@@ -14,10 +14,12 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import model.DetallePedidoModel;
 import model.PedidoModel;
 import model.ProductoModel;
 import model.Table.Pedido;
 import model.Table.Producto;
+import model.Table.ProductoPedido;
 import view.DashboardView;
 import view.HacerPedidoView;
 import view.Resource;
@@ -33,15 +35,24 @@ public class HacerPedidoController implements ActionListener {
     private TipoPagoView pagoVista;
     private static PedidoModel model;
     private ProductoModel modelProduct;
+    private DetallePedidoModel modelProductoPedido;
+
     private DashboardView vistaD;
     private static ArrayList<Producto>list;
     private static String totalPagar;
+    private static HacerPedidoView vh;
+    private static DetallePedidoModel dp;
+    private static ProductoModel mp;
 
     public HacerPedidoController(DashboardView vistaD) {
         
 
         modelProduct = new ProductoModel();
+        modelProductoPedido = new DetallePedidoModel();
+        dp = modelProductoPedido;
+        mp = modelProduct;
         vistaH = new HacerPedidoView(modelProduct.getAll());
+        vh = vistaH;
         model = new PedidoModel();
         this.vistaD = vistaD;
 
@@ -128,6 +139,7 @@ public class HacerPedidoController implements ActionListener {
             int precioU = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
             if (Integer.parseInt(p.getProStock()) > cant) {
                 cant++;
+                p.setCantidad(String.valueOf(cant));
                 vistaH.getTableList2().getTable().setValueAt(cant, vistaH.getTableList2().getTable().getSelectedRow(), 1);
                 vistaH.getTableList2().getTable().setValueAt((precioU * cant), vistaH.getTableList2().getTable().getSelectedRow(), 4);
             } else {
@@ -144,14 +156,15 @@ public class HacerPedidoController implements ActionListener {
         int precioU = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
         if (cant >= 2) {
             cant--;
+            Producto p = (Producto) vistaH.getTableList2().getObject();
             vistaH.getTableList2().getTable().setValueAt(cant, vistaH.getTableList2().getTable().getSelectedRow(), 1);
             vistaH.getTableList2().getTable().setValueAt((precioU * cant), vistaH.getTableList2().getTable().getSelectedRow(), 4);
-
+            
+            p.setCantidad(String.valueOf(cant));
         } else {
 
             cant--;
             Producto p = (Producto) vistaH.getTableList2().getObject();
-
             Object rs[] = {p, p.getProNombre(), p.getProStock(), Resource.transformFecha(p.getProFechaVencimiento()), p.getProPrecio()};
             vistaH.getTableList2().getModel().removeRow(vistaH.getTableList2().getTable().getSelectedRow());
             vistaH.getTableList().getModel().addRow(rs);
@@ -182,7 +195,7 @@ public class HacerPedidoController implements ActionListener {
     public static String getTotalPagar() {
         return totalPagar;
     }
-    
+  
     
     public static void createPedido(String metodoPago){
         
@@ -198,7 +211,20 @@ public class HacerPedidoController implements ActionListener {
         p.setPedFecha(fecha);
         p.setTblMetodoPago_MetId(metodoPago);
         p.setTblUsuario_UsuIdentificacion(DashboardController.getUserInfo().getUsuIdentificacion());
-        model.create(p);
+        Pedido creado = model.create(p);
+        
+        for(int i = 0; i < vh.getTableList2().getModel().getRowCount(); i++){
+            Producto  pro = (Producto) vh.getTableList2().getModel().getValueAt(i, 0);
+            ProductoPedido proped = new ProductoPedido();
+            proped.setProPedCantidad(pro.getCantidad());
+            proped.setTblPedido_PedId(creado.getPedId());
+            proped.setTblProducto_ProRef(pro.getProRef());
+            pro.setProStock(String.valueOf(Integer.parseInt(pro.getProStock())-Integer.parseInt(pro.getCantidad())));
+            mp.update(pro);
+            dp.create(proped);
+        }
+        
+        
 
     }
     

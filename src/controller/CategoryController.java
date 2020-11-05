@@ -42,6 +42,7 @@ public class CategoryController implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
             if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedIndex() == 0) {

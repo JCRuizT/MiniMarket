@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.DashboardController;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,11 @@ public class UsuarioModel {
     }
 
     public ArrayList<Usuario> getAll() {
+        
+        
         ArrayList<Usuario> data = new ArrayList<>();
+                            
+
         try {
             PreparedStatement sentence = conexion.sentence("select * from " + table + " as u, TblEstado as e,TblTipoIdentificacion as ti,TblRol as r where e.EstId = u.TblEstado_EstId and u.TblTipoIdentificacion_TipId = ti.TipId and r.RolId = u.TblRol_RolId");
             ResultSet result = sentence.executeQuery();
@@ -52,7 +57,9 @@ public class UsuarioModel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
         return data;
+      
 
     }
 
@@ -87,7 +94,6 @@ public class UsuarioModel {
                 n.setUsuNombre2(r.getString("UsuNombre2"));
                 n.setUsuApellido1(r.getString("UsuApellido1"));
                 n.setUsuApellido2(r.getString("UsuApellido1"));
-
                 n.setUsuIdentificacion(r.getString("UsuIdentificacion"));
                 n.setUsuCelular(r.getString("UsuCelular"));
                 n.setUsuCorreo(r.getString("UsuCorreo"));

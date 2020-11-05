@@ -14,8 +14,16 @@ public class ProductoPedido {
     private String ProPedId;
     private String TblProducto_ProRef;
     private String TblPedido_PedId;
-  
+    private String ProPedCantidad;
 
+    public String getProPedCantidad() {
+        return ProPedCantidad;
+    }
+
+    public void setProPedCantidad(String ProPedCantidad) {
+        this.ProPedCantidad = ProPedCantidad;
+    }
+  
     public String getProPedId() {
         return ProPedId;
     }
