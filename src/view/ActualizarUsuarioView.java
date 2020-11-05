@@ -80,7 +80,7 @@ public class ActualizarUsuarioView extends JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        setUndecorated(true);
+        //setUndecorated(true);
 
         mainPanel.setSize(x, y);
         mainPanel.setLocation(0, 0);
@@ -193,6 +193,9 @@ public class ActualizarUsuarioView extends JFrame {
         TipIdentificacion.add(cc);
         TipIdentificacion.add(ct);
         TipIdentificacion.add(ti);
+        
+
+        
         
         tipoRol.setLocation(30, 420);
         tipoRol.setSize(200,30);
@@ -484,6 +487,12 @@ public class ActualizarUsuarioView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
+    
+    public static void main(String[] args) {
+        ActualizarUsuarioView a = new ActualizarUsuarioView();
+    }
+    
+    
    
     
 }

@@ -16,36 +16,36 @@ import model.Table.Usuario;
  * @author quihu
  */
 public class UsuarioModel {
-    
+
     private Conexion conexion;
     private String table;
-    
-    public UsuarioModel(){
+
+    public UsuarioModel() {
         table = "TblUsuario";
         this.conexion = new Conexion();
     }
-    
-      public ArrayList<Usuario> getAll() {
+
+    public ArrayList<Usuario> getAll() {
         ArrayList<Usuario> data = new ArrayList<>();
         try {
             PreparedStatement sentence = conexion.sentence("select * from " + table + " as u, TblEstado as e,TblTipoIdentificacion as ti,TblRol as r where e.EstId = u.TblEstado_EstId and u.TblTipoIdentificacion_TipId = ti.TipId and r.RolId = u.TblRol_RolId");
             ResultSet result = sentence.executeQuery();
             while (result.next()) {
                 Usuario u = new Usuario();
-                u.setUsuIdentificacion(result.getString("UsuIdentificacion"));               
+                u.setUsuIdentificacion(result.getString("UsuIdentificacion"));
                 u.setUsuNombre1(result.getString("UsuNombre1"));
                 u.setUsuNombre2(result.getString("UsuNombre2"));
                 u.setUsuApellido1(result.getString("UsuApellido1"));
                 u.setUsuApellido2(result.getString("UsuApellido2"));
                 u.setUsuCelular(result.getString("UsuCelular"));
-                u.setUsuCorreo(result.getString("UsuCorreo"));               
+                u.setUsuCorreo(result.getString("UsuCorreo"));
                 u.setTblTipoIdentificacion_TipId(result.getString("TblTipoIdentificacion_TipId"));
                 u.setTblEstado_EstId(result.getString("TblEstado_EstId"));
                 u.setTblRol_RolId("TblRol_RolId");
                 u.setTipNombre(result.getString("TipNombre"));
                 u.setRolNombre(result.getString("RolNombre"));
-                u.setEstEstado(result.getString("EstEstado"));              
-               
+                u.setEstEstado(result.getString("EstEstado"));
+
                 data.add(u);
             }
 
@@ -55,12 +55,12 @@ public class UsuarioModel {
         return data;
 
     }
-      
-      public Usuario create(Usuario u){
+
+    public Usuario create(Usuario u) {
         Usuario n = null;
         try {
-            
-            PreparedStatement sentence = conexion.sentence("insert into "+table+" values(?,md5(?),?,?,?,?,?,?,?,?,?,?)");
+
+            PreparedStatement sentence = conexion.sentence("insert into " + table + " values(?,md5(?),?,?,?,?,?,?,?,?,?,?)");
             sentence.setString(1, u.getUsuIdentificacion());
             sentence.setString(2, u.getUsuContrasenia());
             sentence.setString(3, u.getUsuNombre1());
@@ -70,23 +70,24 @@ public class UsuarioModel {
             sentence.setString(7, u.getUsuCelular());
             sentence.setString(8, u.getUsuCorreo());
             sentence.setString(9, u.getTblTipoIdentificacion_TipId());
-            sentence.setString(10,u.getTblEstado_EstId());
-            sentence.setString(11,u.getTblRol_RolId() );
-            sentence.setString(12,null);
+            sentence.setString(10, u.getTblEstado_EstId());
+            sentence.setString(11, u.getTblRol_RolId());
+            sentence.setString(12, null);
 
             sentence.execute();
-            PreparedStatement s = conexion.sentence("select * from "+table+" as u,TblTipoIdentificacion as ti,"
+            PreparedStatement s = conexion.sentence("select * from " + table + " as u,TblTipoIdentificacion as ti,"
                     + "TblEstado as e,TblRol as r where u.TblTipoIdentificacion_TipId = ti.TipId and "
                     + "u.TblEstado_EstId = e.EstId and u.TblRol_RolId = r.RolId  order by create_at desc limit 1");
-            
+
             System.out.println(s);
-            ResultSet r =  s.executeQuery();
-            if(r.next()){
+            ResultSet r = s.executeQuery();
+            if (r.next()) {
                 n = new Usuario();
                 n.setUsuNombre1(r.getString("UsuNombre1"));
                 n.setUsuNombre2(r.getString("UsuNombre2"));
-                n.setUsuApellido1(r.getString("UsuApellido1")); 
-                n.setUsuApellido2(r.getString("UsuApellido2"));  
+                n.setUsuApellido1(r.getString("UsuApellido1"));
+                n.setUsuApellido2(r.getString("UsuApellido1"));
+
                 n.setUsuIdentificacion(r.getString("UsuIdentificacion"));
                 n.setUsuCelular(r.getString("UsuCelular"));
                 n.setUsuCorreo(r.getString("UsuCorreo"));
@@ -97,15 +98,62 @@ public class UsuarioModel {
                 n.setEstEstado(r.getString("EstEstado"));
                 n.setRolNombre(r.getString("RolNombre"));
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return n;
     }
-      
-    public static void main(String[] args) {
-     
+
+    public boolean delete(Usuario u ) {
+
+        try {
+
+            PreparedStatement sentence = conexion.sentence("update " + table + " set TblEstado_EstId = ? where UsuIdentificacion = ?");
+            sentence.setString(1, u.getTblEstado_EstId());
+            sentence.setString(2, u.getUsuIdentificacion());
+         
+
+            sentence.execute();
+
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
     }
-    
+
+    public boolean update(Usuario u) {
+        try {
+
+            PreparedStatement sentence = conexion.sentence("insert into " + table + " values(?,md5(?),?,?,?,?,?,?,?,?,?,?)");
+            sentence.setString(1, u.getUsuIdentificacion());
+            sentence.setString(2, u.getUsuContrasenia());
+            sentence.setString(3, u.getUsuNombre1());
+            sentence.setString(4, u.getUsuNombre2());
+            sentence.setString(5, u.getUsuApellido1());
+            sentence.setString(6, u.getUsuApellido2());
+            sentence.setString(7, u.getUsuCelular());
+            sentence.setString(8, u.getUsuCorreo());
+            sentence.setString(9, u.getTblTipoIdentificacion_TipId());
+            sentence.setString(10, u.getTblEstado_EstId());
+            sentence.setString(11, u.getTblRol_RolId());
+            sentence.setString(12, null);
+
+            sentence.execute();
+
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 }

@@ -40,9 +40,11 @@ public class ProductController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getButtonCreateProduct())) {
+
             if (vista.getFieldName().getText().equals("") || vista.getFieldPrecio().getText().equals("")
                     || vista.getFieldStock().getSelectedItem().equals("Seleccionar Stock")
-                    || vista.getFieldCategoria().getSelectedItem().equals("Seleccionar Categoria")) {
+                    || vista.getFieldCategoria().getSelectedItem().equals("Seleccionar Categoria")
+                    || vista.getFieldFechaVencimiento().getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
 
@@ -106,11 +108,14 @@ public class ProductController implements ActionListener {
                     vista.getFieldPrecio().setText(p.getProPrecio());
                     vista.getFieldFechaVencimiento().setDate(p.getProFechaVencimiento());
                     Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
+
+                    Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
                     Resource.setSelectedCombobox(vista.getFieldStock(),p.getProStock());
 
                 } else {
                     if (vista.getFieldName().getText().equals("") || vista.getFieldCategoria().getSelectedIndex() == 0
-                            || vista.getFieldStock().getSelectedIndex() == 0 || vista.getFieldPrecio().getText().equals("")) {
+                            || vista.getFieldStock().getSelectedIndex() == 0 || vista.getFieldPrecio().getText().equals("")
+                            || vista.getFieldFechaVencimiento().getDate() == null) {
                         JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
 
