@@ -7,60 +7,61 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import model.Table.Usuario;
 import view.ActualizarUsuarioView;
 import view.DashboardView;
 import view.JTableComponent;
 import view.LoginView;
+import view.Resource;
 
 /**
  *
  * @author quihu
  */
-public class ActualizarUsuarioController implements MouseListener{
-    
+public class ActualizarUsuarioController implements MouseListener {
+
     private ActualizarUsuarioView vista;
     private DashboardView vistaD;
-    
-    public ActualizarUsuarioController(DashboardView vistaD,JTableComponent Tabla){
-        
-      vista = new ActualizarUsuarioView();
-      
-      this.vistaD = vistaD;
-      int row = Tabla.getTable().getSelectedRow();
-        System.out.println(Tabla.getModel().getValueAt(row, 9));
-        
-        vista.setFieldnumIdentificacion((String) Tabla.getModel().getValueAt(row, 2));
-        vista.setFieldName((String) Tabla.getModel().getValueAt(row, 3));
-        vista.setFieldSecondName((String) Tabla.getModel().getValueAt(row, 4));
-        vista.setFieldLastName((String) Tabla.getModel().getValueAt(row, 5));
-        vista.setFieldSecondLastName((String) Tabla.getModel().getValueAt(row, 6));
-        vista.setFieldCel((String) Tabla.getModel().getValueAt(row, 7));
-        vista.setFieldEmail((String) Tabla.getModel().getValueAt(row, 8));
-        //vista.setSelectedCombobox(vista.getFieldIva(), iva);
 
+    public ActualizarUsuarioController(DashboardView vistaD, JTableComponent Tabla) {
+
+        vista = new ActualizarUsuarioView();
+
+        this.vistaD = vistaD;
+        Usuario u = (Usuario) Tabla.getObject();
+
+        vista.setFieldnumIdentificacion(u.getUsuIdentificacion());
+        vista.setFieldName(u.getUsuNombre1());
+        vista.setFieldSecondName(u.getUsuNombre2());
+        vista.setFieldLastName(u.getUsuApellido1());
+        vista.setFieldSecondLastName(u.getUsuApellido2());
+        vista.setFieldCel(u.getUsuCelular());
+        vista.setFieldEmail(u.getUsuCorreo());
+        Resource.setSelectedCombobox(vista.getTipoRol(), u.getRolNombre());
+        Resource.setSelectedCombobox(vista.getEstado(), u.getEstEstado());
+        Resource.setSelectedRadioButton(vista.getTipIdentificacion(), u.getTipNombre());
         //vista.setTipoRol((JComboBox) Tabla.getModel().getValueAt(row, 9));
-        
-      vista.getClose().addMouseListener(this);
-      vista.getMinimize().addMouseListener(this);
-      vista.getCancelar().addMouseListener(this);
-      
+        vista.getClose().addMouseListener(this);
+        vista.getMinimize().addMouseListener(this);
+        vista.getCancelar().addMouseListener(this);
+
     }
-    
-     @Override
+
+    @Override
     public void mouseClicked(MouseEvent me) {
         if (me.getSource() == vista.getMinimize()) {
             vista.setState(LoginView.ICONIFIED);
         }
         if (me.getSource() == vista.getClose()) {
             vista.dispose();
-             vistaD.setVisible(true);
+            vistaD.setVisible(true);
         }
         if (me.getSource() == vista.getCancelar()) {
             vista.dispose();
-             vistaD.setVisible(true);
+            vistaD.setVisible(true);
         }
     }
-    
+
     @Override
     public void mousePressed(MouseEvent me) {
 

@@ -42,6 +42,7 @@ public class ProductoModel {
                 p.setTipProNombre(result.getString("TipProNombre"));
                 p.setTblEstado_EstId(result.getString("EstId"));
                 p.setTblEstado_EstEstado(result.getString("EstEstado"));
+                p.setTblTipoProducto_TipProIva("TipProIva");
                 data.add(p);
             }
 
@@ -53,25 +54,23 @@ public class ProductoModel {
     }
 
     public Producto create(Producto p) {
-        
+
         Producto n = null;
         try {
-         
+
             PreparedStatement sentence = conexion.sentence("insert into " + table + " values(?,?,?,?,?,?,?)");
-            sentence.setString(1,null);
-            sentence.setString(2,p.getProNombre());
+            sentence.setString(1, null);
+            sentence.setString(2, p.getProNombre());
             sentence.setString(3, p.getProPrecio());
             sentence.setString(4, p.getProStock());
             sentence.setString(5, p.getProFechaVencimiento());
             sentence.setString(6, p.getTblTipoProducto_TipId());
             sentence.setString(7, "1");
-            
-            System.out.println(sentence.toString());
+
             sentence.execute();
-            PreparedStatement s = conexion.sentence("select * from "+table+",TblTipoProducto where TblTipoProducto_TipId = TipProId  order by ProRef desc limit 1");
-            System.out.println(s);
-            ResultSet r =  s.executeQuery();
-            if(r.next()){
+            PreparedStatement s = conexion.sentence("select * from " + table + ",TblTipoProducto where TblTipoProducto_TipId = TipProId  order by ProRef desc limit 1");
+            ResultSet r = s.executeQuery();
+            if (r.next()) {
                 n = new Producto();
                 n.setProRef(r.getString("ProRef"));
                 n.setProNombre(r.getString("ProNombre"));
@@ -83,30 +82,28 @@ public class ProductoModel {
                 n.setProFechaVencimiento(r.getString("ProFechaVencimiento"));
             }
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return n;
     }
 
-      public boolean update(Producto p){
+    public boolean update(Producto p) {
         try {
-            
-            PreparedStatement sentence = conexion.sentence("update "+table+" set ProNombre = ?, ProPrecio = ?, ProStock = ?, ProFechaVencimiento = ?, TblTipoProducto_TipId = ?, TblEstado_EstId = ? where ProRef = ?");
-            sentence.setString(1,p.getProNombre());
+
+            PreparedStatement sentence = conexion.sentence("update " + table + " set ProNombre = ?, ProPrecio = ?, ProStock = ?, ProFechaVencimiento = ?, TblTipoProducto_TipId = ?, TblEstado_EstId = ? where ProRef = ?");
+            sentence.setString(1, p.getProNombre());
             sentence.setString(2, p.getProPrecio());
             sentence.setString(3, p.getProStock());
             sentence.setString(4, p.getProFechaVencimiento());
             sentence.setString(5, p.getTblTipoProducto_TipId());
             sentence.setString(6, p.getTblEstado_EstId());
             sentence.setString(7, p.getProRef());
-            
+
             sentence.execute();
-            
 
             return true;
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -115,7 +112,7 @@ public class ProductoModel {
 
     public static void main(String[] args) {
         ProductoModel app = new ProductoModel();
-       /* Producto p = new Producto();
+        /* Producto p = new Producto();
         
         p.setProNombre("ooolllloplp");
         p.setProPrecio("35");
@@ -124,8 +121,6 @@ public class ProductoModel {
         p.setProFechaVencimiento("2020-09-08");
         p.setTblTipoProducto_TipId("1");
         app.create(p);*/
- 
-        
 
     }
 

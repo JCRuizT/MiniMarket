@@ -39,8 +39,6 @@ public final class JDatePicker extends JDatePickerImpl implements ChangeListener
         super.setBorder(border);
         super.setBackground(orange);
         super.getJFormattedTextField().setBackground(orange);
-
-
     }
     
                 

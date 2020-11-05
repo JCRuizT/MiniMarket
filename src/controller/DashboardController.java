@@ -33,7 +33,7 @@ public class DashboardController implements MouseListener {
 
         vista = new DashboardView();
         vista.setLabelRol(this.logged.getRolNombre());
-        vista.setLabelNameUser(this.logged.getUsuNombre1() + " " + this.logged.getUsuNombre2());
+        vista.setLabelNameUser(this.logged.getUsuNombre1() + " " + this.logged.getUsuApellido1());
         controllerCreateCategory = new CategoryController();
         ControllerProduc = new ProductController();
         usuarioController = new UsuarioController(vista);
