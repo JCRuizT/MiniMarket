@@ -52,6 +52,8 @@ public class DashboardController implements MouseListener {
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
         vista.getPicAdmin().addMouseListener(this);
+        vistaCerrar.getCerrar().addMouseListener(this);
+        vistaCerrar.getImg().addMouseListener(this);
 
     }
 
@@ -73,6 +75,8 @@ public class DashboardController implements MouseListener {
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
         vista.getPicAdmin().addMouseListener(this);
+        vistaCerrar.getCerrar().addMouseListener(this);
+        vistaCerrar.getImg().addMouseListener(this);
 
     }
 
@@ -89,20 +93,28 @@ public class DashboardController implements MouseListener {
                 vistaCerrar.repaint();
                 vistaCerrar.validate();
                 vistaCerrar.invalidate();
-                
+
                 NumClick = 1;
 
-            }else if(NumClick == 1){
-                
+            } else if (NumClick == 1) {
+
                 vista.getCerrar().remove(vistaCerrar);
-                
+
                 vista.repaint();
                 vista.validate();
                 vista.invalidate();
-                
-                 NumClick = 0;
-                
+
+                NumClick = 0;
+
             }
+
+        }
+
+        if (me.getSource() == vistaCerrar.getCerrar() || me.getSource() == vistaCerrar.getImg()) {
+
+            vista.dispose();
+
+            LoginController login = new LoginController();
 
         }
 
