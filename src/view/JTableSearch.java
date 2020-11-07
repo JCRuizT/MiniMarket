@@ -8,7 +8,6 @@ package view;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
 import static javax.swing.RowFilter.regexFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -49,16 +48,17 @@ public class JTableSearch extends JTextField implements DocumentListener {
 
     public void search(String str) {
         
+        
         if (str.length() == 0) {
             sorter.setRowFilter(null);
         } else {
             
-     
+           
            sorter.setRowFilter(regexFilter("(?i)"+str));
+           
            //sorter.setRowFilter(regexFilter(str));
         }
         
-        tableList.repaint();
         
     }
 
