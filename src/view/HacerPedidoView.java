@@ -141,9 +141,10 @@ public class HacerPedidoView extends JPanel {
             tableList.getModel().addRow(rs);
         }
           
-        tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(60);
-        
-          
+        tableList.getTable().getColumnModel().getColumn(1).setMinWidth(130);
+        tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(50);
+        tableList.getTable().getColumnModel().getColumn(3).setMinWidth(120);
+        tableList.getTable().getColumnModel().getColumn(4).setMaxWidth(60);
 
         fieldSearch = new JTableSearch(tableList.getTable());
         fieldSearch.setLocation(200, 110);
