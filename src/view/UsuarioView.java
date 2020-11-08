@@ -26,14 +26,14 @@ public class UsuarioView extends JPanel {
 
     private JTableComponent tableList;
 
-    JComboBox FiltroRol = new JComboBox();
-
     JLabel LabelFiltro = new JLabel();
 
     JButton buttonCreateUsuario = new JButton();
     JButton buttonDeleteUsuario = new JButton();
     JButton buttonUpdateUsuario = new JButton();
     JButton buttonCancelUsuario = new JButton();
+
+    private JTableSearch fieldSearch;
 
     JLabel title = new JLabel();
 
@@ -80,6 +80,11 @@ public class UsuarioView extends JPanel {
             tableList.getModel().addRow(rs);
         }
 
+        fieldSearch = new JTableSearch(tableList.getTable());
+        fieldSearch.setLocation(1030, 200);
+        fieldSearch.setSize(320, 30);
+        fieldSearch.setFont(new Font("Segoe UI Light", BOLD, 20));
+
         tableList.centerData(1);
         tableList.centerData(9);
         tableList.centerData(7);
@@ -121,21 +126,13 @@ public class UsuarioView extends JPanel {
         buttonCancelUsuario.setBorder(null);
         buttonCancelUsuario.setFont(new Font("Arial", BOLD, 15));
 
-        FiltroRol.setLocation(1030, 200);
-        FiltroRol.setSize(320, 30);
-        FiltroRol.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        FiltroRol.addItem("Tipo de usuario");
-        FiltroRol.addItem("Administrador");
-        FiltroRol.addItem("Vendedor");
-        FiltroRol.addItem("Cliente");
-
         LabelFiltro.setLocation(950, 195);
         LabelFiltro.setSize(300, 40);
         LabelFiltro.setFont(new Font("Arial", BOLD, 20));
         LabelFiltro.setText("Filtro :");
 
         add(LabelFiltro);
-        add(FiltroRol);
+        add(fieldSearch);
         add(buttonUpdateUsuario);
         add(buttonDeleteUsuario);
         add(buttonCreateUsuario);

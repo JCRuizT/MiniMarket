@@ -45,6 +45,11 @@ public class DashboardView extends JFrame implements MouseListener {
     JLabel picCrearProduc = new JLabel();
     JLabel picCrearCateg = new JLabel();
     JLabel picHacerPedido = new JLabel();
+    
+    JLabel labelEstadistica = new JLabel();
+    JLabel labelHistorial = new JLabel();
+    JLabel PicEstadistica = new JLabel();
+    JLabel PicHistorial = new JLabel();
 
     //CAJA DE TEXTO
     JTextField xs = new JTextField();
@@ -112,14 +117,30 @@ public class DashboardView extends JFrame implements MouseListener {
         labelCrearCateg.setText("Gestionar Categoria");
         labelCrearCateg.setCursor(new Cursor(HAND_CURSOR));
         labelCrearCateg.addMouseListener(this);
-
+        
+        labelHistorial.setForeground(WHITE);
+        labelHistorial.setSize(300, 40);
+        labelHistorial.setLocation(80, 220);
+        labelHistorial.setFont(new Font("Arial", BOLD, 20));
+        labelHistorial.setText("Historial Pedidos");
+        labelHistorial.setCursor(new Cursor(HAND_CURSOR));
+        labelHistorial.addMouseListener(this);
+        
         labelHacerPedido.setForeground(WHITE);
         labelHacerPedido.setSize(300, 40);
-        labelHacerPedido.setLocation(80, 220);
+        labelHacerPedido.setLocation(80, 260);
         labelHacerPedido.setFont(new Font("Arial", BOLD, 20));
         labelHacerPedido.setText("Hacer Pedido");
         labelHacerPedido.setCursor(new Cursor(HAND_CURSOR));
         labelHacerPedido.addMouseListener(this);
+        
+        labelEstadistica.setForeground(WHITE);
+        labelEstadistica.setSize(300, 40);
+        labelEstadistica.setLocation(80, 780);
+        labelEstadistica.setFont(new Font("Arial", BOLD, 20));
+        labelEstadistica.setText("Estadisticas");
+        labelEstadistica.setCursor(new Cursor(HAND_CURSOR));
+        labelEstadistica.addMouseListener(this);
 
         labelBienvenida.setForeground(BLACK);
         labelBienvenida.setSize(300, 40);
@@ -172,14 +193,31 @@ public class DashboardView extends JFrame implements MouseListener {
         picCrearCateg.setIcon(iconCrearCateg);
         picCrearCateg.setCursor(new Cursor(HAND_CURSOR));
         picCrearCateg.addMouseListener(this);
+        
+        PicHistorial.setSize(30, 30);
+        PicHistorial.setLocation(39, 225);
+        ImageIcon imageHistorial = new ImageIcon(getClass().getResource("/imagenes/historial.png"));
+        Icon iconHistorial = new ImageIcon(imageHistorial.getImage().getScaledInstance(PicHistorial.getWidth(), PicHistorial.getHeight(), SCALE_DEFAULT));
+        PicHistorial.setIcon(iconHistorial);
+        PicHistorial.setCursor(new Cursor(HAND_CURSOR));
+        PicHistorial.addMouseListener(this);
 
         picHacerPedido.setSize(30, 30);
-        picHacerPedido.setLocation(39, 225);
+        picHacerPedido.setLocation(39, 265);
         ImageIcon imageHacerPedido = new ImageIcon(getClass().getResource("/imagenes/pedido.png"));
         Icon iconHacerPedido = new ImageIcon(imageHacerPedido.getImage().getScaledInstance(picHacerPedido.getWidth(), picHacerPedido.getHeight(), SCALE_DEFAULT));
         picHacerPedido.setIcon(iconHacerPedido);
         picHacerPedido.setCursor(new Cursor(HAND_CURSOR));
         picHacerPedido.addMouseListener(this);
+        
+        PicEstadistica.setSize(30, 30);
+        PicEstadistica.setLocation(39, 780);
+        ImageIcon imageEstadistica = new ImageIcon(getClass().getResource("/imagenes/estadistica.png"));
+        Icon iconEstadistica = new ImageIcon(imageEstadistica.getImage().getScaledInstance(PicEstadistica.getWidth(), PicEstadistica.getHeight(), SCALE_DEFAULT));
+        PicEstadistica.setIcon(iconEstadistica);
+        PicEstadistica.setCursor(new Cursor(HAND_CURSOR));
+        PicEstadistica.addMouseListener(this);
+        
 
         close.setSize(20, 20);
         close.setLocation(1390, 20);
@@ -197,6 +235,10 @@ public class DashboardView extends JFrame implements MouseListener {
         minimize.setCursor(new Cursor(HAND_CURSOR));
         minimize.addMouseListener(this);
 
+        menu.add(PicEstadistica);
+        menu.add(labelEstadistica);
+        menu.add(PicHistorial);
+        menu.add(labelHistorial);
         menu.add(picHacerPedido);
         menu.add(labelHacerPedido);
         menu.add(picCrearCateg);
