@@ -47,12 +47,6 @@ public class UsuarioController implements ActionListener {
             vistaD.setVisible(false);
 
             CrearUsuarioController register = new CrearUsuarioController(vistaD, vista);
-        } else if (e.getSource() == vista.getButtonCancelUsuario()) {
-
-            vistaD.setVisible(false);
-
-            CrearUsuarioController register = new CrearUsuarioController(vistaD, vista);
-
         } else if (e.getSource() == vista.getButtonUpdateUsuario()) {
 
             System.out.println(vista.getTableList().getTable().getSelectedRow());

@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.DashboardController;
 import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
@@ -21,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.Table.Producto;
+import model.Table.Usuario;
 
 /**
  *
@@ -33,32 +35,32 @@ public class HacerPedidoView extends JPanel {
     private JTableComponent tableList;
     private JTableComponent tableList2;
 
-    JButton buttonAddProduc = new JButton();
-    JButton buttonAddCant = new JButton();
-    JButton buttonDeleteProduc = new JButton();
-    JButton buttonBuy = new JButton();
+    private JButton buttonAddProduc = new JButton();
+    private JButton buttonAddCant = new JButton();
+    private JButton buttonDeleteProduc = new JButton();
+    private JButton buttonBuy = new JButton();
 
-    JLabel labelName = new JLabel();
-    JLabel title = new JLabel();
-    JLabel shearch = new JLabel();
-    JLabel flecha = new JLabel();
-    JLabel PicPedido = new JLabel();
-    JLabel totalAPagar = new JLabel();
-    JLabel totalNum = new JLabel();
-    
+    private JLabel labelName = new JLabel();
+    private JLabel title = new JLabel();
+    private JLabel shearch = new JLabel();
+    private JLabel flecha = new JLabel();
+    private JLabel PicPedido = new JLabel();
+    private JLabel totalAPagar = new JLabel();
+    private JLabel totalNum = new JLabel();
+    private JComboBox selectClient;
 
     private JTableSearch fieldSearch;
 
     private final int x = 1500;
     private final int y = 1500;
 
-    public HacerPedidoView(ArrayList<Producto> result) {
+    public HacerPedidoView(ArrayList<Producto> result, ArrayList<Usuario> user) {
 
         setSize(x, y);
         setLayout(null);
+        
 
         title.setText("Hacer Pedido");
-        title.setLocation(0, 0);
         title.setSize(850, 45);
         title.setForeground(orange);
         title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
@@ -81,6 +83,21 @@ public class HacerPedidoView extends JPanel {
         buttonDeleteProduc.setBorder(null);
         buttonDeleteProduc.setFont(new Font("Arial", BOLD, 15));
 
+        if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+            selectClient = new JComboBox();
+
+            selectClient.setLocation(0, 670);
+            selectClient.setSize(180, 30);
+            selectClient.setFont(new Font("Arial", BOLD, 15));
+
+            selectClient.addItem("Seleccionar Cliente");
+
+            for (int i = 0; i < user.size(); i++) {
+                selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuIdentificacion() + " - " + user.get(i).getUsuNombre1().toUpperCase()));
+            }
+
+        }
+
         buttonBuy = new JButton("Hacer Pedido");
         buttonBuy.setLocation(750, 670);
         buttonBuy.setSize(230, 40);
@@ -89,16 +106,13 @@ public class HacerPedidoView extends JPanel {
         buttonBuy.setFocusable(false);
         buttonBuy.setBorder(null);
         buttonBuy.setFont(new Font("Arial", BOLD, 20));
-        
-        
+
         totalAPagar.setText("Total a pagar : $ ");
         totalAPagar.setLocation(750, 610);
         totalAPagar.setSize(300, 40);
         totalAPagar.setForeground(Color.BLACK);
         totalAPagar.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        
-                
+
         totalNum.setText("0");
         totalNum.setLocation(940, 610);
         totalNum.setSize(300, 40);
@@ -131,16 +145,15 @@ public class HacerPedidoView extends JPanel {
         tableList2.getTable().getColumnModel().getColumn(1).setMaxWidth(60);
         tableList2.getTable().getColumnModel().getColumn(3).setMaxWidth(90);
         tableList2.getTable().getColumnModel().getColumn(4).setMaxWidth(90);
-        
 
-        String columns[] = {"id", "Nombre del Producto","C.Disp","Fecha vcto", "Precio"};
+        String columns[] = {"id", "Nombre del Producto", "C.Disp", "Fecha vcto", "Precio"};
         tableList = new JTableComponent(columns);
-        
-          for(int i=0; i<result.size();i++){
-            Object rs[] = {result.get(i),result.get(i).getProNombre(),result.get(i).getProStock(),Resource.transformFecha(result.get(i).getProFechaVencimiento()),"$ "+result.get(i).getProPrecio()};
+
+        for (int i = 0; i < result.size(); i++) {
+            Object rs[] = {result.get(i), result.get(i).getProNombre(), result.get(i).getProStock(), Resource.transformFecha(result.get(i).getProFechaVencimiento()), "$ " + result.get(i).getProPrecio()};
             tableList.getModel().addRow(rs);
         }
-          
+
         tableList.getTable().getColumnModel().getColumn(1).setMinWidth(130);
         tableList.getTable().getColumnModel().getColumn(2).setMaxWidth(50);
         tableList.getTable().getColumnModel().getColumn(3).setMinWidth(120);
@@ -157,8 +170,9 @@ public class HacerPedidoView extends JPanel {
         shearch.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
         tableList.getTable().getColumnModel().getColumn(3).setMaxWidth(90);
-        tableList.centerData(2); tableList.centerData(3);
-         
+        tableList.centerData(2);
+        tableList.centerData(3);
+
         tableList.getScrollTable().setLocation(0, 150);
         tableList.getScrollTable().setSize(400, 450);
 
@@ -175,6 +189,10 @@ public class HacerPedidoView extends JPanel {
         add(tableList2.getScrollTable());
         add(buttonDeleteProduc);
         add(PicPedido);
+
+        if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+            add(selectClient);
+        }
 
     }
 
@@ -216,7 +234,9 @@ public class HacerPedidoView extends JPanel {
     public void setTotalNum(String totalNum) {
         this.totalNum.setText(totalNum);
     }
-    
-    
+
+    public JComboBox getSelectClient() {
+        return selectClient;
+    }
 
 }

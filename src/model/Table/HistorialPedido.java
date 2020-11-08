@@ -9,7 +9,7 @@ package model.Table;
  *
  * @author pc-standard
  */
-public class EstadisticaPedido {
+public class HistorialPedido {
     
     
     private String PedId;

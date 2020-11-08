@@ -20,6 +20,7 @@ import model.ProductoModel;
 import model.Table.Pedido;
 import model.Table.Producto;
 import model.Table.ProductoPedido;
+import model.UsuarioModel;
 import view.DashboardView;
 import view.HacerPedidoView;
 import view.Resource;
@@ -36,22 +37,29 @@ public class HacerPedidoController implements ActionListener {
     private static PedidoModel model;
     private ProductoModel modelProduct;
     private DetallePedidoModel modelProductoPedido;
+    private UsuarioModel modelUser;
 
     private DashboardView vistaD;
-    private static ArrayList<Producto>list;
+    private static ArrayList<Producto> list;
     private static String totalPagar;
     private static HacerPedidoView vh;
     private static DetallePedidoModel dp;
     private static ProductoModel mp;
 
     public HacerPedidoController(DashboardView vistaD) {
-        
 
         modelProduct = new ProductoModel();
         modelProductoPedido = new DetallePedidoModel();
+        modelUser = new UsuarioModel();
         dp = modelProductoPedido;
         mp = modelProduct;
-        vistaH = new HacerPedidoView(modelProduct.getAll());
+
+        if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+
+            vistaH = new HacerPedidoView(modelProduct.getAll(), modelUser.getUsersSelect());
+        }else{
+             vistaH = new HacerPedidoView(modelProduct.getAll(), null);
+        }
         vh = vistaH;
         model = new PedidoModel();
         this.vistaD = vistaD;
@@ -82,21 +90,44 @@ public class HacerPedidoController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == vistaH.getButtonBuy()) {
-            
-            if(vistaH.getTableList2().getTable().getRowCount() == 0){
-                JOptionPane.showMessageDialog(null, "No hay productos en la lista de compras para realizar el pedido");
-            }else{
-                
-                list = new ArrayList<Producto>();
-                for(int i=0;i<vistaH.getTableList2().getTable().getRowCount();i++){
-                    
-                    Producto p = (Producto) vistaH.getTableList2().getTable().getValueAt(i, 0);
-                    p.setCantidad(vistaH.getTableList2().getTable().getValueAt(i, 1).toString());
+
+            if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+                if (vistaH.getTableList2().getTable().getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay productos en la lista de compras para realizar el pedido");
+                } else if (vistaH.getSelectClient().getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun cliente");
+                } else {
+
+                    list = new ArrayList<Producto>();
+                    for (int i = 0; i < vistaH.getTableList2().getTable().getRowCount(); i++) {
+
+                        Producto p = (Producto) vistaH.getTableList2().getTable().getValueAt(i, 0);
+                        p.setCantidad(vistaH.getTableList2().getTable().getValueAt(i, 1).toString());
+                    }
+
+                    vistaD.setVisible(false);
+                    TipoPagoController vista = new TipoPagoController(vistaD);
+
                 }
 
-                vistaD.setVisible(false);
-                TipoPagoController vista = new TipoPagoController(vistaD);
-                
+            } else {
+
+                if (vistaH.getTableList2().getTable().getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay productos en la lista de compras para realizar el pedido");
+                } else {
+
+                    list = new ArrayList<Producto>();
+                    for (int i = 0; i < vistaH.getTableList2().getTable().getRowCount(); i++) {
+
+                        Producto p = (Producto) vistaH.getTableList2().getTable().getValueAt(i, 0);
+                        p.setCantidad(vistaH.getTableList2().getTable().getValueAt(i, 1).toString());
+                    }
+
+                    vistaD.setVisible(false);
+                    TipoPagoController vista = new TipoPagoController(vistaD);
+
+                }
+
             }
 
         } else if (e.getSource().equals(vistaH.getButtonAddProduc())) {
@@ -159,7 +190,7 @@ public class HacerPedidoController implements ActionListener {
             Producto p = (Producto) vistaH.getTableList2().getObject();
             vistaH.getTableList2().getTable().setValueAt(cant, vistaH.getTableList2().getTable().getSelectedRow(), 1);
             vistaH.getTableList2().getTable().setValueAt((precioU * cant), vistaH.getTableList2().getTable().getSelectedRow(), 4);
-            
+
             p.setCantidad(String.valueOf(cant));
         } else {
 
@@ -182,12 +213,12 @@ public class HacerPedidoController implements ActionListener {
             int suma = 0;
             for (int i = 0; i < vistaH.getTableList2().getTable().getRowCount(); i++) {
                 int t = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(i, 4).toString());
-                suma = suma+t;
+                suma = suma + t;
             }
             tot = String.valueOf(suma);
             totalPagar = tot;
         }
-        
+
         return tot;
 
     }
@@ -195,39 +226,39 @@ public class HacerPedidoController implements ActionListener {
     public static String getTotalPagar() {
         return totalPagar;
     }
-  
-    
-    public static void createPedido(String metodoPago){
-        
+
+    public static void createPedido(String metodoPago) {
+
         Pedido p = new Pedido();
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int year  = localDate.getYear();
+        int year = localDate.getYear();
         int month = localDate.getMonthValue();
-        int day   = localDate.getDayOfMonth();
-        
-        String fecha = year+"-"+month+"-"+day;
-        
+        int day = localDate.getDayOfMonth();
+
+        String fecha = year + "-" + month + "-" + day;
+
         p.setPedFecha(fecha);
         p.setTblMetodoPago_MetId(metodoPago);
-        p.setTblUsuario_UsuIdentificacion(DashboardController.getUserInfo().getUsuIdentificacion());
-        Pedido creado = model.create(p);
         
-        for(int i = 0; i < vh.getTableList2().getModel().getRowCount(); i++){
-            Producto  pro = (Producto) vh.getTableList2().getModel().getValueAt(i, 0);
+        if(DashboardController.getUserInfo().getTblRol_RolId().equals("3")){
+            p.setTblUsuario_UsuIdentificacion(DashboardController.getUserInfo().getUsuIdentificacion());
+        }else{
+            p.setTblUsuario_UsuIdentificacion(String.valueOf(vh.getSelectClient().getSelectedItem().hashCode())); 
+        }
+        Pedido creado = model.create(p);
+
+        for (int i = 0; i < vh.getTableList2().getModel().getRowCount(); i++) {
+            Producto pro = (Producto) vh.getTableList2().getModel().getValueAt(i, 0);
             ProductoPedido proped = new ProductoPedido();
             proped.setProPedCantidad(pro.getCantidad());
             proped.setTblPedido_PedId(creado.getPedId());
             proped.setTblProducto_ProRef(pro.getProRef());
-            pro.setProStock(String.valueOf(Integer.parseInt(pro.getProStock())-Integer.parseInt(pro.getCantidad())));
+            pro.setProStock(String.valueOf(Integer.parseInt(pro.getProStock()) - Integer.parseInt(pro.getCantidad())));
             mp.update(pro);
             dp.create(proped);
         }
-        
-        
 
     }
-    
-    
 
 }

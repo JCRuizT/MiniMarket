@@ -25,8 +25,10 @@ public class DashboardController implements MouseListener {
     private ProductController ControllerProduc;
     private UsuarioController usuarioController;
     private HacerPedidoController vistaPedido;
+    private HistorialPedidoController vistaHistorial;
     private Usuario logged;
     private CerrarSesionView vistaCerrar;
+    private EstadisticasController vistaEstadistica;
     private static Usuario userInfo;
 
     public DashboardController(Usuario logged) {
@@ -37,46 +39,125 @@ public class DashboardController implements MouseListener {
         vista = new DashboardView();
         vista.setLabelRol(this.logged.getRolNombre());
         vista.setLabelNameUser(this.logged.getUsuNombre1() + " " + this.logged.getUsuApellido1());
-        controllerCreateCategory = new CategoryController();
-        ControllerProduc = new ProductController();
-        usuarioController = new UsuarioController(vista);
+
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            controllerCreateCategory = new CategoryController();
+            ControllerProduc = new ProductController();
+
+        }
+
+        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+            usuarioController = new UsuarioController(vista);
+
+        }
+
         vistaPedido = new HacerPedidoController(vista);
         vistaCerrar = new CerrarSesionView();
+        vistaHistorial = new HistorialPedidoController();
+        vistaEstadistica = new EstadisticasController();
 
-        vista.getPicCrearCateg().addMouseListener(this);
-        vista.getLabelCrearCateg().addMouseListener(this);
-        vista.getPicCrearProduc().addMouseListener(this);
-        vista.getLabelCrearProd().addMouseListener(this);
-        vista.getPicCrearUsu().addMouseListener(this);
-        vista.getLabelCrearUsu().addMouseListener(this);
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            vista.getPicCrearCateg().addMouseListener(this);
+            vista.getLabelCrearCateg().addMouseListener(this);
+            vista.getPicCrearProduc().addMouseListener(this);
+            vista.getLabelCrearProd().addMouseListener(this);
+
+        }
+
+        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+            vista.getPicCrearUsu().addMouseListener(this);
+            vista.getLabelCrearUsu().addMouseListener(this);
+        }
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
         vista.getPicAdmin().addMouseListener(this);
+        vista.getPicHistorial().addMouseListener(this);
+        vista.getLabelHistorial().addMouseListener(this);
+        vista.getPicEstadistica().addMouseListener(this);
+        vista.getLabelEstadistica().addMouseListener(this);
         vistaCerrar.getCerrar().addMouseListener(this);
         vistaCerrar.getImg().addMouseListener(this);
+
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            vista.getPagPrincipal().add(vistaEstadistica.getVista());
+
+        } else if (logged.getTblRol_RolId().equals("2") || logged.getTblRol_RolId().equals("3")) {
+
+            vista.getPagPrincipal().add(vistaPedido.getVista());
+            vistaPedido.getVista().setLocation(370, 120);
+
+        }
+
+        vista.invalidate();
+        vista.validate();
+        vista.repaint();
 
     }
 
     /* solo para desarrollo eliminar en version final */
     public DashboardController() {
         vista = new DashboardView();
-        controllerCreateCategory = new CategoryController();
-        ControllerProduc = new ProductController();
-        usuarioController = new UsuarioController(vista);
+
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            controllerCreateCategory = new CategoryController();
+            ControllerProduc = new ProductController();
+        }
+
+        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+            usuarioController = new UsuarioController(vista);
+
+        }
+
         vistaPedido = new HacerPedidoController(vista);
         vistaCerrar = new CerrarSesionView();
+        vistaHistorial = new HistorialPedidoController();
+        vistaEstadistica = new EstadisticasController();
 
-        vista.getPicCrearCateg().addMouseListener(this);
-        vista.getLabelCrearCateg().addMouseListener(this);
-        vista.getPicCrearProduc().addMouseListener(this);
-        vista.getLabelCrearProd().addMouseListener(this);
-        vista.getPicCrearUsu().addMouseListener(this);
-        vista.getLabelCrearUsu().addMouseListener(this);
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            vista.getPicCrearCateg().addMouseListener(this);
+            vista.getLabelCrearCateg().addMouseListener(this);
+            vista.getPicCrearProduc().addMouseListener(this);
+            vista.getLabelCrearProd().addMouseListener(this);
+
+        }
+
+        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+            vista.getPicCrearUsu().addMouseListener(this);
+            vista.getLabelCrearUsu().addMouseListener(this);
+        }
+
         vista.getLabelHacerPedido().addMouseListener(this);
         vista.getPicHacerPedido().addMouseListener(this);
         vista.getPicAdmin().addMouseListener(this);
+        vista.getPicHistorial().addMouseListener(this);
+        vista.getLabelHistorial().addMouseListener(this);
+        vista.getPicEstadistica().addMouseListener(this);
+        vista.getLabelEstadistica().addMouseListener(this);
         vistaCerrar.getCerrar().addMouseListener(this);
         vistaCerrar.getImg().addMouseListener(this);
+
+        if (logged.getTblRol_RolId().equals("1")) {
+
+            vista.getPagPrincipal().add(vistaEstadistica.getVista());
+
+        } else if (logged.getTblRol_RolId().equals("2") || logged.getTblRol_RolId().equals("3")) {
+
+            vista.getPagPrincipal().add(vistaPedido.getVista());
+
+        }
+
+        vista.invalidate();
+        vista.validate();
+        vista.repaint();
 
     }
 
@@ -118,44 +199,85 @@ public class DashboardController implements MouseListener {
 
         }
 
-        if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
+        if (logged.getTblRol_RolId().equals("1")) {
 
-            vista.getPagPrincipal().remove(usuarioController.getVista());
-            vista.getPagPrincipal().remove(ControllerProduc.getVista());
-            vista.getPagPrincipal().remove(vistaPedido.getVista());
+            if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
 
-            vista.getPagPrincipal().add(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+                vista.getPagPrincipal().remove(ControllerProduc.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaEstadistica.getVista());
 
-            vista.invalidate();
-            vista.validate();
-            vista.repaint();
+                vista.getPagPrincipal().add(controllerCreateCategory.getVista());
 
-            controllerCreateCategory.getVista().setLocation(370, 120);
+                vista.invalidate();
+                vista.validate();
+                vista.repaint();
+
+                controllerCreateCategory.getVista().setLocation(370, 120);
+
+            }
+
+            if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
+
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+                vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+
+                vista.getPagPrincipal().add(ControllerProduc.getVista());
+
+                vista.invalidate();
+                vista.validate();
+                vista.repaint();
+
+                ControllerProduc.getVista().setLocation(370, 120);
+            }
 
         }
 
-        if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
+        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
 
-            vista.getPagPrincipal().remove(usuarioController.getVista());
-            vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
-            vista.getPagPrincipal().remove(vistaPedido.getVista());
+            if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {
 
-            vista.getPagPrincipal().add(ControllerProduc.getVista());
+                if (logged.getTblRol_RolId().equals("1")) {
+                    vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                    vista.getPagPrincipal().remove(ControllerProduc.getVista());
+                }
 
-            vista.invalidate();
-            vista.validate();
-            vista.repaint();
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaEstadistica.getVista());
 
-            ControllerProduc.getVista().setLocation(370, 120);
+                vista.getPagPrincipal().add(usuarioController.getVista());
+
+                vista.invalidate();
+                vista.validate();
+                vista.repaint();
+
+            }
+
         }
 
-        if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {
+        if (me.getSource() == vista.getPicHistorial() || me.getSource() == vista.getLabelHistorial()) {
 
-            vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
-            vista.getPagPrincipal().remove(ControllerProduc.getVista());
+            if (logged.getTblRol_RolId().equals("1")) {
+                vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(ControllerProduc.getVista());
+            }
+
             vista.getPagPrincipal().remove(vistaPedido.getVista());
 
-            vista.getPagPrincipal().add(usuarioController.getVista());
+            if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+
+            }
+            vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+
+            vista.getPagPrincipal().add(vistaHistorial.getVista());
 
             vista.invalidate();
             vista.validate();
@@ -165,9 +287,20 @@ public class DashboardController implements MouseListener {
 
         if (me.getSource() == vista.getPicHacerPedido() || me.getSource() == vista.getLabelHacerPedido()) {
 
-            vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
-            vista.getPagPrincipal().remove(ControllerProduc.getVista());
-            vista.getPagPrincipal().remove(usuarioController.getVista());
+            if (logged.getTblRol_RolId().equals("1")) {
+
+                vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(ControllerProduc.getVista());
+
+            }
+
+            if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+            }
+
+            vista.getPagPrincipal().remove(vistaHistorial.getVista());
+            vista.getPagPrincipal().remove(vistaEstadistica.getVista());
 
             vista.getPagPrincipal().add(vistaPedido.getVista());
 
@@ -176,6 +309,31 @@ public class DashboardController implements MouseListener {
             vista.repaint();
 
             vistaPedido.getVista().setLocation(370, 120);
+
+        }
+
+        if (me.getSource() == vista.getPicEstadistica() || me.getSource() == vista.getLabelEstadistica()) {
+
+            if (logged.getTblRol_RolId().equals("1")) {
+
+                vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(ControllerProduc.getVista());
+
+            }
+
+            if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+            }
+
+            vista.getPagPrincipal().remove(vistaHistorial.getVista());
+            vista.getPagPrincipal().remove(vistaPedido.getVista());
+
+            vista.getPagPrincipal().add(vistaEstadistica.getVista());
+
+            vista.invalidate();
+            vista.validate();
+            vista.repaint();
 
         }
 

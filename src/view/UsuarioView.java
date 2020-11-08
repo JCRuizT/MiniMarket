@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.DashboardController;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Font;
@@ -31,7 +32,6 @@ public class UsuarioView extends JPanel {
     JButton buttonCreateUsuario = new JButton();
     JButton buttonDeleteUsuario = new JButton();
     JButton buttonUpdateUsuario = new JButton();
-    JButton buttonCancelUsuario = new JButton();
 
     private JTableSearch fieldSearch;
 
@@ -45,8 +45,16 @@ public class UsuarioView extends JPanel {
         setSize(x, y);
         setLayout(null);
 
-        title.setText("Gestionar Usuarios");
-        title.setLocation(150, 120);
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            title.setText("Gestionar Usuarios");
+            title.setLocation(150, 120);
+
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            title.setText("Clientes");
+            title.setLocation(50, 120);
+        }
+
         title.setSize(850, 40);
         title.setForeground(orange);
         title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
@@ -58,7 +66,7 @@ public class UsuarioView extends JPanel {
         tableList.getTable().getColumnModel().getColumn(8).setMinWidth(150);
         tableList.getTable().getColumnModel().getColumn(9).setMinWidth(50);
         tableList.getTable().getColumnModel().getColumn(10).setMaxWidth(50);
-
+       
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
 
@@ -89,8 +97,15 @@ public class UsuarioView extends JPanel {
         tableList.centerData(9);
         tableList.centerData(7);
         tableList.centerData(10);
+        
+         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
 
-        buttonCreateUsuario = new JButton("Crear Usuario");
+            buttonCreateUsuario = new JButton("Crear Usuario");
+
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+           buttonCreateUsuario = new JButton("Crear Cliente");
+        }
+
         buttonCreateUsuario.setLocation(360, 800);
         buttonCreateUsuario.setSize(230, 30);
         buttonCreateUsuario.setBackground(orange);
@@ -99,32 +114,27 @@ public class UsuarioView extends JPanel {
         buttonCreateUsuario.setBorder(null);
         buttonCreateUsuario.setFont(new Font("Arial", BOLD, 15));
 
-        buttonUpdateUsuario.setText("Actualizar Usuario");
-        buttonUpdateUsuario.setLocation(600, 800);
-        buttonUpdateUsuario.setSize(230, 30);
-        buttonUpdateUsuario.setBackground(orange);
-        buttonUpdateUsuario.setForeground(white);
-        buttonUpdateUsuario.setFocusable(false);
-        buttonUpdateUsuario.setBorder(null);
-        buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
 
-        buttonDeleteUsuario.setText("Eliminar Usuario");
-        buttonDeleteUsuario.setLocation(890, 800);
-        buttonDeleteUsuario.setSize(230, 30);
-        buttonDeleteUsuario.setBackground(orange);
-        buttonDeleteUsuario.setForeground(white);
-        buttonDeleteUsuario.setFocusable(false);
-        buttonDeleteUsuario.setBorder(null);
-        buttonDeleteUsuario.setFont(new Font("Arial", BOLD, 15));
+            buttonUpdateUsuario.setText("Actualizar Usuario");
+            buttonUpdateUsuario.setLocation(600, 800);
+            buttonUpdateUsuario.setSize(230, 30);
+            buttonUpdateUsuario.setBackground(orange);
+            buttonUpdateUsuario.setForeground(white);
+            buttonUpdateUsuario.setFocusable(false);
+            buttonUpdateUsuario.setBorder(null);
+            buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
 
-        buttonCancelUsuario.setText("Cancelar");
-        buttonCancelUsuario.setLocation(1130, 800);
-        buttonCancelUsuario.setSize(230, 30);
-        buttonCancelUsuario.setBackground(orange);
-        buttonCancelUsuario.setForeground(white);
-        buttonCancelUsuario.setFocusable(false);
-        buttonCancelUsuario.setBorder(null);
-        buttonCancelUsuario.setFont(new Font("Arial", BOLD, 15));
+            buttonDeleteUsuario.setText("Eliminar Usuario");
+            buttonDeleteUsuario.setLocation(890, 800);
+            buttonDeleteUsuario.setSize(230, 30);
+            buttonDeleteUsuario.setBackground(orange);
+            buttonDeleteUsuario.setForeground(white);
+            buttonDeleteUsuario.setFocusable(false);
+            buttonDeleteUsuario.setBorder(null);
+            buttonDeleteUsuario.setFont(new Font("Arial", BOLD, 15));
+
+        }
 
         LabelFiltro.setLocation(950, 195);
         LabelFiltro.setSize(300, 40);
@@ -133,10 +143,13 @@ public class UsuarioView extends JPanel {
 
         add(LabelFiltro);
         add(fieldSearch);
-        add(buttonUpdateUsuario);
-        add(buttonDeleteUsuario);
+
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            add(buttonUpdateUsuario);
+            add(buttonDeleteUsuario);
+        }
         add(buttonCreateUsuario);
-        add(buttonCancelUsuario);
         add(tableList.getScrollTable());
         add(title);
     }
@@ -151,10 +164,6 @@ public class UsuarioView extends JPanel {
 
     public JButton getButtonUpdateUsuario() {
         return buttonUpdateUsuario;
-    }
-
-    public JButton getButtonCancelUsuario() {
-        return buttonCancelUsuario;
     }
 
     public JTableComponent getTableList() {

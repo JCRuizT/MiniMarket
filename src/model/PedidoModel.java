@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.Pedido;
+import model.Table.Usuario;
 
 /**
  *
@@ -24,6 +25,8 @@ public class PedidoModel {
         table = "TblPedido";
         this.conexion = new Conexion();
     }
+    
+    
 
     public ArrayList<Pedido> getAll() {
         ArrayList<Pedido> data = new ArrayList<>();

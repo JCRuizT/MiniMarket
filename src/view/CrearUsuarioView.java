@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.DashboardController;
 import java.awt.*;
 import static java.awt.Color.orange;
 import static java.awt.Color.red;
@@ -69,9 +70,6 @@ public class CrearUsuarioView extends JFrame {
     JRadioButton ct = new JRadioButton("C.T", false);
     JRadioButton ti = new JRadioButton("T.I", false);
 
-    JButton crear = new JButton();
-    JButton cancelar = new JButton();
-
     JButton buttonCreateUser = new JButton();
     JButton buttonCancelUser = new JButton();
 
@@ -95,7 +93,13 @@ public class CrearUsuarioView extends JFrame {
         PanelLogo.setLayout(null);
         PanelLogo.setBackground(orange);
 
-        labelTitulo.setText("Registro de Usuario");
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            labelTitulo.setText("Registro de Usuario");
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            labelTitulo.setText("Registro de Cliente");
+
+        }
         labelTitulo.setLocation(30, 25);
         labelTitulo.setSize(850, 55);
         labelTitulo.setForeground(white);
@@ -201,10 +205,19 @@ public class CrearUsuarioView extends JFrame {
         tipoRol.setSize(320, 30);
         tipoRol.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
-        tipoRol.addItem("Seleccione el Tipo de usuario");
-        tipoRol.addItem(new JComboItem("1", "Administrador"));
-        tipoRol.addItem(new JComboItem("2","Vendedor"));
-        tipoRol.addItem(new JComboItem("3","Cliente"));
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            tipoRol.addItem("Seleccione el Tipo de usuario");
+            tipoRol.addItem(new JComboItem("1", "Administrador"));
+            tipoRol.addItem(new JComboItem("2", "Vendedor"));
+            tipoRol.addItem(new JComboItem("3", "Cliente"));
+
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            tipoRol.addItem("");
+            tipoRol.addItem(new JComboItem("3", "Cliente"));
+            Resource.setSelectedCombobox(tipoRol, "Cliente");
+            tipoRol.setEnabled(false);
+        }
 
         campOblig5.setText("*");
         campOblig5.setLocation(360, 410);
@@ -260,7 +273,14 @@ public class CrearUsuarioView extends JFrame {
         fieldConfirmPass.setSize(200, 30);
         fieldConfirmPass.setFont(new Font("Segoe UI Light", BOLD, 20));
 
-        buttonCreateUser.setText("Crear Usuario");
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            buttonCreateUser.setText("Crear Usuario");
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            buttonCreateUser.setText("Crear Cliente");
+
+        }
+
         buttonCreateUser.setLocation(30, 650);
         buttonCreateUser.setSize(430, 30);
         buttonCreateUser.setBackground(orange);
@@ -269,16 +289,6 @@ public class CrearUsuarioView extends JFrame {
         buttonCreateUser.setBorder(null);
         buttonCreateUser.setFont(new Font("Arial", BOLD, 20));
         buttonCreateUser.setHorizontalAlignment(CENTER);
-
-        buttonCancelUser.setText("Cancelar");
-        buttonCancelUser.setLocation(30, 690);
-        buttonCancelUser.setSize(430, 30);
-        buttonCancelUser.setBackground(orange);
-        buttonCancelUser.setForeground(white);
-        buttonCancelUser.setFocusable(false);
-        buttonCancelUser.setBorder(null);
-        buttonCancelUser.setFont(new Font("Arial", BOLD, 20));
-        buttonCancelUser.setHorizontalAlignment(CENTER);
 
         close.setSize(20, 20);
         close.setLocation(960, 20);
@@ -401,10 +411,6 @@ public class CrearUsuarioView extends JFrame {
 
     public JRadioButton getTi() {
         return ti;
-    }
-
-    public JButton getCrear() {
-        return crear;
     }
 
     public JButton getButtonCancelUser() {
