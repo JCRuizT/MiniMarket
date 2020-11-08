@@ -62,7 +62,7 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
         String c = "";
         if (!vista.getFieldRecibido().getText().isEmpty()) {
 
-            int l = Integer.parseInt(vista.getFieldRecibido().getText()) - Integer.parseInt(vista.getFieldTotal().getText());
+            long l = Long.parseLong(vista.getFieldRecibido().getText()) - Long.parseLong(vista.getFieldTotal().getText());
             c = String.valueOf(l);
             valid = l >= 0;
 

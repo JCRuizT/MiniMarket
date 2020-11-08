@@ -302,6 +302,22 @@ public class DashboardView extends JFrame implements MouseListener {
 
     //Metodos Getters 
 
+    public JLabel getLabelEstadistica() {
+        return labelEstadistica;
+    }
+
+    public JLabel getLabelHistorial() {
+        return labelHistorial;
+    }
+
+    public JLabel getPicEstadistica() {
+        return PicEstadistica;
+    }
+
+    public JLabel getPicHistorial() {
+        return PicHistorial;
+    }
+
     public JPanel getCerrar() {
         return cerrar;
     }
