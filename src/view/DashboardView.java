@@ -28,10 +28,11 @@ public class DashboardView extends JFrame implements MouseListener {
     //PANELES 
     JPanel pagPrincipal = new JPanel();
     JPanel menu = new JPanel();
-    JPanel cerrar = new JPanel();
+    JPanel panelCerrar = new JPanel();
+    JPanel panelNameUsu = new JPanel();
 
     //ETIQUETAS
-    JLabel labelNameUser = new JLabel();
+    JLabel labelNameUser = new JLabel("", SwingConstants.RIGHT);
     JLabel labelCrearProd = new JLabel();
     JLabel labelCrearUsu = new JLabel();
     JLabel labelCrearCateg = new JLabel();
@@ -79,9 +80,9 @@ public class DashboardView extends JFrame implements MouseListener {
         pagPrincipal.setLocation(0, 0);
         pagPrincipal.setLayout(null);
 
-        cerrar.setSize(120, 40);
-        cerrar.setLocation(1220, 100);
-        cerrar.setLayout(null);
+        panelCerrar.setSize(120, 40);
+        panelCerrar.setLocation(1220, 100);
+        panelCerrar.setLayout(null);
 
         menu.setSize(300, 1430);
         menu.setLayout(null);
@@ -171,19 +172,45 @@ public class DashboardView extends JFrame implements MouseListener {
 
         labelNameUser.setForeground(BLACK);
         labelNameUser.setSize(400, 40);
-        labelNameUser.setLocation(1050, 35);
+        labelNameUser.setLocation(0, 0);
         labelNameUser.setFont(new Font("Segoe UI Light", BOLD, 30));
         labelNameUser.setText("Carlos Yepez");
-        labelNameUser.setCursor(new Cursor(HAND_CURSOR));
-        labelNameUser.addMouseListener(this);
 
-        picAdmin.setSize(70, 70);
-        picAdmin.setLocation(1260, 20);
-        ImageIcon imageAdmin = new ImageIcon(getClass().getResource("/imagenes/admin.png"));
-        Icon iconAdmin = new ImageIcon(imageAdmin.getImage().getScaledInstance(picAdmin.getWidth(), picAdmin.getHeight(), SCALE_DEFAULT));
-        picAdmin.setIcon(iconAdmin);
-        picAdmin.setCursor(new Cursor(HAND_CURSOR));
-        picAdmin.addMouseListener(this);
+        panelNameUsu.setSize(400, 40);
+        panelNameUsu.setLocation(850, 35);
+        panelNameUsu.setLayout(null);
+
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+            picAdmin.setSize(70, 70);
+            picAdmin.setLocation(1260, 20);
+            ImageIcon imageAdmin = new ImageIcon(getClass().getResource("/imagenes/admin.png"));
+            Icon iconAdmin = new ImageIcon(imageAdmin.getImage().getScaledInstance(picAdmin.getWidth(), picAdmin.getHeight(), SCALE_DEFAULT));
+            picAdmin.setIcon(iconAdmin);
+            picAdmin.setCursor(new Cursor(HAND_CURSOR));
+            picAdmin.addMouseListener(this);
+
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+
+            picAdmin.setSize(60, 60);
+            picAdmin.setLocation(1260, 20);
+            ImageIcon imageAdmin = new ImageIcon(getClass().getResource("/imagenes/vendedor.png"));
+            Icon iconAdmin = new ImageIcon(imageAdmin.getImage().getScaledInstance(picAdmin.getWidth(), picAdmin.getHeight(), SCALE_DEFAULT));
+            picAdmin.setIcon(iconAdmin);
+            picAdmin.setCursor(new Cursor(HAND_CURSOR));
+            picAdmin.addMouseListener(this);
+
+        } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+
+            picAdmin.setSize(70, 70);
+            picAdmin.setLocation(1260, 20);
+            ImageIcon imageAdmin = new ImageIcon(getClass().getResource("/imagenes/cliente.png"));
+            Icon iconAdmin = new ImageIcon(imageAdmin.getImage().getScaledInstance(picAdmin.getWidth(), picAdmin.getHeight(), SCALE_DEFAULT));
+            picAdmin.setIcon(iconAdmin);
+            picAdmin.setCursor(new Cursor(HAND_CURSOR));
+            picAdmin.addMouseListener(this);
+
+        }
 
         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
 
@@ -210,13 +237,12 @@ public class DashboardView extends JFrame implements MouseListener {
             picHacerPedido.setLocation(39, 265);
             labelHacerPedido.setLocation(80, 260);
 
-
         } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
             PicHistorial.setLocation(39, 150);
             labelHistorial.setLocation(80, 145);
             picHacerPedido.setLocation(40, 192);
             labelHacerPedido.setLocation(80, 187);
-            
+
         } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
             PicHistorial.setLocation(40, 100);
             labelHistorial.setLocation(80, 100);
@@ -224,10 +250,6 @@ public class DashboardView extends JFrame implements MouseListener {
             labelHacerPedido.setLocation(80, 140);
 
         }
-        
-        
-        
-        
 
         picHacerPedido.setSize(30, 30);
         ImageIcon imageHacerPedido = new ImageIcon(getClass().getResource("/imagenes/pedido.png"));
@@ -283,7 +305,6 @@ public class DashboardView extends JFrame implements MouseListener {
             picCrearCateg.setCursor(new Cursor(HAND_CURSOR));
             picCrearCateg.addMouseListener(this);
 
-            
             menu.add(picCrearCateg);
             menu.add(labelCrearCateg);
             menu.add(picCrearProduc);
@@ -298,12 +319,13 @@ public class DashboardView extends JFrame implements MouseListener {
 
         }
 
+        panelNameUsu.add(labelNameUser);
+        pagPrincipal.add(panelNameUsu);
         pagPrincipal.add(labelRol);
         pagPrincipal.add(labelBienvenida);
         menu.add(labelMenu);
-        pagPrincipal.add(cerrar);
+        pagPrincipal.add(panelCerrar);
         pagPrincipal.add(picAdmin);
-        pagPrincipal.add(labelNameUser);
         pagPrincipal.add(close);
         pagPrincipal.add(minimize);
         pagPrincipal.add(menu);
@@ -373,8 +395,8 @@ public class DashboardView extends JFrame implements MouseListener {
         return PicHistorial;
     }
 
-    public JPanel getCerrar() {
-        return cerrar;
+    public JPanel getPanelCerrar() {
+        return panelCerrar;
     }
 
     public JPanel getMenu() {

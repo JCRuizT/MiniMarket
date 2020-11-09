@@ -30,8 +30,8 @@ public class Conexion{
             
             Class.forName("com.mysql.jdbc.Driver");
             String host = "jdbc:mysql://localhost:3306/bd_mini_proyecto";
-            String user = "admin"; // root-admin
-            String password = "juliocruizt"; //juliocruizt
+            String user = "root"; // root-admin
+            String password = ""; //juliocruizt
             conexion = DriverManager.getConnection(host, user, password);
 
             if (conexion != null) {
@@ -40,7 +40,7 @@ public class Conexion{
         }catch (SQLException e) {
            // System.out.println(e.getMessage());
             conexion = null;
-            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique que el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
 
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
@@ -49,7 +49,7 @@ public class Conexion{
             //System.out.println(e.getMessage());
             conexion = null;
 
-            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique que el servidor este encendido", "Error 404 : No se encontro la base de datos", JOptionPane.ERROR_MESSAGE);
 
             JOptionPane.showMessageDialog(null, "No se ha podido establecer conexion con la base de datos, verifique el servidor", "Error: Conexion a base de datos", JOptionPane.ERROR_MESSAGE);
             System.exit(0);

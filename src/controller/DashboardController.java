@@ -169,7 +169,7 @@ public class DashboardController implements MouseListener {
 
             if (NumClick == 0) {
 
-                vista.getCerrar().add(vistaCerrar);
+                vista.getPanelCerrar().add(vistaCerrar);
 
                 vistaCerrar.repaint();
                 vistaCerrar.validate();
@@ -179,7 +179,7 @@ public class DashboardController implements MouseListener {
 
             } else if (NumClick == 1) {
 
-                vista.getCerrar().remove(vistaCerrar);
+                vista.getPanelCerrar().remove(vistaCerrar);
 
                 vista.repaint();
                 vista.validate();

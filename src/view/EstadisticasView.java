@@ -11,13 +11,11 @@ import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
 import static java.awt.Image.SCALE_DEFAULT;
-import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
-import model.Table.HistorialPedido;
 
 /**
  * (a) el producto más vendido. (b) el producto menos vendido. (c) la cantidad
@@ -27,6 +25,14 @@ import model.Table.HistorialPedido;
  * presenta la venta de dichos productos.
  */
 public class EstadisticasView extends JPanel {
+    
+    JPanel uno = new JPanel();
+    JPanel dos = new JPanel();
+    JPanel tres = new JPanel();
+    JPanel cuatro = new JPanel();
+    JPanel cinco = new JPanel();
+    
+    
 
     JLabel title = new JLabel();
 
@@ -47,6 +53,14 @@ public class EstadisticasView extends JPanel {
     JLabel PicVentaTotal = new JLabel();
     JLabel LabelVentaTotal = new JLabel();
     JLabel resultadoVentaTotal = new JLabel();
+    
+    JLabel PicPromedio = new JLabel();
+    JLabel LabelPromedio = new JLabel();
+    JLabel resultadoPromedio = new JLabel();
+    
+    JLabel PicGanancia = new JLabel();
+    JLabel LabelGanancia = new JLabel();
+    JLabel resultadoGanancia = new JLabel();
 
     private final int x = 1500;
     private final int y = 1500;
@@ -85,9 +99,14 @@ public class EstadisticasView extends JPanel {
         
         resultadoMasVendido.setForeground(Color.GREEN);
         resultadoMasVendido.setSize(300, 40);
-        resultadoMasVendido.setLocation(580, 300);
+        resultadoMasVendido.setLocation(0, 0);
         resultadoMasVendido.setFont(new Font("Arial", BOLD, 20));
         resultadoMasVendido.setText("Arroz Diana");
+        resultadoMasVendido.setHorizontalAlignment(CENTER);
+        
+        uno.setSize(300, 40);
+        uno.setLocation(495, 300);
+        uno.setLayout(null);
         
         // Producto Menos vendido
         
@@ -111,9 +130,14 @@ public class EstadisticasView extends JPanel {
         
         resultadoMenosVendido.setForeground(Color.GREEN);
         resultadoMenosVendido.setSize(300, 40);
-        resultadoMenosVendido.setLocation(1060, 300);
+        resultadoMenosVendido.setLocation(0, 0);
         resultadoMenosVendido.setFont(new Font("Arial", BOLD, 20));
         resultadoMenosVendido.setText("Aceite Mediano");
+        resultadoMenosVendido.setHorizontalAlignment(CENTER);
+        
+        dos.setSize(300, 40);
+        dos.setLocation(975, 300);
+        dos.setLayout(null);
         
         // Dinero total obtenido por las ventas
         
@@ -124,22 +148,27 @@ public class EstadisticasView extends JPanel {
         rectangulo3.setIcon(iconR3);
         
         PicVentaTotal.setSize(100, 100);
-        PicVentaTotal.setLocation(420, 455);
+        PicVentaTotal.setLocation(420, 450);
         ImageIcon imageVentaTotal = new ImageIcon(getClass().getResource("/imagenes/total.png"));
         Icon iconVentaTotal = new ImageIcon(imageVentaTotal.getImage().getScaledInstance(PicVentaTotal.getWidth(), PicVentaTotal.getHeight(), SCALE_DEFAULT));
         PicVentaTotal.setIcon(iconVentaTotal);
         
         LabelVentaTotal.setForeground(Color.black);
         LabelVentaTotal.setSize(300, 40);
-        LabelVentaTotal.setLocation(570, 450);
+        LabelVentaTotal.setLocation(573, 450);
         LabelVentaTotal.setFont(new Font("Arial", BOLD, 20));
         LabelVentaTotal.setText("Total de ventas");
         
         resultadoVentaTotal.setForeground(Color.GREEN);
         resultadoVentaTotal.setSize(300, 40);
-        resultadoVentaTotal.setLocation(580, 500);
+        resultadoVentaTotal.setLocation(0, 0);
         resultadoVentaTotal.setFont(new Font("Arial", BOLD, 20));
         resultadoVentaTotal.setText("$ 20.352.600");
+        resultadoVentaTotal.setHorizontalAlignment(CENTER);
+        
+        tres.setSize(300, 40);
+        tres.setLocation(495, 500);
+        tres.setLayout(null);
         
         // Promedio
         
@@ -149,20 +178,68 @@ public class EstadisticasView extends JPanel {
         Icon iconR4 = new ImageIcon(imageR4.getImage().getScaledInstance(rectangulo4.getWidth(), rectangulo4.getHeight(), SCALE_DEFAULT));
         rectangulo4.setIcon(iconR4);
         
+        PicPromedio.setSize(100, 100);
+        PicPromedio.setLocation(900, 445);
+        ImageIcon imagePicPromedio = new ImageIcon(getClass().getResource("/imagenes/promedio.png"));
+        Icon iconPicPromedioo = new ImageIcon(imagePicPromedio.getImage().getScaledInstance(PicPromedio.getWidth(), PicPromedio.getHeight(), SCALE_DEFAULT));
+        PicPromedio.setIcon(iconPicPromedioo);
+        
+        LabelPromedio.setForeground(Color.black);
+        LabelPromedio.setSize(300, 40);
+        LabelPromedio.setLocation(1035, 450);
+        LabelPromedio.setFont(new Font("Arial", BOLD, 20));
+        LabelPromedio.setText("Promedio de ventas");
+        
+        resultadoPromedio.setForeground(Color.GREEN);
+        resultadoPromedio.setSize(300, 40);
+        resultadoPromedio.setLocation(0, 0);
+        resultadoPromedio.setFont(new Font("Arial", BOLD, 20));
+        resultadoPromedio.setText("$ 2.252.600");
+        resultadoPromedio.setHorizontalAlignment(CENTER);
+        
+        cuatro.setSize(300, 40);
+        cuatro.setLocation(975, 500);
+        cuatro.setLayout(null);
+        
+        //total aganancias
+        
         rectangulo5.setSize(420, 150);
         rectangulo5.setLocation(640, 610);
         ImageIcon imageR5 = new ImageIcon(getClass().getResource("/imagenes/rectan2.png"));
         Icon iconR5 = new ImageIcon(imageR5.getImage().getScaledInstance(rectangulo5.getWidth(), rectangulo5.getHeight(), SCALE_DEFAULT));
         rectangulo5.setIcon(iconR5);
         
+        PicGanancia.setSize(100, 100);
+        PicGanancia.setLocation(660, 630);
+        ImageIcon imagePicGanancia = new ImageIcon(getClass().getResource("/imagenes/ganancias.png"));
+        Icon iconPicGanancia = new ImageIcon(imagePicGanancia.getImage().getScaledInstance(PicGanancia.getWidth(), PicGanancia.getHeight(), SCALE_DEFAULT));
+        PicGanancia.setIcon(iconPicGanancia);
         
-        add(resultadoVentaTotal);
+        LabelGanancia.setForeground(Color.black);
+        LabelGanancia.setSize(300, 40);
+        LabelGanancia.setLocation(835, 640);
+        LabelGanancia.setFont(new Font("Arial", BOLD, 20));
+        LabelGanancia.setText("Ganancias");
+        
+        resultadoGanancia.setForeground(Color.GREEN);
+        resultadoGanancia.setSize(300, 40);
+        resultadoGanancia.setLocation(0, 0);
+        resultadoGanancia.setFont(new Font("Arial", BOLD, 20));
+        resultadoGanancia.setText("$ 15.552.600");
+        resultadoGanancia.setHorizontalAlignment(CENTER);
+        
+        cinco.setSize(300, 40);
+        cinco.setLocation(735, 690);
+        cinco.setLayout(null);
+        
+        add(LabelGanancia);
+        add(PicGanancia);
+        add(LabelPromedio);
+        add(PicPromedio);
         add(LabelVentaTotal);
         add(PicVentaTotal);
-        add(resultadoMenosVendido);
         add(LabelMenosVendido);
         add(PicMenosvendio);
-        add(resultadoMasVendido);
         add(LabelMasVendido);
         add(Picmasvendio);
         add(rectangulo5);
@@ -171,6 +248,22 @@ public class EstadisticasView extends JPanel {
         add(rectangulo2);
         add(rectangulo1);
         add(title);
+        
+         cinco.add(resultadoGanancia);
+        add(cinco);
+         
+        cuatro.add(resultadoPromedio);
+        add(cuatro);
+        
+        tres.add(resultadoVentaTotal);
+        add(tres);
+        
+        dos.add(resultadoMenosVendido);
+        add(dos);
+        
+        uno.add(resultadoMasVendido);
+        add(uno);
+        
     }
 
 }
