@@ -6,10 +6,12 @@
 package view;
 
 import static java.awt.Color.orange;
+import static java.awt.Color.white;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
@@ -22,12 +24,13 @@ import model.Table.HistorialPedido;
 public class HistorialPedidoView extends JPanel {
     
     private JTableComponent tableList;
+    private JButton buttonVerPedido;
 
-    JLabel LabelFiltro = new JLabel();
+    private JLabel LabelFiltro = new JLabel();
 
     private JTableSearch fieldSearch;
 
-    JLabel title = new JLabel();
+    private JLabel title = new JLabel();
 
     private final int x = 1500;
     private final int y = 1500;
@@ -44,10 +47,18 @@ public class HistorialPedidoView extends JPanel {
         title.setFont(new Font("Arial Black", CENTER_BASELINE, 35));
         title.setHorizontalAlignment(CENTER);
 
-        String columns[] = {"id", "N° Factura", "Identificación", "Primer Nombre","Primer Apellido", "Fecha", "Total"};
+        String columns[] = {"id", "N° Factura", "Identificación", "Primer Nombre","Primer Apellido", "Fecha"};
         tableList = new JTableComponent(columns);
        // tableList.getTable().getColumnModel().getColumn(1).setMaxWidth(40);
-        
+        buttonVerPedido = new JButton();
+        buttonVerPedido.setText("Ver Pedido");
+        buttonVerPedido.setLocation(360, 800);
+        buttonVerPedido.setSize(180, 30);
+        buttonVerPedido.setBackground(orange);
+        buttonVerPedido.setForeground(white);
+        buttonVerPedido.setFocusable(false);
+        buttonVerPedido.setBorder(null);
+        buttonVerPedido.setFont(new Font("Arial", BOLD, 15));
 
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
@@ -60,7 +71,6 @@ public class HistorialPedidoView extends JPanel {
                 result.get(i).getUsuNombre1(),
                 result.get(i).getUsuApellido1(),
                 Resource.transformFecha(result.get(i).getPedFecha()),
-                0
                
 
             };
@@ -88,9 +98,18 @@ public class HistorialPedidoView extends JPanel {
         add(LabelFiltro);
         add(fieldSearch);
         add(tableList.getScrollTable());
+        add(buttonVerPedido);
         add(title);
+    }
+
+    public JTableComponent getTableList() {
+        return tableList;
     }
     
     
+
+    public JButton getButtonVerPedido() {
+        return buttonVerPedido;
+    }
     
 }

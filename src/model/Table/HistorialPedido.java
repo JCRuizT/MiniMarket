@@ -15,7 +15,6 @@ public class HistorialPedido {
     private String PedId;
     private String PedFecha;
     private String UsuIdentificacion;
-    private String UsuContrasenia;
     private String UsuNombre1;
     private String UsuNombre2;
     private String UsuApellido1;
@@ -43,14 +42,6 @@ public class HistorialPedido {
 
     public void setUsuIdentificacion(String UsuIdentificacion) {
         this.UsuIdentificacion = UsuIdentificacion;
-    }
-
-    public String getUsuContrasenia() {
-        return UsuContrasenia;
-    }
-
-    public void setUsuContrasenia(String UsuContrasenia) {
-        this.UsuContrasenia = UsuContrasenia;
     }
 
     public String getUsuNombre1() {
