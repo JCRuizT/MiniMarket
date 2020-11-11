@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
+import model.Table.Pedido;
 import view.DashboardView;
 import view.PagoEfectivoView;
 import view.ProcesandoView;
@@ -28,6 +29,7 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
     private DashboardView vistaD;
     private ProcesandoView carga;
     private boolean valid = false;
+    private Pedido p;
 
     public PagoEfectivoController(DashboardView vistaD) {
 
@@ -62,12 +64,12 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
         String c = "";
         if (!vista.getFieldRecibido().getText().isEmpty()) {
 
-            long l = Long.parseLong(vista.getFieldRecibido().getText()) - Long.parseLong(vista.getFieldTotal().getText());
+            double l = Double.parseDouble(vista.getFieldRecibido().getText()) - Double.parseDouble(vista.getFieldTotal().getText());
             c = String.valueOf(l);
             valid = l >= 0;
 
         } else {
-            c = String.valueOf(0 - Integer.parseInt(vista.getFieldTotal().getText()));
+            c = String.valueOf(0 - Double.parseDouble(vista.getFieldTotal().getText()));
             valid = false;
         }
 
@@ -101,7 +103,7 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
                 carga = new ProcesandoView();
                 Timer contadorCarga = new Timer();
                 contadorCarga.schedule(this, 5000);
-                HacerPedidoController.createPedido("1");
+                p=HacerPedidoController.createPedido("1");
             }
 
         }
@@ -112,7 +114,7 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
         carga.dispose();
         vistaD.dispose();
         vista.dispose();
-        PagoExitosoController pagoOk = new PagoExitosoController();
+        PagoExitosoController pagoOk = new PagoExitosoController(p);
 
     }
 

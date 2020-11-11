@@ -22,7 +22,9 @@ public class Producto {
     private String TblEstado_EstEstado;
     private String cantidad;
     private String TblTipoProducto_TipProIva;
-
+    
+    
+    
     public String getTblEstado_EstEstado() {
         return TblEstado_EstEstado;
     }
@@ -110,5 +112,7 @@ public class Producto {
     public void setTblTipoProducto_TipProIva(String TblTipoProducto_TipProIva) {
         this.TblTipoProducto_TipProIva = TblTipoProducto_TipProIva;
     }
+    
+   
 
 }

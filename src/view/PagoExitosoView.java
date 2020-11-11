@@ -110,7 +110,23 @@ public class PagoExitosoView extends JFrame {
         return Ok;
     }
 
-    public static void main(String[] args) {
-        PagoExitosoView dsd = new PagoExitosoView();
+    public JLabel getVer() {
+        return ver;
     }
+
+    public void setVer(JLabel ver) {
+        this.ver = ver;
+    }
+
+    public JLabel getDescargar() {
+        return descargar;
+    }
+
+    public void setDescargar(JLabel descargar) {
+        this.descargar = descargar;
+    }
+    
+    
+    
+ 
 }

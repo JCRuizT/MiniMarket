@@ -167,7 +167,7 @@ public class HacerPedidoController implements ActionListener {
             Producto p = (Producto) vistaH.getTableList2().getObject();
 
             int cant = (int) vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 1);
-            int precioU = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
+            double precioU = Double.parseDouble(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
             if (Integer.parseInt(p.getProStock()) > cant) {
                 cant++;
                 p.setCantidad(String.valueOf(cant));
@@ -184,7 +184,7 @@ public class HacerPedidoController implements ActionListener {
     private void removeProducto() {
 
         int cant = (int) vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 1);
-        int precioU = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
+        double precioU = Double.parseDouble(vistaH.getTableList2().getTable().getValueAt(vistaH.getTableList2().getTable().getSelectedRow(), 3).toString());
         if (cant >= 2) {
             cant--;
             Producto p = (Producto) vistaH.getTableList2().getObject();
@@ -210,9 +210,9 @@ public class HacerPedidoController implements ActionListener {
         if (vistaH.getTableList2().getTable().getRowCount() == 0) {
             tot = "0";
         } else {
-            int suma = 0;
+            double suma = 0;
             for (int i = 0; i < vistaH.getTableList2().getTable().getRowCount(); i++) {
-                int t = Integer.parseInt(vistaH.getTableList2().getTable().getValueAt(i, 4).toString());
+                double t = Double.parseDouble(vistaH.getTableList2().getTable().getValueAt(i, 4).toString());
                 suma = suma + t;
             }
             tot = String.valueOf(suma);
@@ -227,7 +227,7 @@ public class HacerPedidoController implements ActionListener {
         return totalPagar;
     }
 
-    public static void createPedido(String metodoPago) {
+    public static Pedido createPedido(String metodoPago) {
 
         Pedido p = new Pedido();
         Date date = new Date();
@@ -258,6 +258,8 @@ public class HacerPedidoController implements ActionListener {
             mp.update(pro);
             dp.create(proped);
         }
+        
+        return creado;
 
     }
 

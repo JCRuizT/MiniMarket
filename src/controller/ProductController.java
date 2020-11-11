@@ -105,12 +105,19 @@ public class ProductController implements ActionListener {
                     vista.getTableList().getTable().setEnabled(false);
                     stateButtonUpdate = true;
                     vista.getFieldName().setText(p.getProNombre());
-                    vista.getFieldPrecio().setText(p.getProPrecio());
+                    
+                     
+                    double iva = (Double.parseDouble(p.getProPrecio())-((Double.parseDouble(p.getProPrecio())*Integer.parseInt(p.getTblTipoProducto_TipProIva())) / 100));
+                    int i = (int) (iva+1);
+                    
+                    System.out.println(i);
+                    vista.getFieldPrecio().setText(String.valueOf(i));
                     vista.getFieldFechaVencimiento().setDate(p.getProFechaVencimiento());
                     Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
 
                     Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
                     Resource.setSelectedCombobox(vista.getFieldStock(),p.getProStock());
+                    
 
                 } else {
                     if (vista.getFieldName().getText().equals("") || vista.getFieldCategoria().getSelectedIndex() == 0
@@ -119,12 +126,14 @@ public class ProductController implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
 
+             
                         p.setProNombre(vista.getFieldName().getText());
                         p.setProPrecio(vista.getFieldPrecio().getText());
                         p.setProStock(vista.getFieldStock().getSelectedItem().toString());
                         p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getDate());
                         p.setTblTipoProducto_TipId(String.valueOf(vista.getFieldCategoria().getSelectedItem().hashCode()));
-
+                        
+                        
                         if (model.update(p)) {
                             vista.getButtonCreateProduct().setEnabled(true);
                             vista.getButtonDeleteProduct().setEnabled(true);
