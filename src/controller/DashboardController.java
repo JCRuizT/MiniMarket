@@ -350,7 +350,8 @@ public class DashboardController implements MouseListener {
             vista.repaint();
 
         }
-
+        
+          
     }
 
     public static Usuario getUserInfo() {

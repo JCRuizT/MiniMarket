@@ -67,7 +67,6 @@ public class DashboardView extends JFrame implements MouseListener {
     private final int y = 900;
 
     private boolean presset = false;
-    private int cont = 0;
 
     public DashboardView() {
 
@@ -252,13 +251,13 @@ public class DashboardView extends JFrame implements MouseListener {
             labelHacerPedido.setLocation(80, 260);
 
         } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
-            PicHistorial.setLocation(39, 150);
-            labelHistorial.setLocation(80, 145);
-            picHacerPedido.setLocation(40, 192);
-            labelHacerPedido.setLocation(80, 187);
+            PicHistorial.setLocation(39, 145);
+            labelHistorial.setLocation(80, 140);
+            picHacerPedido.setLocation(40, 187);
+            labelHacerPedido.setLocation(80, 180);
 
         } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
-            PicHistorial.setLocation(40, 100);
+            PicHistorial.setLocation(40, 105);
             labelHistorial.setLocation(80, 100);
             picHacerPedido.setLocation(40, 145);
             labelHacerPedido.setLocation(80, 140);
@@ -364,49 +363,71 @@ public class DashboardView extends JFrame implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent me) {
-        if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 100);
-            menu.add(indicador);
-            presset = true;
-            cont = 1;
-        }
-        if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 140);
-            menu.add(indicador);
-            presset = true;
-            cont = 2;
-        }
-        if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 180);
-            menu.add(indicador);
-            presset = true;
-            cont = 3;
-        }
-        if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 220);
-            menu.add(indicador);
-            presset = true;
-            cont = 4;
-        }
-        if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 260);
-            menu.add(indicador);
-            presset = true;
-            cont = 5;
-        }
-        if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
-            indicador.setSize(300, 40);
-            indicador.setLocation(0, 780);
-            menu.add(indicador);
-            presset = true;
-            cont = 6;
+
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                indicador.setLocation(0, 100);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+                indicador.setLocation(0, 140);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+                indicador.setLocation(0, 180);
+                menu.add(indicador);
+                presset = true;
+            }
+
+            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                indicador.setLocation(0, 220);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                indicador.setLocation(0, 260);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+                indicador.setLocation(0, 780);
+                menu.add(indicador);
+                presset = true;
+            }
         }
 
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                indicador.setLocation(0, 100);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                indicador.setLocation(0, 140);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                indicador.setLocation(0, 180);
+                menu.add(indicador);
+                presset = true;
+            }
+        }
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+
+            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                indicador.setLocation(0, 100);
+                menu.add(indicador);
+                presset = true;
+            }
+            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                indicador.setLocation(0, 140);
+                menu.add(indicador);
+                presset = true;
+            }
+        }
     }
 
     @Override
@@ -417,90 +438,147 @@ public class DashboardView extends JFrame implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent me) {
 
-        if (!presset) {
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
 
-            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 100);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 140);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 180);
-                menu.add(indicador);
-            }
-            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 220);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 260);
-                menu.add(indicador);
-            }
-            if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 780);
-                menu.add(indicador);
-            }
+            if (!presset) {
 
-            if (me.getSource() == MenuIndicador) {
-                indicador.setSize(300, 40);
-                indicador.setLocation(1000, 780);
-                menu.add(indicador);
-            }
+                if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+                }
 
+                if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+                    indicador.setLocation(0, 180);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    indicador.setLocation(0, 220);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    indicador.setLocation(0, 260);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+                    indicador.setLocation(0, 780);
+                    menu.add(indicador);
+                }
+
+                if (me.getSource() == MenuIndicador) {
+                    indicador.setLocation(1000, 780);
+                    menu.add(indicador);
+                }
+            }
         }
 
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            if (!presset) {
+                if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    indicador.setLocation(0, 180);
+                    menu.add(indicador);
+                }
+            }
+        }
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+            if (!presset) {
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
+            }
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
 
-        if (!presset) {
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
 
-            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 100);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 140);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 180);
-                menu.add(indicador);
-            }
-            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 220);
-                menu.add(indicador);
-            }
-            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 260);
-                menu.add(indicador);
-            }
-            if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
-                menu.remove(indicador);
-                indicador.setSize(300, 40);
-                indicador.setLocation(0, 780);
-                menu.add(indicador);
+            if (!presset) {
 
+                if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+                }
+
+                if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 180);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 220);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 260);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 780);
+                    menu.add(indicador);
+
+                }
+            }
+        }
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+            if (!presset) {
+                if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 180);
+                    menu.add(indicador);
+                }
+            }
+        }
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
+            if (!presset) {
+                if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 100);
+                    menu.add(indicador);
+
+                }
+                if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                    menu.remove(indicador);
+                    indicador.setLocation(0, 140);
+                    menu.add(indicador);
+                }
             }
         }
     }

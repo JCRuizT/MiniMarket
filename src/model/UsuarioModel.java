@@ -128,7 +128,7 @@ public class UsuarioModel {
                     n.setUsuNombre1(r.getString("UsuNombre1"));
                     n.setUsuNombre2(r.getString("UsuNombre2"));
                     n.setUsuApellido1(r.getString("UsuApellido1"));
-                    n.setUsuApellido2(r.getString("UsuApellido1"));
+                    n.setUsuApellido2(r.getString("UsuApellido2"));
                     n.setUsuIdentificacion(r.getString("UsuIdentificacion"));
                     n.setUsuCelular(r.getString("UsuCelular"));
                     n.setUsuCorreo(r.getString("UsuCorreo"));
