@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.DetallePedidoModel;
 import model.HistorialPedidoModel;
 import model.Table.Factura;
@@ -65,12 +66,32 @@ public class PagoExitosoController implements ActionListener, MouseListener {
             DetallePedidoModel dp = new DetallePedidoModel();
             ArrayList<Factura> f = dp.listItemPedido(a);
 
-            String n = FacturaFormat.setFactura(a.getPedId(), a.getUsuNombre1() + " " + a.getUsuApellido1(), a.getUsuIdentificacion(), a.getPedFecha(), f);
+            String n = FacturaFormat.setFactura(a.getPedId(), "factura/",a.getUsuNombre1() + " " + a.getUsuApellido1(), a.getUsuIdentificacion(), a.getPedFecha(), f);
 
             try {
                 Desktop.getDesktop().open(new File(n));
+                JOptionPane.showMessageDialog(null, "En unos momentos se visualizara la factura");
+                
             } catch (IOException ex) {
 
+            }
+        } else if (e.getSource().equals(vista.getDescargar())) {
+
+            HistorialPedidoModel z = new HistorialPedidoModel();
+            HistorialPedido a = z.getOne(pp);
+
+            DetallePedidoModel dp = new DetallePedidoModel();
+            ArrayList<Factura> f = dp.listItemPedido(a);
+
+            String home = System.getProperty("user.home")+"/Descargas/";
+            String n = FacturaFormat.setFactura(a.getPedId(),home, a.getUsuNombre1() + " " + a.getUsuApellido1(), a.getUsuIdentificacion(), a.getPedFecha(), f);
+
+            
+            
+            File file = new File(n);
+            
+            if(file != null){
+                JOptionPane.showMessageDialog(null, "Se ha descargado correctamente la factura \nruta: "+n);
             }
         }
 

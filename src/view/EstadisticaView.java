@@ -24,7 +24,7 @@ import static javax.swing.SwingConstants.CENTER;
  * de unidades vendidas de todos los productos). (e) las ganancias que le
  * presenta la venta de dichos productos.
  */
-public class EstadisticasView extends JPanel {
+public class EstadisticaView extends JPanel {
     
     JPanel uno = new JPanel();
     JPanel dos = new JPanel();
@@ -65,7 +65,7 @@ public class EstadisticasView extends JPanel {
     private final int x = 1500;
     private final int y = 1500;
 
-    public EstadisticasView() {
+    public EstadisticaView() {
 
         setSize(x, y);
         setLayout(null);
@@ -265,5 +265,23 @@ public class EstadisticasView extends JPanel {
         add(uno);
         
     }
+
+    public JLabel getResultadoMasVendido() {
+        return resultadoMasVendido;
+    }
+
+    public void setResultadoMasVendido(String resultadoMasVendido) {
+        this.resultadoMasVendido.setText(resultadoMasVendido);
+    }
+
+    public JLabel getResultadoMenosVendido() {
+        return resultadoMenosVendido;
+    }
+
+    public void setResultadoMenosVendido(String resultadoMenosVendido) {
+        this.resultadoMenosVendido.setText(resultadoMenosVendido);
+    }
+    
+    
 
 }

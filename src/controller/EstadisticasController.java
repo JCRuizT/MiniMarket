@@ -5,7 +5,9 @@
  */
 package controller;
 
-import view.EstadisticasView;
+import model.EstadisticaModel;
+import model.Table.ProductoEstadistica;
+import view.EstadisticaView;
 
 /**
  *
@@ -13,16 +15,22 @@ import view.EstadisticasView;
  */
 public class EstadisticasController {
     
-    private EstadisticasView vista;
+    private EstadisticaView vista;
+    private EstadisticaModel model;
     
     
     public EstadisticasController(){
-       vista = new EstadisticasView();
-
-        
+       vista = new EstadisticaView();
+       
+       model = new EstadisticaModel();
+       ProductoEstadistica mayor = model.getMayor();
+       ProductoEstadistica menor = model.getMenor();
+       
+       vista.setResultadoMasVendido(mayor.getProNombre());
+       vista.setResultadoMenosVendido(menor.getProNombre());
     }
     
-    public EstadisticasView getVista(){
+    public EstadisticaView getVista(){
         return vista;
     }
     
