@@ -202,7 +202,10 @@ public class DashboardController implements MouseListener {
         if (logged.getTblRol_RolId().equals("1")) {
 
             if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
-
+                
+                
+             
+                
                 vista.getPagPrincipal().remove(usuarioController.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
                 vista.getPagPrincipal().remove(vistaPedido.getVista());
@@ -220,6 +223,8 @@ public class DashboardController implements MouseListener {
             }
 
             if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
+                
+                
 
                 vista.getPagPrincipal().remove(usuarioController.getVista());
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
@@ -251,6 +256,7 @@ public class DashboardController implements MouseListener {
                 vista.getPagPrincipal().remove(vistaHistorial.getVista());
                 vista.getPagPrincipal().remove(vistaEstadistica.getVista());
 
+            
                 vista.getPagPrincipal().add(usuarioController.getVista());
 
                 vista.invalidate();
@@ -277,6 +283,8 @@ public class DashboardController implements MouseListener {
             }
             vista.getPagPrincipal().remove(vistaEstadistica.getVista());
 
+       
+            vistaHistorial = new HistorialPedidoController();
             vista.getPagPrincipal().add(vistaHistorial.getVista());
 
             vista.invalidate();
@@ -286,8 +294,12 @@ public class DashboardController implements MouseListener {
         }
 
         if (me.getSource() == vista.getPicHacerPedido() || me.getSource() == vista.getLabelHacerPedido()) {
+            
+            
 
             if (logged.getTblRol_RolId().equals("1")) {
+                
+
 
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
@@ -329,6 +341,8 @@ public class DashboardController implements MouseListener {
             vista.getPagPrincipal().remove(vistaHistorial.getVista());
             vista.getPagPrincipal().remove(vistaPedido.getVista());
 
+            vistaEstadistica = null;
+            vistaEstadistica = new EstadisticasController();
             vista.getPagPrincipal().add(vistaEstadistica.getVista());
 
             vista.invalidate();

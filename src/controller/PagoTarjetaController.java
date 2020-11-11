@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
+import model.Table.Pedido;
 import view.DashboardView;
 import view.PagoTarjetaView;
 import view.ProcesandoView;
@@ -25,6 +26,7 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
     private DashboardView vistaD;
     private ProcesandoView carga;
     private PagoExitosoController PagoExitoso;
+    private Pedido p;
 
     public PagoTarjetaController(DashboardView vistaD) {
 
@@ -86,7 +88,7 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
                 carga = new ProcesandoView();
                 Timer contadorCarga = new Timer();
                 contadorCarga.schedule(this, 5000);
-                HacerPedidoController.createPedido(String.valueOf(vista.getTipoTarjeta().getSelectedItem().hashCode()));
+                p=HacerPedidoController.createPedido(String.valueOf(vista.getTipoTarjeta().getSelectedItem().hashCode()));
                
 
             }
@@ -99,7 +101,7 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
         carga.dispose();
         vistaD.dispose();
         vista.dispose();
-        PagoExitosoController pagoOk = new PagoExitosoController();
+        PagoExitosoController pagoOk = new PagoExitosoController(p);
     }
 
 }

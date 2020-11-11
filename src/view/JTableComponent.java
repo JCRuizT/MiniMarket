@@ -78,6 +78,7 @@ public class JTableComponent extends DefaultTableCellRenderer {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.getColumnModel().getColumn(index).setCellRenderer(centerRenderer);
     }
+    
 
     public JTable getTable() {
         return table;

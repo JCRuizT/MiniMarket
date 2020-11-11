@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.HistorialPedido;
+import model.Table.Pedido;
 import model.Table.Usuario;
 
 /**
@@ -76,6 +77,28 @@ public class HistorialPedidoModel {
             e.printStackTrace();
         }
         return data;
+
+    }
+    
+    
+        public HistorialPedido getOne(Pedido p) {
+        HistorialPedido ep = new HistorialPedido();
+        try {
+            PreparedStatement sentence = conexion.sentence("select u.UsuIdentificacion,p.PedId,p.PedFecha,u.UsuNombre1,UsuApellido1 from TblPedido as p,TblUsuario as u where p.TblUsuario_UsuIdentificacion = u.UsuIdentificacion and p.PedId = ?");
+            sentence.setString(1, p.getPedId());
+            ResultSet result = sentence.executeQuery();
+            while (result.next()) {
+                ep.setUsuIdentificacion(result.getString("UsuIdentificacion"));
+                ep.setUsuNombre1(result.getString("UsuNombre1"));
+                ep.setUsuApellido1(result.getString("UsuApellido1"));
+                ep.setPedFecha(result.getString("PedFecha"));
+                ep.setPedId(result.getString("PedId"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ep;
 
     }
 }

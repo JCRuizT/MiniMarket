@@ -31,20 +31,23 @@ public class ProductoModel {
 
         ArrayList<Producto> data = new ArrayList<>();
         try {
-            PreparedStatement sentence = conexion.sentence("select * from " + table + " as p, TblEstado as e,TblTipoProducto as tp where e.EstId = p.TblEstado_EstId and tp.TipProId = p.TblTipoProducto_TipId and p.TblEstado_EstId = 1 and p.ProStock > 0");
+            PreparedStatement sentence = conexion.sentence("select * from " + table + " as p, TblEstado as e,TblTipoProducto as tp where e.EstId = p.TblEstado_EstId and tp.TipProId = p.TblTipoProducto_TipId and p.TblEstado_EstId = 1");
             ResultSet result = sentence.executeQuery();
             while (result.next()) {
                 Producto p = new Producto();
                 p.setProRef(result.getString("ProRef"));
                 p.setProNombre(result.getString("ProNombre"));
-                p.setProPrecio(result.getString("ProPrecio"));
                 p.setProStock(result.getString("ProStock"));
+                p.setProPrecio(result.getString("ProPrecio"));
                 p.setProFechaVencimiento(result.getString("ProFechaVencimiento"));
                 p.setTblTipoProducto_TipId(result.getString("TblTipoProducto_TipId"));
                 p.setTipProNombre(result.getString("TipProNombre"));
                 p.setTblEstado_EstId(result.getString("EstId"));
                 p.setTblEstado_EstEstado(result.getString("EstEstado"));
-                p.setTblTipoProducto_TipProIva("TipProIva");
+                p.setTblTipoProducto_TipProIva(result.getString("TipProIva"));
+                double iva = (Double.parseDouble(p.getProPrecio())*Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(p.getProPrecio());
+                p.setProPrecio(String.valueOf(iva));
+                
                 data.add(p);
             }
 
@@ -83,6 +86,12 @@ public class ProductoModel {
                     n.setTblTipoProducto_TipId(r.getString("TblTipoProducto_TipId"));
                     n.setTipProNombre(r.getString("TipProNombre"));
                     n.setProFechaVencimiento(r.getString("ProFechaVencimiento"));
+                    n.setTblTipoProducto_TipProIva(r.getString("TipProIva"));
+                    
+                    
+                    
+                    double iva = (Double.parseDouble(n.getProPrecio())*Double.parseDouble(n.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(n.getProPrecio());
+                    n.setProPrecio(String.valueOf(iva));
                 }
 
             } catch (SQLException e) {
@@ -109,7 +118,9 @@ public class ProductoModel {
                 sentence.setString(5, p.getTblTipoProducto_TipId());
                 sentence.setString(6, p.getTblEstado_EstId());
                 sentence.setString(7, p.getProRef());
-
+                
+                double iva = (Double.parseDouble(p.getProPrecio())*Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(p.getProPrecio());
+                p.setProPrecio(String.valueOf(iva));
                 sentence.execute();
 
                 return true;
