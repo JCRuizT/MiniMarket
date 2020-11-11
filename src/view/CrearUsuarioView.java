@@ -178,6 +178,8 @@ public class CrearUsuarioView extends JFrame {
         labelTipoIdentificacion.setLocation(260, 315);
         labelTipoIdentificacion.setSize(250, 30);
         labelTipoIdentificacion.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+        
+        
 
         campOblig4.setText("*");
         campOblig4.setLocation(439, 315);
@@ -289,6 +291,16 @@ public class CrearUsuarioView extends JFrame {
         buttonCreateUser.setBorder(null);
         buttonCreateUser.setFont(new Font("Arial", BOLD, 20));
         buttonCreateUser.setHorizontalAlignment(CENTER);
+        
+        buttonCancelUser.setText("Cancelar");
+        buttonCancelUser.setLocation(30, 690);
+        buttonCancelUser.setSize(430, 30);
+        buttonCancelUser.setBackground(orange);
+        buttonCancelUser.setForeground(white);
+        buttonCancelUser.setFocusable(false);
+        buttonCancelUser.setBorder(null);
+        buttonCancelUser.setFont(new Font("Arial", BOLD, 20));
+        buttonCancelUser.setHorizontalAlignment(CENTER);
 
         close.setSize(20, 20);
         close.setLocation(960, 20);

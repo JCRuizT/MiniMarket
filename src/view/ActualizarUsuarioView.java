@@ -430,9 +430,4 @@ public class ActualizarUsuarioView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
-
-    public static void main(String[] args) {
-        ActualizarUsuarioView a = new ActualizarUsuarioView();
-    }
-
 }

@@ -74,8 +74,8 @@ public class DashboardView extends JFrame implements MouseListener {
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
-        //setResizable(false);
-        //setUndecorated(true);
+        setResizable(false);
+        setUndecorated(true);
 
         //Diseño
         pagPrincipal.setSize(x, y);
@@ -136,12 +136,7 @@ public class DashboardView extends JFrame implements MouseListener {
             labelCrearUsu.setSize(300, 40);
             labelCrearUsu.setLocation(80, 100);
             labelCrearUsu.setFont(new Font("Arial", BOLD, 20));
-
-            if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
-                labelCrearUsu.setText("Gestionar Usuario");
-            } else {
-                labelCrearUsu.setText("Crear Cliente");
-            }
+            labelCrearUsu.setText("Gestionar Usuario");
             labelCrearUsu.setCursor(new Cursor(HAND_CURSOR));
             labelCrearUsu.addMouseListener(this);
 
@@ -165,7 +160,7 @@ public class DashboardView extends JFrame implements MouseListener {
 
             labelEstadistica.setForeground(WHITE);
             labelEstadistica.setSize(300, 40);
-            labelEstadistica.setLocation(80, 780);
+            labelEstadistica.setLocation(80, 820);
             labelEstadistica.setFont(new Font("Arial", BOLD, 20));
             labelEstadistica.setText("Estadisticas");
             labelEstadistica.setCursor(new Cursor(HAND_CURSOR));
@@ -272,7 +267,7 @@ public class DashboardView extends JFrame implements MouseListener {
         picHacerPedido.addMouseListener(this);
 
         PicEstadistica.setSize(30, 30);
-        PicEstadistica.setLocation(39, 780);
+        PicEstadistica.setLocation(39, 820);
         ImageIcon imageEstadistica = new ImageIcon(getClass().getResource("/imagenes/estadistica.png"));
         Icon iconEstadistica = new ImageIcon(imageEstadistica.getImage().getScaledInstance(PicEstadistica.getWidth(), PicEstadistica.getHeight(), SCALE_DEFAULT));
         PicEstadistica.setIcon(iconEstadistica);
@@ -392,7 +387,7 @@ public class DashboardView extends JFrame implements MouseListener {
                 presset = true;
             }
             if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
-                indicador.setLocation(0, 780);
+                indicador.setLocation(0, 820);
                 menu.add(indicador);
                 presset = true;
             }
@@ -464,7 +459,7 @@ public class DashboardView extends JFrame implements MouseListener {
                     menu.add(indicador);
                 }
                 if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
-                    indicador.setLocation(0, 780);
+                    indicador.setLocation(0, 820);
                     menu.add(indicador);
                 }
 
@@ -541,7 +536,7 @@ public class DashboardView extends JFrame implements MouseListener {
                 }
                 if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
                     menu.remove(indicador);
-                    indicador.setLocation(0, 780);
+                    indicador.setLocation(0, 820);
                     menu.add(indicador);
 
                 }

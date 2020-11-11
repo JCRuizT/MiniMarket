@@ -53,6 +53,7 @@ public class DashboardController implements MouseListener {
 
         }
 
+        vistaHistorial = new HistorialPedidoController();
         vistaPedido = new HacerPedidoController(vista);
         vistaCerrar = new CerrarSesionView();
         vistaHistorial = new HistorialPedidoController();
@@ -90,68 +91,6 @@ public class DashboardController implements MouseListener {
 
             vista.getPagPrincipal().add(vistaPedido.getVista());
             vistaPedido.getVista().setLocation(370, 120);
-
-        }
-
-        vista.invalidate();
-        vista.validate();
-        vista.repaint();
-
-    }
-
-    /* solo para desarrollo eliminar en version final */
-    public DashboardController() {
-        vista = new DashboardView();
-
-        if (logged.getTblRol_RolId().equals("1")) {
-
-            controllerCreateCategory = new CategoryController();
-            ControllerProduc = new ProductController();
-        }
-
-        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
-
-            usuarioController = new UsuarioController(vista);
-
-        }
-
-        vistaPedido = new HacerPedidoController(vista);
-        vistaCerrar = new CerrarSesionView();
-        vistaHistorial = new HistorialPedidoController();
-        vistaEstadistica = new EstadisticasController();
-
-        if (logged.getTblRol_RolId().equals("1")) {
-
-            vista.getPicCrearCateg().addMouseListener(this);
-            vista.getLabelCrearCateg().addMouseListener(this);
-            vista.getPicCrearProduc().addMouseListener(this);
-            vista.getLabelCrearProd().addMouseListener(this);
-
-        }
-
-        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
-
-            vista.getPicCrearUsu().addMouseListener(this);
-            vista.getLabelCrearUsu().addMouseListener(this);
-        }
-
-        vista.getLabelHacerPedido().addMouseListener(this);
-        vista.getPicHacerPedido().addMouseListener(this);
-        vista.getPicAdmin().addMouseListener(this);
-        vista.getPicHistorial().addMouseListener(this);
-        vista.getLabelHistorial().addMouseListener(this);
-        vista.getPicEstadistica().addMouseListener(this);
-        vista.getLabelEstadistica().addMouseListener(this);
-        vistaCerrar.getCerrar().addMouseListener(this);
-        vistaCerrar.getImg().addMouseListener(this);
-
-        if (logged.getTblRol_RolId().equals("1")) {
-
-            vista.getPagPrincipal().add(vistaEstadistica.getVista());
-
-        } else if (logged.getTblRol_RolId().equals("2") || logged.getTblRol_RolId().equals("3")) {
-
-            vista.getPagPrincipal().add(vistaPedido.getVista());
 
         }
 
@@ -202,10 +141,7 @@ public class DashboardController implements MouseListener {
         if (logged.getTblRol_RolId().equals("1")) {
 
             if (me.getSource() == vista.getPicCrearCateg() || me.getSource() == vista.getLabelCrearCateg()) {
-                
-                
-             
-                
+
                 vista.getPagPrincipal().remove(usuarioController.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
                 vista.getPagPrincipal().remove(vistaPedido.getVista());
@@ -223,8 +159,6 @@ public class DashboardController implements MouseListener {
             }
 
             if (me.getSource() == vista.getPicCrearProduc() || me.getSource() == vista.getLabelCrearProd()) {
-                
-                
 
                 vista.getPagPrincipal().remove(usuarioController.getVista());
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
@@ -243,27 +177,26 @@ public class DashboardController implements MouseListener {
 
         }
 
-        if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+        if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {
 
-            if (me.getSource() == vista.getPicCrearUsu() || me.getSource() == vista.getLabelCrearUsu()) {
-
-                if (logged.getTblRol_RolId().equals("1")) {
-                    vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
-                    vista.getPagPrincipal().remove(ControllerProduc.getVista());
-                }
-
-                vista.getPagPrincipal().remove(vistaPedido.getVista());
-                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+            if (logged.getTblRol_RolId().equals("1")) {
+                vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
+                vista.getPagPrincipal().remove(ControllerProduc.getVista());
                 vista.getPagPrincipal().remove(vistaEstadistica.getVista());
-
-            
-                vista.getPagPrincipal().add(usuarioController.getVista());
-
-                vista.invalidate();
-                vista.validate();
-                vista.repaint();
-
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
             }
+
+            if (logged.getTblRol_RolId().equals("2")) {
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
+            }
+
+            vista.getPagPrincipal().add(usuarioController.getVista());
+
+            vista.invalidate();
+            vista.validate();
+            vista.repaint();
 
         }
 
@@ -272,19 +205,23 @@ public class DashboardController implements MouseListener {
             if (logged.getTblRol_RolId().equals("1")) {
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
+                vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+                vista.getPagPrincipal().remove(usuarioController.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
             }
 
-            vista.getPagPrincipal().remove(vistaPedido.getVista());
-
-            if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
+            if (logged.getTblRol_RolId().equals("2")) {
 
                 vista.getPagPrincipal().remove(usuarioController.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
 
             }
-            vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+            
+            if (logged.getTblRol_RolId().equals("3")) {
+                 
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
+            }
 
-       
-            vistaHistorial = new HistorialPedidoController();
             vista.getPagPrincipal().add(vistaHistorial.getVista());
 
             vista.invalidate();
@@ -294,25 +231,29 @@ public class DashboardController implements MouseListener {
         }
 
         if (me.getSource() == vista.getPicHacerPedido() || me.getSource() == vista.getLabelHacerPedido()) {
-            
-            
 
             if (logged.getTblRol_RolId().equals("1")) {
-                
-
 
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+                vista.getPagPrincipal().remove(usuarioController.getVista());
 
             }
 
             if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
 
                 vista.getPagPrincipal().remove(usuarioController.getVista());
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                
             }
-
-            vista.getPagPrincipal().remove(vistaHistorial.getVista());
-            vista.getPagPrincipal().remove(vistaEstadistica.getVista());
+            
+            if (logged.getTblRol_RolId().equals("3")) {
+                 
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                
+            }
 
             vista.getPagPrincipal().add(vistaPedido.getVista());
 
@@ -330,19 +271,12 @@ public class DashboardController implements MouseListener {
 
                 vista.getPagPrincipal().remove(controllerCreateCategory.getVista());
                 vista.getPagPrincipal().remove(ControllerProduc.getVista());
-
-            }
-
-            if (logged.getTblRol_RolId().equals("1") || logged.getTblRol_RolId().equals("2")) {
-
+                vista.getPagPrincipal().remove(vistaHistorial.getVista());
+                vista.getPagPrincipal().remove(vistaPedido.getVista());
                 vista.getPagPrincipal().remove(usuarioController.getVista());
+
             }
 
-            vista.getPagPrincipal().remove(vistaHistorial.getVista());
-            vista.getPagPrincipal().remove(vistaPedido.getVista());
-
-            vistaEstadistica = null;
-            vistaEstadistica = new EstadisticasController();
             vista.getPagPrincipal().add(vistaEstadistica.getVista());
 
             vista.invalidate();
@@ -350,8 +284,7 @@ public class DashboardController implements MouseListener {
             vista.repaint();
 
         }
-        
-          
+
     }
 
     public static Usuario getUserInfo() {
@@ -376,10 +309,6 @@ public class DashboardController implements MouseListener {
     @Override
     public void mouseExited(MouseEvent me) {
 
-    }
-
-    public static void main(String[] args) {
-        DashboardController app = new DashboardController();
     }
 
 }

@@ -89,7 +89,4 @@ public class TipoPagoController implements MouseListener {
 
     }
 
-    public static void main(String[] args) {
-    }
-
 }
