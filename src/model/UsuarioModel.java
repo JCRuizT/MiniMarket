@@ -31,11 +31,12 @@ public class UsuarioModel {
         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
             ArrayList<Usuario> data = new ArrayList<>();
             try {
-                PreparedStatement sentence = conexion.sentence("select UsuNombre1,UsuIdentificacion from TblUsuario where TblEstado_EstId = 1");
+                PreparedStatement sentence = conexion.sentence("select UsuNombre1,UsuApellido1,UsuIdentificacion from TblUsuario where TblEstado_EstId = 1");
                 ResultSet result = sentence.executeQuery();
                 while (result.next()) {
                     Usuario u = new Usuario();
                     u.setUsuNombre1(result.getString("UsuNombre1"));
+                    u.setUsuApellido1(result.getString("UsuApellido1"));
                     u.setUsuIdentificacion(result.getString("UsuIdentificacion"));
                     data.add(u);
                 }

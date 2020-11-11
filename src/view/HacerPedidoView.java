@@ -58,7 +58,6 @@ public class HacerPedidoView extends JPanel {
 
         setSize(x, y);
         setLayout(null);
-        
 
         title.setText("Hacer Pedido");
         title.setSize(850, 45);
@@ -93,7 +92,11 @@ public class HacerPedidoView extends JPanel {
             selectClient.addItem("Seleccionar Cliente");
 
             for (int i = 0; i < user.size(); i++) {
-                selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuIdentificacion() + " - " + user.get(i).getUsuNombre1().toUpperCase()));
+                if (Integer.parseInt(user.get(i).getUsuIdentificacion()) != -1) {
+                    selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuIdentificacion() + " - " + user.get(i).getUsuNombre1().toUpperCase()));
+                }else{
+                    selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuNombre1().toUpperCase()+" "+user.get(i).getUsuApellido1().toUpperCase()));
+                }
             }
 
         }

@@ -71,21 +71,24 @@ public class UsuarioView extends JPanel {
         tableList.getScrollTable().setSize(1000, 500);
 
         for (int i = 0; i < result.size(); i++) {
-            Object rs[] = {
-                result.get(i),
-                result.get(i).getTipNombre(),
-                result.get(i).getUsuIdentificacion(),
-                result.get(i).getUsuNombre1(),
-                result.get(i).getUsuNombre2(),
-                result.get(i).getUsuApellido1(),
-                result.get(i).getUsuApellido2(),
-                result.get(i).getUsuCelular(),
-                result.get(i).getUsuCorreo(),
-                result.get(i).getRolNombre(),
-                result.get(i).getEstEstado()
 
-            };
-            tableList.getModel().addRow(rs);
+            if (Integer.parseInt(result.get(i).getUsuIdentificacion()) != -1) {
+                Object rs[] = {
+                    result.get(i),
+                    result.get(i).getTipNombre(),
+                    result.get(i).getUsuIdentificacion(),
+                    result.get(i).getUsuNombre1(),
+                    result.get(i).getUsuNombre2(),
+                    result.get(i).getUsuApellido1(),
+                    result.get(i).getUsuApellido2(),
+                    result.get(i).getUsuCelular(),
+                    result.get(i).getUsuCorreo(),
+                    result.get(i).getRolNombre(),
+                    result.get(i).getEstEstado()
+
+                };
+                tableList.getModel().addRow(rs);
+            }
         }
 
         fieldSearch = new JTableSearch(tableList.getTable());
