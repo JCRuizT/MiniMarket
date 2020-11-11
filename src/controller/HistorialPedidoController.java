@@ -62,7 +62,7 @@ public class HistorialPedidoController implements ActionListener {
                 ArrayList<Factura> f = dp.listItemPedido(a);
                 
                 
-                String n =FacturaFormat.setFactura(a.getPedId(), a.getUsuNombre1()+" "+a.getUsuApellido1(), a.getUsuIdentificacion(),a.getPedFecha(), f);
+                String n =FacturaFormat.setFactura(a.getPedId(), "factura/",a.getUsuNombre1()+" "+a.getUsuApellido1(), a.getUsuIdentificacion(),a.getPedFecha(), f);
 
                 try {
                     Desktop.getDesktop().open(new File(n));

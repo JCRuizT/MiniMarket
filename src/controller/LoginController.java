@@ -43,4 +43,12 @@ public class LoginController implements ActionListener {
             }
         }
     }
+<<<<<<< HEAD
+=======
+
+    public static void main(String args[]) {
+                    
+        LoginController app = new LoginController();
+    }
+>>>>>>> 2c8828c282c0a537b4c6e12ba1c7107fd47f93ee
 }

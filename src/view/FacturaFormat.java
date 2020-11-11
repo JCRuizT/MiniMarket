@@ -21,10 +21,10 @@ import model.Table.Factura;
  */
 public class FacturaFormat {
     
-     public static String setFactura(String nF,String nombreCliente,String numeroIdentificacion,String fcha, ArrayList<Factura> p) {
+     public static String setFactura(String nF,String folder,String nombreCliente,String numeroIdentificacion,String fcha, ArrayList<Factura> p) {
         try {
             
-            String nombre = "factura/"+nF+"-"+numeroIdentificacion+".pdf";
+            String nombre = folder+nF+"-"+numeroIdentificacion+".pdf";
             FileOutputStream archivo = new FileOutputStream(nombre);
             Document document = new Document();
 
