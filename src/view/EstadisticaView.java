@@ -105,7 +105,7 @@ public class EstadisticaView extends JPanel {
         resultadoMasVendido.setHorizontalAlignment(CENTER);
         
         uno.setSize(300, 40);
-        uno.setLocation(495, 300);
+        uno.setLocation(500, 300);
         uno.setLayout(null);
         
         // Producto Menos vendido
@@ -136,7 +136,7 @@ public class EstadisticaView extends JPanel {
         resultadoMenosVendido.setHorizontalAlignment(CENTER);
         
         dos.setSize(300, 40);
-        dos.setLocation(975, 300);
+        dos.setLocation(990, 300);
         dos.setLayout(null);
         
         // Dinero total obtenido por las ventas

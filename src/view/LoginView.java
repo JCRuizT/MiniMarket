@@ -21,9 +21,8 @@ import static javax.swing.SwingConstants.CENTER;
  *
  * @author pc-standard
  */
-public class LoginView extends JFrame implements MouseListener{
-    
-    
+public class LoginView extends JFrame implements MouseListener {
+
     Container contenedor = getContentPane();
 
     //PANELES 
@@ -35,21 +34,22 @@ public class LoginView extends JFrame implements MouseListener{
     JLabel fondobackground = new JLabel();
     JLabel logo = new JLabel();
     JLabel title = new JLabel();
-    JLabel labelUser = new JLabel("Numero de cedula");
-    JLabel labelPass = new JLabel("Contraseña");
+    JLabel title2 = new JLabel();
+    JLabel PicUser = new JLabel();
+    JLabel PicPass = new JLabel();
     JLabel labelError = new JLabel();
     JLabel minimize = new JLabel();
     JLabel close = new JLabel();
-    
-    //CAJA DE TEXTO
 
+    //CAJA DE TEXTO
     JNumberField fieldUser = new JNumberField();
-    JPasswordField fieldPass = new JPasswordField(10);
+    JPasswordField fieldPass = new JPasswordField();
+
+    JTextField iniUser = new JTextField();
+    JTextField iniPass = new JTextField();
 
     //BOTONES
     JButton buttonSubmit = new JButton();
-
-
 
     //VARIAVLES
     private final int x = 1280;
@@ -67,7 +67,7 @@ public class LoginView extends JFrame implements MouseListener{
         background.setSize(x, y);
         background.setLocation(0, 0);
         background.setLayout(null);
-       
+
         fondobackground.setSize(x, y);
         fondobackground.setLocation(0, 0);
         ImageIcon imagefondobackground = new ImageIcon(getClass().getResource("/imagenes/fondoverduras.jpg"));
@@ -89,43 +89,59 @@ public class LoginView extends JFrame implements MouseListener{
         mainPanelLogo.setLayout(null);
         mainPanelLogo.setLocation(650, 145);
         mainPanelLogo.setBackground(orange);
-        
+
         //Titulotext
         title.setForeground(new Color(56, 17, 70));
         title.setSize(330, 30);
-        title.setLocation(55,60);
-        title.setFont(new Font("Rubik Black", BOLD,22));
-        title.setText("MiniMarket - Inicio de Sesión");
+        title.setLocation(55, 60);
+        title.setFont(new Font("Rubik Black", BOLD, 22));
+        title.setText("BIENVENIDO A MINIMARKET");
 
-        //CedulaText
-        labelUser.setForeground(BLACK);
-        labelUser.setSize(300, 30);
-        labelUser.setLocation(140, 160);
-        labelUser.setFont(new Font("Segoe UI Light", BOLD, 15));
+        title2.setForeground(new Color(56, 17, 70));
+        title2.setSize(330, 30);
+        title2.setLocation(170, 100);
+        title2.setFont(new Font("Rubik Black", BOLD, 22));
+        title2.setText("SING IN");
 
-        //ContraseñaText       
-        labelPass.setForeground(BLACK);
-        labelPass.setSize(300, 30);
-        labelPass.setLocation(165, 240);
-        labelPass.setFont(new Font("Segoe UI Light", BOLD, 15));
+        //CedulaImage
+        PicUser.setSize(40, 40);
+        PicUser.setLocation(50, 195);
+        ImageIcon imagePicUser = new ImageIcon(getClass().getResource("/imagenes/usuario.png"));
+        Icon iconPicUser = new ImageIcon(imagePicUser.getImage().getScaledInstance(PicUser.getWidth(), PicUser.getHeight(), SCALE_DEFAULT));
+        PicUser.setIcon(iconPicUser);
+
+        //ContraseñaImage      
+        PicPass.setSize(40, 40);
+        PicPass.setLocation(50, 275);
+        ImageIcon imagePicPass = new ImageIcon(getClass().getResource("/imagenes/candado.png"));
+        Icon iconPicPass = new ImageIcon(imagePicPass.getImage().getScaledInstance(PicPass.getWidth(), PicPass.getHeight(), SCALE_DEFAULT));
+        PicPass.setIcon(iconPicPass);
 
         //Caja texto Cedula
-        fieldUser.setSize(140, 30);
-        fieldUser.setLocation(140, 200);
-        fieldUser.setBorder(null);
-        fieldUser.setBackground(new Color(239, 239, 239));
-        fieldUser.setHorizontalAlignment(CENTER);
+        iniUser.setSize(200, 35);
+        iniUser.setLocation(110, 200);
+        iniUser.setBorder(null);
+        iniUser.setBackground(new Color(221, 221, 221));
+        iniUser.setFont(new Font("Rubik Black", BOLD, 20));
+        iniUser.setText("Cedula");
+        iniUser.setForeground(WHITE);
+        iniUser.setHorizontalAlignment(CENTER);
+        iniUser.addMouseListener(this);
 
         //Caja texto Password
-        fieldPass.setSize(140, 30);
-        fieldPass.setLocation(140, 277);
-        fieldPass.setBorder(null);
-        fieldPass.setBackground(new Color(239, 239, 239));
-        fieldPass.setHorizontalAlignment(CENTER);
+        iniPass.setSize(200, 35);
+        iniPass.setLocation(110, 277);
+        iniPass.setBorder(null);
+        iniPass.setBackground(new Color(221, 221, 221));
+        iniPass.setFont(new Font("Rubik Black", BOLD, 20));
+        iniPass.setText("Contraseña");
+        iniPass.setForeground(WHITE);
+        iniPass.setHorizontalAlignment(CENTER);
+        iniPass.addMouseListener(this);
 
         //Etiq Boton enviar
-        buttonSubmit.setSize(100, 40);
-        buttonSubmit.setLocation(160, 380);
+        buttonSubmit.setSize(110, 40);
+        buttonSubmit.setLocation(155, 380);
         buttonSubmit.setText("Iniciar sesion");
         buttonSubmit.setBackground(new Color(255, 190, 1));
         buttonSubmit.setOpaque(true);
@@ -135,16 +151,15 @@ public class LoginView extends JFrame implements MouseListener{
         buttonSubmit.addMouseListener(this);
         buttonSubmit.setFocusPainted(false);
         buttonSubmit.setBorder(null);
-        
+        buttonSubmit.setFont(new Font("Rubik Black", BOLD, 15));
+
         //textError
-        
         labelError.setSize(280, 30);
         labelError.setLocation(65, 330);
         labelError.setHorizontalAlignment(CENTER);
         labelError.setFont(new Font("Segoe UI Light", BOLD, 15));
         labelError.setForeground(red);
-        
-        
+
         close.setSize(20, 20);
         close.setLocation(1230, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
@@ -152,7 +167,7 @@ public class LoginView extends JFrame implements MouseListener{
         close.setIcon(iconclose);
         close.setCursor(new Cursor(HAND_CURSOR));
         close.addMouseListener(this);
-        
+
         minimize.setSize(20, 20);
         minimize.setLocation(1200, 20);
         ImageIcon imageminimize = new ImageIcon(getClass().getResource("/imagenes/minimizar.png"));
@@ -160,21 +175,18 @@ public class LoginView extends JFrame implements MouseListener{
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(HAND_CURSOR));
         minimize.addMouseListener(this);
-        
-        
-        
 
         //Agregar
-        
         background.add(minimize);
         background.add(close);
         mainPanel.add(labelError);
         mainPanelLogo.add(logo);
         mainPanel.add(buttonSubmit);
-        mainPanel.add(fieldPass);
-        mainPanel.add(fieldUser);
-        mainPanel.add(labelPass);
-        mainPanel.add(labelUser);
+        mainPanel.add(iniPass);
+        mainPanel.add(iniUser);
+        mainPanel.add(PicUser);
+        mainPanel.add(PicPass);
+        mainPanel.add(title2);
         mainPanel.add(title);
         background.add(mainPanelLogo);
         background.add(mainPanel);
@@ -185,21 +197,22 @@ public class LoginView extends JFrame implements MouseListener{
         setVisible(true);
 
     }
-    
-       @Override
+
+    @Override
     public void mouseClicked(MouseEvent me) {
         if (me.getSource() == minimize) {
             setState(ICONIFIED);
         }
-        if (me.getSource()==close){
+        if (me.getSource() == close) {
             exit(0);
         }
+
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
         if (me.getSource() == buttonSubmit) {
-           buttonSubmit.setBackground(new Color(255, 190, 1));
+            buttonSubmit.setBackground(new Color(255, 190, 1));
         }
     }
 
@@ -212,8 +225,47 @@ public class LoginView extends JFrame implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent me) {
+
         if (me.getSource() == buttonSubmit) {
-             buttonSubmit.setBackground(orange);
+            buttonSubmit.setBackground(orange);
+        }
+        if (me.getSource() == iniUser) {
+            fieldUser.setSize(200, 35);
+            fieldUser.setLocation(110, 200);
+            fieldUser.setBorder(null);
+            fieldUser.setBackground(new Color(221, 221, 221));
+            fieldUser.setFont(new Font("Rubik Black", BOLD, 20));
+            fieldUser.setForeground(WHITE);
+            fieldUser.setHorizontalAlignment(CENTER);
+
+            mainPanel.remove(iniUser);
+
+            mainPanel.invalidate();
+            mainPanel.validate();
+            mainPanel.repaint();
+
+            mainPanel.add(fieldUser);
+
+        }
+
+        if (me.getSource() == iniPass) {
+
+            fieldPass.setSize(200, 35);
+            fieldPass.setLocation(110, 277);
+            fieldPass.setBorder(null);
+            fieldPass.setBackground(new Color(221, 221, 221));
+            fieldPass.setFont(new Font("Rubik Black", BOLD, 20));
+            fieldPass.setForeground(WHITE);
+            fieldPass.setHorizontalAlignment(CENTER);
+
+            mainPanel.remove(iniPass);
+
+            mainPanel.invalidate();
+            mainPanel.validate();
+            mainPanel.repaint();
+
+            mainPanel.add(fieldPass);
+
         }
     }
 
@@ -222,8 +274,28 @@ public class LoginView extends JFrame implements MouseListener{
         if (me.getSource() == buttonSubmit) {
             buttonSubmit.setBackground(new Color(255, 190, 1));
         }
+
+        if (me.getSource() == fieldUser) {
+
+            mainPanel.invalidate();
+            mainPanel.validate();
+            mainPanel.repaint();
+
+            mainPanel.add(iniUser);
+
+        }
+
+        if (me.getSource() == fieldPass) {
+
+            mainPanel.invalidate();
+            mainPanel.validate();
+            mainPanel.repaint();
+
+            mainPanel.add(iniPass);
+        }
+
     }
-      
+
     public void setLabelError(String labelError) {
         this.labelError.setText(labelError);
     }
@@ -236,12 +308,7 @@ public class LoginView extends JFrame implements MouseListener{
         return fieldPass;
     }
 
-    
-    public JButton getButtonSubmit(){
+    public JButton getButtonSubmit() {
         return buttonSubmit;
     }
 }
-    
-
-
-
