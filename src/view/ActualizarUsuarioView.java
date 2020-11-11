@@ -20,7 +20,7 @@ import static javax.swing.SwingConstants.CENTER;
  * @author quihu
  */
 public class ActualizarUsuarioView extends JFrame {
-    
+
     Container contenedor = getContentPane();
 
     JPanel mainPanel = new JPanel();
@@ -36,15 +36,12 @@ public class ActualizarUsuarioView extends JFrame {
     JLabel labelSecondLastName = new JLabel();
     JLabel labelCel = new JLabel();
     JLabel labelEmail = new JLabel();
-    JLabel labelPass = new JLabel();
-    JLabel labelConfirmPass = new JLabel();
     JLabel campOblig = new JLabel();
     JLabel campOblig2 = new JLabel();
     JLabel campOblig3 = new JLabel();
     JLabel campOblig4 = new JLabel();
     JLabel campOblig5 = new JLabel();
-    JLabel campOblig6 = new JLabel();
-  
+
     JLabel minimize = new JLabel();
     JLabel close = new JLabel();
     JLabel logoRegisto = new JLabel();
@@ -56,31 +53,28 @@ public class ActualizarUsuarioView extends JFrame {
     JTextField fieldSecondLastName = new JTextField();
     JNumberField fieldCel = new JNumberField();
     JTextField fieldEmail = new JTextField();
-    JPasswordField fieldPass = new JPasswordField();
-    JPasswordField fieldConfirmPass = new JPasswordField();
 
     JComboBox tipoRol = new JComboBox();
     JComboBox estado = new JComboBox();
-    
+
     ButtonGroup TipIdentificacion = new ButtonGroup();
-    JRadioButton cc=new JRadioButton("C.C",true);
-    JRadioButton ct=new JRadioButton("C.T",false);
-    JRadioButton ti=new JRadioButton("T.I",false);
-    
+    JRadioButton cc = new JRadioButton("C.C", true);
+    JRadioButton ct = new JRadioButton("C.T", false);
+    JRadioButton ti = new JRadioButton("T.I", false);
+
     JButton guardar = new JButton();
     JButton cancelar = new JButton();
 
     private final int x = 1000;
-    private final int y = 740;
-    
-    
-    public ActualizarUsuarioView(){
-        
+    private final int y = 700;
+
+    public ActualizarUsuarioView() {
+
         setSize(x, y);
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        //setUndecorated(true);
+        setUndecorated(true);
 
         mainPanel.setSize(x, y);
         mainPanel.setLocation(0, 0);
@@ -90,206 +84,178 @@ public class ActualizarUsuarioView extends JFrame {
         PanelLogo.setLocation(0, 0);
         PanelLogo.setLayout(null);
         PanelLogo.setBackground(orange);
-        
+
         labelTitulo.setText("Actualizar Usuario");
         labelTitulo.setLocation(30, 25);
-        labelTitulo.setSize(850,55);
+        labelTitulo.setSize(850, 55);
         labelTitulo.setForeground(white);
         labelTitulo.setFont(new Font("Arial Black", CENTER_BASELINE, 45));
-        
+
         message.setText("*Obligatorio");
         message.setLocation(30, 110);
-        message.setSize(250,30);
+        message.setSize(250, 30);
         message.setForeground(red);
         message.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
+
         labelName.setText("Primer Nombre");
         labelName.setLocation(30, 150);
-        labelName.setSize(250,30);
+        labelName.setSize(250, 30);
         labelName.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
+
         campOblig.setText("*");
         campOblig.setLocation(180, 150);
-        campOblig.setSize(250,30);
+        campOblig.setSize(250, 30);
         campOblig.setForeground(red);
         campOblig.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldName.setLocation(30,190);
-        fieldName.setSize(200,30);
+
+        fieldName.setLocation(30, 190);
+        fieldName.setSize(200, 30);
         fieldName.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         labelSecondName.setText("Segundo Nombre");
         labelSecondName.setLocation(260, 150);
-        labelSecondName.setSize(250,30);
+        labelSecondName.setSize(250, 30);
         labelSecondName.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldSecondName.setLocation(260,190);
-        fieldSecondName.setSize(200,30);
+
+        fieldSecondName.setLocation(260, 190);
+        fieldSecondName.setSize(200, 30);
         fieldSecondName.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         labelLastName.setText("Primer Apellido");
         labelLastName.setLocation(30, 230);
-        labelLastName.setSize(250,30);
+        labelLastName.setSize(250, 30);
         labelLastName.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldLastName.setLocation(30,270);
-        fieldLastName.setSize(200,30);
+
+        fieldLastName.setLocation(30, 270);
+        fieldLastName.setSize(200, 30);
         fieldLastName.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         labelSecondLastName.setText("Segundo Apellido");
         labelSecondLastName.setLocation(260, 230);
-        labelSecondLastName.setSize(250,30);
+        labelSecondLastName.setSize(250, 30);
         labelSecondLastName.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
+
         campOblig2.setText("*");
         campOblig2.setLocation(180, 230);
-        campOblig2.setSize(250,30);
+        campOblig2.setSize(250, 30);
         campOblig2.setForeground(red);
         campOblig2.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldSecondLastName.setLocation(260,270);
-        fieldSecondLastName.setSize(200,30);
+
+        fieldSecondLastName.setLocation(260, 270);
+        fieldSecondLastName.setSize(200, 30);
         fieldSecondLastName.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         labelnumIdentificacion.setText("N° Identificacion");
         labelnumIdentificacion.setLocation(30, 315);
-        labelnumIdentificacion.setSize(250,30);
+        labelnumIdentificacion.setSize(250, 30);
         labelnumIdentificacion.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
+
         campOblig3.setText("*");
         campOblig3.setLocation(192, 315);
-        campOblig3.setSize(250,30);
+        campOblig3.setSize(250, 30);
         campOblig3.setForeground(red);
         campOblig3.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldnumIdentificacion.setLocation(30,355);
-        fieldnumIdentificacion.setSize(200,30);
+
+        fieldnumIdentificacion.setLocation(30, 355);
+        fieldnumIdentificacion.setSize(200, 30);
         fieldnumIdentificacion.setFont(new Font("Segoe UI Light", BOLD, 20));
         fieldnumIdentificacion.setEditable(false);
-        
+
         labelTipoIdentificacion.setText("Tipo Identificacion");
         labelTipoIdentificacion.setLocation(260, 315);
-        labelTipoIdentificacion.setSize(250,30);
-        labelTipoIdentificacion.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20)); 
-        
+        labelTipoIdentificacion.setSize(250, 30);
+        labelTipoIdentificacion.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+
         campOblig4.setText("*");
         campOblig4.setLocation(439, 315);
-        campOblig4.setSize(250,30);
+        campOblig4.setSize(250, 30);
         campOblig4.setForeground(red);
         campOblig4.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        cc.setLocation(260,355);
-        cc.setSize(60,30);
+
+        cc.setLocation(260, 355);
+        cc.setSize(60, 30);
         cc.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
-        ct.setLocation(320,355);
-        ct.setSize(60,30);
+
+        ct.setLocation(320, 355);
+        ct.setSize(60, 30);
         ct.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
-        ti.setLocation(380,355);
-        ti.setSize(60,30);
+
+        ti.setLocation(380, 355);
+        ti.setSize(60, 30);
         ti.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         TipIdentificacion.add(cc);
         TipIdentificacion.add(ct);
         TipIdentificacion.add(ti);
-        
 
-        
-        
         tipoRol.setLocation(30, 420);
-        tipoRol.setSize(200,30);
+        tipoRol.setSize(200, 30);
         tipoRol.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-	tipoRol.addItem("Tipo de Usuario");
-        tipoRol.addItem("Administrador");
-        tipoRol.addItem("Vendedor");
-        tipoRol.addItem("Cliente");
-        
+        tipoRol.addItem("Tipo de Usuario");
+        tipoRol.addItem(new JComboItem("1","Administrador"));
+        tipoRol.addItem(new JComboItem("2","Vendedor"));
+        tipoRol.addItem(new JComboItem("3","Cliente"));
+
         estado.setLocation(260, 420);
-        estado.setSize(200,30);
+        estado.setSize(200, 30);
         estado.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-	estado.addItem("Estado de Usuario");
-        estado.addItem("Activo");
-        estado.addItem("Inativo");
-        
+        estado.addItem("Estado de Usuario");
+        estado.addItem(new JComboItem("1","Activo"));
+        estado.addItem(new JComboItem("2","Inativo"));
+
         campOblig5.setText("*");
         campOblig5.setLocation(235, 410);
-        campOblig5.setSize(250,30);
+        campOblig5.setSize(250, 30);
         campOblig5.setForeground(red);
         campOblig5.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
+
         labelEmail.setText("Correo");
         labelEmail.setLocation(30, 470);
-        labelEmail.setSize(250,30);
+        labelEmail.setSize(250, 30);
         labelEmail.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldEmail.setLocation(30,510);
-        fieldEmail.setSize(200,30);
+
+        fieldEmail.setLocation(30, 510);
+        fieldEmail.setSize(200, 30);
         fieldEmail.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         labelCel.setText("Numero Celular");
         labelCel.setLocation(260, 470);
-        labelCel.setSize(250,30);
-        labelCel.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20)); 
-        
-        fieldCel.setLocation(260,510);
-        fieldCel.setSize(200,30);
+        labelCel.setSize(250, 30);
+        labelCel.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+
+        fieldCel.setLocation(260, 510);
+        fieldCel.setSize(200, 30);
         fieldCel.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
-        labelPass.setText("Antigua Contraseña");
-        labelPass.setLocation(30, 550);
-        labelPass.setSize(250,30);
-        labelPass.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        campOblig6.setText("*");
-        campOblig6.setLocation(220, 550);
-        campOblig6.setSize(250,30);
-        campOblig6.setForeground(red);
-        campOblig6.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        fieldPass.setLocation(30,590);
-        fieldPass.setSize(200,30);
-        fieldPass.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
-        labelConfirmPass.setText("Nueva Contraseña");
-        labelConfirmPass.setLocation(260, 550);
-        labelConfirmPass.setSize(250,30);
-        labelConfirmPass.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20)); 
-        
-        fieldConfirmPass.setLocation(260,590);
-        fieldConfirmPass.setSize(200,30);
-        fieldConfirmPass.setFont(new Font("Segoe UI Light", BOLD, 20));
-        
+
         guardar.setText("Guardar Cambios");
-        guardar.setLocation(30, 650);
-        guardar.setSize(430,30);
+        guardar.setLocation(30, 600);
+        guardar.setSize(430, 30);
         guardar.setBackground(orange);
         guardar.setForeground(white);
         guardar.setFocusable(false);
         guardar.setBorder(null);
         guardar.setFont(new Font("Arial", BOLD, 20));
         guardar.setHorizontalAlignment(CENTER);
-        
+
         cancelar.setText("Cancelar");
-        cancelar.setLocation(30, 690);
-        cancelar.setSize(430,30);
+        cancelar.setLocation(30, 650);
+        cancelar.setSize(430, 30);
         cancelar.setBackground(orange);
         cancelar.setForeground(white);
         cancelar.setFocusable(false);
         cancelar.setBorder(null);
         cancelar.setFont(new Font("Arial", BOLD, 20));
         cancelar.setHorizontalAlignment(CENTER);
-      
-       
+
         close.setSize(20, 20);
         close.setLocation(960, 20);
         ImageIcon imageclose = new ImageIcon(getClass().getResource("/imagenes/Cerrar.png"));
         Icon iconclose = new ImageIcon(imageclose.getImage().getScaledInstance(close.getWidth(), close.getHeight(), SCALE_DEFAULT));
         close.setIcon(iconclose);
         close.setCursor(new Cursor(HAND_CURSOR));
-        
+
         logoRegisto.setSize(500, 500);
-        logoRegisto.setLocation(480, 150);
+        logoRegisto.setLocation(480, 120);
         ImageIcon imagelogoRegisto = new ImageIcon(getClass().getResource("/imagenes/update.png"));
         Icon iconlogoRegisto = new ImageIcon(imagelogoRegisto.getImage().getScaledInstance(logoRegisto.getWidth(), logoRegisto.getHeight(), SCALE_DEFAULT));
         logoRegisto.setIcon(iconlogoRegisto);
@@ -300,20 +266,15 @@ public class ActualizarUsuarioView extends JFrame {
         Icon iconminimize = new ImageIcon(imageminimize.getImage().getScaledInstance(minimize.getWidth(), minimize.getHeight(), SCALE_DEFAULT));
         minimize.setIcon(iconminimize);
         minimize.setCursor(new Cursor(HAND_CURSOR));
-       
+
         mainPanel.add(estado);
         mainPanel.add(cancelar);
         mainPanel.add(guardar);
-        mainPanel.add(campOblig6);
         mainPanel.add(campOblig5);
         mainPanel.add(campOblig4);
         mainPanel.add(campOblig3);
         mainPanel.add(campOblig2);
         mainPanel.add(campOblig);
-        mainPanel.add(fieldConfirmPass);
-        mainPanel.add(labelConfirmPass);
-        mainPanel.add(fieldPass);
-        mainPanel.add(labelPass);
         mainPanel.add(fieldCel);
         mainPanel.add(labelCel);
         mainPanel.add(fieldEmail);
@@ -342,11 +303,7 @@ public class ActualizarUsuarioView extends JFrame {
         contenedor.add(mainPanel);
 
         setVisible(true);
-        
-    }
 
-    public JPasswordField getFieldConfirmPass() {
-        return fieldConfirmPass;
     }
 
     public JNumberField getFieldnumIdentificacion() {
@@ -377,10 +334,6 @@ public class ActualizarUsuarioView extends JFrame {
         return fieldEmail;
     }
 
-    public JPasswordField getFieldPass() {
-        return fieldPass;
-    }
-
     public JComboBox getTipoRol() {
         return tipoRol;
     }
@@ -405,9 +358,7 @@ public class ActualizarUsuarioView extends JFrame {
         return ti;
     }
 
-    
     //set
-
     public void setFieldnumIdentificacion(String fieldnumIdentificacion) {
         this.fieldnumIdentificacion.setText(fieldnumIdentificacion);
     }
@@ -434,14 +385,6 @@ public class ActualizarUsuarioView extends JFrame {
 
     public void setFieldEmail(String fieldEmail) {
         this.fieldEmail.setText(fieldEmail);
-    }
-
-    public void setFieldPass(JPasswordField fieldPass) {
-        this.fieldPass = fieldPass;
-    }
-
-    public void setFieldConfirmPass(JPasswordField fieldConfirmPass) {
-        this.fieldConfirmPass = fieldConfirmPass;
     }
 
     public void setTipoRol(JComboBox tipoRol) {
@@ -471,8 +414,8 @@ public class ActualizarUsuarioView extends JFrame {
     public void setGuardar(JButton guardar) {
         this.guardar = guardar;
     }
-    
-     public JButton getGuardar() {
+
+    public JButton getGuardar() {
         return guardar;
     }
 
@@ -487,12 +430,9 @@ public class ActualizarUsuarioView extends JFrame {
     public JButton getCancelar() {
         return cancelar;
     }
-    
+
     public static void main(String[] args) {
         ActualizarUsuarioView a = new ActualizarUsuarioView();
     }
-    
-    
-   
-    
+
 }

@@ -138,6 +138,7 @@ public class ProductController implements ActionListener {
                             
                             stateButtonUpdate = false;
 
+                            vista.getTableList().getModel().setValueAt(p, vista.getTableList().getTable().getSelectedRow(), 0);
                             vista.getTableList().getModel().setValueAt(p.getProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
                             vista.getTableList().getModel().setValueAt(p.getProStock(), vista.getTableList().getTable().getSelectedRow(), 2);
                             vista.getTableList().getModel().setValueAt("$ "+p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);

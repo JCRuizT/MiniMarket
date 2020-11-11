@@ -66,7 +66,7 @@ public class UsuarioView extends JPanel {
         tableList.getTable().getColumnModel().getColumn(8).setMinWidth(150);
         tableList.getTable().getColumnModel().getColumn(9).setMinWidth(50);
         tableList.getTable().getColumnModel().getColumn(10).setMaxWidth(50);
-       
+
         tableList.getScrollTable().setLocation(360, 250);
         tableList.getScrollTable().setSize(1000, 500);
 
@@ -97,13 +97,13 @@ public class UsuarioView extends JPanel {
         tableList.centerData(9);
         tableList.centerData(7);
         tableList.centerData(10);
-        
-         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
 
             buttonCreateUsuario = new JButton("Crear Usuario");
 
         } else if (DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
-           buttonCreateUsuario = new JButton("Crear Cliente");
+            buttonCreateUsuario = new JButton("Crear Cliente");
         }
 
         buttonCreateUsuario.setLocation(360, 800);
@@ -115,15 +115,6 @@ public class UsuarioView extends JPanel {
         buttonCreateUsuario.setFont(new Font("Arial", BOLD, 15));
 
         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
-
-            buttonUpdateUsuario.setText("Actualizar Usuario");
-            buttonUpdateUsuario.setLocation(600, 800);
-            buttonUpdateUsuario.setSize(230, 30);
-            buttonUpdateUsuario.setBackground(orange);
-            buttonUpdateUsuario.setForeground(white);
-            buttonUpdateUsuario.setFocusable(false);
-            buttonUpdateUsuario.setBorder(null);
-            buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
 
             buttonDeleteUsuario.setText("Eliminar Usuario");
             buttonDeleteUsuario.setLocation(890, 800);
@@ -144,7 +135,16 @@ public class UsuarioView extends JPanel {
         add(LabelFiltro);
         add(fieldSearch);
 
-        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+
+            buttonUpdateUsuario.setText("Actualizar Usuario");
+            buttonUpdateUsuario.setLocation(600, 800);
+            buttonUpdateUsuario.setSize(230, 30);
+            buttonUpdateUsuario.setBackground(orange);
+            buttonUpdateUsuario.setForeground(white);
+            buttonUpdateUsuario.setFocusable(false);
+            buttonUpdateUsuario.setBorder(null);
+            buttonUpdateUsuario.setFont(new Font("Arial", BOLD, 15));
 
             add(buttonUpdateUsuario);
             add(buttonDeleteUsuario);

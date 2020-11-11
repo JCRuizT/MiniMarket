@@ -103,6 +103,7 @@ public class CategoryController implements ActionListener {
                             vista.getFieldName().setText("");
                             stateButtonUpdate = false;
 
+                            vista.getTableList().getModel().setValueAt(tp, vista.getTableList().getTable().getSelectedRow(), 0);
                             vista.getTableList().getModel().setValueAt(tp.getTipProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
                             vista.getTableList().getModel().setValueAt(tp.getTipProIva(), vista.getTableList().getTable().getSelectedRow(), 2);
 

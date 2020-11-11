@@ -7,7 +7,6 @@ package view;
 
 import java.awt.*;
 import static java.awt.Color.BLACK;
-import static java.awt.Color.BLUE;
 import static java.awt.Color.WHITE;
 import static java.awt.Color.orange;
 import static java.awt.Color.red;
@@ -41,7 +40,7 @@ public class LoginView extends JFrame implements MouseListener{
     JLabel labelError = new JLabel();
     JLabel minimize = new JLabel();
     JLabel close = new JLabel();
-    //JLabel buttonSubmit = new JLabel();
+    
     //CAJA DE TEXTO
 
     JNumberField fieldUser = new JNumberField();
@@ -62,7 +61,7 @@ public class LoginView extends JFrame implements MouseListener{
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        //setUndecorated(true);
+        setUndecorated(true);
 
         //Diseño
         background.setSize(x, y);
@@ -75,8 +74,8 @@ public class LoginView extends JFrame implements MouseListener{
         Icon iconfondobackground = new ImageIcon(imagefondobackground.getImage().getScaledInstance(fondobackground.getWidth(), fondobackground.getHeight(), SCALE_DEFAULT));
         fondobackground.setIcon(iconfondobackground);
 
-        logo.setSize(300, 400);
-        logo.setLocation(100, 60);
+        logo.setSize(400, 400);
+        logo.setLocation(0, 60);
         ImageIcon imagelogo = new ImageIcon(getClass().getResource("/imagenes/logo.png"));
         Icon iconlogo = new ImageIcon(imagelogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), SCALE_DEFAULT));
         logo.setIcon(iconlogo);
@@ -92,11 +91,11 @@ public class LoginView extends JFrame implements MouseListener{
         mainPanelLogo.setBackground(orange);
         
         //Titulotext
-        title.setForeground(BLUE);
-        title.setSize(300, 30);
-        title.setLocation(75,60);
-        title.setFont(new Font("Segoe UI Light", BOLD,20));
-        title.setText("Mini Market - Inicio de sesion");
+        title.setForeground(new Color(56, 17, 70));
+        title.setSize(330, 30);
+        title.setLocation(55,60);
+        title.setFont(new Font("Rubik Black", BOLD,22));
+        title.setText("MiniMarket - Inicio de Sesión");
 
         //CedulaText
         labelUser.setForeground(BLACK);
@@ -128,20 +127,14 @@ public class LoginView extends JFrame implements MouseListener{
         buttonSubmit.setSize(100, 40);
         buttonSubmit.setLocation(160, 380);
         buttonSubmit.setText("Iniciar sesion");
-        buttonSubmit.setBackground(new Color(239, 239, 239));
+        buttonSubmit.setBackground(new Color(255, 190, 1));
         buttonSubmit.setOpaque(true);
-        buttonSubmit.setBackground(new Color(197, 197, 197));
         buttonSubmit.setCursor(new Cursor(HAND_CURSOR));
         buttonSubmit.setHorizontalAlignment(CENTER);
         buttonSubmit.setForeground(WHITE);
         buttonSubmit.addMouseListener(this);
         buttonSubmit.setFocusPainted(false);
         buttonSubmit.setBorder(null);
-
- 
-        //logo
-        logo.setLocation(50, 60);
-        logo.setSize(300, 400);
         
         //textError
         
@@ -206,28 +199,28 @@ public class LoginView extends JFrame implements MouseListener{
     @Override
     public void mousePressed(MouseEvent me) {
         if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(202, 202, 202));
+           buttonSubmit.setBackground(new Color(255, 190, 1));
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
         if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(214, 214, 214));
+            buttonSubmit.setBackground(new Color(255, 190, 1));
         }
     }
 
     @Override
     public void mouseEntered(MouseEvent me) {
         if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(214, 214, 214));
+             buttonSubmit.setBackground(orange);
         }
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
         if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(197, 197, 197));
+            buttonSubmit.setBackground(new Color(255, 190, 1));
         }
     }
       

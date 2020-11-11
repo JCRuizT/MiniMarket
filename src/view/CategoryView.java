@@ -125,7 +125,7 @@ public class CategoryView extends JPanel {
             tableList.getModel().addRow(rs);
         }
         
-         tableList.centerData(2);
+        tableList.centerData(2);
        
 
 

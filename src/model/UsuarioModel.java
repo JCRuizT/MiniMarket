@@ -108,10 +108,10 @@ public class UsuarioModel {
                 sentence.setString(8, u.getUsuCorreo());
                 sentence.setString(9, u.getTblTipoIdentificacion_TipId());
                 sentence.setString(10, u.getTblEstado_EstId());
-                
-                if(DashboardController.getUserInfo().getTblRol_RolId().equals("1")){
+
+                if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
                     sentence.setString(11, u.getTblRol_RolId());
-                }else{
+                } else {
                     sentence.setString(11, "3");
                 }
                 sentence.setString(12, null);
@@ -134,7 +134,7 @@ public class UsuarioModel {
                     n.setUsuCorreo(r.getString("UsuCorreo"));
                     n.setTblTipoIdentificacion_TipId(r.getString("TblTipoIdentificacion_TipId"));
                     n.setTblEstado_EstId(r.getString("TblEstado_EstId"));
-                   n.setTblRol_RolId(r.getString("TblRol_RolId"));
+                    n.setTblRol_RolId(r.getString("TblRol_RolId"));
                     n.setTipNombre(r.getString("TipNombre"));
                     n.setEstEstado(r.getString("EstEstado"));
                     n.setRolNombre(r.getString("RolNombre"));
@@ -174,23 +174,23 @@ public class UsuarioModel {
 
     public boolean update(Usuario u) {
 
-        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+
 
             try {
 
-                PreparedStatement sentence = conexion.sentence("insert into " + table + " values(?,md5(?),?,?,?,?,?,?,?,?,?,?)");
-                sentence.setString(1, u.getUsuIdentificacion());
-                sentence.setString(2, u.getUsuContrasenia());
-                sentence.setString(3, u.getUsuNombre1());
-                sentence.setString(4, u.getUsuNombre2());
-                sentence.setString(5, u.getUsuApellido1());
-                sentence.setString(6, u.getUsuApellido2());
-                sentence.setString(7, u.getUsuCelular());
-                sentence.setString(8, u.getUsuCorreo());
+                PreparedStatement sentence = conexion.sentence("update " + table + " set UsuNombre1 = ?, UsuNombre2 = ?,UsuApellido1 = ?, UsuApellido2 = ?,UsuCelular = ?, UsuCorreo = ?,TblEstado_EstId = ?, TblRol_RolId  = ?, TblTipoIdentificacion_TipId = ? where UsuIdentificacion = ?");
+
+                sentence.setString(1, u.getUsuNombre1());
+                sentence.setString(2, u.getUsuNombre2());
+                sentence.setString(3, u.getUsuApellido1());
+                sentence.setString(4, u.getUsuApellido2());
+                sentence.setString(5, u.getUsuCelular());
+                sentence.setString(6, u.getUsuCorreo());
+                sentence.setString(7, u.getTblEstado_EstId());
+                sentence.setString(8, u.getTblRol_RolId());
                 sentence.setString(9, u.getTblTipoIdentificacion_TipId());
-                sentence.setString(10, u.getTblEstado_EstId());
-                sentence.setString(11, u.getTblRol_RolId());
-                sentence.setString(12, null);
+                sentence.setString(10, u.getUsuIdentificacion());
 
                 sentence.execute();
 

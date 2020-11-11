@@ -48,6 +48,9 @@ public class DashboardView extends JFrame implements MouseListener {
     JLabel picCrearCateg = new JLabel();
     JLabel picHacerPedido = new JLabel();
 
+    JLabel indicador = new JLabel();
+    JLabel MenuIndicador = new JLabel();
+
     JLabel labelEstadistica = new JLabel();
     JLabel labelHistorial = new JLabel();
     JLabel PicEstadistica = new JLabel();
@@ -56,15 +59,15 @@ public class DashboardView extends JFrame implements MouseListener {
     //CAJA DE TEXTO
     JTextField xs = new JTextField();
 
-    //BOTONES
-    JButton buttonSubmit = new JButton();
-
     //ComboBox
     JComboBox fieldRol = new JComboBox();
 
-    //VARIAVLES
+    //VARIABLES
     private final int x = 1430;
     private final int y = 900;
+
+    private boolean presset = false;
+    private int cont = 0;
 
     public DashboardView() {
 
@@ -88,6 +91,18 @@ public class DashboardView extends JFrame implements MouseListener {
         menu.setLayout(null);
         menu.setLocation(0, 0);
         menu.setBackground(orange);
+        menu.addMouseListener(this);
+
+        MenuIndicador.setSize(300, 1430);
+        MenuIndicador.setLayout(null);
+        MenuIndicador.setLocation(0, 0);
+        MenuIndicador.addMouseListener(this);
+
+        indicador.setSize(300, 40);
+        indicador.setLocation(0, 1000);
+        ImageIcon imagelogo = new ImageIcon(getClass().getResource("/imagenes/indicador.png"));
+        Icon iconlogo = new ImageIcon(imagelogo.getImage().getScaledInstance(indicador.getWidth(), indicador.getHeight(), SCALE_DEFAULT));
+        indicador.setIcon(iconlogo);
 
         labelMenu.setForeground(WHITE);
         labelMenu.setSize(300, 40);
@@ -174,7 +189,6 @@ public class DashboardView extends JFrame implements MouseListener {
         labelNameUser.setSize(400, 40);
         labelNameUser.setLocation(0, 0);
         labelNameUser.setFont(new Font("Segoe UI Light", BOLD, 30));
-        labelNameUser.setText("Carlos Yepez");
 
         panelNameUsu.setSize(400, 40);
         panelNameUsu.setLocation(850, 35);
@@ -232,8 +246,8 @@ public class DashboardView extends JFrame implements MouseListener {
         PicHistorial.addMouseListener(this);
 
         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1")) {
-            PicHistorial.setLocation(39, 230);
-            labelHistorial.setLocation(80, 225);
+            PicHistorial.setLocation(39, 225);
+            labelHistorial.setLocation(80, 220);
             picHacerPedido.setLocation(39, 265);
             labelHacerPedido.setLocation(80, 260);
 
@@ -319,12 +333,14 @@ public class DashboardView extends JFrame implements MouseListener {
 
         }
 
+        pagPrincipal.add(panelCerrar);
         panelNameUsu.add(labelNameUser);
         pagPrincipal.add(panelNameUsu);
         pagPrincipal.add(labelRol);
         pagPrincipal.add(labelBienvenida);
+        menu.add(indicador);
         menu.add(labelMenu);
-        pagPrincipal.add(panelCerrar);
+        menu.add(MenuIndicador);
         pagPrincipal.add(picAdmin);
         pagPrincipal.add(close);
         pagPrincipal.add(minimize);
@@ -347,38 +363,149 @@ public class DashboardView extends JFrame implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent me
-    ) {
-        if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(202, 202, 202));
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 100);
+            menu.add(indicador);
+            presset = true;
+            cont = 1;
         }
+        if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 140);
+            menu.add(indicador);
+            presset = true;
+            cont = 2;
+        }
+        if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 180);
+            menu.add(indicador);
+            presset = true;
+            cont = 3;
+        }
+        if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 220);
+            menu.add(indicador);
+            presset = true;
+            cont = 4;
+        }
+        if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 260);
+            menu.add(indicador);
+            presset = true;
+            cont = 5;
+        }
+        if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+            indicador.setSize(300, 40);
+            indicador.setLocation(0, 780);
+            menu.add(indicador);
+            presset = true;
+            cont = 6;
+        }
+
     }
 
     @Override
-    public void mouseReleased(MouseEvent me
-    ) {
-        if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(214, 214, 214));
-        }
+    public void mouseReleased(MouseEvent me) {
+
     }
 
     @Override
-    public void mouseEntered(MouseEvent me
-    ) {
-        if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(214, 214, 214));
+    public void mouseEntered(MouseEvent me) {
+
+        if (!presset) {
+
+            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 100);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 140);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 180);
+                menu.add(indicador);
+            }
+            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 220);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 260);
+                menu.add(indicador);
+            }
+            if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 780);
+                menu.add(indicador);
+            }
+
+            if (me.getSource() == MenuIndicador) {
+                indicador.setSize(300, 40);
+                indicador.setLocation(1000, 780);
+                menu.add(indicador);
+            }
+
         }
+
     }
 
     @Override
-    public void mouseExited(MouseEvent me
-    ) {
-        if (me.getSource() == buttonSubmit) {
-            buttonSubmit.setBackground(new Color(197, 197, 197));
+    public void mouseExited(MouseEvent me) {
+
+        if (!presset) {
+
+            if (me.getSource() == picCrearUsu || me.getSource() == labelCrearUsu) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 100);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picCrearProduc || me.getSource() == labelCrearProd) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 140);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picCrearCateg || me.getSource() == labelCrearCateg) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 180);
+                menu.add(indicador);
+            }
+            if (me.getSource() == PicHistorial || me.getSource() == labelHistorial) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 220);
+                menu.add(indicador);
+            }
+            if (me.getSource() == picHacerPedido || me.getSource() == labelHacerPedido) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 260);
+                menu.add(indicador);
+            }
+            if (me.getSource() == PicEstadistica || me.getSource() == labelEstadistica) {
+                menu.remove(indicador);
+                indicador.setSize(300, 40);
+                indicador.setLocation(0, 780);
+                menu.add(indicador);
+
+            }
         }
     }
+
     //Metodos Getters 
-
     public JLabel getLabelEstadistica() {
         return labelEstadistica;
     }
