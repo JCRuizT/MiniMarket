@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -10,10 +5,6 @@ import java.awt.event.ActionListener;
 import model.LoginModel;
 import view.LoginView;
 
-/**
- *
- * @author pc-standard
- */
 public class LoginController implements ActionListener {
 
     private LoginView vista;
@@ -42,10 +33,5 @@ public class LoginController implements ActionListener {
                 }
             }
         }
-    }
-
-    public static void main(String args[]) {
-
-        LoginController app = new LoginController();
     }
 }

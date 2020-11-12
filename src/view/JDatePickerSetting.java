@@ -8,15 +8,6 @@ import javax.swing.JFormattedTextField.AbstractFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author pc-standard
- */
 public abstract class JDatePickerSetting {
 
     public static JDatePanelImpl getDatePanel() {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -26,10 +21,6 @@ import view.HacerPedidoView;
 import view.Resource;
 import view.TipoPagoView;
 
-/**
- *
- * @author quihu
- */
 public class HacerPedidoController implements ActionListener {
 
     private HacerPedidoView vistaH;
@@ -57,8 +48,8 @@ public class HacerPedidoController implements ActionListener {
         if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
 
             vistaH = new HacerPedidoView(modelProduct.getAll(), modelUser.getUsersSelect());
-        }else{
-             vistaH = new HacerPedidoView(modelProduct.getAll(), null);
+        } else {
+            vistaH = new HacerPedidoView(modelProduct.getAll(), null);
         }
         vh = vistaH;
         model = new PedidoModel();
@@ -240,11 +231,11 @@ public class HacerPedidoController implements ActionListener {
 
         p.setPedFecha(fecha);
         p.setTblMetodoPago_MetId(metodoPago);
-        
-        if(DashboardController.getUserInfo().getTblRol_RolId().equals("3")){
+
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
             p.setTblUsuario_UsuIdentificacion(DashboardController.getUserInfo().getUsuIdentificacion());
-        }else{
-            p.setTblUsuario_UsuIdentificacion(String.valueOf(vh.getSelectClient().getSelectedItem().hashCode())); 
+        } else {
+            p.setTblUsuario_UsuIdentificacion(String.valueOf(vh.getSelectClient().getSelectedItem().hashCode()));
         }
         Pedido creado = model.create(p);
 
@@ -258,7 +249,7 @@ public class HacerPedidoController implements ActionListener {
             mp.update(pro);
             dp.create(proped);
         }
-        
+
         return creado;
 
     }

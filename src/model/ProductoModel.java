@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.DashboardController;
@@ -11,12 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.Producto;
-import view.Resource;
 
-/**
- *
- * @author pc-standard
- */
 public class ProductoModel {
 
     private final Conexion conexion;
@@ -45,9 +35,9 @@ public class ProductoModel {
                 p.setTblEstado_EstId(result.getString("EstId"));
                 p.setTblEstado_EstEstado(result.getString("EstEstado"));
                 p.setTblTipoProducto_TipProIva(result.getString("TipProIva"));
-                double iva = (Double.parseDouble(p.getProPrecio())*Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(p.getProPrecio());
+                double iva = (Double.parseDouble(p.getProPrecio()) * Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100) + Double.parseDouble(p.getProPrecio());
                 p.setProPrecio(String.valueOf(iva));
-                
+
                 data.add(p);
             }
 
@@ -87,10 +77,8 @@ public class ProductoModel {
                     n.setTipProNombre(r.getString("TipProNombre"));
                     n.setProFechaVencimiento(r.getString("ProFechaVencimiento"));
                     n.setTblTipoProducto_TipProIva(r.getString("TipProIva"));
-                    
-                    
-                    
-                    double iva = (Double.parseDouble(n.getProPrecio())*Double.parseDouble(n.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(n.getProPrecio());
+
+                    double iva = (Double.parseDouble(n.getProPrecio()) * Double.parseDouble(n.getTblTipoProducto_TipProIva()) / 100) + Double.parseDouble(n.getProPrecio());
                     n.setProPrecio(String.valueOf(iva));
                 }
 
@@ -118,8 +106,8 @@ public class ProductoModel {
                 sentence.setString(5, p.getTblTipoProducto_TipId());
                 sentence.setString(6, p.getTblEstado_EstId());
                 sentence.setString(7, p.getProRef());
-                
-                double iva = (Double.parseDouble(p.getProPrecio())*Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100)+Double.parseDouble(p.getProPrecio());
+
+                double iva = (Double.parseDouble(p.getProPrecio()) * Double.parseDouble(p.getTblTipoProducto_TipProIva()) / 100) + Double.parseDouble(p.getProPrecio());
                 p.setProPrecio(String.valueOf(iva));
                 sentence.execute();
 

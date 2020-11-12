@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.Table;
 
-/**
- *
- * @author pc-standard
- */
 public class HistorialPedido {
-    
-    
+
     private String PedId;
     private String PedFecha;
     private String UsuIdentificacion;
@@ -75,7 +65,5 @@ public class HistorialPedido {
     public void setUsuApellido2(String UsuApellido2) {
         this.UsuApellido2 = UsuApellido2;
     }
-    
-    
-    
+
 }

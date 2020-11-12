@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.*;
@@ -15,10 +10,7 @@ import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.*;
 import static javax.swing.SwingConstants.CENTER;
 
-/**
- *
- * @author quihu
- */
+
 public class ActualizarUsuarioView extends JFrame {
 
     Container contenedor = getContentPane();
@@ -359,6 +351,7 @@ public class ActualizarUsuarioView extends JFrame {
     }
 
     //set
+    
     public void setFieldnumIdentificacion(String fieldnumIdentificacion) {
         this.fieldnumIdentificacion.setText(fieldnumIdentificacion);
     }

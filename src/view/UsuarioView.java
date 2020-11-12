@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.DashboardController;
@@ -13,16 +8,11 @@ import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
 import model.Table.Usuario;
 
-/**
- *
- * @author quihu
- */
 public class UsuarioView extends JPanel {
 
     private JTableComponent tableList;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -13,14 +8,9 @@ import model.UsuarioModel;
 import view.DashboardView;
 import view.UsuarioView;
 
-/**
- *
- * @author quihu
- */
 public class UsuarioController implements ActionListener {
 
     private UsuarioView vista;
-    private DashboardController vistaController;
     private DashboardView vistaD;
     private UsuarioModel model;
 

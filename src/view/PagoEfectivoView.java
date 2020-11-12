@@ -1,35 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
 import static java.awt.Color.orange;
 import static java.awt.Color.white;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Font;
 import static java.awt.Font.BOLD;
 import static java.awt.Font.CENTER_BASELINE;
-import static java.awt.Frame.HAND_CURSOR;
 import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import static javax.swing.SwingConstants.CENTER;
 
-/**
- *
- * @author quihu
- */
 public class PagoEfectivoView extends JFrame {
 
     Container contenedor = getContentPane();

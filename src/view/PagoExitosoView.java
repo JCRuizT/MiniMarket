@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
@@ -21,10 +16,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author quihu
- */
 public class PagoExitosoView extends JFrame {
 
     Container contenedor = getContentPane();
@@ -125,8 +116,5 @@ public class PagoExitosoView extends JFrame {
     public void setDescargar(JLabel descargar) {
         this.descargar = descargar;
     }
-    
-    
-    
- 
+
 }

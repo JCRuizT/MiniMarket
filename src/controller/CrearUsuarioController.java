@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -17,10 +12,6 @@ import view.DashboardView;
 import view.LoginView;
 import view.UsuarioView;
 
-/**
- *
- * @author quihu
- */
 public class CrearUsuarioController implements MouseListener, ActionListener {
 
     private CrearUsuarioView vista;
@@ -28,7 +19,7 @@ public class CrearUsuarioController implements MouseListener, ActionListener {
     private UsuarioModel model;
     private UsuarioView vistaU;
 
-    public CrearUsuarioController(DashboardView vistaD,UsuarioView vistaU) {
+    public CrearUsuarioController(DashboardView vistaD, UsuarioView vistaU) {
 
         vista = new CrearUsuarioView();
         model = new UsuarioModel();
@@ -93,14 +84,14 @@ public class CrearUsuarioController implements MouseListener, ActionListener {
                 if (vista.getFieldPass().getText().equals(vista.getFieldConfirmPass().getText())) {
 
                     String rolSelected = "";
-                    if(vista.getCc().isSelected()){
+                    if (vista.getCc().isSelected()) {
                         rolSelected = "1";
-                    }else if(vista.getCt().isSelected()){
+                    } else if (vista.getCt().isSelected()) {
                         rolSelected = "2";
-                    }else if(vista.getTi().isSelected()){
+                    } else if (vista.getTi().isSelected()) {
                         rolSelected = "3";
                     }
-                    
+
                     Usuario u = new Usuario();
                     u.setUsuIdentificacion(vista.getFieldnumIdentificacion().getText());
                     u.setUsuContrasenia(vista.getFieldPass().getText());
@@ -115,14 +106,12 @@ public class CrearUsuarioController implements MouseListener, ActionListener {
                     u.setTblEstado_EstId("1");
 
                     u = model.create(u);
-                    
 
                     if (u != null) {
-                        Object rs[] = {u, u.getTipNombre(),u.getUsuIdentificacion(), u.getUsuNombre1(),u.getUsuNombre2(),
-                                      u.getUsuApellido1(),u.getUsuApellido2(),u.getUsuCelular(),u.getUsuCorreo(),
-                                      u.getRolNombre(),u.getEstEstado()};
-                        
-                        
+                        Object rs[] = {u, u.getTipNombre(), u.getUsuIdentificacion(), u.getUsuNombre1(), u.getUsuNombre2(),
+                            u.getUsuApellido1(), u.getUsuApellido2(), u.getUsuCelular(), u.getUsuCorreo(),
+                            u.getRolNombre(), u.getEstEstado()};
+
                         JOptionPane.showMessageDialog(null, "Se ha creado el usuario de manera correcta");
                         vista.dispose();
                         vistaD.setVisible(true);

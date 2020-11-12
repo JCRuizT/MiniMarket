@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.DashboardController;
@@ -21,14 +16,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import model.Table.Producto;
 import model.Table.Usuario;
 
-/**
- *
- * @author quihu
- */
 public class HacerPedidoView extends JPanel {
+
+    JPanel total = new JPanel();
 
     JTextField fieldName = new JTextField();
 
@@ -36,17 +30,17 @@ public class HacerPedidoView extends JPanel {
     private JTableComponent tableList2;
 
     private JButton buttonAddProduc = new JButton();
-    private JButton buttonAddCant = new JButton();
     private JButton buttonDeleteProduc = new JButton();
     private JButton buttonBuy = new JButton();
 
     private JLabel labelName = new JLabel();
+    private JLabel rectangulo = new JLabel();
     private JLabel title = new JLabel();
     private JLabel shearch = new JLabel();
     private JLabel flecha = new JLabel();
     private JLabel PicPedido = new JLabel();
     private JLabel totalAPagar = new JLabel();
-    private JLabel totalNum = new JLabel();
+    private JLabel totalNum = new JLabel("", SwingConstants.LEFT);
     private JComboBox selectClient;
 
     private JTableSearch fieldSearch;
@@ -85,8 +79,8 @@ public class HacerPedidoView extends JPanel {
         if (!DashboardController.getUserInfo().getTblRol_RolId().equals("3")) {
             selectClient = new JComboBox();
 
-            selectClient.setLocation(0, 670);
-            selectClient.setSize(180, 30);
+            selectClient.setLocation(0, 700);
+            selectClient.setSize(200, 30);
             selectClient.setFont(new Font("Arial", BOLD, 15));
 
             selectClient.addItem("Seleccionar Cliente");
@@ -94,15 +88,15 @@ public class HacerPedidoView extends JPanel {
             for (int i = 0; i < user.size(); i++) {
                 if (Integer.parseInt(user.get(i).getUsuIdentificacion()) != -1) {
                     selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuIdentificacion() + " - " + user.get(i).getUsuNombre1().toUpperCase()));
-                }else{
-                    selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuNombre1().toUpperCase()+" "+user.get(i).getUsuApellido1().toUpperCase()));
+                } else {
+                    selectClient.addItem(new JComboItem(user.get(i).getUsuIdentificacion(), user.get(i).getUsuNombre1().toUpperCase() + " " + user.get(i).getUsuApellido1().toUpperCase()));
                 }
             }
 
         }
 
         buttonBuy = new JButton("Hacer Pedido");
-        buttonBuy.setLocation(750, 670);
+        buttonBuy.setLocation(750, 700);
         buttonBuy.setSize(230, 40);
         buttonBuy.setBackground(orange);
         buttonBuy.setForeground(white);
@@ -111,16 +105,27 @@ public class HacerPedidoView extends JPanel {
         buttonBuy.setFont(new Font("Arial", BOLD, 20));
 
         totalAPagar.setText("Total a pagar : $ ");
-        totalAPagar.setLocation(750, 610);
+        totalAPagar.setLocation(650, 630);
         totalAPagar.setSize(300, 40);
         totalAPagar.setForeground(Color.BLACK);
         totalAPagar.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
 
+        total.setLocation(820, 630);
+        total.setSize(160, 35);
+        total.setLayout(null);
+        total.setOpaque(false);
+
+        rectangulo.setSize(345, 40);
+        rectangulo.setLocation(640, 633);
+        ImageIcon imageR1 = new ImageIcon(getClass().getResource("/imagenes/rectang.png"));
+        Icon iconR1 = new ImageIcon(imageR1.getImage().getScaledInstance(rectangulo.getWidth(), rectangulo.getHeight(), SCALE_DEFAULT));
+        rectangulo.setIcon(iconR1);
+
         totalNum.setText("0");
-        totalNum.setLocation(940, 610);
+        totalNum.setLocation(0, 2);
         totalNum.setSize(300, 40);
         totalNum.setForeground(Color.GREEN);
-        totalNum.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
+        totalNum.setFont(new Font("Rubik Black", BOLD, 20));
 
         flecha.setSize(50, 50);
         flecha.setLocation(415, 350);
@@ -179,8 +184,10 @@ public class HacerPedidoView extends JPanel {
         tableList.getScrollTable().setLocation(0, 150);
         tableList.getScrollTable().setSize(400, 450);
 
+        total.add(totalNum);
+        add(rectangulo);
+        add(total);
         add(totalAPagar);
-        add(totalNum);
         add(shearch);
         add(title);
         add(labelName);

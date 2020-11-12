@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.MouseEvent;
@@ -11,10 +6,6 @@ import view.DashboardView;
 import view.LoginView;
 import view.TipoPagoView;
 
-/**
- *
- * @author quihu
- */
 public class TipoPagoController implements MouseListener {
 
     private TipoPagoView vista;

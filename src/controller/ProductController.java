@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -14,10 +9,6 @@ import model.Table.Producto;
 import view.ProductoView;
 import view.Resource;
 
-/**
- *
- * @author pc-standard
- */
 public class ProductController implements ActionListener {
 
     private ProductoView vista;
@@ -58,7 +49,7 @@ public class ProductController implements ActionListener {
 
                 p = model.create(p);
                 if (p != null) {
-                    Object rs[] = {p, p.getProNombre(), p.getProStock(),"$ "+ p.getProPrecio(), Resource.transformFecha(p.getProFechaVencimiento()), p.getTipProNombre()};
+                    Object rs[] = {p, p.getProNombre(), p.getProStock(), "$ " + p.getProPrecio(), Resource.transformFecha(p.getProFechaVencimiento()), p.getTipProNombre()};
                     vista.getTableList().getModel().addRow(rs);
                     vista.getFieldName().setText("");
                     vista.getFieldPrecio().setText("");
@@ -105,19 +96,17 @@ public class ProductController implements ActionListener {
                     vista.getTableList().getTable().setEnabled(false);
                     stateButtonUpdate = true;
                     vista.getFieldName().setText(p.getProNombre());
-                    
-                     
-                    double iva = (Double.parseDouble(p.getProPrecio())-((Double.parseDouble(p.getProPrecio())*Integer.parseInt(p.getTblTipoProducto_TipProIva())) / 100));
-                    int i = (int) (iva+1);
-                    
+
+                    double iva = (Double.parseDouble(p.getProPrecio()) - ((Double.parseDouble(p.getProPrecio()) * Integer.parseInt(p.getTblTipoProducto_TipProIva())) / 100));
+                    int i = (int) (iva + 1);
+
                     System.out.println(i);
                     vista.getFieldPrecio().setText(String.valueOf(i));
                     vista.getFieldFechaVencimiento().setDate(p.getProFechaVencimiento());
                     Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
 
                     Resource.setSelectedCombobox(vista.getFieldCategoria(), p.getTipProNombre());
-                    Resource.setSelectedCombobox(vista.getFieldStock(),p.getProStock());
-                    
+                    Resource.setSelectedCombobox(vista.getFieldStock(), p.getProStock());
 
                 } else {
                     if (vista.getFieldName().getText().equals("") || vista.getFieldCategoria().getSelectedIndex() == 0
@@ -126,14 +115,12 @@ public class ProductController implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
 
-             
                         p.setProNombre(vista.getFieldName().getText());
                         p.setProPrecio(vista.getFieldPrecio().getText());
                         p.setProStock(vista.getFieldStock().getSelectedItem().toString());
                         p.setProFechaVencimiento(vista.getFieldFechaVencimiento().getDate());
                         p.setTblTipoProducto_TipId(String.valueOf(vista.getFieldCategoria().getSelectedItem().hashCode()));
-                        
-                        
+
                         if (model.update(p)) {
                             vista.getButtonCreateProduct().setEnabled(true);
                             vista.getButtonDeleteProduct().setEnabled(true);
@@ -143,24 +130,21 @@ public class ProductController implements ActionListener {
                             vista.getFieldName().setText("");
                             vista.getFieldPrecio().setText("");
                             vista.getFieldFechaVencimiento().setDefaultText();
-                           
-                            
+
                             stateButtonUpdate = false;
 
                             vista.getTableList().getModel().setValueAt(p, vista.getTableList().getTable().getSelectedRow(), 0);
                             vista.getTableList().getModel().setValueAt(p.getProNombre(), vista.getTableList().getTable().getSelectedRow(), 1);
                             vista.getTableList().getModel().setValueAt(p.getProStock(), vista.getTableList().getTable().getSelectedRow(), 2);
-                            vista.getTableList().getModel().setValueAt("$ "+p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
+                            vista.getTableList().getModel().setValueAt("$ " + p.getProPrecio(), vista.getTableList().getTable().getSelectedRow(), 3);
                             vista.getTableList().getModel().setValueAt(Resource.transformFecha(p.getProFechaVencimiento()), vista.getTableList().getTable().getSelectedRow(), 4);
                             vista.getTableList().getModel().setValueAt(vista.getFieldCategoria().getSelectedItem().toString(), vista.getTableList().getTable().getSelectedRow(), 5);
-                            
 
-                            
                             JOptionPane.showMessageDialog(null, "Se ha actualizado el tipo de producto correctamente");
-                            
+
                             vista.getFieldStock().setSelectedIndex(0);
                             vista.getFieldCategoria().setSelectedIndex(0);
-                           
+
                         } else {
                             JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la actualizacion", "Error", JOptionPane.ERROR_MESSAGE);
                         }

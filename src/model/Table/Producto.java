@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.Table;
 
-/**
- *
- * @author pc-standard
- */
 public class Producto {
 
     private String ProRef;
@@ -22,9 +13,7 @@ public class Producto {
     private String TblEstado_EstEstado;
     private String cantidad;
     private String TblTipoProducto_TipProIva;
-    
-    
-    
+
     public String getTblEstado_EstEstado() {
         return TblEstado_EstEstado;
     }
@@ -112,7 +101,5 @@ public class Producto {
     public void setTblTipoProducto_TipProIva(String TblTipoProducto_TipProIva) {
         this.TblTipoProducto_TipProIva = TblTipoProducto_TipProIva;
     }
-    
-   
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.Desktop;
@@ -22,10 +17,6 @@ import model.Table.Usuario;
 import view.FacturaFormat;
 import view.HistorialPedidoView;
 
-/**
- *
- * @author quihu
- */
 public class HistorialPedidoController implements ActionListener {
 
     private HistorialPedidoView vista;
@@ -55,19 +46,18 @@ public class HistorialPedidoController implements ActionListener {
             if (vista.getTableList().getTable().getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             } else {
-                
+
                 HistorialPedido a = (HistorialPedido) vista.getTableList().getObject();
                 DetallePedidoModel dp = new DetallePedidoModel();
-                
+
                 ArrayList<Factura> f = dp.listItemPedido(a);
-                
-                
-                String n =FacturaFormat.setFactura(a.getPedId(), "factura/",a.getUsuNombre1()+" "+a.getUsuApellido1(), a.getUsuIdentificacion(),a.getPedFecha(), f);
+
+                String n = FacturaFormat.setFactura(a.getPedId(), "factura/", a.getUsuNombre1() + " " + a.getUsuApellido1(), a.getUsuIdentificacion(), a.getPedFecha(), f);
 
                 try {
                     Desktop.getDesktop().open(new File(n));
                 } catch (IOException ex) {
-                    
+
                 }
             }
         }

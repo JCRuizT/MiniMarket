@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.MouseEvent;
@@ -12,10 +6,6 @@ import model.Table.Usuario;
 import view.CerrarSesionView;
 import view.DashboardView;
 
-/**
- *
- * @author quihu
- */
 public class DashboardController implements MouseListener {
 
     private int NumClick = 0;
@@ -216,9 +206,9 @@ public class DashboardController implements MouseListener {
                 vista.getPagPrincipal().remove(vistaPedido.getVista());
 
             }
-            
+
             if (logged.getTblRol_RolId().equals("3")) {
-                 
+
                 vista.getPagPrincipal().remove(vistaPedido.getVista());
             }
 
@@ -246,13 +236,13 @@ public class DashboardController implements MouseListener {
 
                 vista.getPagPrincipal().remove(usuarioController.getVista());
                 vista.getPagPrincipal().remove(vistaHistorial.getVista());
-                
+
             }
-            
+
             if (logged.getTblRol_RolId().equals("3")) {
-                 
+
                 vista.getPagPrincipal().remove(vistaHistorial.getVista());
-                
+
             }
 
             vista.getPagPrincipal().add(vistaPedido.getVista());

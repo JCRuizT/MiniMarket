@@ -1,24 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Table.Usuario;
 
-/**
- *
- * @author pc-standard
- */
 public class LoginModel {
 
     private Conexion conexion;
@@ -36,18 +22,18 @@ public class LoginModel {
 
         ResultSet registro = null;
         try {
-            //String query = "select UsuIdentificacion, UsuNombre1,UsuNombre2 ,UsuApellido1, UsuApellido2, UsuCorreo from " + tabla + " where UsuIdentificacion = '" + user + "' and " + "UsuContrasenia='" + pass + "' and TblEstado_EstId = 1";
+
             PreparedStatement sentence = conexion.sentence("select * from " + tabla + ",TblRol,TblTipoIdentificacion where TblRol_RolId = RolId and TblTipoIdentificacion_TipId = TipId and UsuIdentificacion = ? and UsuContrasenia = md5(?) and TblEstado_EstId = 1");
             sentence.setString(1, user);
             sentence.setString(2, pass);
             registro = sentence.executeQuery();
             if (registro.next()) {
-                
+
                 userInfo = new Usuario();
                 userInfo.setUsuNombre1(registro.getString("UsuNombre1"));
                 userInfo.setUsuNombre2(registro.getString("UsuNombre2"));
-                userInfo.setUsuApellido1(registro.getString("UsuApellido1")); 
-                userInfo.setUsuApellido2(registro.getString("UsuApellido1"));  
+                userInfo.setUsuApellido1(registro.getString("UsuApellido1"));
+                userInfo.setUsuApellido2(registro.getString("UsuApellido1"));
                 userInfo.setUsuIdentificacion(registro.getString("UsuIdentificacion"));
                 userInfo.setUsuCelular(registro.getString("UsuCelular"));
                 userInfo.setUsuCorreo(registro.getString("UsuCorreo"));
@@ -56,24 +42,21 @@ public class LoginModel {
                 userInfo.setTblRol_RolId(registro.getString("TblRol_RolId"));
                 userInfo.setTipNombre(registro.getString("TipNombre"));
                 userInfo.setRolNombre(registro.getString("RolNombre"));
-                
-                
+
                 return true;
 
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
-        return false;
 
+        return false;
 
     }
 
     public Usuario getInfo() {
         return userInfo;
     }
-
 
 }

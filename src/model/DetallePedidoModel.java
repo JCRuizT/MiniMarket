@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -11,14 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.Factura;
 import model.Table.HistorialPedido;
-import model.Table.Pedido;
-import model.Table.Producto;
 import model.Table.ProductoPedido;
 
-/**
- *
- * @author quihu
- */
 public class DetallePedidoModel {
 
     private final Conexion conexion;
@@ -47,10 +36,10 @@ public class DetallePedidoModel {
         }
 
     }
-    
-    public ArrayList<Factura> listItemPedido(HistorialPedido p){
-        
-         ArrayList<Factura> data = new ArrayList<>();
+
+    public ArrayList<Factura> listItemPedido(HistorialPedido p) {
+
+        ArrayList<Factura> data = new ArrayList<>();
         try {
             PreparedStatement sentence = conexion.sentence("SELECT TblProducto_ProRef,ProNombre,ProPrecio, sum(ProPedCantidad) as ProCantidad FROM TblProductoPedido,tblproducto where tblproducto_ProRef = ProRef and  TblPedido_PedId = ? GROUP BY ProRef");
             sentence.setString(1, p.getPedId());

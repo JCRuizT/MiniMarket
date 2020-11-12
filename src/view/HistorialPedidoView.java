@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import static java.awt.Color.orange;
@@ -17,10 +12,6 @@ import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
 import model.Table.HistorialPedido;
 
-/**
- *
- * @author quihu
- */
 public class HistorialPedidoView extends JPanel {
 
     private JTableComponent tableList;
@@ -49,7 +40,6 @@ public class HistorialPedidoView extends JPanel {
 
         String columns[] = {"id", "N° Factura", "Identificación", "Primer Nombre", "Primer Apellido", "Fecha"};
         tableList = new JTableComponent(columns);
-        // tableList.getTable().getColumnModel().getColumn(1).setMaxWidth(40);
         buttonVerPedido = new JButton();
         buttonVerPedido.setText("Ver Pedido");
         buttonVerPedido.setLocation(360, 800);
@@ -80,7 +70,7 @@ public class HistorialPedidoView extends JPanel {
                 Object rs[] = {
                     result.get(i),
                     result.get(i).getPedId(),
-                    result.get(i).getUsuNombre1()+" "+result.get(i).getUsuApellido1(),
+                    result.get(i).getUsuNombre1() + " " + result.get(i).getUsuApellido1(),
                     "",
                     "",
                     Resource.transformFecha(result.get(i).getPedFecha()),};
@@ -94,12 +84,8 @@ public class HistorialPedidoView extends JPanel {
         fieldSearch.setSize(310, 30);
         fieldSearch.setFont(new Font("Segoe UI Light", BOLD, 20));
 
-        /*
-        tableList.centerData(1);
-        tableList.centerData(9);
-        tableList.centerData(7);
-        tableList.centerData(10);
-         */
+        tableList.centerData();
+
         LabelFiltro.setLocation(950, 195);
         LabelFiltro.setSize(300, 40);
         LabelFiltro.setFont(new Font("Arial", BOLD, 20));

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -13,10 +8,6 @@ import model.Table.TipoProducto;
 import model.TipoProductoModel;
 import view.Resource;
 
-/**
- *
- * @author pc-standard
- */
 public class CategoryController implements ActionListener {
 
     private view.CategoryView vista;
@@ -42,7 +33,7 @@ public class CategoryController implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        
+
         if (e.getSource().equals(vista.getButtonCreateCategory())) {
 
             if (vista.getFieldName().getText().equals("") || vista.getFieldIva().getSelectedIndex() == 0) {
@@ -123,8 +114,8 @@ public class CategoryController implements ActionListener {
             } else {
                 TipoProducto tp = (TipoProducto) vista.getTableList().getObject();
                 tp.setTblEstado_EstId("2");
-                int valDelete = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este registro?","Confirmacion", JOptionPane.YES_NO_OPTION);
-                if (valDelete ==  JOptionPane.YES_NO_OPTION) {
+                int valDelete = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este registro?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+                if (valDelete == JOptionPane.YES_NO_OPTION) {
                     if (model.update(tp)) {
 
                         vista.getTableList().getModel().removeRow(vista.getTableList().getTable().getSelectedRow());

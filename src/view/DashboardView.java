@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.DashboardController;
@@ -17,10 +12,7 @@ import static java.lang.System.exit;
 import javax.swing.*;
 import static javax.swing.SwingConstants.CENTER;
 
-/**
- *
- * @author pc-standard
- */
+
 public class DashboardView extends JFrame implements MouseListener {
 
     Container contenedor = getContentPane();

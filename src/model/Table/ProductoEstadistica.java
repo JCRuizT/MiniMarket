@@ -14,6 +14,33 @@ public class ProductoEstadistica {
     private String TblProducto_ProRef;
     private String ProNombre;
     private String ProPedCantidad;
+    private String TotalSinIVA;
+    private String TotalConIVA;
+    private String Promedio;
+
+    public String getTotalSinIVA() {
+        return TotalSinIVA;
+    }
+
+    public void setTotalSinIVA(String TotalSinIVA) {
+        this.TotalSinIVA = TotalSinIVA;
+    }
+
+    public String getTotalConIVA() {
+        return TotalConIVA;
+    }
+
+    public void setTotalConIVA(String TotalConIVA) {
+        this.TotalConIVA = TotalConIVA;
+    }
+
+    public String getPromedio() {
+        return Promedio;
+    }
+
+    public void setPromedio(String Promedio) {
+        this.Promedio = Promedio;
+    }
 
     public String getTblProducto_ProRef() {
         return TblProducto_ProRef;

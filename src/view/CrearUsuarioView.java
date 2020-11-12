@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.DashboardController;
@@ -17,10 +12,6 @@ import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.*;
 import static javax.swing.SwingConstants.CENTER;
 
-/**
- *
- * @author quihu
- */
 public class CrearUsuarioView extends JFrame {
 
     Container contenedor = getContentPane();
@@ -178,8 +169,6 @@ public class CrearUsuarioView extends JFrame {
         labelTipoIdentificacion.setLocation(260, 315);
         labelTipoIdentificacion.setSize(250, 30);
         labelTipoIdentificacion.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
-        
-        
 
         campOblig4.setText("*");
         campOblig4.setLocation(439, 315);
@@ -291,7 +280,7 @@ public class CrearUsuarioView extends JFrame {
         buttonCreateUser.setBorder(null);
         buttonCreateUser.setFont(new Font("Arial", BOLD, 20));
         buttonCreateUser.setHorizontalAlignment(CENTER);
-        
+
         buttonCancelUser.setText("Cancelar");
         buttonCancelUser.setLocation(30, 690);
         buttonCancelUser.setSize(430, 30);

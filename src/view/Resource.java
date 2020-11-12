@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import static java.lang.Integer.parseInt;
@@ -11,16 +6,12 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author pc-standard
- */
 public class Resource {
 
     public static String transformFecha(String fecha) {
 
         String mes[] = {"Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov",
-             "Dic"};
+            "Dic"};
         String arr[] = fecha.split("-");
         int mesSelected = parseInt(arr[1]) - 1;
         String response = arr[2] + " de " + mes[mesSelected] + " del " + arr[0];
@@ -39,7 +30,7 @@ public class Resource {
 
     }
 
-    public static void setSelectedRadioButton(ButtonGroup buttonGroup,String txt) {
+    public static void setSelectedRadioButton(ButtonGroup buttonGroup, String txt) {
 
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();

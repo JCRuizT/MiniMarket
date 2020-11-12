@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.Color;
@@ -18,10 +13,6 @@ import view.DashboardView;
 import view.PagoEfectivoView;
 import view.ProcesandoView;
 
-/**
- *
- * @author quihu
- */
 public class PagoEfectivoController extends TimerTask implements ActionListener {
 
     private PagoEfectivoView vista;
@@ -96,14 +87,14 @@ public class PagoEfectivoController extends TimerTask implements ActionListener 
         if (me.getSource() == vista.getPagar()) {
 
             if (!valid) {
-                
-               JOptionPane.showMessageDialog(null, "El efectivo actual no es suficiente para realizar el pedido");
+
+                JOptionPane.showMessageDialog(null, "El efectivo actual no es suficiente para realizar el pedido");
 
             } else {
                 carga = new ProcesandoView();
                 Timer contadorCarga = new Timer();
                 contadorCarga.schedule(this, 5000);
-                p=HacerPedidoController.createPedido("1");
+                p = HacerPedidoController.createPedido("1");
             }
 
         }

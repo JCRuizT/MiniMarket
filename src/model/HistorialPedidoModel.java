@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.DashboardController;
@@ -14,10 +9,6 @@ import model.Table.HistorialPedido;
 import model.Table.Pedido;
 import model.Table.Usuario;
 
-/**
- *
- * @author pc-standard
- */
 public class HistorialPedidoModel {
 
     private final Conexion conexion;
@@ -30,10 +21,10 @@ public class HistorialPedidoModel {
 
     public ArrayList<HistorialPedido> getAllPedidos() {
 
-       if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
+        if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
             ArrayList<HistorialPedido> data = new ArrayList<>();
             try {
-                PreparedStatement sentence = conexion.sentence("select u.UsuIdentificacion,p.PedId,p.PedFecha,u.UsuNombre1,UsuApellido1 from TblPedido as p,TblUsuario as u where p.TblUsuario_UsuIdentificacion = u.UsuIdentificacion");
+                PreparedStatement sentence = conexion.sentence("select u.UsuIdentificacion,p.PedId,p.PedFecha,u.UsuNombre1,UsuApellido1 from TblPedido as p,TblUsuario as u where p.TblUsuario_UsuIdentificacion = u.UsuIdentificacion order by p.PedFecha desc");
                 ResultSet result = sentence.executeQuery();
                 while (result.next()) {
                     HistorialPedido hp = new HistorialPedido();
@@ -51,9 +42,9 @@ public class HistorialPedidoModel {
             }
             return data;
 
-       }
+        }
 
-       return null;
+        return null;
 
     }
 
@@ -79,9 +70,8 @@ public class HistorialPedidoModel {
         return data;
 
     }
-    
-    
-        public HistorialPedido getOne(Pedido p) {
+
+    public HistorialPedido getOne(Pedido p) {
         HistorialPedido ep = new HistorialPedido();
         try {
             PreparedStatement sentence = conexion.sentence("select u.UsuIdentificacion,p.PedId,p.PedFecha,u.UsuNombre1,UsuApellido1 from TblPedido as p,TblUsuario as u where p.TblUsuario_UsuIdentificacion = u.UsuIdentificacion and p.PedId = ?");

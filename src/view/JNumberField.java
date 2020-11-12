@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.event.KeyEvent;
@@ -10,10 +5,6 @@ import java.awt.event.KeyListener;
 import static java.lang.String.valueOf;
 import javax.swing.JTextField;
 
-/**
- *
- * @author pc-standard
- */
 public class JNumberField extends JTextField implements KeyListener {
 
     boolean decimal = false;

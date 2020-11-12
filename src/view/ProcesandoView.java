@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Container;
@@ -13,12 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author quihu
- */
 public class ProcesandoView extends JFrame {
-    
+
     Container contenedor = getContentPane();
     JPanel main = new JPanel();
     JLabel procesando = new JLabel();
@@ -39,10 +30,9 @@ public class ProcesandoView extends JFrame {
         ImageIcon imageProcesando = new ImageIcon(getClass().getResource("/imagenes/loading.gif"));
         Icon iconProcesando = new ImageIcon(imageProcesando.getImage().getScaledInstance(procesando.getWidth(), procesando.getHeight(), SCALE_DEFAULT));
         procesando.setIcon(iconProcesando);
-        
-        
+
         contenedor.add(procesando);
-       
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 

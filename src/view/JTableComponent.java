@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
@@ -13,12 +8,7 @@ import javax.swing.JTable;
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author pc-standard
- */
 public class JTableComponent extends DefaultTableCellRenderer {
 
     private JTable table;
@@ -42,15 +32,15 @@ public class JTableComponent extends DefaultTableCellRenderer {
         table.getColumnModel().getColumn(0).setMinWidth(0);
         table.getColumnModel().getColumn(0).setPreferredWidth(0);
         table.getTableHeader().setResizingAllowed(false);
-        
+
         table.getTableHeader().setEnabled(false);
         // Cambiar fondo a las filas
         scrollTable = new JScrollPane(table);
-       
+
     }
-    
-    public void setBackgroundColorRow(){
-        
+
+    public void setBackgroundColorRow() {
+
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -78,7 +68,6 @@ public class JTableComponent extends DefaultTableCellRenderer {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.getColumnModel().getColumn(index).setCellRenderer(centerRenderer);
     }
-    
 
     public JTable getTable() {
         return table;

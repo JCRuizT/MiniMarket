@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.event.KeyEvent;
@@ -10,10 +5,6 @@ import java.awt.event.KeyListener;
 import static java.lang.String.valueOf;
 import javax.swing.JTextField;
 
-/**
- *
- * @author pc-standard
- */
 public class JCardField extends JTextField implements KeyListener {
 
     public JCardField() {
@@ -51,7 +42,7 @@ public class JCardField extends JTextField implements KeyListener {
             char a[] = this.getText().toCharArray();
             if (a.length > 0) {
                 if (a[a.length - 1] == ' ' && a.length > 1) {
-                   this.setText(this.getText().substring(0,this.getText().length()-1));
+                    this.setText(this.getText().substring(0, this.getText().length() - 1));
                 }
             }
 
@@ -70,12 +61,10 @@ public class JCardField extends JTextField implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //validateNumber(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        //validateNumber(e);
     }
 
 }

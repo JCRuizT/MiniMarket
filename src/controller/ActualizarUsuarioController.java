@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.MouseEvent;
@@ -16,10 +11,6 @@ import view.JTableComponent;
 import view.LoginView;
 import view.Resource;
 
-/**
- *
- * @author quihu
- */
 public class ActualizarUsuarioController implements MouseListener {
 
     private ActualizarUsuarioView vista;
@@ -35,7 +26,7 @@ public class ActualizarUsuarioController implements MouseListener {
         this.Tabla = Tabla;
         this.vistaD = vistaD;
         Usuario u = (Usuario) Tabla.getObject();
-        
+
         if (DashboardController.getUserInfo().getUsuIdentificacion().equals(u.getUsuIdentificacion())) {
             vista.getEstado().setEnabled(false);
             vista.getTipoRol().setEnabled(false);
@@ -51,7 +42,6 @@ public class ActualizarUsuarioController implements MouseListener {
         Resource.setSelectedCombobox(vista.getTipoRol(), u.getRolNombre());
         Resource.setSelectedCombobox(vista.getEstado(), u.getEstEstado());
         Resource.setSelectedRadioButton(vista.getTipIdentificacion(), u.getTipNombre());
-        //vista.setTipoRol((JComboBox) Tabla.getModel().getValueAt(row, 9));
         vista.getClose().addMouseListener(this);
         vista.getMinimize().addMouseListener(this);
         vista.getCancelar().addMouseListener(this);
@@ -114,8 +104,6 @@ public class ActualizarUsuarioController implements MouseListener {
 
                 u.setTipNombre(TipoIdentifiSelected);
 
-               
-                
                 if (model.update(u)) {
 
                     Tabla.getModel().setValueAt(u, Tabla.getTable().getSelectedRow(), 0);

@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.*;
-import static java.awt.Color.BLACK;
 import static java.awt.Color.WHITE;
 import static java.awt.Color.orange;
 import static java.awt.Color.red;
@@ -17,10 +11,6 @@ import static java.lang.System.exit;
 import javax.swing.*;
 import static javax.swing.SwingConstants.CENTER;
 
-/**
- *
- * @author pc-standard
- */
 public class LoginView extends JFrame implements MouseListener {
 
     Container contenedor = getContentPane();
@@ -125,8 +115,18 @@ public class LoginView extends JFrame implements MouseListener {
         iniUser.setFont(new Font("Rubik Black", BOLD, 20));
         iniUser.setText("Cedula");
         iniUser.setForeground(WHITE);
+        iniUser.setEditable(false);
         iniUser.setHorizontalAlignment(CENTER);
         iniUser.addMouseListener(this);
+
+        fieldUser.setSize(200, 35);
+        fieldUser.setLocation(110, 200);
+        fieldUser.setBorder(null);
+        fieldUser.setBackground(new Color(221, 221, 221));
+        fieldUser.setFont(new Font("Rubik Black", BOLD, 20));
+        fieldUser.setForeground(WHITE);
+        fieldUser.setHorizontalAlignment(CENTER);
+        fieldUser.addMouseListener(this);
 
         //Caja texto Password
         iniPass.setSize(200, 35);
@@ -136,8 +136,18 @@ public class LoginView extends JFrame implements MouseListener {
         iniPass.setFont(new Font("Rubik Black", BOLD, 20));
         iniPass.setText("Contraseña");
         iniPass.setForeground(WHITE);
+        iniPass.setEditable(false);
         iniPass.setHorizontalAlignment(CENTER);
         iniPass.addMouseListener(this);
+
+        fieldPass.setSize(200, 35);
+        fieldPass.setLocation(110, 277);
+        fieldPass.setBorder(null);
+        fieldPass.setBackground(new Color(221, 221, 221));
+        fieldPass.setFont(new Font("Rubik Black", BOLD, 20));
+        fieldPass.setForeground(WHITE);
+        fieldPass.setHorizontalAlignment(CENTER);
+        fieldPass.addMouseListener(this);
 
         //Etiq Boton enviar
         buttonSubmit.setSize(110, 40);
@@ -229,44 +239,29 @@ public class LoginView extends JFrame implements MouseListener {
         if (me.getSource() == buttonSubmit) {
             buttonSubmit.setBackground(orange);
         }
-        if (me.getSource() == iniUser) {
-            fieldUser.setSize(200, 35);
-            fieldUser.setLocation(110, 200);
-            fieldUser.setBorder(null);
-            fieldUser.setBackground(new Color(221, 221, 221));
-            fieldUser.setFont(new Font("Rubik Black", BOLD, 20));
-            fieldUser.setForeground(WHITE);
-            fieldUser.setHorizontalAlignment(CENTER);
 
-            mainPanel.remove(iniUser);
+        if (me.getSource() == iniUser) {
+
+            iniUser.setVisible(false);
 
             mainPanel.invalidate();
             mainPanel.validate();
             mainPanel.repaint();
 
             mainPanel.add(fieldUser);
-
         }
 
         if (me.getSource() == iniPass) {
 
-            fieldPass.setSize(200, 35);
-            fieldPass.setLocation(110, 277);
-            fieldPass.setBorder(null);
-            fieldPass.setBackground(new Color(221, 221, 221));
-            fieldPass.setFont(new Font("Rubik Black", BOLD, 20));
-            fieldPass.setForeground(WHITE);
-            fieldPass.setHorizontalAlignment(CENTER);
-
-            mainPanel.remove(iniPass);
+            iniPass.setVisible(false);
 
             mainPanel.invalidate();
             mainPanel.validate();
             mainPanel.repaint();
 
             mainPanel.add(fieldPass);
-
         }
+
     }
 
     @Override
@@ -277,21 +272,30 @@ public class LoginView extends JFrame implements MouseListener {
 
         if (me.getSource() == fieldUser) {
 
-            mainPanel.invalidate();
-            mainPanel.validate();
-            mainPanel.repaint();
+            if (fieldUser.getText().isEmpty()) {
 
-            mainPanel.add(iniUser);
+                iniUser.setVisible(true);
 
+                mainPanel.invalidate();
+                mainPanel.validate();
+                mainPanel.repaint();
+
+                mainPanel.remove(fieldUser);
+            }
         }
 
         if (me.getSource() == fieldPass) {
 
-            mainPanel.invalidate();
-            mainPanel.validate();
-            mainPanel.repaint();
+            if (fieldPass.getText().isEmpty()) {
 
-            mainPanel.add(iniPass);
+                iniPass.setVisible(true);
+
+                mainPanel.invalidate();
+                mainPanel.validate();
+                mainPanel.repaint();
+
+                mainPanel.remove(fieldPass);
+            }
         }
 
     }

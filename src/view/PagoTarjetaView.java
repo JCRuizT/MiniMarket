@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
@@ -24,10 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author quihu
- */
 public class PagoTarjetaView extends JFrame {
 
     Container contenedor = getContentPane();
@@ -147,21 +138,19 @@ public class PagoTarjetaView extends JFrame {
         LabelCVV.setLocation(710, 430);
         LabelCVV.setFont(new Font("Arial", BOLD, 23));
         LabelCVV.setText("CVV");
-        
+
         LabelTipoTarjeta.setSize(150, 50);
         LabelTipoTarjeta.setLocation(830, 430);
         LabelTipoTarjeta.setFont(new Font("Arial", BOLD, 23));
         LabelTipoTarjeta.setText("T. Tarjeta");
-        
-        
+
         tipoTarjeta.setSize(180, 30);
         tipoTarjeta.setLocation(830, 480);
         tipoTarjeta.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
         tipoTarjeta.addItem("Seleccionar");
-        
-        tipoTarjeta.addItem(new JComboItem("2","Debito"));
-        tipoTarjeta.addItem(new JComboItem("3","Credito"));
 
+        tipoTarjeta.addItem(new JComboItem("2", "Debito"));
+        tipoTarjeta.addItem(new JComboItem("3", "Credito"));
 
         FieldCVV.setSize(80, 30);
         FieldCVV.setLocation(710, 480);

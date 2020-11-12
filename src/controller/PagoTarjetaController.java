@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -15,17 +10,12 @@ import view.DashboardView;
 import view.PagoTarjetaView;
 import view.ProcesandoView;
 
-/**
- *
- * @author quihu
- */
 public class PagoTarjetaController extends TimerTask implements ActionListener {
 
     private PagoTarjetaView vista;
     private TipoPagoController vistaT;
     private DashboardView vistaD;
     private ProcesandoView carga;
-    private PagoExitosoController PagoExitoso;
     private Pedido p;
 
     public PagoTarjetaController(DashboardView vistaD) {
@@ -83,13 +73,12 @@ public class PagoTarjetaController extends TimerTask implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Codigo postal incorrecto", "Error de Codigo Postal", JOptionPane.ERROR_MESSAGE);
 
-            }else {
+            } else {
 
                 carga = new ProcesandoView();
                 Timer contadorCarga = new Timer();
                 contadorCarga.schedule(this, 5000);
-                p=HacerPedidoController.createPedido(String.valueOf(vista.getTipoTarjeta().getSelectedItem().hashCode()));
-               
+                p = HacerPedidoController.createPedido(String.valueOf(vista.getTipoTarjeta().getSelectedItem().hashCode()));
 
             }
 

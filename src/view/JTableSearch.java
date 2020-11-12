@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
-
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -13,13 +7,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author pc-standard
- */
 public class JTableSearch extends JTextField implements DocumentListener {
 
-    private JTable tableList;
+    private final JTable tableList;
     private TableRowSorter sorter;
 
     public JTableSearch(JTable tableList) {
@@ -29,7 +19,7 @@ public class JTableSearch extends JTextField implements DocumentListener {
 
         tableList.setRowSorter(sorter);
         super.getDocument().addDocumentListener((DocumentListener) this);
-        
+
     }
 
     public void insertUpdate(DocumentEvent e) {
@@ -47,19 +37,14 @@ public class JTableSearch extends JTextField implements DocumentListener {
     }
 
     public void search(String str) {
-        
-        
+
         if (str.length() == 0) {
             sorter.setRowFilter(null);
         } else {
-            
-           
-           sorter.setRowFilter(regexFilter("(?i)"+str));
-           
-           //sorter.setRowFilter(regexFilter(str));
+
+            sorter.setRowFilter(regexFilter("(?i)" + str));
         }
-        
-        
+
     }
 
 }

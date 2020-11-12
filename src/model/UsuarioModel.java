@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import controller.DashboardController;
@@ -12,10 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Table.Usuario;
 
-/**
- *
- * @author quihu
- */
 public class UsuarioModel {
 
     private Conexion conexion;
@@ -176,7 +167,6 @@ public class UsuarioModel {
     public boolean update(Usuario u) {
 
         if (DashboardController.getUserInfo().getTblRol_RolId().equals("1") || DashboardController.getUserInfo().getTblRol_RolId().equals("2")) {
-
 
             try {
 
