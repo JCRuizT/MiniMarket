@@ -105,6 +105,13 @@ public class CrearUsuarioController implements MouseListener, ActionListener {
                     u.setTblRol_RolId(String.valueOf(vista.getTipoRol().getSelectedItem().hashCode()));
                     u.setTblEstado_EstId("1");
 
+                    u.setUsuNombre1(u.getUsuNombre1().trim());
+                    u.setUsuNombre2(u.getUsuNombre2().trim());
+                    u.setUsuApellido1(u.getUsuApellido1().trim());
+                    u.setUsuApellido2(u.getUsuApellido2().trim());
+                    u.setUsuCelular(u.getUsuCelular().trim());
+                    u.setUsuCorreo(u.getUsuCorreo().trim());
+
                     u = model.create(u);
 
                     if (u != null) {

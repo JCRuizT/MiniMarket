@@ -25,6 +25,7 @@ public class ActualizarUsuarioController implements MouseListener {
 
         this.Tabla = Tabla;
         this.vistaD = vistaD;
+
         Usuario u = (Usuario) Tabla.getObject();
 
         if (DashboardController.getUserInfo().getUsuIdentificacion().equals(u.getUsuIdentificacion())) {
@@ -66,7 +67,7 @@ public class ActualizarUsuarioController implements MouseListener {
         if (me.getSource() == vista.getGuardar()) {
 
             if (vista.getFieldName().getText().isEmpty() || vista.getFieldLastName().getText().isEmpty()
-                    || vista.getFieldnumIdentificacion().getText().isEmpty() || vista.getTipoRol().getSelectedIndex() == 0) {
+                    || vista.getFieldnumIdentificacion().getText().isEmpty() || vista.getTipoRol().getSelectedIndex() == 0 || vista.getEstado().getSelectedIndex() == 0) {
 
                 JOptionPane.showMessageDialog(null, "Falta diligenciar algunos campos obligatorios (*)", "Verifique los Datos", JOptionPane.WARNING_MESSAGE);
 
@@ -103,6 +104,13 @@ public class ActualizarUsuarioController implements MouseListener {
                 u.setEstEstado(vista.getEstado().getSelectedItem().toString());
 
                 u.setTipNombre(TipoIdentifiSelected);
+
+                u.setUsuNombre1(u.getUsuNombre1().trim());
+                u.setUsuNombre2(u.getUsuNombre2().trim());
+                u.setUsuApellido1(u.getUsuApellido1().trim());
+                u.setUsuApellido2(u.getUsuApellido2().trim());
+                u.setUsuCelular(u.getUsuCelular().trim());
+                u.setUsuCorreo(u.getUsuCorreo().trim());
 
                 if (model.update(u)) {
 

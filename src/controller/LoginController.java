@@ -26,7 +26,7 @@ public class LoginController implements ActionListener {
                 boolean logged = model.login(vista.getFieldUser().getText(), vista.getFieldPass().getText());
                 if (logged) {
                     vista.dispose();
-                    DashboardController app = new DashboardController(model.getInfo()); // llama al perfil o zona de gestion
+                    DashboardController app = new DashboardController(model.getInfo());
 
                 } else {
                     vista.setLabelError("Usuario y/o contraseña incorrectos");

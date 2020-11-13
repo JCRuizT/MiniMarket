@@ -62,7 +62,7 @@ public class UsuarioModel {
                     u.setUsuCorreo(result.getString("UsuCorreo"));
                     u.setTblTipoIdentificacion_TipId(result.getString("TblTipoIdentificacion_TipId"));
                     u.setTblEstado_EstId(result.getString("TblEstado_EstId"));
-                    u.setTblRol_RolId("TblRol_RolId");
+                    u.setTblRol_RolId(result.getString("TblRol_RolId"));
                     u.setTipNombre(result.getString("TipNombre"));
                     u.setRolNombre(result.getString("RolNombre"));
                     u.setEstEstado(result.getString("EstEstado"));

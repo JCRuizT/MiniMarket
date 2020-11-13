@@ -193,7 +193,7 @@ public class ActualizarUsuarioView extends JFrame {
         estado.setFont(new Font("Segoe UI Light", CENTER_BASELINE, 20));
         estado.addItem("Estado de Usuario");
         estado.addItem(new JComboItem("1","Activo"));
-        estado.addItem(new JComboItem("2","Inativo"));
+        estado.addItem(new JComboItem("2","Inactivo"));
 
         campOblig5.setText("*");
         campOblig5.setLocation(235, 410);
