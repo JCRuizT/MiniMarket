@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class JTableComponent extends DefaultTableCellRenderer {
 
-    private JTable table;
+    private JTableAbstract table;
     private DefaultTableModel model;
     private JScrollPane scrollTable;
 
@@ -25,7 +25,7 @@ public class JTableComponent extends DefaultTableCellRenderer {
         ;
         };
         
-        table = new JTable(model);
+        table = new JTableAbstract(model);
         table.setSelectionMode(SINGLE_SELECTION);
         table.setFillsViewportHeight(true);
         table.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -80,5 +80,22 @@ public class JTableComponent extends DefaultTableCellRenderer {
     public JScrollPane getScrollTable() {
         return scrollTable;
     }
+    
+}
 
+
+class JTableAbstract extends JTable {
+    
+    public JTableAbstract(DefaultTableModel model){
+        super(model);
+    }
+    
+    @Override
+    public int getSelectedRow(){
+        
+       int rowIndex = super.getSelectedRow();
+       rowIndex = super.convertRowIndexToModel(rowIndex);
+       return rowIndex;
+    }
+    
 }
